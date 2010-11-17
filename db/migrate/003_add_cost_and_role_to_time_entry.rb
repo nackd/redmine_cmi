@@ -1,7 +1,7 @@
 class AddCostAndRoleToTimeEntry < ActiveRecord::Migration
   def self.up
-    add_column :time_entries, :cost, :float, :default => "0.0", :null => "0.0"
-    add_column :time_entries, :role, :string, :default => "PS", :null => "PS"
+    add_column :time_entries, :cost, :float, :default => 0.0, :null => false
+    add_column :time_entries, :role, :string, :null => false
   end
 
   def self.down
@@ -9,5 +9,3 @@ class AddCostAndRoleToTimeEntry < ActiveRecord::Migration
     remove_column :time_entries, :role
   end
 end
-
-

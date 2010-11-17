@@ -24,6 +24,20 @@ module UserPatch
   end
 
   module InstanceMethods
+    def role
+      role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'], :select => :id)
+      custom_value_for(role_field.id).value rescue nil
+    end
+
+    def role=(role)
+      role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'], :select => :id)
+      cv = CustomValue.find_or_initialize_by_customized_type_and_custom_field_id_and_customized_id(
+        'Principal',
+        role_field.id,
+        id)
+      cv.value = role
+      cv.save!
+    end
   end
 end
 
