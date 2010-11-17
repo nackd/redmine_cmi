@@ -105,3 +105,11 @@ es:
   cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
   cmi_report_tracker_not_available: No existe el tracker informes
   cmi_no_reports: No hay informes creados
+
+  caption_status: Estado
+  caption_groups: Grupos
+  caption_projects: Proyectos
+  caption_metrics: Métricas
+
+  plugin_name: Cuadro de Mando Integral
+  plugin_description: Vistas resumenes globales y por proyectos
