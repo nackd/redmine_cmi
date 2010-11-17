@@ -1,0 +1,41 @@
+<% content_for :header_tags do %>
+  <style>
+    table.list thead th {white-space:normal;}
+  </style>
+<% end %>
+
+<h1><%= l(:label_CMI) %></h1>
+<h2><%= l(:label_metrics) %></h2>
+
+<% form_remote_tag(:url => {}, :update => 'content') do %>
+  Filtrar por: <%= select_tag(:selected_project_group, options_for_select([nil] + @groups, params[:selected_project_group]),
+                                                          :onchange => "this.form.onsubmit();",
+                                                          :style => 'width: 200px',
+                                                          :id => nil) %></p>
+
+<div id="cmiplugin" name="cmiplugin">
+  <table class="list issues">
+    <thead>
+      <tr>
+        <th rowspan="1"><%= l(:label_name) %></th>
+        <th colspan="1"><%= l(:label_identifier) %></th>
+        <th colspan="1"><%= l(:label_coordinator) %></th>
+        <th colspan="1"><%= l(:label_expedient) %></th>
+        <th colspan="1"><%= l(:label_typology) %></th>
+        <th colspan="1"><%= l(:label_observations_cmi) %></th>
+        <th colspan="1"><%= l(:label_stages_cmi) %></th>
+        <th colspan="1"><%= l(:label_metrics) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_report } %>
+      <% end %>
+      <thead><tr class="<%= cycle('odd', 'even') %>"><td colspan="10">Archivados</td></tr></thead>
+      <% @archived.each do |project| %>
+        <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_archived_report } %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%end%>

@@ -1,0 +1,68 @@
+= CMI 
+
+== v0.14 ==
+
+* Las columnas de informes se ordenan correctamente en función de la fecha de inicio.
+
+== v0.13 ==
+
+* Arregladas las gráficas
+* Truncados todos los porcentajes a 2 decimales
+
+== v0.12 ==
+
+* En la columna se la pestaña de métricas se incluye ahora la fecha del informe que se usa para hacer los cálculos.
+* Todos los calculos se hacen ahora sobre la fecha de inicio del informe, no la fecha de creación.
+
+== v0.11 ==
+
+* Eliminadas columnas en la vista CMI
+* Añadida pestaña de Grupo a la vista CMI
+
+== v0.10 ==
+
+* Cambios menores en los nombres de las filas
+
+== v0.9 ==
+
+* Se va ha eliminado el campo "Fecha de inicio prevista" del informe a favor de un campo que se llame "Fecha real de comienzo" a nivel de proyectos.
+
+== v0.8 ==
+
+* Listado de proyectos en el menú superior "CMI". Tabla de métricas globales modificada.
+* Error en la estimación de costes fixed
+
+== v0.7 ==
+
+* zero division fixed in "Cantidad ofertada"
+
+== v0.6 ==
+
+* zero division fixed
+
+== v0.5 ==
+
+* Cantidad ofertada -> Cantidad aceptada
+* Arreglado problema con 0 revisiones de calidad planificadas
+
+== v0.4 ==
+
+* Fixing a lot of issues! 
+
+== v0.3 ==
+
+* New metrics
+
+== v0.2 ==
+
+* Renaming:
+  * score_board and score_boards files to "cmi"
+  * score_boards dirs to "cmi"
+  * ScoreBoards class to "Cmi"
+  * "CMI" head renamed to "Cuadro de Mando Integral"
+* Added link between general view page and each projects
+
+== v0.1 ==
+
+* Initial version
+

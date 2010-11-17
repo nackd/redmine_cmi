@@ -1,0 +1,7 @@
+The main authors of this plugin are:
+ * Clara Meniz <cmeniz@emergya.es>
+ * Carlos Parra <cparra@emergya.es>
+
+and the main contributors:
+ * José Manuel Prieto <jmprieto@emergya.es>
+ * David Teyssiere <dteyssiere@emergya.es>

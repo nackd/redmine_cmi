@@ -1,0 +1,79 @@
+management_roles: JP
+
+risk_levels:
+  Bajo:
+    - Mínima
+    - Baja
+  Medio: Normal
+  Alto:
+    - Alta
+    - Urgente
+    - Inmediata
+
+incidence_levels:
+  Bajo:
+    - Mínima
+    - Baja
+  Medio: Normal
+  Alto:
+    - Alta
+    - Urgente
+    - Inmediata
+
+report_tracker: Informes
+expense_tracker: Gastos
+
+tracker:
+  bug: Errores
+  feature: Tareas
+  support: Soporte
+  request: Solicitudes de cambio
+  quality: Calidad
+  risk: Riesgos
+  incidence: Incidencias
+  budget: Gastos
+  inform: Informes
+
+priority:
+  high: Alta
+  immediate: Inmediata
+  low: Baja
+  lowest: Mínima
+  normal: Normal
+  urgent: Urgente
+
+issue_status:
+  new: Nueva
+  in_progress: En curso
+  resolved: Resuelta
+  feedback: Comentarios
+  closed: Cerrada
+  rejected: Rechazada
+  accepted: Aceptada
+  approval: Validada
+
+
+project_group_field: Grupo
+project_accepted_field: Cantidad aceptada
+project_role_original_effort_planned_field: Esfuerzo previsto para {{role}}
+
+user_role_field: Perfil
+
+report_material_original_budget_field: Presupuesto inicial
+report_material_current_budget_field: Presupuesto actual
+report_role_current_effort_planned_field: Esfuerzo actual {{role}}
+expense_value_field: Gasto del elemento
+
+current: actual
+spected: previsto
+effort: "Esfuerzo {{type}} {{profile}}"
+
+spected_date_end: Fecha fin prevista
+budget_accepted: Cantidad aceptada
+quality_meets_done: Revisión calidad realizada
+budget_spected_rrmm: Presupuesto previsto rrmm
+date_start_real: Fecha real de comienzo
+date_start_planned: Fecha de comienzo planificada
+date_end_planned: Fecha de fin planificada
+quality_meets_planned: Revision calidad planificada
+

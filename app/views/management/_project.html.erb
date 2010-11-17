@@ -1,0 +1,40 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <td>
+    <% if project.parent_id %>
+      >
+    <% end %>
+    <%= link_to_project project %>
+  </td>
+  <td><%= project.identifier %></td>
+
+  <%
+  users_jp =  []
+  project.users.each do |user|
+      if !user.custom_values[0].nil? and user.custom_values[0].value == 'JP'
+        users_jp << user
+      end
+  end %>
+
+  <td><%=  users_jp.join(', ') %></td>
+
+  <%@custom_values = project.custom_values.find(:all, :include => :custom_field, :order => "#{CustomField.table_name}.position")
+    exp = tip = ciclo = obs = ""
+    for custom_value in @custom_values
+      if (custom_value.custom_field.name == "#{l(:label_expedient)}")
+        exp = custom_value.value
+      elsif (custom_value.custom_field.name == "#{l(:label_typology)}")
+        tip = custom_value.value
+      elsif (custom_value.custom_field.name == "#{l(:label_stages_cmi)}")
+        ciclo = custom_value.value
+      elsif (custom_value.custom_field.name == "#{l(:label_observations_cmi)}")
+        obs = custom_value.value
+      end
+    end %>
+  <td> <%= exp %> </td>
+  <td> <%= tip %> </td>
+  <td> <%= obs %> </td>
+  <td> <%= ciclo %> </td>
+  <td>
+      <%= link_to_metrics(project) %>
+  </td>
+</tr>

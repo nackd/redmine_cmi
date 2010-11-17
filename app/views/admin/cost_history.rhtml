@@ -1,0 +1,25 @@
+<h2><%=l(:label_cost_history)%></h2>
+
+<table class="list">
+<tr class="<%= cycle 'odd', 'even' %>">
+    <td style="width:15%;"></td>
+    <th style="width:15%;"><%= l(:label_JP_long) %></th>
+    <th style="width:15%;"><%= l(:label_AF_long) %></th>
+    <th style="width:15%;"><%= l(:label_AP_long) %></th>
+    <th style="width:15%;"><%= l(:label_PS_long) %></th>
+    <th style="width:15%;"><%= l(:label_PJ_long) %></th>
+    <th style="width:15%;"><%= l(:label_B_long) %></th>
+
+</tr>
+<% costs_list = (HistoryProfilesCost.find :all).group_by(&:year) %>
+<% costs_list.each do |key, profiles_year_cost| %>
+<tr class="<%= cycle 'odd', 'even' %>">
+  <th class="center" style="width:15%;"><%= key %></th>
+  <% profiles_year_cost.each do |cost_profile| %>
+    <td class="center" style="width:15%;"><%= cost_profile.value %> €</td>
+  <% end %>
+</tr>
+<% end %>
+</table>
+<% reset_cycle %>
+

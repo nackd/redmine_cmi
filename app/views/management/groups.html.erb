@@ -1,0 +1,85 @@
+<% content_for :header_tags do %>
+  <style>
+    table.list thead th {white-space:normal;}
+  </style>
+<% end %>
+
+<h1><%= l(:label_CMI) %></h1>
+<h2><%= l(:label_metrics) %></h2>
+
+<div id="cmiplugin" name="cmiplugin">
+    <table class="list issues">
+      <thead>
+        <tr>
+          <th rowspan="1"><%= l(:label_group) %></th>
+          <th colspan="1"><%= l(:label_total_accepted) %></th>
+          <th colspan="1"><%= l(:label_profitability_current) %></th>
+          <th colspan="1"><%= l(:label_group_desviation) %> </th>
+          <th colspan="1"><%= l(:label_total_done) %></th>
+          <th colspan="1"><%= l(:label_initial_mc) %></th>
+          <th colspan="1"><%= l(:label_global_desviation) %></th>
+        <% @roles.each do |role| %>
+          <th colspan="1"><%= l("label_remaining_#{role}") %></th>
+        <% end %>
+          <th colspan="1"><%= l(:label_remaining_total) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+             <tr>
+                <td><strong><%=h group %></strong></td>
+                <td><%= @metrics[group][:accepted].round(2) %></td>
+                <td><%= @metrics[group][:planned_profit].round(2) %></td>
+                <td><%= @metrics[group][:deviation].round(2) %></td>
+                <td><%= (@metrics[group][:done] * 100).round(2) %></td>
+                <td><%= (@metrics[group][:cm] * 100).round(2) %></td>
+                <td><%= (@metrics[group][:deviation_percent] * 100).round(2) %></td>
+          <% @roles.each do |role| %>
+                <td><%= @metrics[group][:hr_current_effort_remaining][role].round(2) %></td>
+          <% end %>
+                <td><%= @roles.sum{|role| @metrics[group][:hr_current_effort_remaining][role]}.round(2) %></td>
+             </tr>
+        <%end%>
+        <tr>
+          <td rowspan=""><strong><%= l(:label_total) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:accepted]}.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:planned_profit]}.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:deviation]}.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:done] * 100}.round(2) %></strong></td>
+          <td><strong><%= (@total_cm * 100).round(2) %></strong></td>
+          <td><strong><%= (@total_deviation_percent * 100).round(2) %></strong></td>
+        <% @roles.each do |role| %>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:hr_current_effort_remaining][role]}.round(2) %></strong></td>
+        <% end %>
+          <td><strong><%= # Ugly? Sure
+@groups.sum do |group|
+  @roles.sum do |role|
+    @metrics[group][:hr_current_effort_remaining][role]
+  end
+end.round(2) %></strong></td>
+        </tr>
+      </tbody>
+   </table>
+   <table border="1">
+     <tr>
+       <td>
+         <%= accepted_graph(@metrics) %>
+       </td>
+       <td>
+          <%= profit_graph(@metrics) %>
+       </td>
+       <td>
+          <%= deviation_graph(@metrics) %>
+       </td>
+       <td>
+          <%= cm_graph(@metrics) %>
+       </td>
+     </tr>
+     <tr>
+       <td align="center"><%= l(:label_total_accepted) %></td>
+       <td align="center"><%= l(:label_profitability_current) %></td>
+       <td align="center"><%= l(:label_group_desviation) %> </td>
+       <td align="center"><%= l(:label_initial_mc) %></td>
+     </tr>
+   </table>
+</div>

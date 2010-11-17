@@ -1,0 +1,35 @@
+== CMI Plugin
+
+CMI stands for 'Cuadro de Mando Integral' with is Spanish name for a Central Panel of Management.
+CMI is a Redmine plugin to have a summarized view of the projects.
+It calculates and shows with graphics different metrics as actual effort, cost, progress or deviation from the goals of the projects.
+
+== Features
+
+* Feature one
+* Feature two
+  * Sub-feature
+
+== Getting the plugin
+
+A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/] at Cenatic Forge and also on {Gitorious}[http://gitorious.org/cmi/cm/master].
+
+== Install
+
+1. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
+2. Run the plugin migrations +rake db:migrate_plugins+
+3. Load default data +rake cmi:load_default_data+
+4. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+5. Login to your Redmine install as an Administrator
+6. Enable the permissions for your Roles
+7. The link to the plugin should appear on that project's navigation
+
+== Usage
+
+== License
+
+This plugin is licensed under the GNU GPL v2.  See LICENSE.txt for details.
+
+== Project help
+
+If you need help you can contact the maintainer on the bug tracker at http://forja.cenatic.es/
