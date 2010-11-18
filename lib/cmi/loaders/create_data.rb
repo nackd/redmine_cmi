@@ -5,14 +5,9 @@ module CMI
         # Loads the cmi needed trackers, issue statuses, issue priorities and custom fields
         def load
           # Trackers
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['bug'],     :is_in_chlog => true,  :is_in_roadmap => false)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['feature'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['change'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['qa'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['risk'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['incidence'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['expense'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['report'],     :is_in_chlog => true,  :is_in_roadmap => true)
+          DEFAULT_VALUES['trackers'].each do |tracker, name|
+            Tracker.create(:name => name, :is_in_chlog => true,  :is_in_roadmap => true)
+          end
 
           # Issue statuses
           IssueStatus.create(:name => DEFAULT_VALUES['issue_status']['new'], :is_closed => false, :is_default => true)
