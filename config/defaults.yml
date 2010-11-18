@@ -23,8 +23,8 @@ incidence_levels:
 trackers:
   bug: Errores
   feature: Tareas
-  request: Solicitudes de cambio
-  quality: Calidad
+  change: Solicitudes de cambio
+  qa: Calidad
   risk: Riesgos
   incidence: Incidencias
   budget: Gastos

@@ -7,8 +7,8 @@ module CMI
           # Trackers
           Tracker.create(:name => DEFAULT_VALUES['trackers']['bug'],     :is_in_chlog => true,  :is_in_roadmap => false)
           Tracker.create(:name => DEFAULT_VALUES['trackers']['feature'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['request'],     :is_in_chlog => true,  :is_in_roadmap => true)
-          Tracker.create(:name => DEFAULT_VALUES['trackers']['quality'],     :is_in_chlog => true,  :is_in_roadmap => true)
+          Tracker.create(:name => DEFAULT_VALUES['trackers']['change'],     :is_in_chlog => true,  :is_in_roadmap => true)
+          Tracker.create(:name => DEFAULT_VALUES['trackers']['qa'],     :is_in_chlog => true,  :is_in_roadmap => true)
           Tracker.create(:name => DEFAULT_VALUES['trackers']['risk'],     :is_in_chlog => true,  :is_in_roadmap => true)
           Tracker.create(:name => DEFAULT_VALUES['trackers']['incidence'],     :is_in_chlog => true,  :is_in_roadmap => true)
           Tracker.create(:name => DEFAULT_VALUES['trackers']['budget'],     :is_in_chlog => true,  :is_in_roadmap => true)

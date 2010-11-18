@@ -90,7 +90,7 @@ module CmiProjectCalculations
   end
 
   def change_request_count(statuses, to_date, project)
-    change_request_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['request'])
+    change_request_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['change'])
     cond = ARCondition.new
     cond << ['created_on < ?', to_date]
     cond << ['tracker_id = ?', change_request_tracker.id]
@@ -231,8 +231,8 @@ module CmiProjectCalculations
   def calculate_no_approval_open project
     ### Suma de "no conformidades" en estado "Nueva" o "Validada"
       #debugger(1)
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['qa']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['qa'])
       cond = ARCondition.new
       if @informe
         cond << ['created_on BETWEEN ? AND ?', 0, @date]
@@ -254,8 +254,8 @@ module CmiProjectCalculations
   def calculate_no_approval_total project
     ### Suma de "no conformidades"
       #debugger(1)
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['qa']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['qa'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << [" tracker_id=?" ,risks.id]
@@ -272,8 +272,8 @@ module CmiProjectCalculations
 
   def calculate_no_approval_open_out_of_date project
 
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['qa']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['qa'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << [  "(#{IssueStatus.table_name}.name=? or #{IssueStatus.table_name}.name=?)
@@ -291,8 +291,8 @@ module CmiProjectCalculations
 
   def calculate_no_approval_open_without_date project
 
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['qa']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['qa'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << [  "(#{IssueStatus.table_name}.name=? or #{IssueStatus.table_name}.name=?)
@@ -311,9 +311,9 @@ module CmiProjectCalculations
 
   def calculate_ac_effort project
     #   Esfuerzo en nuevos requisitos CMMI_Solicitudes de cambio Aceptada, Resuelta o Cerrada
-      error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
+      error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['qa']}"
 
-      tracker_calidad = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
+      tracker_calidad = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['qa'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << ["tracker_id=?", tracker_calidad.id]
@@ -367,9 +367,9 @@ module CmiProjectCalculations
 
   def calculate_request_change project, project_metrics
 #   Esfuerzo en nuevos requisitos CMMI_Solicitudes de cambio Aceptada, Resuelta o Cerrada
-      error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['request']}"
+      error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['change']}"
 
-      tracker_requests_change=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['request'])
+      tracker_requests_change=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['change'])
       cond = ARCondition.new
       if @informe
         cond << ['created_on BETWEEN ? AND ?', 0, @date]
