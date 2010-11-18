@@ -20,12 +20,10 @@ module CMI
           IssueStatus.create(:name => DEFAULT_VALUES['issue_status']['approval'], :is_closed => false, :is_default => false)
 
           # Enumerations
-          IssuePriority.create(:name => DEFAULT_VALUES['priority']['lowest'])
-          IssuePriority.create(:name => DEFAULT_VALUES['priority']['low'])
-          IssuePriority.create(:name => DEFAULT_VALUES['priority']['normal'], :is_default => true)
-          IssuePriority.create(:name => DEFAULT_VALUES['priority']['high'])
-          IssuePriority.create(:name => DEFAULT_VALUES['priority']['urgent'])
-          IssuePriority.create(:name => DEFAULT_VALUES['priority']['immediate'])
+          (DEFAULT_VALUES['risk_levels'].values.flatten |
+           DEFAULT_VALUES['incidence_levels'].values.flatten).each do |priority|
+            IssuePriority.create(:name => priority)
+          end
 
                   # IssueCustomField
           tracker = Tracker.find_by_name(DEFAULT_VALUES['trackers']['report'])

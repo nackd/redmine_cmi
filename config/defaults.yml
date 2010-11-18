@@ -30,14 +30,6 @@ trackers:
   expense: Gastos
   report: Informes
 
-priority:
-  high: Alta
-  immediate: Inmediata
-  low: Baja
-  lowest: Mínima
-  normal: Normal
-  urgent: Urgente
-
 issue_status:
   new: Nueva
   in_progress: En curso
