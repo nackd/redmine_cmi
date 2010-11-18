@@ -1,8 +1,0 @@
-<div id="admin-menu">
-	<ul>
-		<% menu_items_for(:admin_menu) do |item| -%>
-			<li><%= link_to h(item.caption), item.url, item.html_options %></li>
-		<% end -%>
-		<li><%= link_to l(:label_cost_history), {:controller => 'admin', :action => 'cost_history'}, :class => 'issue_statuses' %></li>
-	</ul>
-</div>
