@@ -20,13 +20,11 @@ incidence_levels:
     - Urgente
     - Inmediata
 
-report_tracker: Informes
 expense_tracker: Gastos
 
 tracker:
   bug: Errores
   feature: Tareas
-  support: Soporte
   request: Solicitudes de cambio
   quality: Calidad
   risk: Riesgos
