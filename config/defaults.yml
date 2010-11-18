@@ -27,8 +27,8 @@ trackers:
   qa: Calidad
   risk: Riesgos
   incidence: Incidencias
-  budget: Gastos
-  inform: Informes
+  expense: Gastos
+  report: Informes
 
 priority:
   high: Alta

@@ -16,7 +16,7 @@ class MetricsController < ApplicationController
     @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
     # si el proyecto existe, calcula sus metricas, nuevas y anteriores
     if !@project.nil? and "#{params[:project_id]}" != "cmi"
-      tracker_informes = @project.trackers.find_by_name(DEFAULT_VALUES['trackers']['inform'])
+      tracker_informes = @project.trackers.find_by_name(DEFAULT_VALUES['trackers']['report'])
       @spent_issues_informes = (@project.issues.find( :all,
                                           :include => [:tracker],
                                           :conditions => [  "tracker_id=?", tracker_informes.id], :order => 'start_date DESC'))
@@ -62,7 +62,7 @@ class MetricsController < ApplicationController
       project_metrics["#{DEFAULT_VALUES['report_material_current_budget_field']}"] = 0.0
       project_metrics['Gastado'] = 0.0
 
-      tracker_gastos = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['budget'])
+      tracker_gastos = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['expense'])
       cond = ARCondition.new
       cond << [ 'tracker_id=?', tracker_gastos.id]
       cond << ['created_on BETWEEN ? AND ?', project.created_on, (@date.to_s).to_datetime]
