@@ -4,24 +4,24 @@
   </style>
 <% end %>
 
-<h1><%= l(:label_CMI) %></h1>
-<h2><%= l(:label_metrics) %></h2>
+<h1><%= l('cmi.label_CMI') %></h1>
+<h2><%= l('cmi.label_metrics') %></h2>
 
 <div id="cmiplugin" name="cmiplugin">
     <table class="list issues">
       <thead>
         <tr>
-          <th rowspan="1"><%= l(:label_group) %></th>
-          <th colspan="1"><%= l(:label_total_accepted) %></th>
-          <th colspan="1"><%= l(:label_profitability_current) %></th>
-          <th colspan="1"><%= l(:label_group_desviation) %> </th>
-          <th colspan="1"><%= l(:label_total_done) %></th>
-          <th colspan="1"><%= l(:label_initial_mc) %></th>
-          <th colspan="1"><%= l(:label_global_desviation) %></th>
+          <th rowspan="1"><%= l('label_group') %></th>
+          <th colspan="1"><%= l('cmi.label_total_accepted') %></th>
+          <th colspan="1"><%= l('cmi.label_profitability_current') %></th>
+          <th colspan="1"><%= l('cmi.label_group_desviation') %> </th>
+          <th colspan="1"><%= l('cmi.label_total_done') %></th>
+          <th colspan="1"><%= l('cmi.label_initial_mc') %></th>
+          <th colspan="1"><%= l('cmi.label_global_desviation') %></th>
         <% @roles.each do |role| %>
-          <th colspan="1"><%= l("label_remaining_#{role}") %></th>
+          <th colspan="1"><%= l("cmi.label_remaining_#{role}") %></th>
         <% end %>
-          <th colspan="1"><%= l(:label_remaining_total) %></th>
+          <th colspan="1"><%= l('cmi.label_remaining_total') %></th>
         </tr>
       </thead>
       <tbody>
@@ -41,7 +41,7 @@
              </tr>
         <%end%>
         <tr>
-          <td rowspan=""><strong><%= l(:label_total) %></strong></td>
+          <td rowspan=""><strong><%= l('cmi.label_total') %></strong></td>
           <td><strong><%= @groups.sum{|group| @metrics[group][:accepted]}.round(2) %></strong></td>
           <td><strong><%= @groups.sum{|group| @metrics[group][:planned_profit]}.round(2) %></strong></td>
           <td><strong><%= @groups.sum{|group| @metrics[group][:deviation]}.round(2) %></strong></td>
@@ -76,10 +76,10 @@ end.round(2) %></strong></td>
        </td>
      </tr>
      <tr>
-       <td align="center"><%= l(:label_total_accepted) %></td>
-       <td align="center"><%= l(:label_profitability_current) %></td>
-       <td align="center"><%= l(:label_group_desviation) %> </td>
-       <td align="center"><%= l(:label_initial_mc) %></td>
+       <td align="center"><%= l('cmi.label_total_accepted') %></td>
+       <td align="center"><%= l('cmi.label_profitability_current') %></td>
+       <td align="center"><%= l('cmi.label_group_desviation') %> </td>
+       <td align="center"><%= l('cmi.label_initial_mc') %></td>
      </tr>
    </table>
 </div>

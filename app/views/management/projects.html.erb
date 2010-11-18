@@ -4,8 +4,8 @@
   </style>
 <% end %>
 
-<h1><%= l(:label_CMI) %></h1>
-<h2><%= l(:label_metrics) %></h2>
+<h1><%= l('cmi.label_CMI') %></h1>
+<h2><%= l('cmi.label_metrics') %></h2>
 
 <% form_remote_tag(:url => {}, :update => 'content') do %>
   Filtrar por: <%= select_tag(:selected_project_group, options_for_select([nil] + @groups, params[:selected_project_group]),
@@ -17,14 +17,14 @@
   <table class="list issues">
     <thead>
       <tr>
-        <th rowspan="1"><%= l(:label_name) %></th>
-        <th colspan="1"><%= l(:label_identifier) %></th>
-        <th colspan="1"><%= l(:label_coordinator) %></th>
-        <th colspan="1"><%= l(:label_expedient) %></th>
-        <th colspan="1"><%= l(:label_typology) %></th>
-        <th colspan="1"><%= l(:label_observations_cmi) %></th>
-        <th colspan="1"><%= l(:label_stages_cmi) %></th>
-        <th colspan="1"><%= l(:label_metrics) %></th>
+        <th rowspan="1"><%= l('cmi.label_name') %></th>
+        <th colspan="1"><%= l('cmi.label_identifier') %></th>
+        <th colspan="1"><%= l('cmi.label_coordinator') %></th>
+        <th colspan="1"><%= l('cmi.label_expedient') %></th>
+        <th colspan="1"><%= l('cmi.label_typology') %></th>
+        <th colspan="1"><%= l('cmi.label_observations_cmi') %></th>
+        <th colspan="1"><%= l('cmi.label_stages_cmi') %></th>
+        <th colspan="1"><%= l('cmi.label_metrics') %></th>
       </tr>
     </thead>
     <tbody>

@@ -3,11 +3,11 @@ module ManagementHelper
     if project.last_report.present?
       link_to "#{DEFAULT_VALUES['trackers']['report']} ##{project.last_report.id} #{project.last_report.start_date}", metrics_path(project.last_report.project.identifier)
     elsif !project.module_enabled?(:cmiplugin)
-      l(:cmi_module_not_enabled)
+      l('cmi.cmi_module_not_enabled')
     elsif !project.report_tracker?
-      l(:cmi_report_tracker_not_available)
+      l('cmi.cmi_report_tracker_not_available')
     else
-      l(:cmi_no_reports)
+      l('cmi.cmi_no_reports')
     end
   end
 

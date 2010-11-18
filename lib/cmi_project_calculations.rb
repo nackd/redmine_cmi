@@ -110,27 +110,27 @@ module CmiProjectCalculations
 
   def calculate_effort_general budget_type, project_metrics
     effort = 0.0
-    [l(:label_JP), l(:label_AF), l(:label_AP), l(:label_PS), l(:label_PJ), l(:label_B)].each do |profile|
+    [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |profile|
       effort += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', budget_type).gsub('{{profile}}', profile)}"].to_f
     end
-    return effort.round(2).to_s + " #{l(:label_hours)}"
+    return effort.round(2).to_s + " #{l('cmi.label_hours')}"
   end
 
   def calculate_effort_remaining_role role, project_metrics
-    project_metrics["Esfuerzo actual #{l('label_' + role)}"].nil? ? "-- #{l(:label_hours)}" :
-      (project_metrics["Esfuerzo actual #{l('label_' + role)}"].to_f -
-       project_metrics['effort_done_' + role.underscore].to_f).round(2).to_s + " #{l(:label_hours)}"
+    project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].nil? ? "-- #{l('cmi.label_hours')}" :
+      (project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].to_f -
+       project_metrics['effort_done_' + role.underscore].to_f).round(2).to_s + " #{l('cmi.label_hours')}"
   end
 
   def calculate_effort_remaining project_metrics
     effort_remaining = 0.0
     effort_remaining = project_metrics['effort_real'].to_f  - project_metrics['effort_done'].to_f
-    return effort_remaining.round(2).to_s + " #{l(:label_hours)}"
+    return effort_remaining.round(2).to_s + " #{l('cmi.label_hours')}"
   end
 
   def calculate_budget_general_rrhh budget_type, project_metrics
     budget_general_rrhh = 0.0
-    [l(:label_JP), l(:label_AF), l(:label_AP), l(:label_PS), l(:label_PJ), l(:label_B)].each do |profile|
+    [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |profile|
       budget_general_rrhh += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', budget_type).gsub('{{profile}}', profile)}"].to_f * @hash_cost_actual_year[profile].first.value
     end
     return budget_general_rrhh.round(2)

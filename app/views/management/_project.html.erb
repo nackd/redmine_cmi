@@ -20,13 +20,13 @@
   <%@custom_values = project.custom_values.find(:all, :include => :custom_field, :order => "#{CustomField.table_name}.position")
     exp = tip = ciclo = obs = ""
     for custom_value in @custom_values
-      if (custom_value.custom_field.name == "#{l(:label_expedient)}")
+      if (custom_value.custom_field.name == "#{l('cmi.label_expedient')}")
         exp = custom_value.value
-      elsif (custom_value.custom_field.name == "#{l(:label_typology)}")
+      elsif (custom_value.custom_field.name == "#{l('cmi.label_typology')}")
         tip = custom_value.value
-      elsif (custom_value.custom_field.name == "#{l(:label_stages_cmi)}")
+      elsif (custom_value.custom_field.name == "#{l('cmi.label_stages_cmi')}")
         ciclo = custom_value.value
-      elsif (custom_value.custom_field.name == "#{l(:label_observations_cmi)}")
+      elsif (custom_value.custom_field.name == "#{l('cmi.label_observations_cmi')}")
         obs = custom_value.value
       end
     end %>

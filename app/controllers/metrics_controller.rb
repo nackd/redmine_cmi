@@ -79,12 +79,12 @@ class MetricsController < ApplicationController
       end
 
       #   Esfuerzo realizado (número de horas cargadas al proyecto)
-      project_metrics['effort_done_ap'] = calculate_effort_done_role(l(:label_AP), @date, project)
-      project_metrics['effort_done_jp'] = calculate_effort_done_role(l(:label_JP), @date, project)
-      project_metrics['effort_done_ps'] = calculate_effort_done_role(l(:label_PS), @date, project)
-      project_metrics['effort_done_af'] = calculate_effort_done_role(l(:label_AF), @date, project)
-      project_metrics['effort_done_pj'] = calculate_effort_done_role(l(:label_PJ), @date, project)
-      project_metrics['effort_done_b'] = calculate_effort_done_role(l(:label_B), @date, project)
+      project_metrics['effort_done_ap'] = calculate_effort_done_role(l('cmi.label_AP'), @date, project)
+      project_metrics['effort_done_jp'] = calculate_effort_done_role(l('cmi.label_JP'), @date, project)
+      project_metrics['effort_done_ps'] = calculate_effort_done_role(l('cmi.label_PS'), @date, project)
+      project_metrics['effort_done_af'] = calculate_effort_done_role(l('cmi.label_AF'), @date, project)
+      project_metrics['effort_done_pj'] = calculate_effort_done_role(l('cmi.label_PJ'), @date, project)
+      project_metrics['effort_done_b'] = calculate_effort_done_role(l('cmi.label_B'), @date, project)
       project_metrics['effort_done'] = calculate_effort_done project, project_metrics
 
       #   Suma de "no conformidades" en estado "Nueva" o "Validada"
@@ -101,12 +101,12 @@ class MetricsController < ApplicationController
       project_metrics['time_remaining'] = calculate_time_remaining project, project_metrics
       project_metrics['effort_planned'] = calculate_effort_general(DEFAULT_VALUES['spected'], project_metrics)
       project_metrics['effort_real'] = calculate_effort_general(DEFAULT_VALUES['current'], project_metrics)
-      project_metrics['effort_remaining_jp'] = calculate_effort_remaining_role(l(:label_JP), project_metrics)
-      project_metrics['effort_remaining_af'] = calculate_effort_remaining_role(l(:label_AF), project_metrics)
-      project_metrics['effort_remaining_ap'] = calculate_effort_remaining_role(l(:label_AP), project_metrics)
-      project_metrics['effort_remaining_ps'] = calculate_effort_remaining_role(l(:label_PS), project_metrics)
-      project_metrics['effort_remaining_pj'] = calculate_effort_remaining_role(l(:label_PJ), project_metrics)
-      project_metrics['effort_remaining_b'] = calculate_effort_remaining_role(l(:label_B), project_metrics)
+      project_metrics['effort_remaining_jp'] = calculate_effort_remaining_role(l('cmi.label_JP'), project_metrics)
+      project_metrics['effort_remaining_af'] = calculate_effort_remaining_role(l('cmi.label_AF'), project_metrics)
+      project_metrics['effort_remaining_ap'] = calculate_effort_remaining_role(l('cmi.label_AP'), project_metrics)
+      project_metrics['effort_remaining_ps'] = calculate_effort_remaining_role(l('cmi.label_PS'), project_metrics)
+      project_metrics['effort_remaining_pj'] = calculate_effort_remaining_role(l('cmi.label_PJ'), project_metrics)
+      project_metrics['effort_remaining_b'] = calculate_effort_remaining_role(l('cmi.label_B'), project_metrics)
 
       project_metrics['effort_remaining'] = calculate_effort_remaining project_metrics
       project_metrics['budget_planned_rrhh'] = calculate_budget_general_rrhh(DEFAULT_VALUES['spected'], project_metrics)
