@@ -54,7 +54,7 @@ module ProjectPatch
     def expenses
       issues.find(:all,
                   :conditions => ['tracker_id = ? AND project_id = ?',
-                                  Tracker.find_by_name(DEFAULT_VALUES['expense_tracker']),
+                                  Tracker.find_by_name(DEFAULT_VALUES['tracker']['budget']),
                                   id])
     end
   end

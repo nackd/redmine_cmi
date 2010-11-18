@@ -20,8 +20,6 @@ incidence_levels:
     - Urgente
     - Inmediata
 
-expense_tracker: Gastos
-
 tracker:
   bug: Errores
   feature: Tareas
