@@ -1,6 +1,8 @@
 module CMI
   module Loaders
-    module SampleData
+    module CreateData
+      include Redmine::I18n
+
       class << self
         # Loads the cmi needed trackers, issue statuses, issue priorities and custom fields
         def load
@@ -74,10 +76,12 @@ module CMI
                   :is_filter => false, :searchable => false, :editable => true, :default_value => "")
 
           list.each do |icf|
-            icf.trackers[0] = tracker
-            tracker.custom_fields << icf
-            tracker.save
-            icf.save
+            unless icf.new_record? # not saved
+              icf.trackers[0] = tracker
+              tracker.custom_fields << icf
+              tracker.save
+              icf.save
+            end
           end
 
           ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['budget_spected_rrmm'],
