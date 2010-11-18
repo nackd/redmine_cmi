@@ -1,9 +1,9 @@
-desc 'Create custom fields needed for CMI'
+desc 'Load CMI needed data (trackers, issue statuses, issue priorities and custom fields)'
 
 namespace :cmi do
-  task :create_custom_fields => :environment do
+  task :create_data => :environment do
     begin
-      CMI::Loaders::CustomFields.load
+      CMI::Loaders::CreateData.load
       puts 'Default cmi configuration data loaded.'
     rescue => error
       puts "Error: #{error}"
