@@ -20,7 +20,7 @@ incidence_levels:
     - Urgente
     - Inmediata
 
-tracker:
+trackers:
   bug: Errores
   feature: Tareas
   request: Solicitudes de cambio

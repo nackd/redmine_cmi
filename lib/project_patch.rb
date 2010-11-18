@@ -23,13 +23,13 @@ module ProjectPatch
     def last_report
       issues.find(:first,
                   :conditions => ['tracker_id = ? AND project_id = ?',
-                                  Tracker.find_by_name(DEFAULT_VALUES['tracker']['report']),
+                                  Tracker.find_by_name(DEFAULT_VALUES['trackers']['report']),
                                   id],
                   :order => 'start_date DESC')
     end
 
     def report_tracker?
-      trackers.find_by_name(DEFAULT_VALUES['tracker']['report']).present?
+      trackers.find_by_name(DEFAULT_VALUES['trackers']['report']).present?
     end
 
     def effort_done_by_role(role, to_date)
@@ -54,7 +54,7 @@ module ProjectPatch
     def expenses
       issues.find(:all,
                   :conditions => ['tracker_id = ? AND project_id = ?',
-                                  Tracker.find_by_name(DEFAULT_VALUES['tracker']['budget']),
+                                  Tracker.find_by_name(DEFAULT_VALUES['trackers']['budget']),
                                   id])
     end
   end

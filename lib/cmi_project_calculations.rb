@@ -49,7 +49,7 @@ module CmiProjectCalculations
       issue_categorys.each do |i_cat|
         issue_cat_id << i_cat.id
       end
-      tracker_tareas = project.trackers.find_by_name(DEFAULT_VALUES['tracker']['feature'])
+      tracker_tareas = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['feature'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << ["tracker_id = ? and category_id IN (#{issue_cat_id.join(',')})",tracker_tareas.id]
@@ -66,7 +66,7 @@ module CmiProjectCalculations
   end
 
   def calculate_risk(level, to_date, project)
-    risk_tracker = project.trackers.find_by_name(DEFAULT_VALUES['tracker']['risk'])
+    risk_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['risk'])
     cond = ARCondition.new
     cond << ['created_on < ?', to_date]
     cond << ['tracker_id = ?', risk_tracker.id]
@@ -78,7 +78,7 @@ module CmiProjectCalculations
   end
 
   def calculate_incidence(level, to_date, project)
-    incidence_tracker = project.trackers.find_by_name(DEFAULT_VALUES['tracker']['incidence'])
+    incidence_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['incidence'])
     cond = ARCondition.new
     cond << ['created_on < ?', to_date]
     cond << ['tracker_id = ?', incidence_tracker.id]
@@ -90,7 +90,7 @@ module CmiProjectCalculations
   end
 
   def change_request_count(statuses, to_date, project)
-    change_request_tracker = project.trackers.find_by_name(DEFAULT_VALUES['tracker']['request'])
+    change_request_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['request'])
     cond = ARCondition.new
     cond << ['created_on < ?', to_date]
     cond << ['tracker_id = ?', change_request_tracker.id]
@@ -231,8 +231,8 @@ module CmiProjectCalculations
   def calculate_no_approval_open project
     ### Suma de "no conformidades" en estado "Nueva" o "Validada"
       #debugger(1)
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['tracker']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
       cond = ARCondition.new
       if @informe
         cond << ['created_on BETWEEN ? AND ?', 0, @date]
@@ -254,8 +254,8 @@ module CmiProjectCalculations
   def calculate_no_approval_total project
     ### Suma de "no conformidades"
       #debugger(1)
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['tracker']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << [" tracker_id=?" ,risks.id]
@@ -272,8 +272,8 @@ module CmiProjectCalculations
 
   def calculate_no_approval_open_out_of_date project
 
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['tracker']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << [  "(#{IssueStatus.table_name}.name=? or #{IssueStatus.table_name}.name=?)
@@ -291,8 +291,8 @@ module CmiProjectCalculations
 
   def calculate_no_approval_open_without_date project
 
-      error_calidad="No existe el tracker #{DEFAULT_VALUES['tracker']['quality']}"
-      risks=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['quality'])
+      error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
+      risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << [  "(#{IssueStatus.table_name}.name=? or #{IssueStatus.table_name}.name=?)
@@ -311,9 +311,9 @@ module CmiProjectCalculations
 
   def calculate_ac_effort project
     #   Esfuerzo en nuevos requisitos CMMI_Solicitudes de cambio Aceptada, Resuelta o Cerrada
-      error_requests_change="No existe el tracker #{DEFAULT_VALUES['tracker']['quality']}"
+      error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['quality']}"
 
-      tracker_calidad = project.trackers.find_by_name(DEFAULT_VALUES['tracker']['quality'])
+      tracker_calidad = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['quality'])
       cond = ARCondition.new
       cond << ['created_on BETWEEN ? AND ?', 0, @date]
       cond << ["tracker_id=?", tracker_calidad.id]
@@ -338,8 +338,8 @@ module CmiProjectCalculations
   def calculate_percentaje_errors project
 #   % de errores vs tareas totales del proyecto (en todos los estados)
 #      Errores en el projecto
-      error_percentaje_errors="No existe el tracker #{DEFAULT_VALUES['tracker']['bug']}"
-      tracker_errors=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['bug'])
+      error_percentaje_errors="No existe el tracker #{DEFAULT_VALUES['trackers']['bug']}"
+      tracker_errors=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['bug'])
       if !tracker_errors.nil?
         errors = (project.issues.calculate(:count,
                                           :all,
@@ -347,15 +347,15 @@ module CmiProjectCalculations
                                           :conditions => ["tracker_id = ?",tracker_errors.id])).to_f
       end
 #      Tareas en el proyecto
-      error_percentaje_tasks="No existe el tracker #{DEFAULT_VALUES['tracker']['feature']}"
-      tracker_tasks=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['feature'])
+      error_percentaje_tasks="No existe el tracker #{DEFAULT_VALUES['trackers']['feature']}"
+      tracker_tasks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['feature'])
       if !tracker_tasks.nil?
         tasks = (project.issues.calculate(:count, :all,
                                           :include => [:tracker],
                                           :conditions => ["tracker_id = ?",tracker_tasks.id])).to_f
       end
 #      Porcentaje
-      error_percentaje_errors_tasks="No existen los trackers #{DEFAULT_VALUES['tracker']['bug']} y #{DEFAULT_VALUES['tracker']['feature']}"
+      error_percentaje_errors_tasks="No existen los trackers #{DEFAULT_VALUES['trackers']['bug']} y #{DEFAULT_VALUES['trackers']['feature']}"
       if !tracker_errors.nil? and !tracker_tasks.nil?
         #TODO division por 0 percentaje_errors= errors/(errors + tasks)
         percentaje_errors= (errors + tasks) > 0 ? (100 * (errors/(errors + tasks))).round(2) : 0.0
@@ -367,9 +367,9 @@ module CmiProjectCalculations
 
   def calculate_request_change project, project_metrics
 #   Esfuerzo en nuevos requisitos CMMI_Solicitudes de cambio Aceptada, Resuelta o Cerrada
-      error_requests_change="No existe el tracker #{DEFAULT_VALUES['tracker']['request']}"
+      error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['request']}"
 
-      tracker_requests_change=project.trackers.find_by_name(DEFAULT_VALUES['tracker']['request'])
+      tracker_requests_change=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['request'])
       cond = ARCondition.new
       if @informe
         cond << ['created_on BETWEEN ? AND ?', 0, @date]
