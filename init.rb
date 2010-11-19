@@ -12,9 +12,9 @@ require 'users_helper_patch'
 require 'project_patch'
 
 Redmine::Plugin.register :redmine_cmiplugin do
-  name :plugin_name
+  name 'cmi.plugin_name'.to_sym
   author 'Emergya Consultoría'
-  description :plugin_description
+  description 'cmi.plugin_description'.to_sym
   version '1.1'
 
   settings :default => { }
