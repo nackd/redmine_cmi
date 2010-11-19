@@ -148,11 +148,11 @@ module TimelogControllerPatch
 
     def edit_with_role_and_cost
       (render_403; return) if @time_entry && !@time_entry.editable_by?(User.current)
-      @time_entry ||= TimeEntry.new(:project => @project, :issue => @issue, :user => User.current, :spent_on => User.current.today, :role => User.current.custom_values[0].value)
+      @time_entry ||= TimeEntry.new(:project => @project, :issue => @issue, :user => User.current, :spent_on => User.current.today, :role => User.current.role)
       @time_entry.attributes = params[:time_entry]
       @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
 
-      user_role = !@time_entry.role.nil? ? @time_entry.role : User.current.custom_values[0].value
+      user_role = !@time_entry.role.nil? ? @time_entry.role : User.current.role
       cost = params[:time_entry].nil? ? @time_entry.cost : (params[:time_entry][:hours].to_f * @hash_cost_actual_year["#{user_role}"].first.value.to_f)
       if params[:time_entry]
         @time_entry.update_attribute("cost", cost)

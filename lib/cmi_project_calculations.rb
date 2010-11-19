@@ -16,7 +16,7 @@ module CmiProjectCalculations
     if effort_done_total != effort_done
       @no_profile_users = []
       project.users.each do |user|
-        if user.custom_values[0].nil? or user.custom_values[0].value == nil
+        if user.role.nil?
           @no_profile_users << user
         end
       end

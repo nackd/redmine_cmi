@@ -10,7 +10,7 @@
   <%
   users_jp =  []
   project.users.each do |user|
-      if !user.custom_values[0].nil? and user.custom_values[0].value == 'JP'
+      if user.role == 'JP' # TODO JP? oh, please, remove this s***
         users_jp << user
       end
   end %>

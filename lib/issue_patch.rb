@@ -25,7 +25,7 @@ module IssuePatch
 
 
       if params[:time_entry] && params[:time_entry][:hours].present? && User.current.allowed_to?(:log_time, project)
-        user_role = !User.current.custom_values[0].nil? ? User.current.custom_values[0].value : "PS"
+        user_role = !User.role.nil? ? User.role : "PS" # TODO PS? please remove this
         @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
         cost = !params[:time_entry].nil? ? params[:time_entry][:hours].to_f * @hash_cost_actual_year["#{user_role}"].first.value.to_f : 0.0
         @time_entry = existing_time_entry || TimeEntry.new
