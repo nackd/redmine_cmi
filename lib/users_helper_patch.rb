@@ -22,7 +22,7 @@ module UsersHelperPatch
     def user_settings_tabs_with_profile_history
       tabs = [{:name => 'general', :partial => 'users/general', :label => :label_general},
             {:name => 'memberships', :partial => 'users/memberships', :label => :label_project_plural},
-            {:name => 'profile_history', :partial => 'users/profile', :label => :label_profile_history}
+            {:name => 'profile_history', :partial => 'users/profile', :label => l('cmi.label_profile_history')}
             ]
       if Group.all.any?
         tabs.insert 1, {:name => 'groups', :partial => 'users/groups', :label => :label_group_plural}

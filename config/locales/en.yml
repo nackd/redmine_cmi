@@ -18,7 +18,6 @@ en:
     label_stages_cmi: Ciclo de vida
 
     label_area: Área de proceso
-    label_environment: Marco
     label_metric: Métrica
     label_project_management: Gestión de proyectos
     label_effort: Esfuerzo
@@ -50,7 +49,6 @@ en:
     label_total_done: Ejecutado neto total
     label_analyst: Analistas
     label_technician: Técnicos
-    label_total: Total
     label_hours: horas
     label_time: Tiempo
     label_remaining: Restante
@@ -61,7 +59,6 @@ en:
     label_others: Otros
     label_advance: Avance
     label_effort_plural: Esfuerzos
-    label_project: Proyecto
     label_budgets: Presupuestos
     label_profitability: Margen de contribución
     label_profitability_planned: Prevista inicialmente
@@ -97,7 +94,6 @@ en:
     label_effort_reporting: Esfuerzo en elaboración de informes
     label_profile_history: Evolución del perfil
     label_profile_plural: Perfiles
-    label_profile: Perfil
     label_from: Desde
     label_end: Hasta
     label_cost_history: Evolución de coste por perfil

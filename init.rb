@@ -30,5 +30,5 @@ Redmine::Plugin.register :redmine_cmiplugin do
   menu :scoreboard_menu, :projects, {:controller => 'management', :action => 'projects' }, :caption => 'cmi.caption_projects'.to_sym
   menu :scoreboard_menu, :status, {:controller => 'management', :action => 'status' }, :caption => 'cmi.caption_status'.to_sym
   menu :scoreboard_menu, :groups, {:controller => 'management', :action => 'groups' }, :caption => 'cmi.caption_groups'.to_sym
-  menu :admin_menu, :label_cost_history, {:controller => 'admin', :action => 'cost_history'}, :class => 'issue_statuses', :caption => 'cmi.label_cost_history'.to_sym
+  menu :admin_menu, 'cmi.label_cost_history'.to_sym, {:controller => 'admin', :action => 'cost_history'}, :class => 'issue_statuses', :caption => 'cmi.label_cost_history'.to_sym
 end

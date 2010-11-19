@@ -41,7 +41,7 @@
              </tr>
         <%end%>
         <tr>
-          <td rowspan=""><strong><%= l('cmi.label_total') %></strong></td>
+          <td rowspan=""><strong><%= l(:label_total) %></strong></td>
           <td><strong><%= @groups.sum{|group| @metrics[group][:accepted]}.round(2) %></strong></td>
           <td><strong><%= @groups.sum{|group| @metrics[group][:planned_profit]}.round(2) %></strong></td>
           <td><strong><%= @groups.sum{|group| @metrics[group][:deviation]}.round(2) %></strong></td>

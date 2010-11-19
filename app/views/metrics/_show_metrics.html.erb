@@ -8,7 +8,7 @@
   <thead>
     <tr>
       <th rowspan="1" width="150"><%=l('cmi.label_area')%></th>
-      <th rowspan="2" width="150"><%=l('cmi.label_environment')%></th>
+      <th rowspan="2" width="150"><%=l(:label_environment)%></th>
       <th colspan="2" width="150"><%=l('cmi.label_metric')%></th>
       <% @names.each do |name| %>
         <th colspan="1"><% if(name=="actual")%>Valor actual - <%end%><%= instance_variable_get("@metrics_#{name}")['Fecha del informe'] %></th>
@@ -62,7 +62,7 @@
   </tr>
 
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
         <%effort_done_act = instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0%>
         <td class="issue">
@@ -116,7 +116,7 @@
      <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
       <td class="issue">
         <%= instance_variable_get("@metrics_#{name}")['effort_remaining'] %>
@@ -169,7 +169,7 @@
      <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
       <td class="issue">
         <%= instance_variable_get("@metrics_#{name}")['effort_real'] %>
@@ -222,7 +222,7 @@
      <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['budget_spent'] %>€ </td>
         <% instance_variable_set("@cost_i_#{name}", instance_variable_get("@metrics_#{name}")['budget_spent'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['budget_spent'].to_f * 100/instance_variable_get("@metrics_#{name}")['budget_real'].to_f).round(2) : 0.0) %>
@@ -244,7 +244,7 @@
     <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['budget_remaining'] %>€ </td>
      <% end %>
@@ -266,7 +266,7 @@
      <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['budget_real'] %>€ </td>
      <% end %>
@@ -331,7 +331,7 @@
      <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_project') %></td>
+     <td><%= l(:label_project) %></td>
      <% @names.each do |name| %>
         <%value_esf_proyect = instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (100 * instance_variable_get("@metrics_#{name}")['effort_done'].to_f/instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0%>
         <td class="issue"><%= value_esf_proyect != 0.0? value_esf_proyect : "--"%> % </td>
@@ -365,7 +365,7 @@
     <% end %>
   </tr>
   <tr>
-     <td><%= l('cmi.label_total') %></td>
+     <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
         <%value_budget_total = instance_variable_get("@metrics_#{name}")['budget_real'].to_f != 0.0? (100 * instance_variable_get("@metrics_#{name}")['budget_spent'].to_f/instance_variable_get("@metrics_#{name}")['budget_real'].to_f).round(2) : 0.0 %>
         <td class="issue"><%= value_budget_total != 0.0? value_budget_total : "--" %> %</td>
@@ -459,7 +459,7 @@
     <% end %>
   </tr>
   <tr>
-    <th rowspan=1 colspan="2"><%= l('cmi.label_total') %></th>
+    <th rowspan=1 colspan="2"><%= l(:label_total) %></th>
     <% @names.each do |name| %>
         <td class="issue"><%=  (instance_variable_get("@metrics_#{name}")['risk_medium'].to_f + instance_variable_get("@metrics_#{name}")['risk_low'].to_f + instance_variable_get("@metrics_#{name}")['risk_high'].to_f).to_i %> </td>
     <% end %>
@@ -493,7 +493,7 @@
     <% end %>
   </tr>
   <tr>
-    <th rowspan=1 colspan="2"><%= l('cmi.label_total') %></th>
+    <th rowspan=1 colspan="2"><%= l(:label_total) %></th>
     <% @names.each do |name| %>
         <td class="issue"><%= (instance_variable_get("@metrics_#{name}")['issues_medium'].to_f + instance_variable_get("@metrics_#{name}")['issues_low'].to_f + instance_variable_get("@metrics_#{name}")['issues_high'].to_f).to_i  %> </td>
     <% end %>
