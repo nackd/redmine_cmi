@@ -98,6 +98,7 @@ es:
     label_end: Hasta
     label_cost_history: Evolución de coste por perfil
     label_hours: horas
+    label_filter_by: Filtrar por
 
     cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
     cmi_report_tracker_not_available: No existe el tracker informes

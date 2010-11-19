@@ -8,7 +8,7 @@
 <h2><%= l('cmi.label_metrics') %></h2>
 
 <% form_remote_tag(:url => {}, :update => 'content') do %>
-  Filtrar por: <%= select_tag(:selected_project_group, options_for_select([nil] + @groups, params[:selected_project_group]),
+  <%= l('cmi.label_filter_by') %>: <%= select_tag(:selected_project_group, options_for_select([nil] + @groups, params[:selected_project_group]),
                                                           :onchange => "this.form.onsubmit();",
                                                           :style => 'width: 200px',
                                                           :id => nil) %></p>
