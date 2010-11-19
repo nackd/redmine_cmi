@@ -1,28 +1,37 @@
 == CMI Plugin
 
-CMI stands for 'Cuadro de Mando Integral' with is Spanish name for a Central Panel of Management.
 CMI is a Redmine plugin to have a summarized view of the projects.
-It calculates and shows with graphics different metrics as actual effort, cost, progress or deviation from the goals of the projects.
+It calculates and shows with graphics different metrics as actual effort,
+cost, progress or deviation from the goals of the projects.
+
+NOTE: CMI stands for 'Cuadro de Mando Integral' with is Spanish name for a Central Panel of Management.
 
 == Features
 
-* Feature one
-* Feature two
-  * Sub-feature
+* CMI lets you see the current picture of each project and the global one.
+* It makes calculations for you about progress, deviation from the initial goals and so.
+* CMI is used by real companies like Emergya for doing the quality proyect's
+management for CMMI certificate.
 
 == Getting the plugin
 
-A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/] at Cenatic Forge and also on {Gitorious}[http://gitorious.org/cmi/cm/master].
+A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/]
+ at Cenatic Forge and also on {Gitorious}[http://gitorious.org/cmi/cm/master].
 
 == Install
 
-1. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
-2. Run the plugin migrations +rake db:migrate_plugins+
-3. Load default data +rake cmi:load_default_data+
+1. Make sure you have installed the Redmine version 1.0.0 or higher.
+2. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
+3. Install the plugin running the commands below from your Redmine directory:
+ rake cmi:create_data
+ rake cmi:load_role_costs_history
+ rake cmi:load_user_role_history
+ rake cmi:recalculate_costs
+ rake db:migrate:plugin NAME=redmine_cmi
 4. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
 5. Login to your Redmine install as an Administrator
 6. Enable the permissions for your Roles
-7. The link to the plugin should appear on that project's navigation
+7. The link to the plugin should appear on that project's navigation as 'CMI'
 
 == Usage
 
