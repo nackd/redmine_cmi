@@ -45,6 +45,26 @@ module ManagementHelper
     bar_graph(cm, labels, :max => 100)
   end
 
+  # TODO: This is a temporary redefinition for compatibility with Redmine 1.0.0
+  if not ApplicationHelper.instance_methods.include?(:link_to_project)
+    # Generates a link to a project if active
+    # Examples:
+    #
+    #   link_to_project(project)                          # => link to the specified project overview
+    #   link_to_project(project, :action=>'settings')     # => link to project settings
+    #   link_to_project(project, {:only_path => false}, :class => "project") # => 3rd arg adds html options
+    #   link_to_project(project, {}, :class => "project") # => html options with default url (project overview)
+    #
+    def link_to_project(project, options={}, html_options = nil)
+      if project.active?
+        url = {:controller => 'projects', :action => 'show', :id => project}.merge(options)
+        link_to(h(project), url, html_options)
+      else
+        h(project)
+      end
+    end
+  end
+
   private
 
   def bar_graph(data, labels, opts = {})
