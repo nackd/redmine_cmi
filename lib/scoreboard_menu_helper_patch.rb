@@ -25,7 +25,7 @@ module MenuHelperPatch
       if params[:controller] == 'management'
         return true
       else
-        return false
+        display_main_menu_without_score_menu? project
       end
     end
   end
