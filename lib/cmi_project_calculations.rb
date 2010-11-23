@@ -1,7 +1,7 @@
 module CmiProjectCalculations
   unloadable
 
-  def calculate_effort_done project, project_metrics
+  def check_effort_done project, project_metrics
     effort_done = 0.0
     effort_done_total = 0.0
     cond = ARCondition.new
@@ -98,14 +98,20 @@ module CmiProjectCalculations
     project.issues.count(:conditions => cond.conditions)
   end
 
-  def calculate_effort_done_role(role, to_date, project)
-    cond = ARCondition.new
-    cond << project.project_condition(Setting.display_subprojects_issues?)
-    cond << ['role = ?', role]
-    cond << ['spent_on < ?', to_date]
-    TimeEntry.sum(:hours,
-                  :include => [:project],
-                  :conditions => cond.conditions)
+  def calculate_effort_done_general(to_date, project, project_metrics)
+    project_metrics['effort_done'] = 0.0
+    [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |role|
+      cond = ARCondition.new
+      cond << project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['role = ?', role]
+      cond << ['spent_on < ?', to_date]
+      project_metrics["effort_done_#{role.underscore}"] = TimeEntry.sum(:hours,
+                                                                        :include => [:project],
+                                                                        :conditions => cond.conditions)
+
+      project_metrics['effort_done'] += project_metrics["effort_done_#{role.underscore}"]
+    end
+    return project_metrics
   end
 
   def calculate_effort_general budget_type, project_metrics
@@ -116,10 +122,13 @@ module CmiProjectCalculations
     return effort.round(2).to_s + " #{l('cmi.label_hours')}"
   end
 
-  def calculate_effort_remaining_role role, project_metrics
-    project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].nil? ? "-- #{l('cmi.label_hours')}" :
-      (project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].to_f -
-       project_metrics['effort_done_' + role.underscore].to_f).round(2).to_s + " #{l('cmi.label_hours')}"
+  def calculate_effort_remaining_general project_metrics
+    [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |role|
+      project_metrics["effort_remaining_#{role.underscore}"] = project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].nil? ? "-- #{l('cmi.label_hours')}" :
+                                                  (project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].to_f -
+                                                  project_metrics['effort_done_' + role.underscore].to_f).round(2).to_s + " #{l('cmi.label_hours')}"
+    end
+    return project_metrics
   end
 
   def calculate_effort_remaining project_metrics
