@@ -3,117 +3,117 @@ en:
   project_module_cmiplugin: Metrics
   cmi:
     my_label: "My label"
-    permission_view_cmi: Ver métricas
-    project_module_cmi: Métricas
-    label_metrics: Métricas
-    label_view_all: Ver todos los informes
-    button_enlarge: Ampliar
+    permission_view_cmi: View Metrics
+    project_module_cmi: Metrics
+    label_metrics: Metrics
+    label_view_all: View all the reports
+    button_enlarge: Enlarge
 
-    label_CMI: Cuadro de Mando Integral
-    label_name: Nombre
-    label_identifier: Identificador
-    label_coordinator: Coordinador
-    label_expedient: Expediente
-    label_typology: Tipología
-    label_observations_cmi: Observaciones
-    label_stages_cmi: Ciclo de vida
+    label_CMI: Central Panel of Management
+    label_name: Name
+    label_identifier: Identifier
+    label_coordinator: Coordinator
+    label_expedient: Expedient
+    label_typology: Typology
+    label_observations_cmi: Observations
+    label_stages_cmi: Product life cycle
 
-    label_area: Área de proceso
-    label_metric: Métrica
-    label_project_management: Gestión de proyectos
-    label_effort: Esfuerzo
-    label_done: Incurrido
+    label_area: Area
+    label_metric: Metrics
+    label_project_management: Project Management
+    label_effort: Effort
+    label_done: Done
     label_JP: JP
     label_AF: AF
     label_AP: AP
     label_PS: PS
     label_PJ: PJ
     label_B: B
-    label_JP_long: Jefe de proyecto
-    label_AF_long: Analista funcional
-    label_AP_long: Analista programador
-    label_PS_long: Programador senior
-    label_PJ_long: Programador junior
-    label_B_long: Becario
-    label_remaining_JP: Restante JP
-    label_remaining_AF: Restante AF
-    label_remaining_AP: Restante AP
-    label_remaining_PS: Restante PS
-    label_remaining_PJ: Restante PJ
-    label_remaining_B: Restante B
-    label_remaining_total: Restante total
-    label_group_desviation: Desviación del grupo(perdidas €)
-    label_global_desviation: Desviación respecto al Total
-    label_total_accepted: Aceptado total
-    label_profitability_current: Beneficio esperado
-    label_initial_mc: MC Previsto
-    label_total_done: Ejecutado neto total
-    label_analyst: Analistas
-    label_technician: Técnicos
-    label_hours: horas
-    label_time: Tiempo
-    label_remaining: Restante
-    label_planned: Previsto
-    label_graphs: Gráficas
-    label_cost: Coste
-    label_RRHH: RRHH
-    label_others: Otros
-    label_advance: Avance
-    label_effort_plural: Esfuerzos
-    label_budgets: Presupuestos
-    label_profitability: Margen de contribución
-    label_profitability_planned: Prevista inicialmente
-    label_profitability_current: Prevista actualmente
-    label_current_profit: Beneficio actual
-    label_desviation: Desviaciones
-    label_risk: Riesgos
-    label_risk_high: Riesgo alto abiertos
-    label_risk_medium: Riesgo medio abiertos
-    label_risk_low: Riesgo bajo abiertos
-    label_incidents: Incidencias
-    label_incidents_high: Exposición alta
-    label_incidents_medium: Exposición media
-    label_incidents_low: Exposición baja
-    label_requirements_management: Gestión de requisitos
-    label_configuration_management: Gestión de la configuración
-    label_changes: Cambios
-    label_accepted: Aceptados
-    label_rejected: Rechazados
-    label_effort_done: Esfuerzo incurrido
-    label_baseline_changes: Número de cambios en la línea base
-    label_quality_assurance: Aseguramiento de la calidad
-    label_quality_reviews: Revisiones de calidad
-    label_quality_reviews_done: Número realizadas
-    label_quality_reviews_detected: Número detectadas
-    label_nonconformities: No conformidades
-    label_unresolved: Pendientes de solucionar
-    label_no_approval_open_out_of_date: Acciones correctoras fuera de plazo
-    label_no_approval_open_without_date: Acciones correctoras sin fecha de fin
-    label_ac_effort: Esfuerzo a acciones correctoras
-    label_measurement_and_metrics: Medición y métricas
-    label_effort_annual_review: Esfuerzo en revisión anual de métricas
-    label_effort_reporting: Esfuerzo en elaboración de informes
-    label_profile_history: Evolución del perfil
-    label_profile_plural: Perfiles
-    label_from: Desde
-    label_end: Hasta
-    label_cost_history: Evolución de coste por perfil
-    label_hours: horas
+    label_JP_long: Project Manager
+    label_AF_long: Functional Analyst
+    label_AP_long: Analyst programmer
+    label_PS_long: Senior Programmer
+    label_PJ_long: Junior Programmer
+    label_B_long: Scholar
+    label_remaining_JP: Remaining JP
+    label_remaining_AF: Remaining AF
+    label_remaining_AP: Remaining AP
+    label_remaining_PS: Remaining PS
+    label_remaining_PJ: Remaining PJ
+    label_remaining_B: Remaining B
+    label_remaining_total: Remaining total
+    label_group_desviation: Group desviation (losses €)
+    label_global_desviation: Global desviation
+    label_total_accepted: Total accepted
+    label_profitability_current: Profitability current
+    label_initial_mc: Initial MC
+    label_total_done: Total done
+    label_analyst: Analysts
+    label_technician: Technicians
+    label_hours: hours
+    label_time: Time
+    label_remaining: Remaining
+    label_planned: Planned
+    label_graphs: Graphs
+    label_cost: Cost
+    label_RRHH: HR
+    label_others: Others
+    label_advance: Advance
+    label_effort_plural: Efforts
+    label_budgets: Budgets
+    label_profitability: Profitability
+    label_profitability_planned: Profitability planned
+    label_profitability_current: Profitability current
+    label_current_profit: Current profit
+    label_desviation: Desviation
+    label_risk: Risks
+    label_risk_high: High-risk open
+    label_risk_medium: Medium-risk open
+    label_risk_low: Low-risk open
+    label_incidents: Incidents
+    label_incidents_high: High exposure
+    label_incidents_medium: High exposure
+    label_incidents_low: High exposure
+    label_requirements_management: Requirements management
+    label_configuration_management: Configuration management
+    label_changes: Changes
+    label_accepted: Accepted
+    label_rejected: Rejected
+    label_effort_done: Effort done
+    label_baseline_changes: Baseline changes
+    label_quality_assurance: Quality assurance
+    label_quality_reviews: Quality reviews
+    label_quality_reviews_done: Quality reviews done
+    label_quality_reviews_detected: Quality reviews detected
+    label_nonconformities: Non conformities
+    label_unresolved: Unresolved
+    label_no_approval_open_out_of_date: Corrective actions later
+    label_no_approval_open_without_date: Corrective actions without end date
+    label_ac_effort: Corrective actions effort
+    label_measurement_and_metrics: Measurement and metrics
+    label_effort_annual_review: Metrics annual review effort
+    label_effort_reporting: Reporting affort
+    label_profile_history: Profile history
+    label_profile_plural: Profile
+    label_from: From
+    label_end: To
+    label_cost_history: Cost evolution per profile
+    label_hours: hours
     label_filter_by: Filter by
 
-    cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
-    cmi_report_tracker_not_available: No existe el tracker informes
-    cmi_expense_tracker_not_available: No existe el tracker gastos
-    cmi_qa_tracker_not_available: No existe el tracker calidad
-    cmi_change_tracker_not_available: No existe el tracker solicitudes de cambio
-    cmi_risk_tracker_not_available: No existe el tracker riesgos
-    cmi_incidence_tracker_not_available: No existe el tracker incidencias
-    cmi_no_reports: No hay informes creados
+    cmi_module_not_enabled: The module 'Metrics' is not enabled
+    cmi_report_tracker_not_available: There is not 'report' tracker available
+    cmi_expense_tracker_not_available: There is not 'expense' tracker available
+    cmi_qa_tracker_not_available: There is not 'qa' tracker available
+    cmi_change_tracker_not_available: There is not 'change' tracker available
+    cmi_risk_tracker_not_available: There is not 'risk' tracker available
+    cmi_incidence_tracker_not_available: There is not 'incidence' tracker available
+    cmi_no_reports: There are no reports created
 
-    caption_status: Estado
-    caption_groups: Grupos
-    caption_projects: Proyectos
-    caption_metrics: Métricas
+    caption_status: Status
+    caption_groups: Groups
+    caption_projects: Projects
+    caption_metrics: Metrics
 
-    plugin_name: Cuadro de Mando Integral
-    plugin_description: Vistas resumenes globales y por proyectos
+    plugin_name: Central Panel of Management
+    plugin_description: Global and per project summarized views
