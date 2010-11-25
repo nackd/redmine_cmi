@@ -22,49 +22,49 @@
      <td><%= l('cmi.label_JP') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_done_jp'].round(2)  %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_jp_#{name}", instance_variable_get("@metrics_#{name}")['effort_done_jp'].to_f != 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_jp'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
+        <% instance_variable_set("@value_jp_#{name}", instance_variable_get("@metrics_#{name}")['effort_done'].to_f != 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_jp'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_AF') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_done_af'].round(2)  %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_af_#{name}", instance_variable_get("@metrics_#{name}")['effort_done_af'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_af'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
+        <% instance_variable_set("@value_af_#{name}", instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_af'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_AP') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_done_ap'].round(2)  %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_ap_#{name}", instance_variable_get("@metrics_#{name}")['effort_done_ap'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_ap'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
+        <% instance_variable_set("@value_ap_#{name}", instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_ap'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_PS') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_done_ps'].round(2) %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_ps_#{name}", instance_variable_get("@metrics_#{name}")['effort_done_ps'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_ps'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
+        <% instance_variable_set("@value_ps_#{name}", instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_ps'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_PJ') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_done_pj'].round(2) %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_pj_#{name}", instance_variable_get("@metrics_#{name}")['effort_done_pj'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_pj'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
+        <% instance_variable_set("@value_pj_#{name}", instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_pj'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_B') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_done_b'].round(2) %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_b_#{name}", instance_variable_get("@metrics_#{name}")['effort_done_b'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_b'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
+        <% instance_variable_set("@value_b_#{name}", instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done_b'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_done'].to_f).round(2) : "0.0")%>
      <% end %>
   </tr>
 
   <tr>
      <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
-        <%effort_done_act = instance_variable_get("@metrics_#{name}")['effort_done'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0%>
+        <%effort_done_act = instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_done'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0%>
         <td class="issue">
           <%= instance_variable_get("@metrics_#{name}")['effort_done'] %> <%= l('cmi.label_hours') %>
           <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%=instance_variable_get("@value_jp_#{name}")%>,<%=instance_variable_get("@value_af_#{name}")%>,<%=instance_variable_get("@value_ap_#{name}")%>,<%=instance_variable_get("@value_ps_#{name}")%>,<%=instance_variable_get("@value_pj_#{name}")%>,<%=instance_variable_get("@value_b_#{name}")%>&chs=220x50&chl=JP: <%=instance_variable_get("@value_jp_#{name}")%>%|AF: <%=instance_variable_get("@value_af_#{name}")%>%|AP: <%=instance_variable_get("@value_ap_#{name}")%>%|PS: <%=instance_variable_get("@value_ps_#{name}")%>%|PJ: <%=instance_variable_get("@value_pj_#{name}")%>%|B: <%=instance_variable_get("@value_b_#{name}")%>%"/>
@@ -77,42 +77,42 @@
     <td><%= l('cmi.label_JP') %></td
     <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_remaining_jp'] %></td>
-        <% instance_variable_set("@value_jp_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining_jp'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_jp'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_jp_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_jp'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_AF') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_remaining_af'] %></td>
-        <% instance_variable_set("@value_af_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining_af'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_af'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_af_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_af'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_AP') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_remaining_ap'] %></td>
-        <% instance_variable_set("@value_ap_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining_ap'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_ap'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_ap_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_ap'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_PS') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_remaining_ps'] %></td>
-        <% instance_variable_set("@value_ps_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining_ps'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_ps'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_ps_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_ps'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_PJ') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_remaining_pj'] %></td>
-        <% instance_variable_set("@value_pj_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining_pj'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_pj'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_pj_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_pj'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_B') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['effort_remaining_b'] %></td>
-        <% instance_variable_set("@value_b_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining_b'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_b'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_b_#{name}", instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['effort_remaining_b'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_remaining'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
@@ -130,42 +130,42 @@
     <td><%= l('cmi.label_JP') %></td>
     <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['Esfuerzo actual JP'] %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_jp_#{name}", instance_variable_get("@metrics_#{name}")['Esfuerzo actual JP'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual JP'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_jp_#{name}", instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual JP'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_AF') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['Esfuerzo actual AF'] %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_af_#{name}", instance_variable_get("@metrics_#{name}")['Esfuerzo actual AF'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual AF'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_af_#{name}", instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual AF'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_AP') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['Esfuerzo actual AP'] %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_ap_#{name}", instance_variable_get("@metrics_#{name}")['Esfuerzo actual AP'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual AP'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_ap_#{name}", instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual AP'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_PS') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['Esfuerzo actual PS'] %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_ps_#{name}", instance_variable_get("@metrics_#{name}")['Esfuerzo actual PS'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual PS'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_ps_#{name}", instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual PS'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_PJ') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['Esfuerzo actual PJ'] %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_pj_#{name}", instance_variable_get("@metrics_#{name}")['Esfuerzo actual PJ'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual PJ'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_pj_#{name}", instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual PJ'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
      <td><%= l('cmi.label_B') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['Esfuerzo actual B'] %> <%= l('cmi.label_hours') %></td>
-        <% instance_variable_set("@value_b_#{name}", instance_variable_get("@metrics_#{name}")['Esfuerzo actual B'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual B'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
+        <% instance_variable_set("@value_b_#{name}", instance_variable_get("@metrics_#{name}")['effort_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['Esfuerzo actual B'].to_f * 100 /instance_variable_get("@metrics_#{name}")['effort_real'].to_f).round(2) : 0.0)%>
      <% end %>
   </tr>
   <tr>
@@ -211,7 +211,7 @@
      <td><%= l('cmi.label_RRHH') %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['budget_spent_rrhh'] %>€ </td>
-        <% instance_variable_set("@cost_rrhh_i_#{name}", instance_variable_get("@metrics_#{name}")['budget_spent_rrhh'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['budget_spent_rrhh'].to_f * 100 /instance_variable_get("@metrics_#{name}")['budget_real_rrhh'].to_f).round(2) : 0.0 ) %>
+        <% instance_variable_set("@cost_rrhh_i_#{name}", instance_variable_get("@metrics_#{name}")['budget_real_rrhh'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['budget_spent_rrhh'].to_f * 100 /instance_variable_get("@metrics_#{name}")['budget_real_rrhh'].to_f).round(2) : 0.0 ) %>
      <% end %>
   </tr>
   <tr>
@@ -225,7 +225,7 @@
      <td><%= l(:label_total) %></td>
      <% @names.each do |name| %>
         <td class="issue"><%= instance_variable_get("@metrics_#{name}")['budget_spent'] %>€ </td>
-        <% instance_variable_set("@cost_i_#{name}", instance_variable_get("@metrics_#{name}")['budget_spent'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['budget_spent'].to_f * 100/instance_variable_get("@metrics_#{name}")['budget_real'].to_f).round(2) : 0.0) %>
+        <% instance_variable_set("@cost_i_#{name}", instance_variable_get("@metrics_#{name}")['budget_real'].to_f > 0.0? (instance_variable_get("@metrics_#{name}")['budget_spent'].to_f * 100/instance_variable_get("@metrics_#{name}")['budget_real'].to_f).round(2) : 0.0) %>
      <% end %>
   </tr>
   <tr>
