@@ -134,7 +134,7 @@ module CMI
 
           UserCustomField.create(:type => "UserCustomField", :name => DEFAULT_VALUES['user_role_field'],
             :field_format => "list", :possible_values => [l(:'cmi.label_JP'), l(:'cmi.label_AF'), l(:'cmi.label_AP'), l(:'cmi.label_PS'), l(:'cmi.label_PJ'), l(:'cmi.label_B')],
-            :regexp => "", :is_required => false, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false, :default_value => nil)
+            :regexp => "", :is_required => true, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false, :default_value => nil)
         end
       end
     end
