@@ -151,11 +151,11 @@ module TimelogControllerPatch
       @time_entry ||= TimeEntry.new(:project => @project, :issue => @issue, :user => User.current, :spent_on => User.current.today, :role => User.current.role)
       @time_entry.attributes = params[:time_entry]
       @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
+      user_role = !@time_entry.role.nil? ? @time_entry.role : (!User.current.role.empty? ? User.current.role : "")
+      cost = (params[:time_entry].nil? ? @time_entry.cost : (params[:time_entry][:hours].to_f * @hash_cost_actual_year["#{user_role}"].first.value.to_f)) unless user_role.empty?
 
-      user_role = !@time_entry.role.nil? ? @time_entry.role : User.current.role
-      cost = params[:time_entry].nil? ? @time_entry.cost : (params[:time_entry][:hours].to_f * @hash_cost_actual_year["#{user_role}"].first.value.to_f)
       if params[:time_entry]
-        @time_entry.update_attribute("cost", cost)
+        @time_entry.update_attribute("cost", cost) unless user_role.empty?
         @time_entry.update_attribute("role", user_role)
       end
       call_hook(:controller_timelog_edit_before_save, { :params => params, :time_entry => @time_entry })
