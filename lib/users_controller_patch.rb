@@ -27,15 +27,15 @@ module UsersControllerPatch
         @user.login = params[:user][:login] if params[:user][:login]
         @user.password, @user.password_confirmation = params[:password], params[:password_confirmation] unless params[:password].nil? or params[:password].empty? or @user.auth_source_id
         @user.group_ids = params[:user][:group_ids] if params[:user][:group_ids]
-        change = (@user.role != (params[:user][:custom_field_values]).values[0])
+        change = (@user.role != (params[:user][:custom_field_values]).values.first)
         @user.attributes = params[:user]
         # Was the account actived ? (do it before User#save clears the change)
         was_activated = (@user.status_change == [User::STATUS_REGISTERED, User::STATUS_ACTIVE])
         if @user.save
           if change
             last_profile_status = HistoryUserProfile.find_last_by_user_id @user.id
-            last_profile_status.update_attribute(:finished_on, Date.today)
-            new_profile = HistoryUserProfile.new(:user_id => @user.id, :profile => (params[:user][:custom_field_values]).values[0])
+            last_profile_status.update_attribute(:finished_on, Date.today) unless last_profile_status.nil?
+            new_profile = HistoryUserProfile.new(:user_id => @user.id, :profile => (params[:user][:custom_field_values]).values.first)
             new_profile.save
           end
           if was_activated
