@@ -10,6 +10,10 @@ require 'users_controller_patch'
 require 'user_patch'
 require 'users_helper_patch'
 require 'project_patch'
+require 'logger'
+
+ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/cmi.log")
+ActiveRecord::Base.logger.level = Logger::ERROR
 
 Redmine::Plugin.register :redmine_cmiplugin do
   name 'cmi.plugin_name'.to_sym

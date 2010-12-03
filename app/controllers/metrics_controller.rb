@@ -20,11 +20,13 @@ class MetricsController < ApplicationController
           format.html { render :template => 'metrics/show', :layout => !request.xhr? }
           format.js { render(:update) {|page| page.replace_html "tab-content-metrics", :partial => 'metrics/show_metrics'} }
       end
-    rescue
+    rescue Exception => exc
+      ActiveRecord::Base.logger.error("[#{DateTime.now}] Error message: #{exc.message}, #{exc.backtrace}")
+      
       if @profile_alert
         flash[:error] = "Hay usuarios (#{@no_profile_users.join(',')}) sin perfil asignado en el proyecto '#{@project}'. Es necesario para poder realizar los cálculos correctamente."
       else
-        flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente."
+        flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos."
       end
       redirect_back_or_default('')
     end
