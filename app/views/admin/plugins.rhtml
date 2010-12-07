@@ -4,8 +4,9 @@
 <table class="list plugins">
     <% @plugins.each do |plugin| %>
         <tr class="<%= cycle('odd', 'even') %>">
-        <td><span class="name"><%=h l(plugin.name) %></span>
-            <%= content_tag('span', h(l(plugin.description)), :class => 'description') unless plugin.description.blank? %>
+        <td><span class="name"><%=h plugin.name.is_a?(Symbol) ? l(plugin.name) : plugin.name %></span>
+            <%= description = plugin.description.is_a?(Symbol) ? l(plugin.description) : plugin.description
+                content_tag('span', h(description), :class => 'description') unless description.blank? %>
 						<%= content_tag('span', link_to(h(plugin.url), plugin.url), :class => 'url') unless plugin.url.blank? %>
 				</td>
         <td class="author"><%= plugin.author_url.blank? ? h(plugin.author) : link_to(h(plugin.author), plugin.author_url) %></td>
