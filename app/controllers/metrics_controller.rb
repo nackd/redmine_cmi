@@ -64,6 +64,7 @@ class MetricsController < ApplicationController
     project_metrics['Gastado'] = 0.0
 
     tracker_gastos = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['expense'])
+    raise CMI::Exception, l(:'cmi.cmi_expense_tracker_not_available') if tracker_gastos.nil?
     cond = ARCondition.new
     cond << [ 'tracker_id=?', tracker_gastos.id]
     cond << ['created_on BETWEEN ? AND ?', project.created_on, (@date.to_s).to_datetime]
