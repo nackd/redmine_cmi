@@ -372,9 +372,8 @@ module CMI
 
     def calculate_request_change project, project_metrics
   #   Esfuerzo en nuevos requisitos CMMI_Solicitudes de cambio Aceptada, Resuelta o Cerrada
-        error_requests_change="No existe el tracker #{DEFAULT_VALUES['trackers']['change']}"
-
         tracker_requests_change=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['change'])
+        raise CMI::Exception, l(:'cmi.cmi_change_tracker_not_available') if tracker_requests_change.nil?
         cond = ARCondition.new
         if @informe
           cond << ['created_on BETWEEN ? AND ?', 0, @date]
@@ -382,24 +381,20 @@ module CMI
         cond << [  "(#{IssueStatus.table_name}.name=? or #{IssueStatus.table_name}.name=?
                  or #{IssueStatus.table_name}.name=?) and tracker_id=?",
                  DEFAULT_VALUES['issue_status']['accepted'], DEFAULT_VALUES['issue_status']['resolved'], DEFAULT_VALUES['issue_status']['closed'], tracker_requests_change.id]
-        if !tracker_requests_change.nil?
-          request_change = 0.0
-  #        Tareas con el tracker 'CMMI_Solicitudes de cambio'
-          list_issues = (project.issues.find( :all,
-                                            :include => [:status, :tracker],
-                                         :conditions => cond.conditions))
-  #        Suma de horas de las tareas encontradas
-          list_issues.each do |issue|
-              request_change += issue.time_entries.sum(:hours,
-                                     :include =>  :project).to_f
-          end
-  #        project_metrics["effort_real"] = 1.0
-          request_change = (!project_metrics["effort_real"].nil? and project_metrics["effort_real"].to_f > 0.0) ?
-            (100 * (request_change/project_metrics["effort_real"].to_f)).round(2) : 0.0
-
-        else
-          request_change = error_requests_change
+        request_change = 0.0
+#        Tareas con el tracker 'CMMI_Solicitudes de cambio'
+        list_issues = (project.issues.find( :all,
+                                          :include => [:status, :tracker],
+                                       :conditions => cond.conditions))
+#        Suma de horas de las tareas encontradas
+        list_issues.each do |issue|
+            request_change += issue.time_entries.sum(:hours,
+                                   :include =>  :project).to_f
         end
+#        project_metrics["effort_real"] = 1.0
+        request_change = (!project_metrics["effort_real"].nil? and project_metrics["effort_real"].to_f > 0.0) ?
+          (100 * (request_change/project_metrics["effort_real"].to_f)).round(2) : 0.0
+
       return request_change.class == Float ? request_change.to_s : request_change
     end
   end

@@ -105,6 +105,7 @@ en:
     cmi_report_tracker_not_available: No existe el tracker informes
     cmi_expense_tracker_not_available: No existe el tracker gastos
     cmi_qa_tracker_not_available: No existe el tracker calidad
+    cmi_change_tracker_not_available: No existe el tracker solicitudes de cambio
     cmi_no_reports: No hay informes creados
 
     caption_status: Estado
