@@ -107,6 +107,7 @@ en:
     cmi_qa_tracker_not_available: No existe el tracker calidad
     cmi_change_tracker_not_available: No existe el tracker solicitudes de cambio
     cmi_risk_tracker_not_available: No existe el tracker riesgos
+    cmi_incidence_tracker_not_available: No existe el tracker incidencias
     cmi_no_reports: No hay informes creados
 
     caption_status: Estado

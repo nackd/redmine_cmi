@@ -81,6 +81,7 @@ module CMI
 
     def calculate_incidence(level, to_date, project)
       incidence_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['incidence'])
+      raise CMI::Exception, l(:'cmi.cmi_incidence_tracker_not_available') if incidence_tracker.nil?
       cond = ARCondition.new
       cond << ['created_on < ?', to_date]
       cond << ['tracker_id = ?', incidence_tracker.id]
