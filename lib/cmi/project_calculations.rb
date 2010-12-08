@@ -68,6 +68,7 @@ module CMI
 
     def calculate_risk(level, to_date, project)
       risk_tracker = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['risk'])
+      raise CMI::Exception, l(:'cmi.cmi_risk_tracker_not_available') if risk_tracker.nil?
       cond = ARCondition.new
       cond << ['created_on < ?', to_date]
       cond << ['tracker_id = ?', risk_tracker.id]
