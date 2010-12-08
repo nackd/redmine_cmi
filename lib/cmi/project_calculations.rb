@@ -241,8 +241,8 @@ module CMI
     def calculate_no_approval_open project
       ### Suma de "no conformidades" en estado "Nueva" o "Validada"
         #debugger(1)
-        error_calidad="No existe el tracker #{DEFAULT_VALUES['trackers']['qa']}"
         risks=project.trackers.find_by_name(DEFAULT_VALUES['trackers']['qa'])
+        raise CMI::Exception, l(:'cmi.cmi_qa_tracker_not_available') if risks.nil?
         cond = ARCondition.new
         if @informe
           cond << ['created_on BETWEEN ? AND ?', 0, @date]
@@ -251,14 +251,9 @@ module CMI
                                                       and tracker_id=?" ,DEFAULT_VALUES['issue_status']['new'],DEFAULT_VALUES['issue_status']['approval'],risks.id]
 
         # añadir tipo_registro = no conformidad
-        if !risks.nil?
-          no_approval_open=project.issues.calculate(:count,:all,
-                                   :include => [:tracker, :status] ,
-                                   :conditions => cond.conditions)
-        else
-          no_approval_open = error_calidad
-        end
-        return no_approval_open
+        project.issues.calculate(:count,:all,
+                                 :include => [:tracker, :status] ,
+                                 :conditions => cond.conditions)
     end
 
     def calculate_no_approval_total project

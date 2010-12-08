@@ -104,6 +104,7 @@ en:
     cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
     cmi_report_tracker_not_available: No existe el tracker informes
     cmi_expense_tracker_not_available: No existe el tracker gastos
+    cmi_qa_tracker_not_available: No existe el tracker calidad
     cmi_no_reports: No hay informes creados
 
     caption_status: Estado
