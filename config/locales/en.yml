@@ -1,5 +1,6 @@
 # English strings go here
 en:
+  project_module_cmiplugin: Metrics
   cmi:
     my_label: "My label"
     permission_view_cmi: Ver métricas

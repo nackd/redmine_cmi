@@ -1,5 +1,6 @@
 # Spanish strings go here
 es:
+  project_module_cmiplugin: Métricas
   cmi:
     my_label: "My label"
     permission_view_cmi: Ver métricas
