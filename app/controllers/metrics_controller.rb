@@ -2,7 +2,7 @@ class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
   before_filter :require_project_jp, :find_project, :obtain_profile_costs
-  include CmiProjectCalculations
+  include CMI::ProjectCalculations
 
   def show
     begin
@@ -74,8 +74,8 @@ class MetricsController < ApplicationController
 
   def calculate_metrics(project, informe)
     project_metrics={}
-    Common.get_customs(project, project_metrics)
-    @informe =  Common.get_informe(informe, project_metrics)[1]
+    CMI::Common.get_customs(project, project_metrics)
+    @informe = CMI::Common.get_informe(informe, project_metrics)[1]
     initial_data_on_expense_issues(project, project_metrics)
 
     #   Esfuerzo realizado (número de horas cargadas al proyecto)

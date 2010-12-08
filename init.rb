@@ -3,13 +3,13 @@ Dir["#{File.dirname(__FILE__)}/config/initializers/**/*.rb"].sort.each do |initi
 end
 
 require 'redmine'
-require 'scoreboard_menu_helper_patch'
-require 'issue_patch'
-require 'timelog_controller_patch'
-require 'users_controller_patch'
-require 'user_patch'
-require 'users_helper_patch'
-require 'project_patch'
+require 'cmi/scoreboard_menu_helper_patch'
+require 'cmi/issue_patch'
+require 'cmi/timelog_controller_patch'
+require 'cmi/users_controller_patch'
+require 'cmi/user_patch'
+require 'cmi/users_helper_patch'
+require 'cmi/project_patch'
 require 'logger'
 
 ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/cmi.log")

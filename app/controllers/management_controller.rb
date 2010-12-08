@@ -16,7 +16,7 @@ class ManagementController < ApplicationController
   end
 
   def groups
-    group_metrics = GroupMetrics.new
+    group_metrics = CMI::GroupMetrics.new
     @metrics = group_metrics.metrics
     @total_cm = group_metrics.total_cm
     @total_deviation_percent = group_metrics.total_deviation_percent
