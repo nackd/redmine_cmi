@@ -1,3 +1,8 @@
+module CMI
+  class Exception < ::Exception
+  end
+end
+
 class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
@@ -9,6 +14,7 @@ class MetricsController < ApplicationController
       @profile_alert = false
       unless @project.nil?
         tracker_informes = @project.trackers.find_by_name(DEFAULT_VALUES['trackers']['report'])
+        raise CMI::Exception, l(:'cmi.cmi_report_tracker_not_available') if tracker_informes.nil?
         @spent_issues_informes = (@project.issues.find(:all,
                                                        :include => [:tracker],
                                                        :conditions => ["tracker_id=?", tracker_informes.id],
@@ -20,6 +26,9 @@ class MetricsController < ApplicationController
           format.html { render :template => 'metrics/show', :layout => !request.xhr? }
           format.js { render(:update) {|page| page.replace_html "tab-content-metrics", :partial => 'metrics/show_metrics'} }
       end
+    rescue CMI::Exception => e
+      flash[:error] = e.message
+      redirect_back_or_default('')
     rescue Exception => exc
       ActiveRecord::Base.logger.error("[#{DateTime.now}] Error message: #{exc.message}, #{exc.backtrace}")
       
