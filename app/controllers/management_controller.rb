@@ -40,7 +40,11 @@ class ManagementController < ApplicationController
     @projects = Project.active.all(:order => :lft)
     if params[:selected_project_group].present?
       group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
-      @projects = @projects.select{ |p| p.custom_value_for(group_field).value == params[:selected_project_group] }
+      @projects = @projects.select do |p|
+        if p.custom_value_for(group_field)
+          p.custom_value_for(group_field).value == params[:selected_project_group]
+        end
+      end
     end
     @last_report = {}
   end
