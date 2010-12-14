@@ -17,6 +17,7 @@ en:
     label_typology: Typology
     label_observations_cmi: Observations
     label_stages_cmi: Product life cycle
+    label_archived: Archived
 
     label_area: Area
     label_metric: Metrics

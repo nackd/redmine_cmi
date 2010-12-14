@@ -31,7 +31,7 @@
       <% @projects.each do |project| %>
         <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_report } %>
       <% end %>
-      <thead><tr class="<%= cycle('odd', 'even') %>"><td colspan="10">Archivados</td></tr></thead>
+      <thead><tr class="<%= cycle('odd', 'even') %>"><td colspan="10"><%= l('cmi.label_archived') %></td></tr></thead>
       <% @archived.each do |project| %>
         <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_archived_report } %>
       <% end %>

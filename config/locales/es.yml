@@ -17,6 +17,7 @@ es:
     label_typology: Tipología
     label_observations_cmi: Observaciones
     label_stages_cmi: Ciclo de vida
+    label_archived: Archivados
 
     label_area: Área de proceso
     label_metric: Métrica
