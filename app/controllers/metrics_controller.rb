@@ -30,12 +30,10 @@ class MetricsController < ApplicationController
       flash[:error] = e.message
       redirect_back_or_default('')
     rescue Exception => exc
-      ActiveRecord::Base.logger.error("[#{DateTime.now}] Error message: #{exc.message}, #{exc.backtrace}")
-      
       if @profile_alert
-        flash[:error] = "Hay usuarios (#{@no_profile_users.join(',')}) sin perfil asignado en el proyecto '#{@project}'. Es necesario para poder realizar los cálculos correctamente."
+        flash[:error] = "Hay usuarios (#{@no_profile_users.join(',')}) sin perfil asignado en el proyecto '#{@project}'. Es necesario para poder realizar los cálculos correctamente: #{exc.message}"
       else
-        flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos."
+        flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: #{exc.message}"
       end
       redirect_back_or_default('')
     end
