@@ -13,9 +13,9 @@ require 'cmi/project_patch'
 require 'logger'
 
 Redmine::Plugin.register :redmine_cmiplugin do
-  name 'cmi.plugin_name'.to_sym
+  name :'cmi.plugin_name'
   author 'Emergya Consultoría'
-  description 'cmi.plugin_description'.to_sym
+  description :'cmi.plugin_description'
   version '0.9.3'
 
   settings :default => { }
@@ -26,10 +26,10 @@ Redmine::Plugin.register :redmine_cmiplugin do
         permission :view_metrics, {:metrics => [:show]}
   end
 
-  menu :project_menu, :metrics, {:controller => 'metrics', :action => 'show' }, :caption => 'cmi.caption_metrics'.to_sym, :after => :settings, :param => :project_id
+  menu :project_menu, :metrics, {:controller => 'metrics', :action => 'show' }, :caption => :'cmi.caption_metrics', :after => :settings, :param => :project_id
   menu :top_menu, :cmi, {:controller => 'management', :action => 'projects'}, :caption => 'CMI', :if => Proc.new { User.current.admin? }
-  menu :scoreboard_menu, :projects, {:controller => 'management', :action => 'projects' }, :caption => 'cmi.caption_projects'.to_sym
-  menu :scoreboard_menu, :status, {:controller => 'management', :action => 'status' }, :caption => 'cmi.caption_status'.to_sym
-  menu :scoreboard_menu, :groups, {:controller => 'management', :action => 'groups' }, :caption => 'cmi.caption_groups'.to_sym
-  menu :admin_menu, 'cmi.label_cost_history'.to_sym, {:controller => 'admin', :action => 'cost_history'}, :class => 'issue_statuses', :caption => 'cmi.label_cost_history'.to_sym
+  menu :scoreboard_menu, :projects, {:controller => 'management', :action => 'projects' }, :caption => :'cmi.caption_projects'
+  menu :scoreboard_menu, :status, {:controller => 'management', :action => 'status' }, :caption => :'cmi.caption_status'
+  menu :scoreboard_menu, :groups, {:controller => 'management', :action => 'groups' }, :caption => :'cmi.caption_groups'
+  menu :admin_menu, :'cmi.label_cost_history', {:controller => 'admin', :action => 'cost_history'}, :class => 'issue_statuses', :caption => :'cmi.label_cost_history'
 end
