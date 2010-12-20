@@ -32,13 +32,13 @@ module CMI
 
     def calculate_profitability_general budget_type, project_metrics
       profitability_planned = 0.0
-      profitability_planned = project_metrics['Cantidad aceptada'].to_f  - project_metrics["#{l(budget_type)}"].to_f
+      profitability_planned = project_metrics['Cantidad aceptada'].to_f  - project_metrics[budget_type].to_f
       return profitability_planned.round(2).to_s
     end
 
     def calculate_profitability_percent_general budget_type, project_metrics
       profitability_percent_planned = 0.0
-      profitability_percent_planned = project_metrics['Cantidad aceptada'].to_f != 0.0 ? ((project_metrics['Cantidad aceptada'].to_f  - project_metrics["#{l(budget_type)}"].to_f)/project_metrics['Cantidad aceptada'].to_f) : 0.0
+      profitability_percent_planned = project_metrics['Cantidad aceptada'].to_f != 0.0 ? ((project_metrics['Cantidad aceptada'].to_f  - project_metrics[budget_type].to_f)/project_metrics['Cantidad aceptada'].to_f) : 0.0
       return profitability_percent_planned.round(2).to_s
     end
     
