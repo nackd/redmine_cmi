@@ -22,7 +22,9 @@ A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/]
 
 1. Make sure you have installed the Redmine version 1.0.0 or higher.
 2. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
-3. Install the plugin running the commands below from your Redmine directory:
+3. Install the plugin running the commands below from your Redmine directory (if you are going to
+   run Redmine in, e.g. the production environment, you need to append RAILS_ENV=production to each
+   line):
  rake db:migrate:plugin NAME=redmine_cmi
  rake cmi:create_data
  rake cmi:load_role_costs_history
