@@ -33,6 +33,13 @@ class MetricsController < ApplicationController
       if @profile_alert
         flash[:error] = "Hay usuarios (#{@no_profile_users.join(',')}) sin perfil asignado en el proyecto '#{@project}'. Es necesario para poder realizar los cálculos correctamente: #{exc.message}"
       else
+        clean_exception = defined?(Rails) && Rails.respond_to?(:backtrace_cleaner) ?
+          Rails.backtrace_cleaner.clean(exc.backtrace) :
+          exc.backtrace
+        logger.error(
+          "\n#{exc.class} (#{exc.message}):\n  " +
+          clean_exception.join("\n  ") + "\n\n"
+        )
         flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: #{exc.message}"
       end
       redirect_back_or_default('')
