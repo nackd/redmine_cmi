@@ -14,6 +14,7 @@ module CMI
         unloadable # Send unloadable so it will be reloaded in development
 
         has_many :history_user_profiles, :dependent => :destroy
+        after_save :update_history_user_profile
       end
     end
 
@@ -25,6 +26,14 @@ module CMI
     end
 
     module InstanceMethods
+      def update_history_user_profile
+        last_profile_status = HistoryUserProfile.find_last_by_user_id self.id
+        if self.role != last_profile_status.profile
+          last_profile_status.update_attribute(:finished_on, Date.today) unless last_profile_status.nil?
+          HistoryUserProfile.create(:user_id => self.id, :profile => (self.custom_field_values)[0].to_s)
+        end
+      end
+      
       def role
         role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'], :select => :id)
         custom_value_for(role_field.id).value rescue nil
