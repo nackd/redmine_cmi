@@ -74,7 +74,7 @@
 
   <tr>
     <th rowspan=7><%= l('cmi.label_remaining') %></th>
-    <td><%= l('cmi.label_JP') %></td
+    <td><%= l('cmi.label_JP') %></td>
     <% @names.each do |report| %>
         <td class="issue"><%= get_report_value(report, 'effort_remaining_jp') %></td>
         <% set_value('jp', report, 'effort_remaining', 'effort_remaining_jp') %>
