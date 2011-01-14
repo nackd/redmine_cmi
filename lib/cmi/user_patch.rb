@@ -1,4 +1,3 @@
-require_dependency 'user'
 require 'dispatcher'
 
 # Patches Redmine's Issue dynamically.  Adds relationships
@@ -53,5 +52,7 @@ module CMI
 end
 
 Dispatcher.to_prepare do
+  require_dependency 'principal'
+  require_dependency 'user'
   User.send(:include, CMI::UserPatch)
 end
