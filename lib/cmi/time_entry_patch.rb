@@ -1,8 +1,8 @@
 require_dependency 'time_entry'
 require 'dispatcher'
 
-# Patches Redmine's ApplicationController dinamically. Redefines methods wich
-# send error responses to clients
+# Patches Redmine's TimeEntry dinamically. Adds callbacks to save the role and
+# cost added by the plugin.
 module CMI
   module TimeEntryPatch
     def self.included(base) # :nodoc:
@@ -23,6 +23,7 @@ module CMI
       def initialize_role
         self.role = User.current.role
       end
+
       def update_role_and_cost
         @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
         user_role = self.role.nil? ? (!User.current.role.empty? ? User.current.role : "") : self.role
