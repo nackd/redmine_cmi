@@ -16,7 +16,7 @@ module CMI
     module ClassMethods
       def groups
         group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
-        group_field.possible_values
+        group_field && group_field.possible_values || []
       end
     end
 

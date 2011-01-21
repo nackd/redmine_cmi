@@ -20,7 +20,7 @@ module CMI
     module ClassMethods
       def roles
         role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'])
-        role_field.possible_values
+        role_field && role_field.possible_values || []
       end
     end
 
