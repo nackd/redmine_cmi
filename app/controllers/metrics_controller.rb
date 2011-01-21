@@ -28,7 +28,6 @@ class MetricsController < ApplicationController
       end
     rescue CMI::Exception => e
       flash[:error] = e.message
-      redirect_back_or_default('')
     rescue Exception => exc
       if @profile_alert
         flash[:error] = "Hay usuarios (#{@no_profile_users.join(',')}) sin perfil asignado en el proyecto '#{@project}'. Es necesario para poder realizar los cálculos correctamente: #{exc.message}"
@@ -42,7 +41,6 @@ class MetricsController < ApplicationController
         )
         flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: #{exc.message}"
       end
-      redirect_back_or_default('')
     end
   end
 
