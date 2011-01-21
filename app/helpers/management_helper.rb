@@ -18,7 +18,7 @@ module ManagementHelper
 
     t = percent.join(',')
     labels = groups.enum_for(:each_with_index).collect{ |group, index| "#{group}: #{percent[index]}%" }.join('|')
-    "<img src=\"http://chart.apis.google.com/chart?cht=p3&chd=t:#{t}&chs=320x50&chl=#{labels}\" />"
+    "<img src=\"http://chart.apis.google.com/chart?cht=p3&chd=t:#{t}&chs=320x50&chl=#{labels}&chf=bg,s,65432100\" />"
   end
 
   def profit_graph(metrics)
@@ -72,6 +72,6 @@ module ManagementHelper
     max = opts[:max] || data.max
     t = "#{data.join(',')}|#{([max.to_s] * data.length).join(',')}"
     l = labels.reverse.join('|')
-    "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=290x170&chxt=x,y&chxr=0,#{min},#{max}&chds=#{min},#{max}&chd=t:#{t}&chxl=1:|#{l}\" />"
+    "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=290x170&chxt=x,y&chxr=0,#{min},#{max}&chds=#{min},#{max}&chd=t:#{t}&chxl=1:|#{l}&chf=bg,s,65432100\" />"
   end
 end
