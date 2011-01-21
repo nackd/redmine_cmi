@@ -158,7 +158,8 @@ class MetricsController < ApplicationController
   end
 
   def obtain_profile_costs
-    @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
+    current_year_costs = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year]
+    @hash_cost_actual_year = current_year_costs && current_year_costs.group_by(&:profile)
   end
 
   def require_project_jp
