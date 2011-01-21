@@ -27,7 +27,7 @@ module CMI
     module InstanceMethods
       def update_history_user_profile
         last_profile_status = HistoryUserProfile.find_last_by_user_id self.id
-        if self.role != last_profile_status.profile
+        if self.role and (last_profile_status.nil? or self.role != last_profile_status.profile)
           last_profile_status.update_attribute(:finished_on, Date.today) unless last_profile_status.nil?
           HistoryUserProfile.create(:user_id => self.id, :profile => (self.custom_field_values)[0].to_s)
         end
