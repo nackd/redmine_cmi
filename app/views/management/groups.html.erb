@@ -42,21 +42,21 @@
         <%end%>
         <tr>
           <td rowspan=""><strong><%= l(:label_total) %></strong></td>
-          <td><strong><%= @groups.sum{|group| @metrics[group][:accepted]}.round(2) %></strong></td>
-          <td><strong><%= @groups.sum{|group| @metrics[group][:planned_profit]}.round(2) %></strong></td>
-          <td><strong><%= @groups.sum{|group| @metrics[group][:deviation]}.round(2) %></strong></td>
-          <td><strong><%= @groups.sum{|group| @metrics[group][:done] * 100}.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:accepted]}.to_f.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:planned_profit]}.to_f.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:deviation]}.to_f.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:done] * 100}.to_f.round(2) %></strong></td>
           <td><strong><%= (@total_cm * 100).round(2) %></strong></td>
           <td><strong><%= (@total_deviation_percent * 100).round(2) %></strong></td>
         <% @roles.each do |role| %>
-          <td><strong><%= @groups.sum{|group| @metrics[group][:hr_current_effort_remaining][role]}.round(2) %></strong></td>
+          <td><strong><%= @groups.sum{|group| @metrics[group][:hr_current_effort_remaining][role]}.to_f.round(2) %></strong></td>
         <% end %>
           <td><strong><%= # Ugly? Sure
 @groups.sum do |group|
   @roles.sum do |role|
     @metrics[group][:hr_current_effort_remaining][role]
   end
-end.round(2) %></strong></td>
+end.to_f.round(2) %></strong></td>
         </tr>
       </tbody>
    </table>
