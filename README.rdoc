@@ -4,14 +4,16 @@ CMI is a Redmine plugin to have a summarized view of the projects.
 It calculates and shows with graphics different metrics as actual effort,
 cost, progress or deviation from the goals of the projects.
 
-NOTE: CMI stands for 'Cuadro de Mando Integral' with is Spanish name for a Central Panel of Management.
+NOTE: CMI stands for 'Cuadro de Mando Integral' with is Spanish name for a
+Central Panel of Management.
 
 == Features
 
 * CMI lets you see the current picture of each project and the global one.
-* It makes calculations for you about progress, deviation from the initial goals and so.
+* It makes calculations for you about progress, deviation from the initial
+  goals and so.
 * CMI is used by real companies like Emergya for doing the quality proyect's
-management for CMMI certificate.
+  management for CMMI certificate.
 
 == Getting the plugin
 
@@ -20,11 +22,14 @@ A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/]
 
 == Install
 
+Important note: read install notes before installing.
+
 1. Make sure you have installed the Redmine version 1.0.0 or higher.
-2. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
-3. Install the plugin running the commands below from your Redmine directory (if you are going to
-   run Redmine in, e.g. the production environment, you need to append RAILS_ENV=production to each
-   line):
+2. Follow the Redmine plugin installation steps at:
+   http://www.redmine.org/wiki/redmine/Plugins
+3. Install the plugin running the commands below from your Redmine directory
+   (if you are going to run Redmine in, e.g. the production environment, you
+   need to append RAILS_ENV=production to each line):
  rake db:migrate:plugin NAME=redmine_cmi
  rake cmi:create_data
  rake cmi:load_role_costs_history
@@ -35,7 +40,38 @@ A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/]
 6. Enable the permissions for your Roles
 7. The link to the plugin should appear on that project's navigation as 'CMI'
 
+== Install notes
+
+The plugin needs a bunch of custom fields and values to work. These fields and
+values are created by the rake task cmi:create_data, based on the configuration
+in config/defaults.yml. The configuration shiped with the plugin comes with
+fields and values named in spanish. You can edit the file and translate the
+field names and values to your language before invoking the task, but the file
+is undocummented. There are plans to completely change the plugin configuration
+system.
+
+Also, once all this fields and values are created there is no automated way to
+remove them.
+
+It is, thus, advisable to do a database backup before trying the plugin.
+
+== Uninstall
+
+As stated above, you'll have to manually remove the created custom fields and
+values.
+
+The plugin also makes some database schema changes wich you should revert. Stop
+the server and in redmine's directory run (if you are running Redmine in,
+e.g. the production environment, you need to append RAILS_ENV=production):
+
+ rake db:migrate:plugin NAME=redmine_cmi VERSION=0
+
+After this you can remove the plugin's directory (vendor/plugins/redmine_cmi)
+and restart the server.
+
 == Usage
+
+TODO.
 
 == License
 
@@ -43,4 +79,5 @@ This plugin is licensed under the GNU GPL v2.  See LICENSE.txt for details.
 
 == Project help
 
-If you need help you can contact the maintainer on the bug tracker at http://forja.cenatic.es/
+If you need help you can contact the maintainer on the bug tracker at
+http://forja.cenatic.es/
