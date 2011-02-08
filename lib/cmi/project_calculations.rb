@@ -143,7 +143,7 @@ module CMI
     def calculate_budget_general_rrhh budget_type, project_metrics
       budget_general_rrhh = 0.0
       [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |profile|
-        budget_general_rrhh += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', budget_type).gsub('{{profile}}', profile)}"].to_f * @hash_cost_actual_year[profile].first.value
+        budget_general_rrhh += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', "#{budget_type}").gsub('{{profile}}', profile)}"].to_f * @hash_cost_actual_year[profile].first.value
       end
       return budget_general_rrhh.round(2)
     end

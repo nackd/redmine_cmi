@@ -11,7 +11,7 @@
       <tr class="<%= cycle 'odd', 'even' %> class">
         <td class="project center"><%= p.profile %></td>
         <td class="project center"><%= !p.created_on.nil? ? p.created_on.strftime('%d %B %Y') : "--" %></td>
-        <td class="project center"><%= !p.finished_on.nil? ? p.finished_on.strftime('%d %B %Y') : Date.today.strftime('%d %B %Y') %></td>
+        <td class="project center"><%= !p.finished_on.nil? ? (p.finished_on - 1).strftime('%d %B %Y') : Date.today.strftime('%d %B %Y') %></td>
       </tr>
       <% end %>
 	</tbody>
