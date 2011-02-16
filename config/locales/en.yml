@@ -3,7 +3,7 @@ en:
   project_module_cmiplugin: Metrics
   cmi:
     my_label: "My label"
-    permission_view_cmi: View Metrics
+    permission_view_metrics: View project metrics
     project_module_cmi: Metrics
     label_metrics: Metrics
     label_view_all: View all the reports
