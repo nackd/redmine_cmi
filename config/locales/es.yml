@@ -2,7 +2,6 @@
 es:
   project_module_cmiplugin: Métricas
   cmi:
-    my_label: "My label"
     permission_view_metrics: Ver métricas del proyecto
     project_module_cmi: Métricas
     label_metrics: Métricas
