@@ -1,0 +1,30 @@
+<tr>
+  <th rowspan=4><%= l('cmi.label_desviation') %></th>
+   <th rowspan="1" colspan="2">% <%= l('cmi.label_effort') %></th>
+   <% @names.each do |report| %>
+     <td class="issue"><%= instance_variable_get("@metrics_#{report}")['effort_planned'].to_f != 0.0? (((instance_variable_get("@metrics_#{report}")['effort_planned'].to_f - instance_variable_get("@metrics_#{report}")['effort_real'].to_f)/instance_variable_get("@metrics_#{report}")['effort_planned'].to_f) * 100).round(2) : "--" %> % </td>
+     <% instance_variable_set("@project_effort_#{report}", (instance_variable_get("@metrics_#{report}")['effort_planned'].to_f != 0.0? (((instance_variable_get("@metrics_#{report}")['effort_planned'].to_f - instance_variable_get("@metrics_#{report}")['effort_real'].to_f)/instance_variable_get("@metrics_#{report}")['effort_planned'].to_f) * 100).round(2) : 0.0 ))%>
+   <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2">% <%= l('cmi.label_time') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= instance_variable_get("@metrics_#{report}")['time_total_planned'].to_f != 0.0? (((instance_variable_get("@metrics_#{report}")['time_total_planned'].to_f - instance_variable_get("@metrics_#{report}")['time_total_real'].to_f)/instance_variable_get("@metrics_#{report}")['time_total_planned'].to_f) * 100).round(2) : "--" %> %</td>
+      <% instance_variable_set("@project_time_#{report}", (instance_variable_get("@metrics_#{report}")['time_total_planned'].to_f != 0.0? (((instance_variable_get("@metrics_#{report}")['time_total_planned'].to_f - instance_variable_get("@metrics_#{report}")['time_total_real'].to_f)/instance_variable_get("@metrics_#{report}")['time_total_planned'].to_f) * 100).round(2) : 0.0 ))%>
+   <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2">% <%= l('cmi.label_cost') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= instance_variable_get("@metrics_#{report}")['budget_planned'].to_f != 0.0 ? (((instance_variable_get("@metrics_#{report}")['budget_planned'].to_f - instance_variable_get("@metrics_#{report}")['budget_real'].to_f)/instance_variable_get("@metrics_#{report}")['budget_planned'].to_f) * 100).round(2) : "--" %>% </td>
+      <% instance_variable_set("@project_cost_#{report}", (instance_variable_get("@metrics_#{report}")['budget_planned'].to_f != 0.0 ? (((instance_variable_get("@metrics_#{report}")['budget_planned'].to_f - instance_variable_get("@metrics_#{report}")['budget_real'].to_f)/instance_variable_get("@metrics_#{report}")['budget_planned'].to_f) * 100).round(2) : 0.0 ) )%>
+   <% end %>
+</tr>
+<tr>
+  <th colspan="2"><%= l('cmi.label_graphs') %></th>
+  <% @names.each do |report| %>
+    <td class="issue">
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%=50 + (instance_variable_get("@project_effort_#{report}") * 25/50 )%>,<%= 50 + (instance_variable_get("@project_time_#{report}") * 25/50)%>,<%= 50 + (instance_variable_get("@project_cost_#{report}") * 25/50)%>|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Coste: <%= instance_variable_get("@project_cost_#{report}") %>%|Tiempo: <%= instance_variable_get("@project_time_#{report}") %>%|Esfuerzo: <%= instance_variable_get("@project_effort_#{report}") %>%|"/>
+    </td>
+  <% end %>
+</tr>

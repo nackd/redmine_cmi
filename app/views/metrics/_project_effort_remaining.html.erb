@@ -1,0 +1,52 @@
+<tr>
+  <th rowspan=7><%= l('cmi.label_remaining') %></th>
+  <td><%= l('cmi.label_JP') %></td>
+  <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_remaining_jp') %></td>
+      <% set_value('jp', report, 'effort_remaining', 'effort_remaining_jp') %>
+  <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_AF') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_remaining_af') %></td>
+      <% set_value('af', report, 'effort_remaining', 'effort_remaining_af') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_AP') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_remaining_ap') %></td>
+      <% set_value('ap', report, 'effort_remaining', 'effort_remaining_ap') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_PS') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_remaining_ps') %></td>
+      <% set_value('ps', report, 'effort_remaining', 'effort_remaining_ps') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_PJ') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_remaining_pj') %></td>
+      <% set_value('pj', report, 'effort_remaining', 'effort_remaining_pj') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_B') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_remaining_b') %></td>
+      <% set_value('b', report, 'effort_remaining', 'effort_remaining_b') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l(:label_total) %></td>
+   <% @names.each do |report| %>
+    <td class="issue">
+      <%= get_report_value(report, 'effort_remaining') %>
+      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%=instance_variable_get("@value_jp_#{report}")%>,<%=instance_variable_get("@value_af_#{report}")%>,<%=instance_variable_get("@value_ap_#{report}")%>,<%=instance_variable_get("@value_ps_#{report}")%>,<%=instance_variable_get("@value_pj_#{report}")%>,<%=instance_variable_get("@value_b_#{report}")%>&chs=220x50&chl=JP: <%=instance_variable_get("@value_jp_#{report}")%>%|AF: <%=instance_variable_get("@value_af_#{report}")%>%|AP: <%=instance_variable_get("@value_ap_#{report}")%>%|PS: <%=instance_variable_get("@value_ps_#{report}")%>%|PJ: <%=instance_variable_get("@value_pj_#{report}")%>%|B: <%=instance_variable_get("@value_b_#{report}")%>%"/>
+    </td>
+   <% end %>
+</tr>

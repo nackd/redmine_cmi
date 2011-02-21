@@ -1,0 +1,36 @@
+<tr>
+  <th rowspan=5><%= l('cmi.label_risk') %></th>
+  <th rowspan="1" colspan="2"><%= l('cmi.label_risk_high') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'risk_high').to_i  %> </td>
+  <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2"><%= l('cmi.label_risk_medium') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'risk_medium').to_i  %> </td>
+  <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2"><%= l('cmi.label_risk_low') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'risk_low').to_i  %> </td>
+  <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2"><%= l(:label_total) %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= (get_report_value(report, 'risk_medium').to_f +
+                             get_report_value(report, 'risk_low').to_f +
+                             get_report_value(report, 'risk_high').to_f).to_i %>
+      </td>
+  <% end %>
+</tr>
+<tr>
+  <th colspan="2"><%= l('cmi.label_graphs') %></th>
+  <% @names.each do |report| %>
+    <td class="issue">
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= get_report_value(report, 'risk_high').to_i  %>,<%= get_report_value(report, 'risk_medium').to_i  %>,<%= get_report_value(report, 'risk_low').to_i  %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: <%= get_report_value(report, 'risk_low').to_i  %>|Medio: <%= get_report_value(report, 'risk_medium').to_i  %>|Alto: <%= get_report_value(report, 'risk_high').to_i  %>|"/>
+    </td>
+  <% end %>
+</tr>

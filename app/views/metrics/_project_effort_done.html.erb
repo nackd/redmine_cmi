@@ -1,0 +1,56 @@
+<tr>
+  <th rowspan=65><%= l('cmi.label_project_management') %></th>
+  <th rowspan=21><%= l('cmi.label_effort') %></th>
+   <th rowspan="7"><%= l('cmi.label_done') %></th>
+   <td><%= l('cmi.label_JP') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_done_jp').round(2) %> <%= l('cmi.label_hours') %></td>
+      <% set_value('jp', report, 'effort_done', 'effort_done_jp') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_AF') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_done_af').round(2) %> <%= l('cmi.label_hours') %></td>
+      <% set_value('af', report, 'effort_done', 'effort_done_af') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_AP') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_done_ap').round(2) %> <%= l('cmi.label_hours') %></td>
+      <% set_value('ap', report, 'effort_done', 'effort_done_ap') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_PS') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_done_ps').round(2) %> <%= l('cmi.label_hours') %></td>
+      <% set_value('ps', report, 'effort_done', 'effort_done_ps') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_PJ') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_done_pj').round(2) %> <%= l('cmi.label_hours') %></td>
+      <% set_value('pj', report, 'effort_done', 'effort_done_pj') %>
+   <% end %>
+</tr>
+<tr>
+   <td><%= l('cmi.label_B') %></td>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'effort_done_b').round(2) %> <%= l('cmi.label_hours') %></td>
+      <% set_value('b', report, 'effort_done', 'effort_done_b') %>
+   <% end %>
+</tr>
+
+<tr>
+   <td><%= l(:label_total) %></td>
+   <% @names.each do |report| %>
+      <%effort_done_act = get_report_value(report, 'effort_real', 'effort_done')%>
+      <td class="issue">
+        <%= get_report_value(report, 'effort_done').round(2) %> <%= l('cmi.label_hours') %>
+        <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%=instance_variable_get("@value_jp_#{report}")%>,<%=instance_variable_get("@value_af_#{report}")%>,<%=instance_variable_get("@value_ap_#{report}")%>,<%=instance_variable_get("@value_ps_#{report}")%>,<%=instance_variable_get("@value_pj_#{report}")%>,<%=instance_variable_get("@value_b_#{report}")%>&chs=220x50&chl=JP: <%=instance_variable_get("@value_jp_#{report}")%>%|AF: <%=instance_variable_get("@value_af_#{report}")%>%|AP: <%=instance_variable_get("@value_ap_#{report}")%>%|PS: <%=instance_variable_get("@value_ps_#{report}")%>%|PJ: <%=instance_variable_get("@value_pj_#{report}")%>%|B: <%=instance_variable_get("@value_b_#{report}")%>%"/>
+      </td>
+   <% end %>
+</tr>

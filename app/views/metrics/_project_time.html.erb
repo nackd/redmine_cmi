@@ -1,0 +1,26 @@
+<tr>
+  <th rowspan=4><%= l('cmi.label_time') %></th>
+   <th rowspan="1" colspan="2"><%= l('cmi.label_done') %></th>
+   <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'time_done') %> </td>
+      <% set_value('time_done', report, 'time_total_real','time_done') %>
+   <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2"><%= l('cmi.label_remaining') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'time_remaining') %> </td>
+  <% end %>
+</tr>
+<tr>
+  <th rowspan=1 colspan="2"><%= l('cmi.label_planned') %></th>
+  <% @names.each do |report| %>
+      <td class="issue"><%= get_report_value(report, 'time_total_real') %> </td>
+  <% end %>
+</tr>
+<tr>
+  <th colspan="2"><%= l('cmi.label_graphs') %></th>
+  <% @names.each do |report| %>
+      <td><img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%=instance_variable_get("@value_time_done_#{report}")%>|100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x50&chxt=x,y&chxl=0:|0|50|100|1:|<%=instance_variable_get("@value_time_done_#{report}")%>% |"/></td>
+  <% end %>
+</tr>
