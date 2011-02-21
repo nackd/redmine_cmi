@@ -5,7 +5,7 @@ end
 require 'redmine'
 require 'cmi/scoreboard_menu_helper_patch'
 require 'cmi/time_entry_patch'
-require 'cmi/timelog_controller_patch'
+require 'cmi/time_entry_reports_common_patch'
 require 'cmi/user_patch'
 require 'cmi/users_helper_patch'
 require 'cmi/project_patch'

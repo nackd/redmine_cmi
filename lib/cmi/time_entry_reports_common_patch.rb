@@ -1,10 +1,11 @@
-require_dependency 'timelog_controller'
+require_dependency 'time_entry_reports_controller' if File.exists?("#{RAILS_ROOT}/app/controllers/time_entry_reports_controller.rb")
+require_dependency 'timelog_controller' if File.exists?("#{RAILS_ROOT}/app/controllers/timelog_controller.rb")
 require 'dispatcher'
 
 # Patches Redmine's ApplicationController dinamically. Redefines methods wich
 # send error responses to clients
 module CMI
-  module TimelogControllerPatch
+  module TimeEntryReportsCommonPatch
     def self.included(base) # :nodoc:
       base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
@@ -29,5 +30,6 @@ module CMI
 end
 
 Dispatcher.to_prepare do
-  TimelogController.send(:include, CMI::TimelogControllerPatch)
+  TimeEntryReportsController.send(:include, CMI::TimeEntryReportsCommonPatch) if File.exists?("#{RAILS_ROOT}/app/controllers/time_entry_reports_controller.rb")
+  TimelogController.send(:include, CMI::TimeEntryReportsCommonPatch) if File.exists?("#{RAILS_ROOT}/app/controllers/timelog_controller.rb")
 end
