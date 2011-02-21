@@ -6,7 +6,7 @@ end
 class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
-  before_filter :require_project_jp, :find_project, :obtain_profile_costs
+  before_filter :require_project_jp, :find_project, :obtain_profile_costs, :get_roles
   include CMI::ProjectCalculations
 
   def show
@@ -15,11 +15,11 @@ class MetricsController < ApplicationController
       unless @project.nil?
         tracker_informes = @project.trackers.find_by_name(DEFAULT_VALUES['trackers']['report'])
         raise CMI::Exception, l(:'cmi.cmi_report_tracker_not_available') if tracker_informes.nil?
-        @spent_issues_informes = (@project.issues.find(:all,
-                                                       :include => [:tracker],
-                                                       :conditions => ["tracker_id=?", tracker_informes.id],
-                                                       :order => 'start_date DESC'))
-        @spent_issues_informes = params[:metrics].nil? ? @spent_issues_informes[0..1] : @spent_issues_informes
+        @reports = @project.issues.find(:all,
+                                        :include => [:tracker],
+                                        :conditions => ["tracker_id=?", tracker_informes.id],
+                                        :order => 'start_date DESC')
+        @reports = params[:metrics].nil? ? @reports[0..1] : @reports
         general_data_on_selected_reports
       end
       respond_to do |format|
@@ -48,16 +48,17 @@ class MetricsController < ApplicationController
 
   def general_data_on_selected_reports
     @names = []
-    @spent_issues_informes.each do |informe|
-      if (informe == @spent_issues_informes.first)
+    @reports.each do |report|
+      if (report == @reports.first)
         @date = Date.tomorrow
-        instance_variable_set("@metrics_actual", calculate_metrics(@project, informe))
+        instance_variable_set("@metrics_actual", calculate_metrics(@project, report))
         @names << "actual"
       end
-      @date = informe.start_date
-      instance_variable_set("@metrics_#{informe.id}", calculate_metrics(@project, informe))
-      @names << "#{informe.id}"
+      @date = report.start_date
+      instance_variable_set("@metrics_#{report[:id]}", calculate_metrics(@project, report))
+      @names << "#{report[:id]}"
     end
+    @reports = [CMI::ReportMetrics.new(@reports.first, true)] + @reports.collect { |report| CMI::ReportMetrics.new report }
   end
 
   def initial_data_on_expense_issues(project, project_metrics)
@@ -174,5 +175,9 @@ class MetricsController < ApplicationController
   def get_project_metrics
     # Para acceder los valor de las diferentes métricas a calcular
     @project_metrics_list = Setting.plugin_redmine_cmiplugin['project_metrics']
+  end
+
+  def get_roles
+    @roles = User.roles
   end
 end
