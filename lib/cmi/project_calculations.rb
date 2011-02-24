@@ -103,7 +103,7 @@ module CMI
 
     def calculate_effort_done_general(to_date, project, project_metrics)
       project_metrics['effort_done'] = 0.0
-      [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |role|
+      User.roles.each do |role|
         cond = ARCondition.new
         cond << project.project_condition(Setting.display_subprojects_issues?)
         cond << ['role = ?', role]
@@ -119,14 +119,14 @@ module CMI
 
     def calculate_effort_general budget_type, project_metrics
       effort = 0.0
-      [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |profile|
+      User.roles.each do |profile|
         effort += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', budget_type).gsub('{{profile}}', profile)}"].to_f
       end
       return effort.round(2).to_s + " #{l('cmi.label_hours')}"
     end
 
     def calculate_effort_remaining_general project_metrics
-      [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |role|
+      User.roles.each do |role|
         project_metrics["effort_remaining_#{role.underscore}"] = project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].nil? ? "-- #{l('cmi.label_hours')}" :
                                                     (project_metrics["Esfuerzo actual #{l('cmi.label_' + role)}"].to_f -
                                                     project_metrics['effort_done_' + role.underscore].to_f).round(2).to_s + " #{l('cmi.label_hours')}"
@@ -142,7 +142,7 @@ module CMI
 
     def calculate_budget_general_rrhh budget_type, project_metrics
       budget_general_rrhh = 0.0
-      [l('cmi.label_JP'), l('cmi.label_AF'), l('cmi.label_AP'), l('cmi.label_PS'), l('cmi.label_PJ'), l('cmi.label_B')].each do |profile|
+      User.roles.each do |profile|
         budget_general_rrhh += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', "#{budget_type}").gsub('{{profile}}', profile)}"].to_f * @hash_cost_actual_year[profile].first.value
       end
       return budget_general_rrhh.round(2)
