@@ -23,6 +23,10 @@ module CMI
       effort_planned_by_role(role) - effort_done_by_role(role)
     end
 
+    def effort_percent_by_role(role)
+      effort_done_by_role(role) * 100 / effort_planned_by_role(role)
+    end
+
     private
 
     def method_missing(method, *args, &block)

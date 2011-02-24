@@ -1,67 +1,31 @@
 <tr>
-  <th rowspan=12><%= l('cmi.label_advance') %></th>
-   <th rowspan="7"><%= l('cmi.label_effort_plural') %></th>
-   <td><%= l('cmi.label_JP') %></td>
-   <% @names.each do |report| %>
-      <%value_esf_jp = get_report_value(report, 'Esfuerzo actual JP', 'effort_done_jp')%>
-      <td class="issue"><%=value_esf_jp != 0.0? value_esf_jp : "--"%> % </td>
-      <% set_value('esf_jp', report, 'Esfuerzo actual JP', 'effort_done_jp') %>
-   <% end %>
-</tr>
-<tr>
-   <td><%= l('cmi.label_AF') %></td>
-   <% @names.each do |report| %>
-      <%value_esf_af = get_report_value(report, 'Esfuerzo actual AF', 'effort_done_af')%>
-      <td class="issue"><%=value_esf_af != 0.0? value_esf_af : "--"%> % </td>
-      <% set_value('esf_af', report, 'Esfuerzo actual AF', 'effort_done_af') %>
-   <% end %>
-</tr>
-<tr>
-   <td><%= l('cmi.label_AP') %></td>
-   <% @names.each do |report| %>
-      <%value_esf_ap = get_report_value(report, 'Esfuerzo actual AP', 'effort_done_ap') %>
-      <td class="issue"><%=value_esf_ap != 0.0? value_esf_ap : "--"%> % </td>
-      <% set_value('esf_ap', report, 'Esfuerzo actual AP', 'effort_done_ap') %>
-   <% end %>
-</tr>
-<tr>
-   <td><%= l('cmi.label_PS') %></td>
-   <% @names.each do |report| %>
-      <%value_esf_ps = get_report_value(report, 'Esfuerzo actual PS', 'effort_done_ps') %>
-      <td class="issue"><%=value_esf_ps != 0.0? value_esf_ps : "--"%> % </td>
-      <% set_value('esf_ps', report, 'Esfuerzo actual PS', 'effort_done_ps') %>
-   <% end %>
-</tr>
-<tr>
-   <td><%= l('cmi.label_PJ') %></td>
-   <% @names.each do |report| %>
-      <%value_esf_pj = get_report_value(report, 'Esfuerzo actual PJ', 'effort_done_pj') %>
-      <td class="issue"><%=value_esf_pj != 0.0? value_esf_pj : "--"%> % </td>
-      <% set_value('esf_pj', report, 'Esfuerzo actual PJ', 'effort_done_pj') %>
-   <% end %>
-</tr>
-<tr>
-   <td><%= l('cmi.label_B') %></td>
-   <% @names.each do |report| %>
-      <%value_esf_b = get_report_value(report, 'Esfuerzo actual B', 'effort_done_b') %>
-      <td class="issue"><%=value_esf_b != 0.0? value_esf_b : "--"%> % </td>
-      <% set_value('esf_b', report, 'Esfuerzo actual B', 'effort_done_b') %>
-   <% end %>
-</tr>
-<tr>
-   <td><%= l(:label_project) %></td>
-   <% @names.each do |report| %>
-      <%value_esf_proyect = get_report_value(report, 'effort_real', 'effort_done') %>
-      <td class="issue"><%= value_esf_proyect != 0.0? value_esf_proyect : "--"%> % </td>
-      <% set_value('esf_proyect', report, 'effort_real', 'effort_done') %>
-   <% end %>
+  <th rowspan="<%= 6 + @roles.length %>"><%= l('cmi.label_advance') %></th>
+  <th rowspan="<%= 1 + @roles.length %>"><%= l('cmi.label_effort_plural') %></th>
+
+  <% @roles.each do |role| %>
+    <td><%=h role %></td>
+    <% @reports.each do |report| %>
+      <td class="issue">
+        <%= (report.effort_percent_by_role(role)).round(2) rescue '--' %> %
+      </td>
+    <% end %>
+    </tr>
+    <tr>
+  <% end %>
+
+  <td><%= l(:label_project) %></td>
+  <% @names.each do |report| %>
+    <%value_esf_proyect = get_report_value(report, 'effort_real', 'effort_done') %>
+    <td class="issue"><%= value_esf_proyect != 0.0? value_esf_proyect : "--"%> % </td>
+    <% set_value('esf_proyect', report, 'effort_real', 'effort_done') %>
+  <% end %>
 </tr>
 <tr>
   <th rowspan=1 colspan="2"><%= l('cmi.label_time') %></th>
   <% @names.each do |report| %>
-      <%value_time = get_report_value(report, 'time_total_real', 'time_done') %>
-      <td class="issue"><%= value_time != 0.0? value_time : "--" %> % </td>
-      <% set_value('time', report, 'time_total_real', 'time_done') %>
+    <%value_time = get_report_value(report, 'time_total_real', 'time_done') %>
+    <td class="issue"><%= value_time != 0.0? value_time : "--" %> % </td>
+    <% set_value('time', report, 'time_total_real', 'time_done') %>
   <% end %>
 </tr>
 
@@ -69,25 +33,25 @@
   <th rowspan=3><%= l('cmi.label_budgets') %></th>
   <td><%= l('cmi.label_RRHH') %></td>
   <% @names.each do |report| %>
-      <%value_budget_rrhh = get_report_value(report, 'budget_real_rrhh', 'budget_spent_rrhh') %>
-      <td class="issue"><%= value_budget_rrhh != 0.0? value_budget_rrhh : "--" %> %</td>
-      <% set_value('budget_rrhh', report, 'budget_real_rrhh', 'budget_spent_rrhh') %>
+    <%value_budget_rrhh = get_report_value(report, 'budget_real_rrhh', 'budget_spent_rrhh') %>
+    <td class="issue"><%= value_budget_rrhh != 0.0? value_budget_rrhh : "--" %> %</td>
+    <% set_value('budget_rrhh', report, 'budget_real_rrhh', 'budget_spent_rrhh') %>
   <% end %>
 </tr>
 <tr>
-   <td><%= l('cmi.label_others') %></td>
-   <% @names.each do |report| %>
-      <%value_budget_others = get_report_value(report, 'Presupuesto_actual', 'Gastado') %>
-      <td class="issue"><%= value_budget_others != 0.0? value_budget_others : "--" %> %</td>
-      <% set_value('budget_others', report, 'Presupuesto actual', 'Gastado') %>
+  <td><%= l('cmi.label_others') %></td>
+  <% @names.each do |report| %>
+    <%value_budget_others = get_report_value(report, 'Presupuesto_actual', 'Gastado') %>
+    <td class="issue"><%= value_budget_others != 0.0? value_budget_others : "--" %> %</td>
+    <% set_value('budget_others', report, 'Presupuesto actual', 'Gastado') %>
   <% end %>
 </tr>
 <tr>
-   <td><%= l(:label_total) %></td>
-   <% @names.each do |report| %>
-      <%value_budget_total = get_report_value(report, 'budget_real', 'budget_spent') %>
-      <td class="issue"><%= value_budget_total != 0.0? value_budget_total : "--" %> %</td>
-      <% set_value('budget_total', report, 'budget_real', 'budget_spent') %>
+  <td><%= l(:label_total) %></td>
+  <% @names.each do |report| %>
+    <%value_budget_total = get_report_value(report, 'budget_real', 'budget_spent') %>
+    <td class="issue"><%= value_budget_total != 0.0? value_budget_total : "--" %> %</td>
+    <% set_value('budget_total', report, 'budget_real', 'budget_spent') %>
   <% end %>
 </tr>
 <tr>
