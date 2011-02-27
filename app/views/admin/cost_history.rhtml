@@ -1,25 +1,29 @@
+<%
+  @roles = []
+  costs = (HistoryProfilesCost.find :all)
+  costs.each do |cost|
+    @roles << cost.profile unless @roles.include?(cost.profile)
+  end
+  @year_costs = costs.group_by(&:year)
+  @years = @year_costs.keys.sort.reverse
+%>
 <h2><%=l('cmi.label_cost_history')%></h2>
 
 <table class="list">
 <tr class="<%= cycle 'odd', 'even' %>">
-    <td style="width:15%;"></td>
-    <th style="width:15%;"><%= l('cmi.label_JP_long') %></th>
-    <th style="width:15%;"><%= l('cmi.label_AF_long') %></th>
-    <th style="width:15%;"><%= l('cmi.label_AP_long') %></th>
-    <th style="width:15%;"><%= l('cmi.label_PS_long') %></th>
-    <th style="width:15%;"><%= l('cmi.label_PJ_long') %></th>
-    <th style="width:15%;"><%= l('cmi.label_B_long') %></th>
-
+  <td></td>
+  <% @roles.each do |role| %>
+    <th><%=h role %></th>
+  <% end %>
 </tr>
-<% costs_list = (HistoryProfilesCost.find :all).group_by(&:year) %>
-<% costs_list.each do |key, profiles_year_cost| %>
+
+<% @years.each do |year| %>
 <tr class="<%= cycle 'odd', 'even' %>">
-  <th class="center" style="width:15%;"><%= key %></th>
-  <% profiles_year_cost.each do |cost_profile| %>
-    <td class="center" style="width:15%;"><%= cost_profile.value %> €</td>
+  <th class="center"><%= year %></th>
+  <% @roles.each do |role| %>
+    <td class="center"><%= @year_costs[year].find{|c|c.profile ==role}.value rescue '--' %> €</td>
   <% end %>
 </tr>
 <% end %>
 </table>
 <% reset_cycle %>
-
