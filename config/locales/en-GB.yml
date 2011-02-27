@@ -35,12 +35,7 @@ en:
     label_PS_long: Senior Programmer
     label_PJ_long: Junior Programmer
     label_B_long: Scholar
-    label_remaining_JP: Remaining JP
-    label_remaining_AF: Remaining AF
-    label_remaining_AP: Remaining AP
-    label_remaining_PS: Remaining PS
-    label_remaining_PJ: Remaining PJ
-    label_remaining_B: Remaining B
+    label_remaining_role: Remaining {{role}}
     label_remaining_total: Remaining total
     label_group_desviation: Group desviation (losses €)
     label_global_desviation: Global desviation

@@ -19,7 +19,7 @@
           <th colspan="1"><%= l('cmi.label_initial_mc') %></th>
           <th colspan="1"><%= l('cmi.label_global_desviation') %></th>
         <% @roles.each do |role| %>
-          <th colspan="1"><%= l("cmi.label_remaining_#{role}") %></th>
+          <th colspan="1"><%= l('cmi.label_remaining_role', :role => role) %></th>
         <% end %>
           <th colspan="1"><%= l('cmi.label_remaining_total') %></th>
         </tr>
