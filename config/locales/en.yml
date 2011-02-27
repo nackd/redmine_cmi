@@ -23,18 +23,6 @@ en:
     label_project_management: Project Management
     label_effort: Effort
     label_done: Done
-    label_JP: JP
-    label_AF: AF
-    label_AP: AP
-    label_PS: PS
-    label_PJ: PJ
-    label_B: B
-    label_JP_long: Project Manager
-    label_AF_long: Functional Analyst
-    label_AP_long: Analyst programmer
-    label_PS_long: Senior Programmer
-    label_PJ_long: Junior Programmer
-    label_B_long: Scholar
     label_remaining_role: Remaining {{role}}
     label_remaining_total: Remaining total
     label_group_desviation: Group desviation (losses €)
