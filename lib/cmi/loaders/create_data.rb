@@ -31,27 +31,27 @@ module CMI
           tracker = Tracker.find_by_name(DEFAULT_VALUES['trackers']['report'])
           list = []
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', l(:'cmi.label_JP')),
+                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'JP'),
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', l(:'cmi.label_AF')),
+                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'AF'),
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', l(:'cmi.label_AP')),
+                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'AP'),
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', l(:'cmi.label_PS')),
+                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'PS'),
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', l(:'cmi.label_PJ')),
+                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'PJ'),
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', l(:'cmi.label_B')),
+                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'B'),
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           list << IssueCustomField.create(:type => "IssueCustomField",
@@ -91,27 +91,27 @@ module CMI
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true,
             :is_for_all => false, :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', l(:'cmi.label_JP')),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'JP'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', l(:'cmi.label_AF')),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'AF'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', l(:'cmi.label_AP')),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'AP'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', l(:'cmi.label_PS')),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'PS'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', l(:'cmi.label_PJ')),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'PJ'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', l(:'cmi.label_B')),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'B'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
 
@@ -133,7 +133,7 @@ module CMI
             :regexp => "", :is_required => true, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false)
 
           UserCustomField.create(:type => "UserCustomField", :name => DEFAULT_VALUES['user_role_field'],
-            :field_format => "list", :possible_values => [l(:'cmi.label_JP'), l(:'cmi.label_AF'), l(:'cmi.label_AP'), l(:'cmi.label_PS'), l(:'cmi.label_PJ'), l(:'cmi.label_B')],
+            :field_format => "list", :possible_values => ['JP', 'AF', 'AP', 'PS', 'PJ', 'B'],
             :regexp => "", :is_required => true, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false, :default_value => nil)
         end
       end
