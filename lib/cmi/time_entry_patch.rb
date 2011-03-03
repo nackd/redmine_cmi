@@ -26,9 +26,9 @@ module CMI
 
       def update_role_and_cost
         @hash_cost_actual_year = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year].group_by(&:profile)
-        user_role = self.role.nil? ? (!User.current.role.empty? ? User.current.role : "") : self.role
-        if attribute_present?("hours") and !user_role.empty?
-          self.role = User.current.role if self.role.nil? and !User.current.role.empty?
+        user_role = self.role.nil? ? (!User.current.role.blank? ? User.current.role : "") : self.role
+        if attribute_present?("hours") and !user_role.blank?
+          self.role = User.current.role if self.role.nil? and !User.current.role.blank?
           self.cost = (self.hours.to_f * @hash_cost_actual_year["#{self.role}"].first.value.to_f)
         end
       end
