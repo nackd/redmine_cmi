@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_cmiplugin do
   name :'cmi.plugin_name'
   author 'Emergya Consultoría'
   description :'cmi.plugin_description'
-  version '0.9.3'
+  version '0.9.4.1'
 
   settings :default => { }
 
