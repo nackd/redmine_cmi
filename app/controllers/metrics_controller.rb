@@ -1,8 +1,3 @@
-module CMI
-  class Exception < ::Exception
-  end
-end
-
 class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
