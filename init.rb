@@ -10,7 +10,7 @@ require 'cmi/user_patch'
 require 'cmi/users_helper_patch'
 require 'cmi/project_patch'
 
-Redmine::Plugin.register :redmine_cmiplugin do
+Redmine::Plugin.register :redmine_cmi do
   name :'cmi.plugin_name'
   author 'Emergya Consultoría'
   description :'cmi.plugin_description'
