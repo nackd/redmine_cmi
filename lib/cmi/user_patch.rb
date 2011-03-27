@@ -19,7 +19,8 @@ module CMI
 
     module ClassMethods
       def roles
-        role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'])
+        raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+        role_field = UserCustomField.find_by_name(Setting.plugin_redmine_cmi['field_user_profile'])
         role_field && role_field.possible_values || []
       end
     end
@@ -34,12 +35,14 @@ module CMI
       end
       
       def role
-        role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'], :select => :id)
+        raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+        role_field = UserCustomField.find_by_name(Setting.plugin_redmine_cmi['field_user_profile'], :select => :id)
         custom_value_for(role_field.id).value rescue nil
       end
 
       def role=(role)
-        role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'], :select => :id)
+        raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+        role_field = UserCustomField.find_by_name(Setting.plugin_redmine_cmi['field_user_profile'], :select => :id)
         cv = CustomValue.find_or_initialize_by_customized_type_and_custom_field_id_and_customized_id(
           'Principal',
           role_field.id,

@@ -4,6 +4,8 @@ en:
   cmi:
     field_project_group: Group
     project_custom_fields: Project custom fields
+    field_user_profile: Profile
+    user_custom_fields: User custom fields
     permission_view_metrics: View project metrics
     project_module_cmi: Metrics
     label_metrics: Metrics

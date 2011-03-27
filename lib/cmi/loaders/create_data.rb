@@ -132,7 +132,7 @@ module CMI
             :field_format => "list", :possible_values => ['Aplicaciones','Distribuciones','Migraciones','GPI','GIS','Otros'],
             :regexp => "", :is_required => true, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false)
 
-          UserCustomField.create(:type => "UserCustomField", :name => DEFAULT_VALUES['user_role_field'],
+          UserCustomField.create(:type => "UserCustomField", :name => Setting.plugin_redmine_cmi['field_user_profile'],
             :field_format => "list", :possible_values => ['JP', 'AF', 'AP', 'PS', 'PJ', 'B'],
             :regexp => "", :is_required => true, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false, :default_value => nil)
         end

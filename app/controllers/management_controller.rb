@@ -65,7 +65,8 @@ class ManagementController < ApplicationController
   def require_management_role
     return unless require_login
 
-    role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'])
+    raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+    role_field = UserCustomField.find_by_name(Setting.plugin_redmine_cmi['field_user_profile'])
     role = User.current.custom_value_for(role_field).value rescue nil
 
     if !(User.current.admin? or DEFAULT_VALUES['management_roles'].to_a.include? role)
