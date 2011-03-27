@@ -41,7 +41,6 @@ issue_status:
   approval: Validada
 
 
-project_group_field: Grupo
 project_accepted_field: Cantidad aceptada
 project_role_original_effort_planned_field: Esfuerzo previsto para {{role}}
 

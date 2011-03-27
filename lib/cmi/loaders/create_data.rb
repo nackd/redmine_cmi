@@ -128,7 +128,7 @@ module CMI
           ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['quality_meets_planned'],
             :field_format => "int", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true)
-          ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['project_group_field'],
+          ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_group'],
             :field_format => "list", :possible_values => ['Aplicaciones','Distribuciones','Migraciones','GPI','GIS','Otros'],
             :regexp => "", :is_required => true, :is_for_all => false, :is_filter => false, :searchable => false, :editable => false)
 

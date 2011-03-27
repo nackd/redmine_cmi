@@ -2,6 +2,8 @@
 es:
   project_module_cmiplugin: Métricas
   cmi:
+    field_project_group: Grupo
+    project_custom_fields: Campos personalizados de proyecto
     permission_view_metrics: Ver métricas del proyecto
     project_module_cmi: Métricas
     label_metrics: Métricas

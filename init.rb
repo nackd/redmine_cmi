@@ -16,7 +16,7 @@ Redmine::Plugin.register :redmine_cmi do
   description :'cmi.plugin_description'
   version '0.9.4.1'
 
-  settings :default => { }
+  settings :partial => 'cmi'
 
   requires_redmine :version_or_higher => '1.0.0'
   project_module :cmiplugin do

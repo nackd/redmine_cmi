@@ -4,7 +4,8 @@ module CMI
 
     def projects
       return @projects if @projects
-      group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
+      raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+      group_field = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi['field_project_group'])
       @projects = Project.all(:select => 'projects.*',
                               :joins => :enabled_modules,
                               :conditions => ['enabled_modules.name = ?', 'cmiplugin']).group_by do |p|

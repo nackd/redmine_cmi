@@ -15,7 +15,8 @@ module CMI
 
     module ClassMethods
       def groups
-        group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
+        raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+        group_field = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi['field_project_group'])
         group_field && group_field.possible_values || []
       end
     end

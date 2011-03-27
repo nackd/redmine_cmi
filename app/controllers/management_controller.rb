@@ -39,7 +39,8 @@ class ManagementController < ApplicationController
   def get_active_projects
     @projects = Project.active.all(:order => :lft)
     if params[:selected_project_group].present?
-      group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
+      raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+      group_field = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi['field_project_group'])
       @projects = @projects.select do |p|
         if p.custom_value_for(group_field)
           p.custom_value_for(group_field).value == params[:selected_project_group]
@@ -54,7 +55,8 @@ class ManagementController < ApplicationController
                              :conditions => ["#{Project.table_name}.status = #{Project::STATUS_ARCHIVED}"],
                              :order => :lft)
     if params[:selected_project_group].present?
-      group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
+      raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+      group_field = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi['field_project_group'])
       @archived = @archived.select{ |p| p.custom_value_for(group_field).value == params[:selected_project_group] }
     end
     @last_archived_report = {}
