@@ -1,7 +1,7 @@
 == CMI Plugin
 
-CMI is a Redmine plugin to have a summarized view of the projects.
-It calculates and shows with graphics different metrics as actual effort,
+CMI is a Redmine plugin to have a summary of projects' management metrics.
+It calculates and shows with graphs different metrics, such as actual effort,
 cost, progress or deviation from the goals of the projects.
 
 NOTE: CMI stands for 'Cuadro de Mando Integral' with is Spanish name for a
@@ -18,7 +18,9 @@ Central Panel of Management.
 == Getting the plugin
 
 A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/]
- at Cenatic Forge and also on {Gitorious}[http://gitorious.org/cmi/cm/master].
+section at Cenatic Forge and also on
+{Github}[https://github.com/Emergya/redmine_cmi]. A mirror of the project
+repository is also available in {Gitorious}[http://gitorious.org/cmi/cm/master].
 
 == Install
 
@@ -79,5 +81,5 @@ This plugin is licensed under the GNU GPL v2.  See LICENSE.txt for details.
 
 == Project help
 
-If you need help you can contact the maintainer on the bug tracker at
-http://forja.cenatic.es/
+If you need help you can contact the developers at cmi-devel AT
+lists.morfeo-project DOT org.
