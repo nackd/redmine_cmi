@@ -20,7 +20,8 @@ Central Panel of Management.
 A copy of the plugin can be found in the {downloads}[http://forja.cenatic.es/]
 section at Cenatic Forge and also on
 {Github}[https://github.com/Emergya/redmine_cmi]. A mirror of the project
-repository is also available in {Gitorious}[http://gitorious.org/cmi/cm/master].
+repository is also available in
+{Gitorious}[https://gitorious.org/redmine_cmi/redmine_cmi].
 
 == Install
 
