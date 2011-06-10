@@ -24,7 +24,7 @@ module CMI
         effort_done = effort_done_total
         if @no_profile_users.length > 0
           @profile_alert = true
-          raise
+          raise CMI::ProfileException.new(@no_profile_users, project)
         end
       end
       return effort_done.to_s
