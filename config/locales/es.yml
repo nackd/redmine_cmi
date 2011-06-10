@@ -98,5 +98,8 @@ es:
     caption_projects: Proyectos
     caption_metrics: Métricas
 
+    error_other: "Faltan datos por introducir en el proyecto '%{project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: %{message}."
+    error_profile: "Hay usuarios (%{users}) sin perfil asignado en el proyecto '%{project}'. Es necesario para poder realizar los cálculos correctamente."
+
     plugin_name: Cuadro de Mando Integral
     plugin_description: Vistas resumenes globales y por proyectos

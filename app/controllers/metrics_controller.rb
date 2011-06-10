@@ -31,7 +31,7 @@ class MetricsController < ApplicationController
         "\n#{exc.class} (#{exc.message}):\n  " +
         clean_exception.join("\n  ") + "\n\n"
       )
-      flash[:error] = "Faltan datos por introducir en el proyecto '#{@project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: #{exc.message}"
+      flash[:error] = I18n.t :'cmi.error_other', :project => @project, :message => exc.message
     end
   end
 

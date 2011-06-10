@@ -8,7 +8,7 @@ module CMI
     end
 
     def to_s
-      "Hay usuarios (#{@users.join(',')}) sin perfil asignado en el proyecto '#{@project}'. Es necesario para poder realizar los cálculos correctamente."
+      I18n.t :'cmi.error_profile', :users => @users.join(', '), :project => @project
     end
   end
 end

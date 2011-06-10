@@ -98,5 +98,8 @@ en:
     caption_projects: Projects
     caption_metrics: Metrics
 
+    error_other: "There is needed data missing in the project '%{project}' to make calculations. An error has happened: %{message}."
+    error_profile: "There are users (%{users}) without profile in the project '%{project}'. It's necessary to be able to make calculations."
+
     plugin_name: Central Panel of Management
     plugin_description: Global and per project summarized views
