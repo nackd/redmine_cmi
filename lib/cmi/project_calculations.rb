@@ -208,7 +208,7 @@ module CMI
       else
           time_done = "--"
       end
-      return time_done + ' días'
+      return I18n.t('datetime.distance_in_words.x_days', :count => time_done)
     end
 
     #  Tiempo para terminar el proyecto. Unidad:días naturales.
@@ -219,15 +219,15 @@ module CMI
       else
           time_remaining = "--"
       end
-      return time_remaining + ' días'
+      return I18n.t('datetime.distance_in_words.x_days', :count => time_remaining)
     end
 
     #  Dureción del proyecto planificada
     def calculate_time_total_planned project_metrics
       time_total_planned = 0.0
       time_total_planned = ((Date.parse(project_metrics["#{DEFAULT_VALUES['date_end_planned']}"])) -
-                            (Date.parse(project_metrics["#{DEFAULT_VALUES['date_start_planned']}"]))).to_s + ' días'
-      return time_total_planned
+                            (Date.parse(project_metrics["#{DEFAULT_VALUES['date_start_planned']}"])))
+      return I18n.t('datetime.distance_in_words.x_days', :count => time_total_planned)
     end
 
     #  Duración del proyecto
@@ -238,7 +238,7 @@ module CMI
       else
           time_total_real = "--"
       end
-      return time_total_real + ' días'
+      return I18n.t('datetime.distance_in_words.x_days', :count => time_total_real)
     end
 
     def calculate_no_approval_open project
