@@ -225,7 +225,8 @@ module CMI
     #  Dureción del proyecto planificada
     def calculate_time_total_planned project_metrics
       time_total_planned = 0.0
-      time_total_planned = ((Date.parse(project_metrics["#{DEFAULT_VALUES['date_end_planned']}"])) - (Date.parse(project_metrics['Fecha de comienzo planificada']))).to_s + ' días'
+      time_total_planned = ((Date.parse(project_metrics["#{DEFAULT_VALUES['date_end_planned']}"])) -
+                            (Date.parse(project_metrics["#{DEFAULT_VALUES['date_start_planned']}"]))).to_s + ' días'
       return time_total_planned
     end
 
