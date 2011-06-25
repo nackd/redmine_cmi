@@ -2,13 +2,13 @@
   <legend><%=l :'cmi.project_custom_fields' %></legend>
   <p>
     <label><%=l :'cmi.field_project_group' %></label>
-    <%= text_field_tag 'settings[field_project_group]' %>
+    <%= text_field_tag 'settings[field_project_group]', (Setting.plugin_redmine_cmi['field_project_group'] rescue nil) %>
   </p>
 </fieldset>
 <fieldset>
   <legend><%=l :'cmi.user_custom_fields' %></legend>
   <p>
     <label><%=l :'cmi.field_user_profile' %></label>
-    <%= text_field_tag 'settings[field_user_profile]' %>
+    <%= text_field_tag 'settings[field_user_profile]', (Setting.plugin_redmine_cmi['field_user_profile'] rescue nil) %>
   </p>
 </fieldset>
