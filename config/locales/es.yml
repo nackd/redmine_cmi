@@ -8,6 +8,7 @@ es:
     field_project_scheduled_finish_date: Fecha de fin planificada
     field_project_actual_start_date: Fecha real de comienzo
     field_project_qa_review_meetings: Número de revisiones de calidad planificadas
+    field_project_scheduled_role_effort: Esfuerzo previsto por perfil
     project_custom_fields: Campos personalizados de proyecto
     field_user_profile: Perfil
     user_custom_fields: Campos personalizados de usuario

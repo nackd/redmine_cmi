@@ -40,8 +40,6 @@ issue_status:
   accepted: Aceptada
   approval: Validada
 
-project_role_original_effort_planned_field: Esfuerzo previsto para {{role}}
-
 report_material_original_budget_field: Presupuesto inicial
 report_material_current_budget_field: Presupuesto actual
 report_role_current_effort_planned_field: Esfuerzo actual {{role}}

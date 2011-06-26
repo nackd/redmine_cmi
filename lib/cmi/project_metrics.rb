@@ -38,11 +38,7 @@ module CMI
         role_current_effort_planned = IssueCustomField.find_by_name(role_current_effort_planned_name)
         @hr_current_effort_planned[role] = @project.last_report.custom_value_for(role_current_effort_planned).value.to_f rescue 0.0
 
-        if role == 'JP' # TODO Fix this shit
-          role_original_effort_planned_name = DEFAULT_VALUES['project_role_original_effort_planned_field'].gsub('{{role}}', "el JP")
-        else
-          role_original_effort_planned_name = DEFAULT_VALUES['project_role_original_effort_planned_field'].gsub('{{role}}', role)
-        end
+        role_original_effort_planned_name = Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', role)
         role_original_effort_planned = ProjectCustomField.find_by_name(role_original_effort_planned_name)
         @hr_original_effort_planned[role] = @project.custom_value_for(role_original_effort_planned).value.to_f rescue 0.0
 

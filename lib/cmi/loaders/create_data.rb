@@ -90,30 +90,13 @@ module CMI
           ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_total_income'],
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true,
             :is_for_all => false, :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'JP'),
-            :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
-            :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AF'),
-            :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
-            :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AP'),
-            :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
-            :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PS'),
-            :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
-            :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PJ'),
-            :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
-            :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'B'),
-            :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
-            :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
+
+          ["JP", "AF", "AP", "PS", "PJ", "B"].each do |role| # TODO remove this hardcoded role list
+            ProjectCustomField.create(:type => "ProjectCustomField",
+              :name => Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', role),
+              :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
+              :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
+          end
 
           ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_actual_start_date'],
             :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
