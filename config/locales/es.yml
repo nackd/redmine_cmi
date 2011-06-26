@@ -4,6 +4,7 @@ es:
   cmi:
     field_project_group: Grupo
     field_project_total_income: Cantidad aceptada
+    field_project_scheduled_start_date: Fecha de comienzo planificada
     project_custom_fields: Campos personalizados de proyecto
     field_user_profile: Perfil
     user_custom_fields: Campos personalizados de usuario

@@ -8,6 +8,10 @@
     <label><%=l :'cmi.field_project_total_income' %></label>
     <%= text_field_tag 'settings[field_project_total_income]', (Setting.plugin_redmine_cmi['field_project_total_income'] rescue nil) %>
   </p>
+  <p>
+    <label><%=l :'cmi.field_project_scheduled_start_date' %></label>
+    <%= text_field_tag 'settings[field_project_scheduled_start_date]', (Setting.plugin_redmine_cmi['field_project_scheduled_start_date'] rescue nil) %>
+  </p>
 </fieldset>
 <fieldset>
   <legend><%=l :'cmi.user_custom_fields' %></legend>

@@ -118,7 +118,7 @@ module CMI
           ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['date_start_real'],
             :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true)
-          ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['date_start_planned'],
+          ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_scheduled_start_date'],
             :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true)
           ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['date_end_planned'],

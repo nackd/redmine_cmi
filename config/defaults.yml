@@ -55,7 +55,6 @@ expected_date_end: Fecha fin prevista
 quality_meets_done: Revisión calidad realizada
 budget_spected_rrmm: Presupuesto previsto rrmm
 date_start_real: Fecha real de comienzo
-date_start_planned: Fecha de comienzo planificada
 date_end_planned: Fecha de fin planificada
 quality_meets_planned: Revision calidad planificada
 
