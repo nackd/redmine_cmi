@@ -222,11 +222,11 @@ module CMI
       return I18n.t('datetime.distance_in_words.x_days', :count => time_remaining)
     end
 
-    #  Dureción del proyecto planificada
+    #  Duración del proyecto planificada
     def calculate_time_total_planned project_metrics
       time_total_planned = 0.0
-      time_total_planned = ((Date.parse(project_metrics["#{DEFAULT_VALUES['date_end_planned']}"])) -
-                            (Date.parse(project_metrics["#{DEFAULT_VALUES['date_start_planned']}"])))
+      time_total_planned = (Date.parse(project_metrics[Setting.plugin_redmine_cmi['field_project_scheduled_finish_date']]) -
+                            Date.parse(project_metrics[Setting.plugin_redmine_cmi['field_project_scheduled_start_date']]))
       return I18n.t('datetime.distance_in_words.x_days', :count => time_total_planned)
     end
 

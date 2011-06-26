@@ -15,8 +15,8 @@ METRICS = [ 'time_start_planned',
              'money_now',
              'money_real']
 
-INITIAL_METRICS = [ "#{DEFAULT_VALUES['date_start_planned']}", # TODO field_project_scheduled_start_date (just info field)
-                    "#{DEFAULT_VALUES['date_end_planned']}",
+INITIAL_METRICS = [ "#{DEFAULT_VALUES['date_start_planned']}", # TODO field_project_scheduled_start_date
+                    "#{DEFAULT_VALUES['date_end_planned']}", # TODO field_project_scheduled_finish_date
                     "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'JP')}",
                     "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AF')}",
                     "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AP')}",
