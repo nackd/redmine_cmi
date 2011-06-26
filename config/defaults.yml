@@ -54,5 +54,3 @@ effort: "Esfuerzo {{type}} {{profile}}"
 expected_date_end: Fecha fin prevista
 quality_meets_done: Revisión calidad realizada
 budget_spected_rrmm: Presupuesto previsto rrmm
-quality_meets_planned: Revision calidad planificada
-

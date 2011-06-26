@@ -125,7 +125,7 @@ module CMI
             :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true)
 
-          ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['quality_meets_planned'],
+          ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_qa_review_meetings'],
             :field_format => "int", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true)
           ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_group'],
