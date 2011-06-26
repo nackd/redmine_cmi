@@ -18,7 +18,8 @@ module CMI
     private
 
     def calculate
-      project_accepted_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_accepted_field'])
+      raise CMI::NoConfigException unless Setting.plugin_redmine_cmi
+      project_accepted_field = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi['field_project_total_income'])
       report_material_current_budget_field = IssueCustomField.find_by_name(DEFAULT_VALUES['report_material_current_budget_field'])
       report_material_original_budget_field = IssueCustomField.find_by_name(DEFAULT_VALUES['report_material_original_budget_field'])
 

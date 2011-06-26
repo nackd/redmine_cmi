@@ -3,6 +3,7 @@ en:
   project_module_cmiplugin: Metrics
   cmi:
     field_project_group: Group
+    field_project_total_income: Total income
     project_custom_fields: Project custom fields
     field_user_profile: Profile
     user_custom_fields: User custom fields

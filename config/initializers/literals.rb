@@ -24,7 +24,7 @@ INITIAL_METRICS = [ "#{DEFAULT_VALUES['date_start_planned']}",
                     "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PJ')}",
                     "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'B')}",
                     "#{DEFAULT_VALUES['budget_spected_rrmm']}",
-                    "#{DEFAULT_VALUES['budget_accepted']}",
+                    "#{DEFAULT_VALUES['budget_accepted']}", # TODO field_project_total_income
                     "#{DEFAULT_VALUES['quality_meets_planned']}",
                     "#{DEFAULT_VALUES['date_start_real']}"
                     ]

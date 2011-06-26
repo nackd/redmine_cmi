@@ -87,7 +87,7 @@ module CMI
           ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['budget_spected_rrmm'],
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true,
             :is_for_all => false, :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          ProjectCustomField.create(:type => "ProjectCustomField", :name => DEFAULT_VALUES['budget_accepted'],
+          ProjectCustomField.create(:type => "ProjectCustomField", :name => Setting.plugin_redmine_cmi['field_project_total_income'],
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true,
             :is_for_all => false, :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",

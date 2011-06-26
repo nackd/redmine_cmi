@@ -40,8 +40,6 @@ issue_status:
   accepted: Aceptada
   approval: Validada
 
-
-project_accepted_field: Cantidad aceptada
 project_role_original_effort_planned_field: Esfuerzo previsto para {{role}}
 
 report_material_original_budget_field: Presupuesto inicial
@@ -54,7 +52,6 @@ expected: previsto
 effort: "Esfuerzo {{type}} {{profile}}"
 
 expected_date_end: Fecha fin prevista
-budget_accepted: Cantidad aceptada
 quality_meets_done: Revisión calidad realizada
 budget_spected_rrmm: Presupuesto previsto rrmm
 date_start_real: Fecha real de comienzo
