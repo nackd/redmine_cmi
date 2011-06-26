@@ -6,6 +6,7 @@ en:
     field_project_total_income: Total income
     field_project_scheduled_start_date: Scheduled start date
     field_project_scheduled_finish_date: Scheduled finish date
+    field_project_actual_start_date: Actual start date
     project_custom_fields: Project custom fields
     field_user_profile: Profile
     user_custom_fields: User custom fields

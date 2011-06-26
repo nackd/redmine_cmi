@@ -26,7 +26,7 @@ INITIAL_METRICS = [ "#{DEFAULT_VALUES['date_start_planned']}", # TODO field_proj
                     "#{DEFAULT_VALUES['budget_spected_rrmm']}",
                     "#{DEFAULT_VALUES['budget_accepted']}", # TODO field_project_total_income
                     "#{DEFAULT_VALUES['quality_meets_planned']}",
-                    "#{DEFAULT_VALUES['date_start_real']}"
+                    "#{DEFAULT_VALUES['date_start_real']}" # TODO field_project_actual_start_date
                     ]
 
 VARIANT_METRICS = ["#{DEFAULT_VALUES['expected_date_end']}",

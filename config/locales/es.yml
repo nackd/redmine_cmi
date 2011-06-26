@@ -6,6 +6,7 @@ es:
     field_project_total_income: Cantidad aceptada
     field_project_scheduled_start_date: Fecha de comienzo planificada
     field_project_scheduled_finish_date: Fecha de fin planificada
+    field_project_actual_start_date: Fecha real de comienzo
     project_custom_fields: Campos personalizados de proyecto
     field_user_profile: Perfil
     user_custom_fields: Campos personalizados de usuario
