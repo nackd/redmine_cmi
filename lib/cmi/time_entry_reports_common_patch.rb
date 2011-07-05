@@ -22,8 +22,7 @@ module CMI
     module InstanceMethods
       def load_profile_criteria
         @available_criterias['profile'] = {:sql => "Role",
-                                             :klass => Role,
-                                             :label => :label_profile}
+                                           :label => :label_profile}
       end
     end
   end
