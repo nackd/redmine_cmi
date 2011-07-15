@@ -30,30 +30,13 @@ module CMI
                   # IssueCustomField
           tracker = Tracker.find_by_name(DEFAULT_VALUES['trackers']['report'])
           list = []
-          list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'JP'),
-                  :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
-                  :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'AF'),
-                  :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
-                  :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'AP'),
-                  :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
-                  :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'PS'),
-                  :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
-                  :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'PJ'),
-                  :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
-                  :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
-          list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'B'),
-                  :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
-                  :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
+          ["JP", "AF", "AP", "PS", "PJ", "B"].each do |role| # TODO remove this hardcoded role list
+            list << IssueCustomField.create(:type => "IssueCustomField",
+                    :name => Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub("%{role}", role),
+                    :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
+                    :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
+          end
+
           list << IssueCustomField.create(:type => "IssueCustomField",
                   :name => DEFAULT_VALUES['report_material_original_budget_field'], :field_format => "float",
                   :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true, :is_filter => false,

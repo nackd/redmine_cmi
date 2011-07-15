@@ -3,7 +3,20 @@ module CMI
     class << self
 
       def get_customs(project, project_metrics)
-        INITIAL_METRICS.each do |custom_field_name|
+        [ Setting.plugin_redmine_cmi["field_project_scheduled_start_date"],
+          Setting.plugin_redmine_cmi["field_project_scheduled_finish_date"],
+          # TODO drop this hardcoded role list
+          Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "JP"),
+          Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "AF"),
+          Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "AP"),
+          Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "PS"),
+          Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "PJ"),
+          Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "B"),
+          "#{DEFAULT_VALUES['budget_spected_rrmm']}",
+          Setting.plugin_redmine_cmi["field_project_total_income"],
+          Setting.plugin_redmine_cmi["field_project_qa_review_meetings"],
+          Setting.plugin_redmine_cmi["field_project_actual_start_date"]
+        ].each do |custom_field_name|
           id = ProjectCustomField.find_by_name(custom_field_name)
           project_metrics[custom_field_name] = (project.custom_values.find_by_custom_field_id(id)).value unless id.nil?
         end
@@ -12,8 +25,17 @@ module CMI
 
       def get_informe(informe, project_metrics)
         @informe = informe
-        project_metrics['Fecha del informe']=informe.start_date.to_s
-        VARIANT_METRICS.each do |custom_field_name|
+        project_metrics['Fecha del informe'] = informe.start_date.to_s
+        ["#{DEFAULT_VALUES['expected_date_end']}",
+          # TODO drop this hardcoded role list
+          Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "JP"),
+          Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "AF"),
+          Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "AP"),
+          Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "PS"),
+          Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "PJ"),
+          Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "B"),
+          "#{DEFAULT_VALUES['quality_meets_done']}"
+        ].each do |custom_field_name|
           id = IssueCustomField.find_by_name(custom_field_name)
           project_metrics[custom_field_name] = (informe.custom_values.find_by_custom_field_id(id)).value unless id.nil?
         end

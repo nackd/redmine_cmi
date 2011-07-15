@@ -8,42 +8,53 @@ gem 'mocha'
 require 'mocha'
 
 def create_test_data
+  Setting.plugin_redmine_cmi = {
+    "field_project_group"                 => "Grupo",
+    "field_user_profile"                  => "Perfil",
+    "field_project_total_income"          => "Cantidad aceptada",
+    "field_project_scheduled_start_date"  => "Fecha de comienzo planificada",
+    "field_project_scheduled_finish_date" => "Fecha de fin planificada",
+    "field_project_actual_start_date"     => "Fecha real de comienzo",
+    "field_project_qa_review_meetings"    => "Revision calidad planificada",
+    "field_project_scheduled_role_effort" => "Esfuerzo previsto %{role}",
+    "field_report_scheduled_role_effort"  => "Esfuerzo actual %{role}"
+  }
   # Create custom fields
   CMI::Loaders::CreateData.load
-  field_date_start_planned = ProjectCustomField.find_by_name(DEFAULT_VALUES["date_start_planned"]).id
-  field_date_end_planned = ProjectCustomField.find_by_name(DEFAULT_VALUES["date_end_planned"]).id
-  field_date_start_real = ProjectCustomField.find_by_name(DEFAULT_VALUES["date_start_real"]).id
-  field_quality_meets_planned = ProjectCustomField.find_by_name(DEFAULT_VALUES["quality_meets_planned"]).id
-  field_accepted_quantity = ProjectCustomField.find_by_name(DEFAULT_VALUES["project_accepted_field"]).id
-  field_project_group = ProjectCustomField.find_by_name(DEFAULT_VALUES["project_group_field"]).id
-  field_effort_JP = ProjectCustomField.find_by_name(DEFAULT_VALUES['effort'].gsub('{{type}}',
-                                                    DEFAULT_VALUES['expected']).gsub('{{profile}}', 'JP')).id
-  field_effort_AF = ProjectCustomField.find_by_name(DEFAULT_VALUES['effort'].gsub('{{type}}',
-                                                    DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AF')).id
-  field_effort_AP = ProjectCustomField.find_by_name(DEFAULT_VALUES['effort'].gsub('{{type}}',
-                                                    DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AP')).id
-  field_effort_PS = ProjectCustomField.find_by_name(DEFAULT_VALUES['effort'].gsub('{{type}}',
-                                                    DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PS')).id
-  field_effort_PJ = ProjectCustomField.find_by_name(DEFAULT_VALUES['effort'].gsub('{{type}}',
-                                                    DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PJ')).id
-  field_effort_B = ProjectCustomField.find_by_name(DEFAULT_VALUES['effort'].gsub('{{type}}',
-                                                   DEFAULT_VALUES['expected']).gsub('{{profile}}', 'B')).id
+  field_date_start_planned = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi["field_project_scheduled_start_date"]).id
+  field_date_end_planned = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi["field_project_scheduled_finish_date"]).id
+  field_date_start_real = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi["field_project_actual_start_date"]).id
+  field_quality_meets_planned = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi["field_project_qa_review_meetings"]).id
+  field_accepted_quantity = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi["field_project_total_income"]).id
+  field_project_group = ProjectCustomField.find_by_name(Setting.plugin_redmine_cmi["field_project_group"]).id
+  field_effort_JP = ProjectCustomField.find_by_name(
+    Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'JP')).id
+  field_effort_AF = ProjectCustomField.find_by_name(
+    Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'AF')).id
+  field_effort_AP = ProjectCustomField.find_by_name(
+    Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'AP')).id
+  field_effort_PS = ProjectCustomField.find_by_name(
+    Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'PS')).id
+  field_effort_PJ = ProjectCustomField.find_by_name(
+    Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'PJ')).id
+  field_effort_B = ProjectCustomField.find_by_name(
+    Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'B')).id
   status_closed = IssueStatus.find_by_name(DEFAULT_VALUES["issue_status"]["closed"]).id
   field_report_date_end_planned = IssueCustomField.find_by_name(DEFAULT_VALUES["expected_date_end"]).id
   field_report_quality_meets_done = IssueCustomField.find_by_name(DEFAULT_VALUES["quality_meets_done"]).id
   field_report_effort_JP = IssueCustomField.find_by_name(
-    DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', 'JP')).id
+    Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'JP')).id
   field_report_effort_AF = IssueCustomField.find_by_name(
-    DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', 'AF')).id
+    Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'AF')).id
   field_report_effort_AP = IssueCustomField.find_by_name(
-    DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', 'AP')).id
+    Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'AP')).id
   field_report_effort_PS = IssueCustomField.find_by_name(
-    DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', 'PS')).id
+    Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'PS')).id
   field_report_effort_PJ = IssueCustomField.find_by_name(
-    DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', 'PJ')).id
+    Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'PJ')).id
   field_report_effort_B = IssueCustomField.find_by_name(
-    DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', 'B')).id
-  field_user_role = UserCustomField.find_by_name(DEFAULT_VALUES["user_role_field"]).id
+    Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'B')).id
+  field_user_role = UserCustomField.find_by_name(Setting.plugin_redmine_cmi["field_user_profile"]).id
   tracker_reports = Tracker.find_by_name(DEFAULT_VALUES["trackers"]["report"]).id
   tracker_bugs = Tracker.find_by_name(DEFAULT_VALUES["trackers"]["bug"]).id
   tracker_features = Tracker.find_by_name(DEFAULT_VALUES["trackers"]["feature"]).id

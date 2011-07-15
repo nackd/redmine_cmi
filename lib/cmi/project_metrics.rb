@@ -34,7 +34,7 @@ module CMI
       User.roles.each do |role|
         @hr_effort_done[role] = @project.effort_done_by_role(role, @project.last_report.start_date) rescue 0.0
 
-        role_current_effort_planned_name = DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', role)
+        role_current_effort_planned_name = Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', role)
         role_current_effort_planned = IssueCustomField.find_by_name(role_current_effort_planned_name)
         @hr_current_effort_planned[role] = @project.last_report.custom_value_for(role_current_effort_planned).value.to_f rescue 0.0
 

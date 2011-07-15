@@ -117,10 +117,10 @@ module CMI
       return project_metrics
     end
 
-    def calculate_effort_general budget_type, project_metrics
+    def calculate_effort_general effort_type, project_metrics
       effort = 0.0
       User.roles.each do |profile|
-        effort += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', budget_type).gsub('{{profile}}', profile)}"].to_f
+        effort += project_metrics["#{effort_type.gsub('%{role}', profile)}"].to_f
       end
       return effort.round(2).to_s + " #{l('cmi.label_hours')}"
     end
@@ -140,10 +140,10 @@ module CMI
       return effort_remaining.round(2).to_s + " #{l('cmi.label_hours')}"
     end
 
-    def calculate_budget_general_rrhh budget_type, project_metrics
+    def calculate_budget_general_rrhh effort_type, project_metrics
       budget_general_rrhh = 0.0
       User.roles.each do |profile|
-        budget_general_rrhh += project_metrics["#{DEFAULT_VALUES['effort'].gsub('{{type}}', "#{budget_type}").gsub('{{profile}}', profile)}"].to_f * @hash_cost_actual_year[profile].first.value
+        budget_general_rrhh += project_metrics["#{effort_type.gsub('%{role}', profile)}"].to_f * @hash_cost_actual_year[profile].first.value
       end
       return budget_general_rrhh.round(2)
     end

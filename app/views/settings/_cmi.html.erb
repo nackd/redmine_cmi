@@ -31,6 +31,14 @@
 </fieldset>
 
 <fieldset>
+  <legend><%=l :'cmi.issue_custom_fields' %></legend>
+  <p>
+    <label><%=l :'cmi.field_report_scheduled_role_effort' %></label>
+    <%= text_field_tag 'settings[field_report_scheduled_role_effort]', (Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'] rescue nil) %>
+  </p>
+</fieldset>
+
+<fieldset>
   <legend><%=l :'cmi.user_custom_fields' %></legend>
   <p>
     <label><%=l :'cmi.field_user_profile' %></label>

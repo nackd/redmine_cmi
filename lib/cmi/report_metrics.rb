@@ -14,7 +14,7 @@ module CMI
     end
 
     def effort_planned_by_role(role)
-      role_current_effort_planned_name = DEFAULT_VALUES['report_role_current_effort_planned_field'].gsub('{{role}}', role)
+      role_current_effort_planned_name = Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', role)
       role_current_effort_planned = IssueCustomField.find_by_name(role_current_effort_planned_name)
       @report.custom_value_for(role_current_effort_planned).value.to_f rescue 0.0
     end
