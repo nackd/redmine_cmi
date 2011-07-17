@@ -1,7 +1,7 @@
 class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
-  before_filter :require_project_jp, :find_project, :obtain_profile_costs, :get_roles
+  before_filter :find_project, :obtain_profile_costs, :get_roles
   include CMI::ProjectCalculations
 
   def show
@@ -150,17 +150,6 @@ class MetricsController < ApplicationController
   def obtain_profile_costs
     current_year_costs = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year]
     @hash_cost_actual_year = current_year_costs && current_year_costs.group_by(&:profile)
-  end
-
-  def require_project_jp
-    return unless require_login
-    @project = Project.find(params[:project_id])
-    member = @project.members.find_by_user_id(User.current.id)
-    if !User.current.admin? and (member.nil? or (!member.nil? and !(member.role_ids).include?(3)))
-      render_403
-      return false
-    end
-    true
   end
 
   def get_project_metrics
