@@ -99,13 +99,13 @@ class MetricsController < ApplicationController
     project_metrics['time_total_real'] = calculate_time_total_real project_metrics
     project_metrics['time_done'] = calculate_time_done project, project_metrics
     project_metrics['time_remaining'] = calculate_time_remaining project, project_metrics
-    project_metrics['effort_planned'] = calculate_effort_general(DEFAULT_VALUES['spected'], project_metrics)
+    project_metrics['effort_planned'] = calculate_effort_general(DEFAULT_VALUES['expected'], project_metrics)
     project_metrics['effort_real'] = calculate_effort_general(DEFAULT_VALUES['current'], project_metrics)
 
     calculate_effort_remaining_general(project_metrics)
 
     project_metrics['effort_remaining'] = calculate_effort_remaining project_metrics
-    project_metrics['budget_planned_rrhh'] = calculate_budget_general_rrhh(DEFAULT_VALUES['spected'], project_metrics)
+    project_metrics['budget_planned_rrhh'] = calculate_budget_general_rrhh(DEFAULT_VALUES['expected'], project_metrics)
     project_metrics['budget_planned'] = calculate_budget_planned project_metrics
     project_metrics['budget_real_rrhh'] = calculate_budget_general_rrhh(DEFAULT_VALUES['current'], project_metrics)
     project_metrics['budget_real'] = calculate_budget_real project_metrics

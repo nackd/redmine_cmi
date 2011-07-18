@@ -53,10 +53,10 @@ report_role_current_effort_planned_field: Esfuerzo actual {{role}}
 expense_value_field: Gasto del elemento
 
 current: actual
-spected: previsto
+expected: previsto
 effort: "Esfuerzo {{type}} {{profile}}"
 
-spected_date_end: Fecha fin prevista
+expected_date_end: Fecha fin prevista
 budget_accepted: Cantidad aceptada
 quality_meets_done: Revisión calidad realizada
 budget_spected_rrmm: Presupuesto previsto rrmm

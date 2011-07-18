@@ -67,7 +67,7 @@ module CMI
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => false, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
 
-          list << IssueCustomField.create(:type => "IssueCustomField", :name => DEFAULT_VALUES['spected_date_end'],
+          list << IssueCustomField.create(:type => "IssueCustomField", :name => DEFAULT_VALUES['expected_date_end'],
                   :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => nil)
 
@@ -91,27 +91,27 @@ module CMI
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true,
             :is_for_all => false, :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'JP'),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'JP'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'AF'),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AF'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'AP'),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AP'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'PS'),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PS'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'PJ'),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PJ'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
           ProjectCustomField.create(:type => "ProjectCustomField",
-            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['spected']).gsub('{{profile}}', 'B'),
+            :name => DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'B'),
             :field_format => "float", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => false,
             :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
 
