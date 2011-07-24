@@ -38,6 +38,3 @@ VARIANT_METRICS = ["#{DEFAULT_VALUES['expected_date_end']}",
                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'B')}",
                    "#{DEFAULT_VALUES['quality_meets_done']}"
                    ]
-
-GLOBAL_METRICS = [0.0] * 50
-
