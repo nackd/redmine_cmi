@@ -3,18 +3,20 @@
 
   <% @roles.each do |role| %>
     <td><%=h role %></td>
-    <% @reports.each do |report| %>
-      <td class="issue"><%= report.effort_remaining_by_role(role) %> <%= l('cmi.label_hours') %></td>
-    <% end %>
+    <% @reports.each_with_index do |report, i| -%>
+      <% content_tag :td, :id => "effort_remaining_#{role}_#{i}", :class => "issue" do -%>
+        <%= report.effort_remaining_by_role(role) %> <%= l('cmi.label_hours') %>
+      <% end -%>
+    <% end -%>
     </tr>
     <tr>
   <% end %>
 
   <td><%= l(:label_total) %></td>
   <% @names.each_with_index do |report, i| %><%# TODO kill this @names thing %>
-    <td class="issue">
+    <% content_tag :td, :id => "effort_remaining_total_#{i}", :class => "issue" do -%>
       <%= get_report_value(report, 'effort_remaining') %>
       <%= effort_remaining_graph(@reports[i], @roles) %>
-    </td>
-   <% end %>
+    <% end -%>
+  <% end -%>
 </tr>

@@ -1,14 +1,18 @@
 <tr>
   <th rowspan=2><%= l('cmi.label_configuration_management') %></th>
   <th rowspan=1 colspan="3"><%= l('cmi.label_effort_done') %></th>
-  <% @names.each do |report| %>
-      <td class="issue"><%= (get_report_value(report, 'conf_effort').to_f).round(2) %> <%= l('cmi.label_hours') %>
-      (<%= get_report_value(report, 'effort_done').to_f != 0.0? (get_report_value(report, 'conf_effort').to_f / get_report_value(report, 'effort_done').to_f).round(2) : "--" %>%) </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "config_effort_#{i}", :class => "issue" do -%>
+      <%= (get_report_value(report, 'conf_effort').to_f).round(2) %> <%= l('cmi.label_hours') %> (<%=
+           get_report_value(report, 'effort_done').to_f != 0.0? (get_report_value(report, 'conf_effort').to_f / get_report_value(report, 'effort_done').to_f).round(2) : "--" %> %)
+    <% end -%>
+  <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="3"><%= l('cmi.label_baseline_changes') %></th>
-  <% @names.each do |report| %>
-      <td class="issue"> </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "config_changes_#{i}", :class => "issue" do -%>
+      <%# TODO %>
+    <% end -%>
+  <% end -%>
 </tr>

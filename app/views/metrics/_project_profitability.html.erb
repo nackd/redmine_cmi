@@ -1,30 +1,36 @@
 <tr>
   <th rowspan=4><%= l('cmi.label_profitability') %></th>
   <th rowspan="1" colspan="2"><%= l('cmi.label_profitability_planned') %></th>
-  <% @names.each do |report| %>
-     <td class="issue"><%= (get_report_value(report, 'profitability_planned'))%>€
-     (<%= (get_report_value(report, 'profitability_percent_planned')).to_f.round(2) * 100 %> %) </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "profitability_planned_initially_#{i}", :class => "issue" do -%>
+      <%= (get_report_value(report, 'profitability_planned')) %> &euro; (<%=
+          (get_report_value(report, 'profitability_percent_planned')).to_f.round(2) * 100 %> %)
+    <% end -%>
+  <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="2"><%= l('cmi.label_profitability_current') %></th>
-  <% @names.each do |report| %>
-     <td class="issue"><%= (get_report_value(report, 'profitability_current'))%>€
-     (<%= (get_report_value(report, 'profitability_percent_current')).to_f.round(2) * 100 %> %) </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "profitability_planned_currently_#{i}", :class => "issue" do -%>
+      <%= (get_report_value(report, 'profitability_current'))%> &euro; (<%=
+          (get_report_value(report, 'profitability_percent_current')).to_f.round(2) * 100 %> %)
+    <% end -%>
+  <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="2"><%= l('cmi.label_current_profit') %></th>
-  <% @names.each do |report| %>
-     <td class="issue"><%= (get_report_value(report, 'profitability'))%>€
-     (<%= (get_report_value(report, 'profitability_percent')).to_f.round(2) * 100 %> %) </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "profitability_current_#{i}", :class => "issue" do -%>
+      <%= (get_report_value(report, 'profitability'))%> &euro; (<%=
+          (get_report_value(report, 'profitability_percent')).to_f.round(2) * 100 %> %)
+    <% end -%>
+  <% end -%>
 </tr>
 <tr>
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
-  <% @names.each do |report| %>
-    <td class="issue">
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "profitability_chart_#{i}", :class => "issue" do -%>
       <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%=50 + (((instance_variable_get("@metrics_#{report}")['profitability_percent_planned']).to_f.round(2) * 100) * 25/50 )%>,<%= 50 + (((instance_variable_get("@metrics_#{report}")['profitability_percent_current']).to_f.round(2) * 100) * 25/50)%>,<%= 50 + (((instance_variable_get("@metrics_#{report}")['profitability_percent']).to_f.round(2) * 100) * 25/50)%>|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:<%= (instance_variable_get("@metrics_#{report}")['profitability_percent']).to_f.round(2) * 100 %>%|Prevista actual: <%= (instance_variable_get("@metrics_#{report}")['profitability_percent_current']).to_f.round(2) * 100 %>%|Prevista inicial: <%= (instance_variable_get("@metrics_#{report}")['profitability_percent_planned']).to_f.round(2) * 100 %>%|"/>
-    </td>
-  <% end %>
+    <% end -%>
+  <% end -%>
 </tr>

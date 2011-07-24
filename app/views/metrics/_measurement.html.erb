@@ -1,13 +1,17 @@
 <tr>
   <th rowspan=2><%= l('cmi.label_measurement_and_metrics') %></th>
   <th rowspan=1 colspan="3"><%= l('cmi.label_effort_annual_review') %></th>
-  <% @names.each do |report| %>
-    <td class="issue"> -- </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "metrics_anual_revision_effort_#{i}", :class => "issue" do -%>
+      <%# TODO %>--
+    <% end -%>
+  <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="3"><%= l('cmi.label_effort_reporting') %></th>
-  <% @names.each do |report| %>
-    <td class="issue"> -- </td>
-  <% end %>
+  <% @names.each_with_index do |report, i| -%>
+    <% content_tag :td, :id => "metrics_report_effort_#{i}", :class => "issue" do -%>
+      <%# TODO %>--
+    <% end -%>
+  <% end -%>
 </tr>
