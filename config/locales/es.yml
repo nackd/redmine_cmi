@@ -100,6 +100,7 @@ es:
 
     error_other: "Faltan datos por introducir en el proyecto '%{project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: %{message}."
     error_profile: "Hay usuarios (%{users}) sin perfil asignado en el proyecto '%{project}'. Es necesario para poder realizar los cálculos correctamente."
+    cmi_no_reports_found: "No hay ningún informe en el proyecto '%{project}'. Cree uno (Nueva petición) para poder consultar las métricas."
 
     plugin_name: Cuadro de Mando Integral
     plugin_description: Vistas resumenes globales y por proyectos

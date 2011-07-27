@@ -15,6 +15,7 @@ class MetricsController < ApplicationController
                                         :conditions => ["tracker_id=?", tracker_informes.id],
                                         :order => 'start_date DESC')
         @reports = params[:metrics].nil? ? @reports[0..1] : @reports
+        raise CMI::Exception, l(:'cmi.cmi_no_reports_found') if @reports.empty?
         general_data_on_selected_reports
       end
       respond_to do |format|
