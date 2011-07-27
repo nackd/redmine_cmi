@@ -9,16 +9,17 @@ require 'mocha'
 
 def create_test_data
   Setting.plugin_redmine_cmi = {
-    "field_project_group"                 => "Grupo",
-    "field_user_profile"                  => "Perfil",
-    "field_project_total_income"          => "Cantidad aceptada",
-    "field_project_scheduled_start_date"  => "Fecha de comienzo planificada",
-    "field_project_scheduled_finish_date" => "Fecha de fin planificada",
-    "field_project_actual_start_date"     => "Fecha real de comienzo",
-    "field_project_qa_review_meetings"    => "Revision calidad planificada",
-    "field_project_scheduled_role_effort" => "Esfuerzo previsto %{role}",
-    "field_report_scheduled_role_effort"  => "Esfuerzo actual %{role}",
-    "field_report_scheduled_finish_date"  => "Fecha fin prevista"
+    "field_project_group"                   => "Grupo",
+    "field_user_profile"                    => "Perfil",
+    "field_project_total_income"            => "Cantidad aceptada",
+    "field_project_scheduled_start_date"    => "Fecha de comienzo planificada",
+    "field_project_scheduled_finish_date"   => "Fecha de fin planificada",
+    "field_project_actual_start_date"       => "Fecha real de comienzo",
+    "field_project_qa_review_meetings"      => "Revision calidad planificada",
+    "field_project_scheduled_role_effort"   => "Esfuerzo previsto %{role}",
+    "field_report_scheduled_role_effort"    => "Esfuerzo actual %{role}",
+    "field_report_scheduled_finish_date"    => "Fecha fin prevista",
+    "field_report_original_material_budget" => "Presupuesto inicial"
   }
   # Create custom fields
   CMI::Loaders::CreateData.load

@@ -27,7 +27,7 @@ module CMI
             IssuePriority.create(:name => priority)
           end
 
-                  # IssueCustomField
+          # IssueCustomField
           tracker = Tracker.find_by_name(DEFAULT_VALUES['trackers']['report'])
           list = []
           ["JP", "AF", "AP", "PS", "PJ", "B"].each do |role| # TODO remove this hardcoded role list
@@ -38,7 +38,7 @@ module CMI
           end
 
           list << IssueCustomField.create(:type => "IssueCustomField",
-                  :name => DEFAULT_VALUES['report_material_original_budget_field'], :field_format => "float",
+                  :name => Setting.plugin_redmine_cmi["field_report_original_material_budget"], :field_format => "float",
                   :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true, :is_filter => false,
                   :searchable => false, :editable => true, :default_value => 0)
 

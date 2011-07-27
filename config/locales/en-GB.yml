@@ -11,6 +11,7 @@ en:
     field_project_scheduled_role_effort: Scheduled effort per role
     field_report_scheduled_role_effort: Scheduled effort per role
     field_report_scheduled_finish_date: Scheduled finish date
+    field_report_original_material_budget: Original budget
     project_custom_fields: Project custom fields
     field_user_profile: Profile
     user_custom_fields: User custom fields
