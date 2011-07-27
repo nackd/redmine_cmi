@@ -50,7 +50,7 @@ module CMI
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => false, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
 
-          list << IssueCustomField.create(:type => "IssueCustomField", :name => DEFAULT_VALUES['expected_date_end'],
+          list << IssueCustomField.create(:type => "IssueCustomField", :name => Setting.plugin_redmine_cmi['field_report_scheduled_finish_date'],
                   :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => nil)
 

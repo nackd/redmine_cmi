@@ -214,8 +214,8 @@ module CMI
     #  Tiempo para terminar el proyecto. Unidad:días naturales.
     def calculate_time_remaining project, project_metrics
       time_remaining = 0.0
-      if !project_metrics["#{DEFAULT_VALUES['expected_date_end']}"].nil?
-          time_remaining = (Date.parse(project_metrics["#{DEFAULT_VALUES['expected_date_end']}"])) - @date
+      if !project_metrics["#{Setting.plugin_redmine_cmi['field_report_scheduled_finish_date']}"].nil?
+          time_remaining = (Date.parse(project_metrics["#{Setting.plugin_redmine_cmi['field_report_scheduled_finish_date']}"])) - @date
       else
           time_remaining = "--"
       end
@@ -233,8 +233,8 @@ module CMI
     #  Duración del proyecto
     def calculate_time_total_real project_metrics
       time_total_real = 0.0
-      if !project_metrics["#{DEFAULT_VALUES['expected_date_end']}"].nil? and !project_metrics[Setting.plugin_redmine_cmi['field_project_actual_start_date']].nil?
-          time_total_real = (Date.parse(project_metrics["#{DEFAULT_VALUES['expected_date_end']}"] || 0.0) -
+      if !project_metrics["#{Setting.plugin_redmine_cmi['field_report_scheduled_finish_date']}"].nil? and !project_metrics[Setting.plugin_redmine_cmi['field_project_actual_start_date']].nil?
+          time_total_real = (Date.parse(project_metrics["#{Setting.plugin_redmine_cmi['field_report_scheduled_finish_date']}"] || 0.0) -
                              Date.parse(project_metrics[Setting.plugin_redmine_cmi['field_project_actual_start_date']])).to_s
       else
           time_total_real = "--"

@@ -36,6 +36,10 @@
     <label><%=l :'cmi.field_report_scheduled_role_effort' %></label>
     <%= text_field_tag 'settings[field_report_scheduled_role_effort]', (Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'] rescue nil) %>
   </p>
+  <p>
+    <label><%=l :'cmi.field_report_scheduled_finish_date' %></label>
+    <%= text_field_tag 'settings[field_report_scheduled_finish_date]', (Setting.plugin_redmine_cmi['field_report_scheduled_finish_date'] rescue nil) %>
+  </p>
 </fieldset>
 
 <fieldset>

@@ -26,7 +26,7 @@ module CMI
       def get_informe(informe, project_metrics)
         @informe = informe
         project_metrics['Fecha del informe'] = informe.start_date.to_s
-        ["#{DEFAULT_VALUES['expected_date_end']}",
+        ["#{Setting.plugin_redmine_cmi['field_report_scheduled_finish_date']}",
           # TODO drop this hardcoded role list
           Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "JP"),
           Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "AF"),

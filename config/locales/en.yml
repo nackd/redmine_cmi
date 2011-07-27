@@ -10,6 +10,7 @@ en:
     field_project_qa_review_meetings: Number of scheduled QA review meetings
     field_project_scheduled_role_effort: Scheduled effort per role
     field_report_scheduled_role_effort: Scheduled effort per role
+    field_report_scheduled_finish_date: Scheduled finish date
     project_custom_fields: Project custom fields
     field_user_profile: Profile
     user_custom_fields: User custom fields

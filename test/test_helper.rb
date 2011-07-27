@@ -17,7 +17,8 @@ def create_test_data
     "field_project_actual_start_date"     => "Fecha real de comienzo",
     "field_project_qa_review_meetings"    => "Revision calidad planificada",
     "field_project_scheduled_role_effort" => "Esfuerzo previsto %{role}",
-    "field_report_scheduled_role_effort"  => "Esfuerzo actual %{role}"
+    "field_report_scheduled_role_effort"  => "Esfuerzo actual %{role}",
+    "field_report_scheduled_finish_date"  => "Fecha fin prevista"
   }
   # Create custom fields
   CMI::Loaders::CreateData.load
@@ -40,7 +41,8 @@ def create_test_data
   field_effort_B = ProjectCustomField.find_by_name(
     Setting.plugin_redmine_cmi["field_project_scheduled_role_effort"].gsub('%{role}', 'B')).id
   status_closed = IssueStatus.find_by_name(DEFAULT_VALUES["issue_status"]["closed"]).id
-  field_report_date_end_planned = IssueCustomField.find_by_name(DEFAULT_VALUES["expected_date_end"]).id
+  field_report_date_end_planned = IssueCustomField.find_by_name(
+    Setting.plugin_redmine_cmi['field_report_scheduled_finish_date']).id
   field_report_quality_meets_done = IssueCustomField.find_by_name(DEFAULT_VALUES["quality_meets_done"]).id
   field_report_effort_JP = IssueCustomField.find_by_name(
     Setting.plugin_redmine_cmi["field_report_scheduled_role_effort"].gsub('%{role}', 'JP')).id
