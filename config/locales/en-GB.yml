@@ -13,6 +13,7 @@ en:
     field_report_scheduled_finish_date: Scheduled finish date
     field_report_original_material_budget: Original budget
     field_report_current_material_budget: Current budget
+    field_report_expense_cost: Expense cost
     project_custom_fields: Project custom fields
     field_user_profile: Profile
     user_custom_fields: User custom fields

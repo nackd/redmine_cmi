@@ -46,7 +46,7 @@ module CMI
                   :name => Setting.plugin_redmine_cmi["field_report_current_material_budget"], :field_format => "float",
                   :possible_values => [], :regexp => "", :is_required => false, :is_for_all => true, :is_filter => false,
                   :searchable => false, :editable => true, :default_value => 0)
-          list << IssueCustomField.create(:type => "IssueCustomField", :name => DEFAULT_VALUES['expense_value_field'],
+          list << IssueCustomField.create(:type => "IssueCustomField", :name => Setting.plugin_redmine_cmi["field_report_expense_cost"],
                   :field_format => "float", :possible_values => [], :regexp => "", :is_required => false, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => 0)
 

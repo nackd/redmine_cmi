@@ -57,7 +57,7 @@ module CMI
       # TODO Date.tomorrow? why not @project.last_report.start_date?
       @hr_spent = @project.hr_spent(Date.tomorrow)
 
-      expense_value_field = IssueCustomField.find_by_name(DEFAULT_VALUES['expense_value_field'])
+      expense_value_field = IssueCustomField.find_by_name(Setting.plugin_redmine_cmi["field_report_expense_cost"])
       @material_spent = @project.expenses.sum{ |e| e.custom_value_for(expense_value_field).value.to_f rescue 0.0 }
 
       # TODO @hr_current_spent_budget vs. @hr_spent

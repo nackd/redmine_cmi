@@ -73,7 +73,7 @@ class MetricsController < ApplicationController
       spent_issue_gastos.custom_values.each { |custom_value|
          project_metrics["#{DEFAULT_VALUES['budget_spected_rrmm']}"] += custom_value.value.to_f if custom_value.custom_field.name == Setting.plugin_redmine_cmi['field_report_original_material_budget']
          project_metrics[Setting.plugin_redmine_cmi["field_report_current_material_budget"]] += custom_value.value.to_f if custom_value.custom_field.name == Setting.plugin_redmine_cmi["field_report_current_material_budget"]
-         project_metrics['Gastado'] += custom_value.value.to_f if custom_value.custom_field.name == "#{DEFAULT_VALUES['expense_value_field']}"
+         project_metrics['Gastado'] += custom_value.value.to_f if custom_value.custom_field.name == Setting.plugin_redmine_cmi["field_report_expense_cost"]
       }
     end
     return project_metrics

@@ -40,7 +40,5 @@ issue_status:
   accepted: Aceptada
   approval: Validada
 
-expense_value_field: Gasto del elemento
-
 quality_meets_done: Revisión calidad realizada
 budget_spected_rrmm: Presupuesto previsto rrmm

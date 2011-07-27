@@ -48,6 +48,10 @@
     <label><%=l :'cmi.field_report_current_material_budget' %></label>
     <%= text_field_tag 'settings[field_report_current_material_budget]', (Setting.plugin_redmine_cmi['field_report_current_material_budget'] rescue nil) %>
   </p>
+  <p>
+    <label><%=l :'cmi.field_report_expense_cost' %></label>
+    <%= text_field_tag 'settings[field_report_expense_cost]', (Setting.plugin_redmine_cmi['field_report_expense_cost'] rescue nil) %>
+  </p>
 </fieldset>
 
 <fieldset>
