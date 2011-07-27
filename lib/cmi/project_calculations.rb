@@ -158,7 +158,7 @@ module CMI
     def calculate_budget_real project_metrics
       budget_real = 0.0
       budget_real = project_metrics['budget_real_rrhh'].to_f +
-                                project_metrics["#{DEFAULT_VALUES['report_material_current_budget_field']}"].to_f
+                                project_metrics[Setting.plugin_redmine_cmi["field_report_current_material_budget"]].to_f
       return budget_real.round(2).to_s
     end
 
@@ -188,7 +188,7 @@ module CMI
 
     def calculate_budget_remaining_rrhh_and_others project_metrics
       budget_remaining_rrhh = 0.0
-      budget_remaining_rrhh = project_metrics["#{DEFAULT_VALUES['report_material_current_budget_field']}"].to_f -
+      budget_remaining_rrhh = project_metrics[Setting.plugin_redmine_cmi["field_report_current_material_budget"]].to_f -
                                 project_metrics['Gastado'].to_f
       return budget_remaining_rrhh.round(2).to_s
     end

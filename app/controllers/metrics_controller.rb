@@ -57,7 +57,7 @@ class MetricsController < ApplicationController
   def initial_data_on_expense_issues(project, project_metrics)
 #     Esto encuentra el listado de tickets de Gastos
     project_metrics["#{DEFAULT_VALUES['budget_spected_rrmm']}"] = 0.0
-    project_metrics["#{DEFAULT_VALUES['report_material_current_budget_field']}"] = 0.0
+    project_metrics[Setting.plugin_redmine_cmi["field_report_current_material_budget"]] = 0.0
     project_metrics['Gastado'] = 0.0
 
     tracker_gastos = project.trackers.find_by_name(DEFAULT_VALUES['trackers']['expense'])
@@ -72,7 +72,7 @@ class MetricsController < ApplicationController
     spent_issues_gastos.each do |spent_issue_gastos|
       spent_issue_gastos.custom_values.each { |custom_value|
          project_metrics["#{DEFAULT_VALUES['budget_spected_rrmm']}"] += custom_value.value.to_f if custom_value.custom_field.name == Setting.plugin_redmine_cmi['field_report_original_material_budget']
-         project_metrics["#{DEFAULT_VALUES['report_material_current_budget_field']}"] += custom_value.value.to_f if custom_value.custom_field.name == "#{DEFAULT_VALUES['report_material_current_budget_field']}"
+         project_metrics[Setting.plugin_redmine_cmi["field_report_current_material_budget"]] += custom_value.value.to_f if custom_value.custom_field.name == Setting.plugin_redmine_cmi["field_report_current_material_budget"]
          project_metrics['Gastado'] += custom_value.value.to_f if custom_value.custom_field.name == "#{DEFAULT_VALUES['expense_value_field']}"
       }
     end

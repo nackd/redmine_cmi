@@ -19,7 +19,8 @@ def create_test_data
     "field_project_scheduled_role_effort"   => "Esfuerzo previsto %{role}",
     "field_report_scheduled_role_effort"    => "Esfuerzo actual %{role}",
     "field_report_scheduled_finish_date"    => "Fecha fin prevista",
-    "field_report_original_material_budget" => "Presupuesto inicial"
+    "field_report_original_material_budget" => "Presupuesto inicial",
+    "field_report_current_material_budget"  => "Presupuesto actual"
   }
   # Create custom fields
   CMI::Loaders::CreateData.load
