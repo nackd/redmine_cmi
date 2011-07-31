@@ -34,7 +34,7 @@ module CMI
           Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "PS"),
           Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "PJ"),
           Setting.plugin_redmine_cmi['field_report_scheduled_role_effort'].gsub('%{role}', "B"),
-          "#{DEFAULT_VALUES['quality_meets_done']}"
+          Setting.plugin_redmine_cmi['field_report_held_qa_review_meetings']
         ].each do |custom_field_name|
           id = IssueCustomField.find_by_name(custom_field_name)
           project_metrics[custom_field_name] = (informe.custom_values.find_by_custom_field_id(id)).value unless id.nil?

@@ -54,7 +54,8 @@ module CMI
                   :field_format => "date", :possible_values => [], :regexp => "", :is_required => true, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => nil)
 
-          list << IssueCustomField.create(:type => "IssueCustomField", :name => DEFAULT_VALUES['quality_meets_done'],
+          list << IssueCustomField.create(:type => "IssueCustomField",
+                  :name => Setting.plugin_redmine_cmi['field_report_held_qa_review_meetings'],
                   :field_format => "int", :possible_values => [], :regexp => "", :is_required => false, :is_for_all => true,
                   :is_filter => false, :searchable => false, :editable => true, :default_value => "")
 

@@ -52,6 +52,10 @@
     <label><%=l :'cmi.field_report_expense_cost' %></label>
     <%= text_field_tag 'settings[field_report_expense_cost]', (Setting.plugin_redmine_cmi['field_report_expense_cost'] rescue nil) %>
   </p>
+  <p>
+    <label><%=l :'cmi.field_report_held_qa_review_meetings' %></label>
+    <%= text_field_tag 'settings[field_report_held_qa_review_meetings]', (Setting.plugin_redmine_cmi['field_report_held_qa_review_meetings'] rescue nil) %>
+  </p>
 </fieldset>
 
 <fieldset>
