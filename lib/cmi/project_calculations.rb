@@ -151,7 +151,7 @@ module CMI
     def calculate_budget_planned project_metrics
       budget_planned_rrhh = 0.0
       budget_planned_rrhh = project_metrics['budget_planned_rrhh'].to_f +
-                                project_metrics["#{DEFAULT_VALUES['budget_spected_rrmm']}"].to_f
+                                Setting.plugin_redmine_cmi["field_project_scheduled_material_budget"].to_f
       return budget_planned_rrhh.round(2).to_s
     end
 

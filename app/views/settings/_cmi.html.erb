@@ -28,6 +28,10 @@
     <label><%=l :'cmi.field_project_scheduled_role_effort' %></label>
     <%= text_field_tag 'settings[field_project_scheduled_role_effort]', (Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'] rescue nil) %>
   </p>
+  <p>
+    <label><%=l :'cmi.field_project_scheduled_material_budget' %></label>
+    <%= text_field_tag 'settings[field_project_scheduled_material_budget]', (Setting.plugin_redmine_cmi['field_project_scheduled_material_budget'] rescue nil) %>
+  </p>
 </fieldset>
 
 <fieldset>

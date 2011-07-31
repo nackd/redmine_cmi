@@ -12,7 +12,7 @@ module CMI
           Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "PS"),
           Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "PJ"),
           Setting.plugin_redmine_cmi['field_project_scheduled_role_effort'].gsub('%{role}', "B"),
-          "#{DEFAULT_VALUES['budget_spected_rrmm']}",
+          Setting.plugin_redmine_cmi["field_project_scheduled_material_budget"],
           Setting.plugin_redmine_cmi["field_project_total_income"],
           Setting.plugin_redmine_cmi["field_project_qa_review_meetings"],
           Setting.plugin_redmine_cmi["field_project_actual_start_date"]
