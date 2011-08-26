@@ -9,13 +9,13 @@ class MetricsController < ApplicationController
       @profile_alert = false
       unless @project.nil?
         tracker_informes = @project.trackers.find_by_name(DEFAULT_VALUES['trackers']['report'])
-        raise CMI::Exception, l(:'cmi.cmi_report_tracker_not_available') if tracker_informes.nil?
+        raise CMI::Exception, I18n.t(:'cmi.cmi_report_tracker_not_available') if tracker_informes.nil?
         @reports = @project.issues.find(:all,
                                         :include => [:tracker],
                                         :conditions => ["tracker_id=?", tracker_informes.id],
                                         :order => 'start_date DESC')
         @reports = params[:metrics].nil? ? @reports[0..1] : @reports
-        raise CMI::Exception, l(:'cmi.cmi_no_reports_found') if @reports.empty?
+        raise CMI::Exception, I18n.t(:'cmi.cmi_no_reports_found', :project => @project) if @reports.empty?
         general_data_on_selected_reports
       end
       respond_to do |format|
