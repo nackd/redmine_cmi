@@ -1,12 +1,25 @@
 # English strings go here
 en:
   project_module_cmiplugin: Metrics
+
+  field_actual_start_date: Actual start date
+  field_scheduled_finish_date: Scheduled finish date
+  field_scheduled_material_budget: Scheduled material budget
+  field_scheduled_qa_meetings: Scheduled QA meetings
+  field_scheduled_start_date: Scheduled start date
+  field_total_income: Total income
+
   cmi:
     permission_view_metrics: View project metrics
     project_module_cmi: Metrics
     label_metrics: Metrics
+    label_info: Basic info
     label_view_all: View all the reports
     button_enlarge: Enlarge
+
+    label_initial_schedule: Initial schedule
+    label_actual_data: Actual data
+    label_scheduled_role_effort: "{{role}} scheduled effort"
 
     label_CMI: Central Panel of Management
     label_name: Name
@@ -23,7 +36,7 @@ en:
     label_project_management: Project Management
     label_effort: Effort
     label_done: Done
-    label_remaining_role: Remaining {{role}}
+    label_remaining_role: "Remaining {{role}}"
     label_remaining_total: Remaining total
     label_group_desviation: Group desviation (losses €)
     label_global_desviation: Global desviation

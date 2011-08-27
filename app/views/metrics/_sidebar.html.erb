@@ -2,4 +2,7 @@
 <%- if User.current.allowed_to?({:controller => :metrics, :action => :show}, @project) -%>
   <li><%= link_to t(:"cmi.label_metrics"), metrics_path(:action => :show) %></li>
 <%- end -%>
+<%- if User.current.allowed_to?({:controller => :metrics, :action => :info}, @project) -%>
+  <li><%= link_to t(:"cmi.label_info"), metrics_path(:action => :info) %></li>
+<%- end -%>
 </ul>

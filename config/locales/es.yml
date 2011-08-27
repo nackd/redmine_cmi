@@ -1,12 +1,25 @@
 # Spanish strings go here
 es:
   project_module_cmiplugin: Métricas
+
+  field_actual_start_date: Fecha de comienzo real
+  field_scheduled_finish_date: Fecha de fin planificada
+  field_scheduled_material_budget: Presupuesto para materiales
+  field_scheduled_qa_meetings: Revisiones de calidad planificadas
+  field_scheduled_start_date: Fecha de comienzo planificada
+  field_total_income: Cantidad aceptada
+
   cmi:
     permission_view_metrics: Ver métricas del proyecto
     project_module_cmi: Métricas
     label_metrics: Métricas
+    label_info: Información base
     label_view_all: Ver todos los informes
     button_enlarge: Ampliar
+
+    label_initial_schedule: Planificación inicial
+    label_actual_data: Datos reales
+    label_scheduled_role_effort: "Esfuerzo previsto {{role}}"
 
     label_CMI: Cuadro de Mando Integral
     label_name: Nombre
@@ -23,7 +36,7 @@ es:
     label_project_management: Gestión de proyectos
     label_effort: Esfuerzo
     label_done: Incurrido
-    label_remaining_role: Restante {{role}}
+    label_remaining_role: "Restante {{role}}"
     label_remaining_total: Restante total
     label_group_desviation: Desviación del grupo(perdidas €)
     label_global_desviation: Desviación respecto al Total
@@ -104,3 +117,9 @@ es:
 
     plugin_name: Cuadro de Mando Integral
     plugin_description: Vistas resumenes globales y por proyectos
+
+  # Workaround a Redmine i18n bug in the spanish translation
+  activerecord:
+    errors:
+      messages:
+        not_a_date: no es una fecha válida

@@ -2,7 +2,8 @@ class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
-  before_filter :obtain_profile_costs, :get_roles, :only => :show
+  before_filter :get_roles
+  before_filter :obtain_profile_costs, :only => :show
   include CMI::ProjectCalculations
 
   def show
@@ -34,6 +35,14 @@ class MetricsController < ApplicationController
         clean_exception.join("\n  ") + "\n\n"
       )
       flash[:error] = I18n.t :'cmi.error_other', :project => @project, :message => exc.message
+    end
+  end
+
+  def info
+    @cmi_project_info = CmiProjectInfo.find_or_initialize_by_project_id @project
+    if request.post?
+      @cmi_project_info.attributes= params[:cmi_project_info]
+      flash[:notice] = l(:notice_successful_update) if @cmi_project_info.save
     end
   end
 

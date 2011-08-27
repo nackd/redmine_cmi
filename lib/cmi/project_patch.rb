@@ -10,6 +10,8 @@ module CMI
       # Same as typing in the class
       base.class_eval do
         unloadable # Send unloadable so it will be reloaded in development
+
+        has_one :cmi_project_info, :dependent => :destroy
       end
     end
 
