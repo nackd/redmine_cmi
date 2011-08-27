@@ -2,7 +2,7 @@ class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
-  before_filter :obtain_profile_costs, :get_roles
+  before_filter :obtain_profile_costs, :get_roles, :only => :show
   include CMI::ProjectCalculations
 
   def show
@@ -20,7 +20,7 @@ class MetricsController < ApplicationController
         general_data_on_selected_reports
       end
       respond_to do |format|
-          format.html { render :template => 'metrics/show', :layout => !request.xhr? }
+          format.html { render :layout => !request.xhr? }
           format.js { render(:update) {|page| page.replace_html "tab-content-metrics", :partial => 'metrics/show_metrics'} }
       end
     rescue CMI::Exception => e

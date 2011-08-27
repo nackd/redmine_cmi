@@ -1,0 +1,41 @@
+<h2><%=l('cmi.label_metrics')%></h2>
+
+<% unless flash[:error] %>
+
+  <% form_for(metrics_path(:action => 'show', :project_id => @project), :method => :post) do |f| %>
+      <%= hidden_field_tag :metrics, 'all' %>
+      <p class="other-formats"><%= submit_tag l('cmi.label_view_all') %></p>
+  <% end %>
+
+<div style="overflow:auto">
+  <table class="list issues" border="1">
+    <thead>
+      <tr>
+        <th rowspan="1" width="150"><%=l('cmi.label_area')%></th>
+        <th rowspan="2" width="150"><%=l(:label_environment)%></th>
+        <th colspan="2" width="150"><%=l('cmi.label_metric')%></th>
+        <% @names.each do |report| %>
+          <th colspan="1"><% if(report=="actual")%>Valor actual - <%end%><%= get_report_value(report, 'Fecha del informe') %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'metrics/metrics/project_effort_done' %>
+      <%= render :partial => 'metrics/metrics/project_effort_remaining' %>
+      <%= render :partial => 'metrics/metrics/project_effort_planned' %>
+      <%= render :partial => 'metrics/metrics/project_time' %>
+      <%= render :partial => 'metrics/metrics/project_cost' %>
+      <%= render :partial => 'metrics/metrics/project_advance' %>
+      <%= render :partial => 'metrics/metrics/project_profitability' %>
+      <%= render :partial => 'metrics/metrics/project_deviation' %>
+      <%= render :partial => 'metrics/metrics/project_risk' %>
+      <%= render :partial => 'metrics/metrics/project_incident' %>
+      <%= render :partial => 'metrics/metrics/requirement' %>
+      <%= render :partial => 'metrics/metrics/configuration' %>
+      <%= render :partial => 'metrics/metrics/qa' %>
+      <%= render :partial => 'metrics/metrics/measurement' %>
+    </tbody>
+  </table>
+</div>
+
+<% end %>

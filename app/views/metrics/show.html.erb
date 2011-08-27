@@ -1,1 +1,7 @@
-<%= render :partial => 'show_metrics' %>
+<%= render :partial => 'metrics/metrics/show' %>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'sidebar' %>
+<% end %>
+
+<% html_title(l(:"cmi.label_metrics")) -%>

@@ -17,7 +17,7 @@ class MetricsControllerTest < ActionController::TestCase
   end
 
   test "routing" do
-    assert_routing({:method => :get, :path => "/projects/:project_id/metrics"},
+    assert_routing({:method => :get, :path => "/projects/:project_id/metrics/show"},
                    :controller => "metrics", :project_id => ":project_id", :action => "show")
   end
 

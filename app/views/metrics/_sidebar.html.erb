@@ -1,0 +1,5 @@
+<ul>
+<%- if User.current.allowed_to?({:controller => :metrics, :action => :show}, @project) -%>
+  <li><%= link_to t(:"cmi.label_metrics"), metrics_path(:action => :show) %></li>
+<%- end -%>
+</ul>
