@@ -1,7 +1,8 @@
 class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
-  before_filter :find_project, :obtain_profile_costs, :get_roles
+  before_filter :find_project, :authorize
+  before_filter :obtain_profile_costs, :get_roles
   include CMI::ProjectCalculations
 
   def show
