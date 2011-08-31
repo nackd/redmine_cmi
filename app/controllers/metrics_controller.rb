@@ -1,5 +1,6 @@
 class MetricsController < ApplicationController
   unloadable
+
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
   before_filter :get_roles

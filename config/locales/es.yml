@@ -14,6 +14,7 @@ es:
     project_module_cmi: Métricas
     label_metrics: Métricas
     label_info: Información base
+    label_checkpoints: Puntos de control
     label_view_all: Ver todos los informes
     button_enlarge: Ampliar
 

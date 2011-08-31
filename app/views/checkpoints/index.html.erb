@@ -1,0 +1,39 @@
+<% content_for :sidebar do %>
+  <%= render :partial => 'metrics/sidebar' %>
+<% end %>
+
+<div class="contextual">
+  <%= link_to_if_authorized l(:label_new), {:action => 'new'}, :class => 'icon icon-add' %>
+</div>
+
+<h2><%=l('cmi.label_checkpoints')%></h2>
+
+<% if @checkpoints.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <div class="autoscroll">
+  <table class="list issues">
+    <thead>
+      <tr>
+        <%= sort_header_tag('date', :caption => t(:label_date), :default_order => 'desc') %>
+        <%= content_tag('th', t(:"cmi.label_effort")) %>
+        <%= content_tag('th', t(:field_scheduled_finish_date)) %>
+        <%= content_tag('th', t(:field_scheduled_qa_meetings)) %>
+      </tr>
+    </thead>
+    <tbody>
+    <% @checkpoints.each do |checkpoint| -%>
+      <tr id="checkpoint-<%= checkpoint.id %>" class="<%= cycle('odd', 'even') %>">
+        <td><%= link_to checkpoint.date, :controller => 'checkpoints', :action => 'show', :id => checkpoint %></td>
+        <%= content_tag 'td', checkpoint.scheduled_role_effort.values.reduce(:+) %>
+        <%= content_tag 'td', checkpoint.scheduled_finish_date %>
+        <%= content_tag 'td', checkpoint.scheduled_qa_meetings %>
+      </tr>
+    <% end -%>
+    </tbody>
+  </table>
+  </div>
+  <p class="pagination"><%= pagination_links_full @pages, @count %></p>
+<% end %>
+
+<% html_title(l(:"cmi.label_metrics")) -%>

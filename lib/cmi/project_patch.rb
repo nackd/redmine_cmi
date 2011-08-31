@@ -12,6 +12,7 @@ module CMI
         unloadable # Send unloadable so it will be reloaded in development
 
         has_one :cmi_project_info, :dependent => :destroy
+        has_many :cmi_checkpoints, :dependent => :destroy
       end
     end
 
