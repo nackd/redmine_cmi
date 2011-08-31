@@ -1,7 +1,7 @@
 class MetricsController < ApplicationController
   unloadable
   menu_item :metrics
-  before_filter :find_project, :authorize
+  before_filter :find_project_by_project_id, :authorize
   before_filter :obtain_profile_costs, :get_roles
   include CMI::ProjectCalculations
 
@@ -143,10 +143,6 @@ class MetricsController < ApplicationController
     project_metrics['no_approval_open_without_date'] = calculate_no_approval_open_without_date project
 
     return project_metrics
-  end
-
-  def find_project
-    @project = Project.find(params[:project_id])
   end
 
   def obtain_profile_costs
