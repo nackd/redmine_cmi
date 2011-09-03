@@ -1,0 +1,44 @@
+<% content_for :sidebar do %>
+  <%= render :partial => 'metrics/sidebar' %>
+<% end %>
+
+<h2><%=l :"cmi.label_checkpoints" %> <%= @checkpoint.checkpoint_date %></h2>
+
+<div class="issue details">
+  <%= avatar(@checkpoint.author, :size => "50") %>
+
+  <div class="subject">
+    <h3><%=l :"cmi.label_checkpoints" %></h3>
+  </div>
+
+  <p class="author">
+    <%= authoring @checkpoint.created_at, @checkpoint.author %>.
+    <% if @checkpoint.created_at != @checkpoint.updated_at %>
+      <%= l(:label_updated_time, time_tag(@checkpoint.updated_at)) %>.
+    <% end %>
+  </p>
+  <table class="attributes">
+    <tr>
+      <th><%=l(:field_scheduled_finish_date)%>:</th><td><%= format_date(@checkpoint.scheduled_finish_date) %></td>
+      <th><%=l(:field_scheduled_qa_meetings)%>:</th><td><%= @checkpoint.scheduled_qa_meetings %></td>
+    </tr>
+    <%- @roles.each do |role| -%>
+      <tr>
+        <th><%=l(:"cmi.label_scheduled_role_effort", :role => role) %></th>
+        <td><%= @checkpoint.scheduled_role_effort[role] %></td>
+      </tr>
+    <%- end -%>
+  </table>
+
+  <% if @checkpoint.description? -%>
+    <hr />
+    <div class="contextual">
+      <%= link_to_remote_if_authorized(l(:button_quote), { :url => {:controller => 'journals', :action => 'new', :id => @issue} }, :class => 'icon icon-comment') %>
+    </div>
+
+    <p><strong><%=l(:field_description)%></strong></p>
+    <div class="wiki">
+      <%= textilizable @checkpoint, :description %>
+    </div>
+  <% end %>
+</div>

@@ -21,7 +21,7 @@ Redmine::Plugin.register :redmine_cmi do
   requires_redmine :version_or_higher => '1.0.0'
   project_module :cmiplugin do
   #     permission :view_cmi, {:cmi => [:projects, :groups, :show]}
-        permission :view_metrics, {:metrics => [:show, :info], :checkpoints => [:index, :new, :create]}
+        permission :view_metrics, {:metrics => [:show, :info], :checkpoints => [:index, :new, :create, :show]}
   end
 
   menu :project_menu, :metrics, {:controller => 'metrics', :action => 'show' }, :caption => :'cmi.caption_metrics', :after => :settings, :param => :project_id

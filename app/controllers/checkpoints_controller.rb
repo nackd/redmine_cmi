@@ -3,7 +3,7 @@ class CheckpointsController < ApplicationController
 
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
-  before_filter :get_roles, :only => :new
+  before_filter :get_roles, :only => [:new, :show]
 
   def index
     @limit = per_page_option
@@ -33,6 +33,10 @@ class CheckpointsController < ApplicationController
       get_roles
       render :action => 'new'
     end
+  end
+
+  def show
+    @checkpoint = CmiCheckpoint.find params[:id]
   end
 
   private
