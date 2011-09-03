@@ -6,12 +6,14 @@ class CmiCheckpoint < ActiveRecord::Base
   has_many :journals, :as => :journalized, :dependent => :destroy
 
   validates_presence_of :project, :author
+  validates_format_of :checkpoint_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
   validates_format_of :scheduled_finish_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
   validates_numericality_of :scheduled_qa_meetings, :only_integer => true
   validate :role_effort
 
   serialize :scheduled_role_effort, Hash
 
+  attr_protected :project_id, :author_id
   attr_reader :current_journal
   after_save :create_journal
 
@@ -24,7 +26,9 @@ class CmiCheckpoint < ActiveRecord::Base
   # Role effort validation
   def role_effort
     User.roles.each do |role|
-      unless scheduled_role_effort[role] =~ /\A[+-]?\d+\Z/
+      if scheduled_role_effort[role] =~ /\A[+-]?\d+\Z/
+        scheduled_role_effort[role] = scheduled_role_effort[role].to_i
+      else
         error = [I18n.translate(:"cmi.label_scheduled_role_effort", :role => role),
                  I18n.translate(:"activerecord.errors.messages.not_a_number")].join " "
         errors.add_to_base(error)

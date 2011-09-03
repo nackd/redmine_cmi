@@ -4,7 +4,7 @@ class CreateCmiCheckpoints < ActiveRecord::Migration
       t.integer :project_id, :null => false
       t.integer :author_id, :null => false
       t.text :description
-      t.date :date, :null => false
+      t.date :checkpoint_date, :null => false
       t.date :scheduled_finish_date, :null => false
       t.integer :scheduled_qa_meetings, :null => false
       t.text :scheduled_role_effort

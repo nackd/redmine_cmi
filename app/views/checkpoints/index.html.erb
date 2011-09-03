@@ -15,7 +15,7 @@
   <table class="list issues">
     <thead>
       <tr>
-        <%= sort_header_tag('date', :caption => t(:label_date), :default_order => 'desc') %>
+        <%= sort_header_tag('checkpoint_date', :caption => t(:label_date), :default_order => 'desc') %>
         <%= content_tag('th', t(:"cmi.label_effort")) %>
         <%= content_tag('th', t(:field_scheduled_finish_date)) %>
         <%= content_tag('th', t(:field_scheduled_qa_meetings)) %>
@@ -24,7 +24,7 @@
     <tbody>
     <% @checkpoints.each do |checkpoint| -%>
       <tr id="checkpoint-<%= checkpoint.id %>" class="<%= cycle('odd', 'even') %>">
-        <td><%= link_to checkpoint.date, :controller => 'checkpoints', :action => 'show', :id => checkpoint %></td>
+        <td><%= link_to checkpoint.checkpoint_date, :controller => 'checkpoints', :action => 'show', :id => checkpoint %></td>
         <%= content_tag 'td', checkpoint.scheduled_role_effort.values.reduce(:+) %>
         <%= content_tag 'td', checkpoint.scheduled_finish_date %>
         <%= content_tag 'td', checkpoint.scheduled_qa_meetings %>
