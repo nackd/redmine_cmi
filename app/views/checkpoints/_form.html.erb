@@ -1,11 +1,3 @@
-<% form_for :checkpoint, @checkpoint,
-                   :url => { :controller => 'checkpoints', :action => 'create', :project_id => @project },
-                   :builder => TabularFormBuilder,
-                   :lang => current_language do |f| %>
-
-  <%= error_messages_for 'checkpoint' %>
-
-  <div class="box tabular">
     <p><%= f.text_field :checkpoint_date, :size => 10, :required => true %><%= calendar_for('checkpoint_checkpoint_date') %></p>
     <p><%= f.text_field :scheduled_finish_date, :size => 10, :required => true %><%= calendar_for('checkpoint_scheduled_finish_date') %></p>
     <p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
@@ -21,9 +13,5 @@
                        :rows => (@checkpoint.description.blank? ? 10 : [[10, @checkpoint.description.length / 50].max, 100].min),
                        :accesskey => accesskey(:edit),
                        :class => 'wiki-edit' %></p>
-  </div>
 
-  <%= submit_tag(l(:button_save)) %>
-<% end %>
-
-<%= wikitoolbar_for 'checkpoint_description' %>
+<%= wikitoolbar_for 'cmi_checkpoint_description' %>

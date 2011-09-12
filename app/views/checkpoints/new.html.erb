@@ -4,4 +4,16 @@
 
 <h2><%=l('cmi.label_new_checkpoint')%></h2>
 
-<%= render :partial => 'form' %>
+<% form_for :checkpoint, @checkpoint,
+                   :url => { :controller => 'checkpoints', :action => 'create', :project_id => @project },
+                   :builder => TabularFormBuilder,
+                   :lang => current_language do |f| %>
+
+  <%= error_messages_for 'checkpoint' %>
+
+  <div class="box">
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  </div>
+
+  <%= submit_tag(l(:button_save)) %>
+<% end %>

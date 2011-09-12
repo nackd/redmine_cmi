@@ -3,7 +3,8 @@ class CheckpointsController < ApplicationController
 
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
-  before_filter :get_roles, :only => [:new, :show]
+  before_filter :get_roles, :only => [:new, :edit, :show]
+  before_filter :find_checkpoint, :only => [:show, :edit, :update]
 
   def index
     @limit = per_page_option
@@ -36,10 +37,31 @@ class CheckpointsController < ApplicationController
   end
 
   def show
-    @checkpoint = CmiCheckpoint.find params[:id]
+  end
+
+  def edit
+  end
+
+  def update
+    @checkpoint.attributes = params[:checkpoint]
+    if @checkpoint.save
+      flash[:notice] = l(:notice_successful_update)
+      redirect_back_or_default({:action => 'show', :id => @checkpoint})
+    else
+      get_roles
+      render :action => 'edit'
+    end
   end
 
   private
+
+  def find_checkpoint
+    @checkpoint = CmiCheckpoint.find params[:id]
+    unless @checkpoint.project_id == @project.id
+      deny_access
+      return
+    end
+  end
 
   def sort_column
     CmiCheckpoint.column_names.include?(params[:sort]) ? params[:sort] : "checkpoint_date"

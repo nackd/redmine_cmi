@@ -2,6 +2,11 @@
   <%= render :partial => 'metrics/sidebar' %>
 <% end %>
 
+<div class="contextual">
+  <%= link_to_if_authorized(l(:button_update), {:action => 'edit'}, :onclick => 'showAndScrollTo("update", "notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit)) %>
+  <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :method => :post, :class => 'icon icon-del' %>
+</div>
+
 <h2><%=l :"cmi.label_checkpoints" %> <%= @checkpoint.checkpoint_date %></h2>
 
 <div class="issue details">
@@ -42,3 +47,16 @@
     </div>
   <% end %>
 </div>
+
+<div class="contextual">
+  <%= link_to_if_authorized(l(:button_update), {:action => 'edit'}, :onclick => 'showAndScrollTo("update", "notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit)) %>
+  <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :method => :post, :class => 'icon icon-del' %>
+</div>
+
+<div style="clear: both;"></div>
+<% if authorize_for('checkpoints', 'edit') %>
+  <div id="update" style="display:none;">
+    <h3><%= l(:button_update) %></h3>
+    <%= render :partial => 'edit' %>
+  </div>
+<% end %>
