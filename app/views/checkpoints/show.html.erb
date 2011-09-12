@@ -48,6 +48,13 @@
   <% end %>
 </div>
 
+<% if @journals.present? %>
+  <div id="history">
+    <h3><%=l(:label_history)%></h3>
+    <%= render :partial => 'history', :locals => { :checkpoint => @checkpoint, :journals => @journals } %>
+  </div>
+<% end %>
+
 <div class="contextual">
   <%= link_to_if_authorized(l(:button_update), {:action => 'edit'}, :onclick => 'showAndScrollTo("update", "notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit)) %>
   <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :confirm => l(:text_are_you_sure), :method => :delete, :class => 'icon icon-del' %>

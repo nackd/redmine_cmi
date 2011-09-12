@@ -21,6 +21,14 @@ class CmiCheckpoint < ActiveRecord::Base
     self[:scheduled_role_effort] ||= {}
   end
 
+  def init_journal(user, notes = "")
+    @current_journal ||= Journal.new(:journalized => self, :user => user, :notes => notes)
+    @self_before_change = self.clone
+    # Make sure updated_on is updated when adding a note.
+    updated_at_will_change!
+    @current_journal
+  end
+
   private
 
   # Role effort validation
@@ -36,20 +44,12 @@ class CmiCheckpoint < ActiveRecord::Base
     end
   end
 
-  def init_journal(user, notes = "")
-    @current_journal ||= Journal.new(:journalized => self, :user => user, :notes => notes)
-    @self_before_change = self.clone
-    # Make sure updated_on is updated when adding a note.
-    updated_on_will_change!
-    @current_journal
-  end
-
   # Saves the changes in a Journal
   # Called after_save
   def create_journal
     if @current_journal
       # attributes changes
-      (self.class.column_names - %w(id author_id created_on updated_on)).each {|c|
+      (self.class.column_names - %w(id author_id created_at updated_at)).each {|c|
         @current_journal.details << JournalDetail.new(:property => 'attr',
                                                       :prop_key => c,
                                                       :old_value => @self_before_change.send(c),

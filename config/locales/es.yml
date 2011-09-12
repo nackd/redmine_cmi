@@ -9,6 +9,7 @@ es:
   field_scheduled_start_date: Fecha de comienzo planificada
   field_total_income: Cantidad aceptada
   field_checkpoint_date: Fecha de control
+  field_scheduled_role_effort: Esfuerzo previsto
 
   cmi:
     permission_view_metrics: Ver métricas del proyecto

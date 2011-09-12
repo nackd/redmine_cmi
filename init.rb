@@ -9,6 +9,7 @@ require 'cmi/time_entry_reports_common_patch'
 require 'cmi/user_patch'
 require 'cmi/users_helper_patch'
 require 'cmi/project_patch'
+require 'cmi/journal_observer_patch'
 
 Redmine::Plugin.register :redmine_cmi do
   name :'cmi.plugin_name'

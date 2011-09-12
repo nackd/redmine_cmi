@@ -37,18 +37,24 @@ class CheckpointsController < ApplicationController
   end
 
   def show
+    @journals = @checkpoint.journals.find(:all, :include => [:user, :details], :order => "#{Journal.table_name}.created_on ASC")
+    @journals.each_with_index {|j,i| j.indice = i+1}
+    @journals.reverse! if User.current.wants_comments_in_reverse_order?
   end
 
   def edit
+    @journal = @checkpoint.current_journal
   end
 
   def update
+    @checkpoint.init_journal(User.current, params[:notes])
     @checkpoint.attributes = params[:checkpoint]
     if @checkpoint.save
       flash[:notice] = l(:notice_successful_update)
       redirect_back_or_default({:action => 'show', :id => @checkpoint})
     else
       get_roles
+      @journal = @checkpoint.current_journal
       render :action => 'edit'
     end
   end
