@@ -20,7 +20,6 @@ module CMI
 
     module InstanceMethods
       def after_create_with_cmi(journal)
-        debugger
         unless journal.journalized_type == 'CmiCheckpoint'
           after_create_without_cmi(journal)
         end

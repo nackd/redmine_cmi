@@ -1,17 +1,17 @@
-    <p><%= f.text_field :checkpoint_date, :size => 10, :required => true %><%= calendar_for('checkpoint_checkpoint_date') %></p>
-    <p><%= f.text_field :scheduled_finish_date, :size => 10, :required => true %><%= calendar_for('checkpoint_scheduled_finish_date') %></p>
-    <p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
-  <%- @roles.each do |role| -%>
-    <p>
-      <%= label_tag "checkpoint_scheduled_role_effort_#{role}",
-                    l(:"cmi.label_scheduled_role_effort", :role => role) + '<span class="required"> *</span>' %>
-      <%= text_field_tag "checkpoint[scheduled_role_effort[#{role}]]", @checkpoint.scheduled_role_effort[role], :size => 10 %>
-    </p>
-  <%- end -%>
-    <p><%= f.text_area :description,
-                       :cols => 60,
-                       :rows => (@checkpoint.description.blank? ? 10 : [[10, @checkpoint.description.length / 50].max, 100].min),
-                       :accesskey => accesskey(:edit),
-                       :class => 'wiki-edit' %></p>
+<p><%= f.text_field :checkpoint_date, :size => 10, :required => true %><%= calendar_for('checkpoint_checkpoint_date') %></p>
+<p><%= f.text_field :scheduled_finish_date, :size => 10, :required => true %><%= calendar_for('checkpoint_scheduled_finish_date') %></p>
+<p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
+<%- @roles.each do |role| -%>
+<p>
+  <%= label_tag "checkpoint_scheduled_role_effort_#{role}",
+                l(:"cmi.label_scheduled_role_effort", :role => role) + '<span class="required"> *</span>' %>
+  <%= text_field_tag "checkpoint[scheduled_role_effort[#{role}]]", @checkpoint.scheduled_role_effort[role], :size => 10 %>
+</p>
+<%- end -%>
+<p><%= f.text_area :description,
+                   :cols => 60,
+                   :rows => (@checkpoint.description.blank? ? 10 : [[10, @checkpoint.description.length / 50].max, 100].min),
+                   :accesskey => accesskey(:edit),
+                   :class => 'wiki-edit' %></p>
 
 <%= wikitoolbar_for 'cmi_checkpoint_description' %>

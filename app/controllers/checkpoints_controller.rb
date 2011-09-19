@@ -6,6 +6,8 @@ class CheckpointsController < ApplicationController
   before_filter :get_roles, :only => [:new, :edit, :show]
   before_filter :find_checkpoint, :only => [:show, :edit, :update, :destroy]
 
+  helper :cmi
+
   def index
     @limit = per_page_option
     @count = CmiCheckpoint.count
@@ -25,8 +27,8 @@ class CheckpointsController < ApplicationController
 
   def create
     @checkpoint = CmiCheckpoint.new params[:checkpoint]
-    @checkpoint.project_id = @project
-    @checkpoint.author_id = User.current
+    @checkpoint.project = @project
+    @checkpoint.author = User.current
     if @checkpoint.save
       flash[:notice] = l(:notice_successful_update)
       redirect_to :action => :index

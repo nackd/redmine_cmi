@@ -8,4 +8,7 @@
 <%- if User.current.allowed_to?({:controller => :checkpoints, :action => :index}, @project) -%>
   <li><%= link_to t(:"cmi.label_checkpoints"), checkpoints_path %></li>
 <%- end -%>
+<%- if User.current.allowed_to?({:controller => :expenditures, :action => :index}, @project) -%>
+  <li><%= link_to t(:"cmi.label_expenditures"), expenditures_path %></li>
+<%- end -%>
 </ul>

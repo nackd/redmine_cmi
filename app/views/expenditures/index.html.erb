@@ -1,0 +1,39 @@
+<% content_for :sidebar do %>
+  <%= render :partial => 'metrics/sidebar' %>
+<% end %>
+
+<div class="contextual">
+  <%= link_to_if_authorized l(:label_new), {:action => 'new'}, :class => 'icon icon-add' %>
+</div>
+
+<h2><%=l('cmi.label_expenditures')%></h2>
+
+<% if @expenditures.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <div class="autoscroll">
+  <table class="list issues">
+    <thead>
+      <tr>
+        <%= sort_header_tag('concept', :caption => t(:field_concept), :default_order => 'asc') %>
+        <%= sort_header_tag('initial_budget', :caption => t(:field_initial_budget), :default_order => 'asc') %>
+        <%= sort_header_tag('current_budget', :caption => t(:field_current_budget), :default_order => 'asc') %>
+        <%= sort_header_tag('incurred', :caption => t(:field_incurred), :default_order => 'asc') %>
+      </tr>
+    </thead>
+    <tbody>
+    <% @expenditures.each do |expenditure| -%>
+      <tr id="expenditure-<%= expenditure.id %>" class="<%= cycle('odd', 'even') %>">
+        <td><%= link_to expenditure.concept, :controller => 'expenditures', :action => 'show', :id => expenditure %></td>
+        <%= content_tag 'td', expenditure.initial_budget %>
+        <%= content_tag 'td', expenditure.current_budget %>
+        <%= content_tag 'td', expenditure.incurred %>
+      </tr>
+    <% end -%>
+    </tbody>
+  </table>
+  </div>
+  <p class="pagination"><%= pagination_links_full @pages, @count %></p>
+<% end %>
+
+<% html_title(l(:"cmi.label_metrics")) -%>

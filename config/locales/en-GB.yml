@@ -10,6 +10,9 @@ en:
   field_total_income: Total income
   field_checkpoint_date: Checkpoint date
   field_scheduled_role_effort: Scheduled effort
+  field_initial_budget: Initial budget
+  field_current_budget: Current budget
+  field_incurred: Incurred
 
   cmi:
     permission_view_metrics: View project metrics
@@ -17,8 +20,11 @@ en:
     label_metrics: Metrics
     label_info: Basic info
     label_checkpoints: Checkpoints
+    label_expenditures: Expenditures
     label_view_all: View all the reports
     button_enlarge: Enlarge
+    label_new_checkpoint: Nuevo punto de control
+    label_new_expenditure: Nuevo gasto
 
     label_initial_schedule: Initial schedule
     label_actual_data: Actual data

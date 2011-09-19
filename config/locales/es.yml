@@ -10,6 +10,10 @@ es:
   field_total_income: Cantidad aceptada
   field_checkpoint_date: Fecha de control
   field_scheduled_role_effort: Esfuerzo previsto
+  field_concept: Concepto
+  field_initial_budget: Presupuesto inicial
+  field_current_budget: Presupuesto actual
+  field_incurred: Gasto incurrido
 
   cmi:
     permission_view_metrics: Ver métricas del proyecto
@@ -17,6 +21,7 @@ es:
     label_metrics: Métricas
     label_info: Información base
     label_checkpoints: Puntos de control
+    label_expenditures: Gastos
     label_view_all: Ver todos los informes
     button_enlarge: Ampliar
 

@@ -7,35 +7,32 @@
   <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :confirm => l(:text_are_you_sure), :method => :delete, :class => 'icon icon-del' %>
 </div>
 
-<h2><%=l :"cmi.label_checkpoints" %>: <%= @checkpoint.checkpoint_date %></h2>
+<h2><%=l :"cmi.label_expenditures" %>: <%= @expenditure.concept %></h2>
 
 <div class="issue details">
-  <%= avatar(@checkpoint.author, :size => "50") %>
+  <%= avatar(@expenditure.author, :size => "50") %>
 
   <div class="subject">
-    <h3><%=l :"cmi.label_checkpoints" %></h3>
+    <h3><%=l :"cmi.label_expenditures" %></h3>
   </div>
 
   <p class="author">
-    <%= authoring @checkpoint.created_at, @checkpoint.author %>.
-    <% if @checkpoint.created_at != @checkpoint.updated_at %>
-      <%= l(:label_updated_time, time_tag(@checkpoint.updated_at)) %>.
+    <%= authoring @expenditure.created_at, @expenditure.author %>.
+    <% if @expenditure.created_at != @expenditure.updated_at %>
+      <%= l(:label_updated_time, time_tag(@expenditure.updated_at)) %>.
     <% end %>
   </p>
   <table class="attributes">
     <tr>
-      <th><%=l(:field_scheduled_finish_date)%>:</th><td><%= format_date(@checkpoint.scheduled_finish_date) %></td>
-      <th><%=l(:field_scheduled_qa_meetings)%>:</th><td><%= @checkpoint.scheduled_qa_meetings %></td>
+      <th><%=l(:field_current_budget)%>:</th><td><%= @expenditure.current_budget %></td>
+      <th><%=l(:field_initial_budget)%>:</th><td><%= @expenditure.initial_budget %></td>
     </tr>
-    <%- @roles.each do |role| -%>
-      <tr>
-        <th><%=l(:"cmi.label_scheduled_role_effort", :role => role) %></th>
-        <td><%= @checkpoint.scheduled_role_effort[role] %></td>
-      </tr>
-    <%- end -%>
+    <tr>
+      <th><%=l(:field_incurred)%>:</th><td><%= @expenditure.incurred %></td>
+    </tr>
   </table>
 
-  <% if @checkpoint.description? -%>
+  <% if @expenditure.description? -%>
     <hr />
     <div class="contextual">
       <%= link_to_remote_if_authorized(l(:button_quote), { :url => {:controller => 'journals', :action => 'new', :id => @issue} }, :class => 'icon icon-comment') %>
@@ -43,7 +40,7 @@
 
     <p><strong><%=l(:field_description)%></strong></p>
     <div class="wiki">
-      <%= textilizable @checkpoint, :description %>
+      <%= textilizable @expenditure, :description %>
     </div>
   <% end %>
 </div>
@@ -51,7 +48,7 @@
 <% if @journals.present? %>
   <div id="history">
     <h3><%=l(:label_history)%></h3>
-    <%= render :partial => 'history', :locals => { :checkpoint => @checkpoint, :journals => @journals } %>
+    <%= render :partial => 'history', :locals => { :expenditure => @expenditure, :journals => @journals } %>
   </div>
 <% end %>
 
@@ -61,7 +58,7 @@
 </div>
 
 <div style="clear: both;"></div>
-<% if authorize_for('checkpoints', 'edit') %>
+<% if authorize_for('expenditures', 'edit') %>
   <div id="update" style="display:none;">
     <h3><%= l(:button_update) %></h3>
     <%= render :partial => 'edit' %>

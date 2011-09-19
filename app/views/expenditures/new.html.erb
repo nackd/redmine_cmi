@@ -1,0 +1,19 @@
+<% content_for :sidebar do %>
+  <%= render :partial => 'metrics/sidebar' %>
+<% end %>
+
+<h2><%=l('cmi.label_new_expenditure')%></h2>
+
+<% form_for :expenditure, @expenditure,
+                   :url => { :controller => 'expenditures', :action => 'create', :project_id => @project },
+                   :builder => TabularFormBuilder,
+                   :lang => current_language do |f| %>
+
+  <%= error_messages_for 'expenditure' %>
+
+  <div class="box">
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  </div>
+
+  <%= submit_tag(l(:button_save)) %>
+<% end %>

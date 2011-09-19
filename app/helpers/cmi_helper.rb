@@ -1,4 +1,4 @@
-module CheckpointsHelper
+module CmiHelper
   # Returns a link which sorts by the named column.
   #
   # - column is the name of an attribute in the sorted record collection.

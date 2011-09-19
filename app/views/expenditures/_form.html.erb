@@ -1,0 +1,11 @@
+<p><%= f.text_field :concept, :size => 80, :required => true %></p>
+<p><%= f.text_field :initial_budget, :size => 10, :required => true %>
+<p><%= f.text_field :current_budget, :size => 10, :required => true %>
+<p><%= f.text_field :incurred, :size => 10, :required => true %>
+<p><%= f.text_area :description,
+                   :cols => 60,
+                   :rows => (@expenditure.description.blank? ? 10 : [[10, @expenditure.description.length / 50].max, 100].min),
+                   :accesskey => accesskey(:edit),
+                   :class => 'wiki-edit' %></p>
+
+<%= wikitoolbar_for 'cmi_expenditure_description' %>

@@ -1,0 +1,32 @@
+<% labelled_tabular_form_for :expenditure, @expenditure,
+                             :url => {:action => 'update', :id => @expenditure},
+                             :html => {:id => 'issue-form',
+                                       :class => nil,
+                                       :method => :put} do |f| %>
+    <%= error_messages_for 'expenditure' %>
+    <div class="box">
+      <fieldset class="tabular">
+        <legend><%= l(:label_change_properties) %></legend>
+        <%= render :partial => 'form', :locals => {:f => f} %>
+      </fieldset>
+
+    <fieldset><legend><%= l(:field_notes) %></legend>
+    <%= text_area_tag 'notes', @notes, :cols => 60, :rows => 10, :class => 'wiki-edit' %>
+    <%= wikitoolbar_for 'notes' %>
+
+    <p><%=l(:label_attachment_plural)%><br /><%= render :partial => 'attachments/form' %></p>
+    </fieldset>
+    </div>
+
+    <%#= f.hidden_field :lock_version %>
+    <%= submit_tag l(:button_submit) %>
+    <%= link_to_remote l(:label_preview),
+                       { :url => preview_issue_path(:project_id => @project, :id => @issue),
+                         :method => 'post',
+                         :update => 'preview',
+                         :with => 'Form.serialize("issue-form")',
+                         :complete => "Element.scrollTo('preview')"
+                       }, :accesskey => accesskey(:preview) %>
+<% end %>
+
+<div id="preview" class="wiki"></div>

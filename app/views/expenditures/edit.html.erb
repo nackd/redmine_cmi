@@ -1,0 +1,7 @@
+<% content_for :sidebar do %>
+  <%= render :partial => 'metrics/sidebar' %>
+<% end %>
+
+<h2><%=l :"cmi.label_expenditures" %> <%= @expenditure.expenditure_date %></h2>
+
+<%= render :partial => 'edit' %>
