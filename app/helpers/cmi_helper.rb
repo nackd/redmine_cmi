@@ -97,7 +97,7 @@ module CmiHelper
                               { :url => {:action => 'new_journal', :id => model, :journal_id => journal} },
                               :title => l(:button_quote)) if options[:reply_links]
       links << link_to_in_place_notes_editor(image_tag('edit.png'), "journal-#{journal.id}-notes", 
-                                             { :controller => 'journals', :action => 'edit', :id => journal },
+                                             { :action => 'edit_journal', :id => journal },
                                                 :title => l(:button_edit)) if editable
     end
     content << content_tag('div', links.join(' '), :class => 'contextual') unless links.empty?

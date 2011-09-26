@@ -104,6 +104,27 @@ class CheckpointsController < ApplicationController
     }
   end
 
+  def edit_journal
+    @journal = Journal.find(params[:id])
+    (render_403; return false) unless @journal.editable_by?(User.current)
+    if request.post?
+      @journal.update_attributes(:notes => params[:notes]) if params[:notes]
+      @journal.destroy if @journal.details.empty? && @journal.notes.blank?
+      respond_to do |format|
+        format.html { redirect_to :action => 'show', :id => @journal.journalized_id }
+        format.js { render :template => 'metrics/update' }
+      end
+    else
+      respond_to do |format|
+        format.html {
+          # TODO: implement non-JS journal update
+          render :nothing => true
+        }
+        format.js { render :template => 'metrics/edit_journal' }
+      end
+    end
+  end
+
   private
 
   def find_checkpoint

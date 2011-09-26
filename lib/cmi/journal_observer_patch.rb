@@ -20,7 +20,7 @@ module CMI
 
     module InstanceMethods
       def after_create_with_cmi(journal)
-        unless journal.journalized_type == 'CmiCheckpoint'
+        unless [ 'CmiCheckpoint', 'CmiExpenditure'].include? journal.journalized_type
           after_create_without_cmi(journal)
         end
       end

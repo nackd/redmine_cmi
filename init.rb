@@ -23,8 +23,8 @@ Redmine::Plugin.register :redmine_cmi do
   project_module :cmiplugin do
   #     permission :view_cmi, {:cmi => [:projects, :groups, :show]}
         permission :view_metrics, {:metrics => [:show, :info],
-                                   :checkpoints => [:index, :new, :create, :show, :edit, :update, :destroy, :preview, :new_journal],
-                                   :expenditures => [:index, :new, :create, :show, :edit, :update, :destroy, :preview, :new_journal]}
+                                   :checkpoints => [:index, :new, :create, :show, :edit, :update, :destroy, :preview, :new_journal, :edit_journal],
+                                   :expenditures => [:index, :new, :create, :show, :edit, :update, :destroy, :preview, :new_journal, :edit_journal]}
   end
 
   menu :project_menu, :metrics, {:controller => 'metrics', :action => 'show' }, :caption => :'cmi.caption_metrics', :after => :settings, :param => :project_id
