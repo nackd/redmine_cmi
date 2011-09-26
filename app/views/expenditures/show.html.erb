@@ -7,13 +7,13 @@
   <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :confirm => l(:text_are_you_sure), :method => :delete, :class => 'icon icon-del' %>
 </div>
 
-<h2><%=l :"cmi.label_expenditures" %>: <%= @expenditure.concept %></h2>
+<h2><%=l :"cmi.label_expenditures" %></h2>
 
 <div class="issue details">
   <%= avatar(@expenditure.author, :size => "50") %>
 
   <div class="subject">
-    <h3><%=l :"cmi.label_expenditures" %></h3>
+    <h3><%= @expenditure.concept %></h3>
   </div>
 
   <p class="author">

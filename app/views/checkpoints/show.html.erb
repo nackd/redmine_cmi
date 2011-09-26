@@ -7,13 +7,13 @@
   <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :confirm => l(:text_are_you_sure), :method => :delete, :class => 'icon icon-del' %>
 </div>
 
-<h2><%=l :"cmi.label_checkpoints" %>: <%= @checkpoint.checkpoint_date %></h2>
+<h2><%=l :"cmi.label_checkpoints" %></h2>
 
 <div class="issue details">
   <%= avatar(@checkpoint.author, :size => "50") %>
 
   <div class="subject">
-    <h3><%=l :"cmi.label_checkpoints" %></h3>
+    <h3><%= @checkpoint.checkpoint_date %></h3>
   </div>
 
   <p class="author">
