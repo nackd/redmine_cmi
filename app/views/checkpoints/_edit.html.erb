@@ -1,6 +1,6 @@
 <% labelled_tabular_form_for :checkpoint, @checkpoint,
                              :url => {:action => 'update', :id => @checkpoint},
-                             :html => {:id => 'issue-form',
+                             :html => {:id => 'checkpoint-form',
                                        :class => nil,
                                        :method => :put} do |f| %>
     <%= error_messages_for 'checkpoint' %>
@@ -20,10 +20,9 @@
     <%#= f.hidden_field :lock_version %>
     <%= submit_tag l(:button_submit) %>
     <%= link_to_remote l(:label_preview),
-                       { :url => preview_issue_path(:project_id => @project, :id => @issue),
-                         :method => 'post',
+                       { :url => {:action => 'preview', :id => @checkpoint, :project_id => @project},
                          :update => 'preview',
-                         :with => 'Form.serialize("issue-form")',
+                         :with => 'Form.serialize("checkpoint-form")',
                          :complete => "Element.scrollTo('preview')"
                        }, :accesskey => accesskey(:preview) %>
 <% end %>

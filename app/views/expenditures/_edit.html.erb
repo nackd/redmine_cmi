@@ -1,6 +1,6 @@
 <% labelled_tabular_form_for :expenditure, @expenditure,
                              :url => {:action => 'update', :id => @expenditure},
-                             :html => {:id => 'issue-form',
+                             :html => {:id => 'expenditure-form',
                                        :class => nil,
                                        :method => :put} do |f| %>
     <%= error_messages_for 'expenditure' %>
@@ -20,10 +20,10 @@
     <%#= f.hidden_field :lock_version %>
     <%= submit_tag l(:button_submit) %>
     <%= link_to_remote l(:label_preview),
-                       { :url => preview_issue_path(:project_id => @project, :id => @issue),
+                       { :url => {:action => 'preview', :id => @expenditure, :project_id => @project},
                          :method => 'post',
                          :update => 'preview',
-                         :with => 'Form.serialize("issue-form")',
+                         :with => 'Form.serialize("expenditure-form")',
                          :complete => "Element.scrollTo('preview')"
                        }, :accesskey => accesskey(:preview) %>
 <% end %>

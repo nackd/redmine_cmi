@@ -4,7 +4,7 @@ class CheckpointsController < ApplicationController
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
   before_filter :get_roles, :only => [:new, :edit, :show]
-  before_filter :find_checkpoint, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_checkpoint, :only => [:show, :edit, :update, :preview, :destroy]
 
   helper :cmi
 
@@ -64,6 +64,19 @@ class CheckpointsController < ApplicationController
   def destroy
     @checkpoint.destroy
     redirect_back_or_default(:action => 'index', :project_id => @project)
+  end
+
+  def preview
+    if @checkpoint
+      @description = params[:checkpoint] && params[:checkpoint][:description]
+      if @description && @description.gsub(/(\r?\n|\n\r?)/, "\n") == @checkpoint.description.to_s.gsub(/(\r?\n|\n\r?)/, "\n")
+        @description = nil
+      end
+      @notes = params[:notes]
+    else
+      @description = (params[:checkpoint] ? params[:checkpoint][:description] : nil)
+    end
+    render :layout => false
   end
 
   private
