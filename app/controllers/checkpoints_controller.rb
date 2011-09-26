@@ -22,7 +22,7 @@ class CheckpointsController < ApplicationController
   end
 
   def new
-    @checkpoint = CmiCheckpoint.new
+    @checkpoint = CmiCheckpoint.new @project
   end
 
   def create

@@ -17,6 +17,17 @@ class CmiCheckpoint < ActiveRecord::Base
   attr_reader :current_journal
   after_save :create_journal
 
+  def initialize(copy_from_project=nil)
+    if copy_from_project.is_a? Project
+      previous = CmiCheckpoint.find :first,
+                                    :conditions => ['project_id = ?', copy_from_project],
+                                    :order => 'checkpoint_date DESC'
+      super((previous.nil? ? {} : previous.attributes).merge(:checkpoint_date => Date.today))
+    else
+      super
+    end
+  end
+
   def scheduled_role_effort
     self[:scheduled_role_effort] ||= {}
   end
