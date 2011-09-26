@@ -21,7 +21,6 @@
     <%= submit_tag l(:button_submit) %>
     <%= link_to_remote l(:label_preview),
                        { :url => {:action => 'preview', :id => @expenditure, :project_id => @project},
-                         :method => 'post',
                          :update => 'preview',
                          :with => 'Form.serialize("expenditure-form")',
                          :complete => "Element.scrollTo('preview')"

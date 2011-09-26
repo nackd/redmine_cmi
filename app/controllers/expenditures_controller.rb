@@ -3,7 +3,7 @@ class ExpendituresController < ApplicationController
 
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
-  before_filter :find_expenditure, :only => [:show, :edit, :update, :preview, :destroy]
+  before_filter :find_expenditure, :only => [:show, :edit, :update, :destroy]
 
   helper :cmi
 
@@ -66,6 +66,7 @@ class ExpendituresController < ApplicationController
   end
 
   def preview
+    find_expenditure unless params[:id].blank?
     if @expenditure
       @description = params[:expenditure] && params[:expenditure][:description]
       if @description && @description.gsub(/(\r?\n|\n\r?)/, "\n") == @expenditure.description.to_s.gsub(/(\r?\n|\n\r?)/, "\n")
