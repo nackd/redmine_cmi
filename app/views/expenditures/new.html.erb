@@ -4,10 +4,9 @@
 
 <h2><%=l('cmi.label_new_expenditure')%></h2>
 
-<% form_for :expenditure, @expenditure,
-                   :url => { :controller => 'expenditures', :action => 'create', :project_id => @project },
-                   :builder => TabularFormBuilder,
-                   :lang => current_language do |f| %>
+<% labelled_tabular_form_for :expenditure, @expenditure,
+                             :url => { :controller => 'expenditures', :action => 'create', :project_id => @project },
+                             :html => {:id => 'expenditure-form', :class => 'tabular'} do |f| %>
 
   <%= error_messages_for 'expenditure' %>
 

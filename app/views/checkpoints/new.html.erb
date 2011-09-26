@@ -4,10 +4,9 @@
 
 <h2><%=l('cmi.label_new_checkpoint')%></h2>
 
-<% form_for :checkpoint, @checkpoint,
-                   :url => { :controller => 'checkpoints', :action => 'create', :project_id => @project },
-                   :builder => TabularFormBuilder,
-                   :lang => current_language do |f| %>
+<% labelled_tabular_form_for :checkpoint, @checkpoint,
+                             :url => { :controller => 'checkpoints', :action => 'create', :project_id => @project },
+                             :html => {:id => 'checkpoint-form', :class => 'tabular'} do |f| %>
 
   <%= error_messages_for 'checkpoint' %>
 
