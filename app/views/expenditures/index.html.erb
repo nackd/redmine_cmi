@@ -1,10 +1,5 @@
-<%= render :partial => 'metrics/tabs' %>
-
-<div class="contextual">
-  <%= link_to_if_authorized l(:label_new), {:action => 'new'}, :class => 'icon icon-add' %>
-</div>
-
 <h2><%=l('cmi.label_expenditures')%></h2>
+<%= render :partial => 'metrics/tabs' %>
 
 <% if @expenditures.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
@@ -31,7 +26,11 @@
     </tbody>
   </table>
   </div>
-  <p class="pagination"><%= pagination_links_full @pages, @count %></p>
+  <p class="pagination splitcontentleft"><%= pagination_links_full @pages, @count %></p>
 <% end %>
+
+<div class="contextual">
+  <%= link_to_if_authorized l(:label_new), {:action => 'new'}, :class => 'icon icon-add' %>
+</div>
 
 <% html_title(l(:"cmi.label_metrics")) -%>

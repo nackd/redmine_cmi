@@ -1,5 +1,3 @@
-<h2><%=l('cmi.label_info')%></h2>
-
 <% form_for :cmi_project_info, @cmi_project_info,
                    :url => { :controller => 'metrics', :action => 'info', :project_id => @project },
                    :builder => TabularFormBuilder,

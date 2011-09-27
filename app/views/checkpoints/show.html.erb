@@ -1,11 +1,11 @@
+<h2><%=l :"cmi.label_checkpoints" %></h2>
 <%= render :partial => 'metrics/tabs' %>
 
 <div class="contextual">
   <%= link_to_if_authorized(l(:button_update), {:action => 'edit'}, :onclick => 'showAndScrollTo("update", "notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit)) %>
   <%= link_to_if_authorized l(:button_delete), {:action => 'destroy'}, :confirm => l(:text_are_you_sure), :method => :delete, :class => 'icon icon-del' %>
 </div>
-
-<h2><%=l :"cmi.label_checkpoints" %></h2>
+<div style="clear:both; height:5px"></div>
 
 <div class="issue details">
   <%= avatar(@checkpoint.author, :size => "50") %>

@@ -1,5 +1,3 @@
-<h2><%=l('cmi.label_metrics')%></h2>
-
 <% unless flash[:error] %>
 
   <% form_for(metrics_path(:action => 'show', :project_id => @project), :method => :post) do |f| %>

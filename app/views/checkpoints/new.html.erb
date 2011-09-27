@@ -1,6 +1,5 @@
-<%= render :partial => 'metrics/tabs' %>
-
 <h2><%=l('cmi.label_new_checkpoint')%></h2>
+<%= render :partial => 'metrics/tabs' %>
 
 <% labelled_tabular_form_for :checkpoint, @checkpoint,
                              :url => { :controller => 'checkpoints', :action => 'create', :project_id => @project },
