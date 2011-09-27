@@ -33,10 +33,6 @@ module CMI
                     :order => 'start_date DESC')
       end
 
-      def report_tracker?
-        trackers.find_by_name(DEFAULT_VALUES['trackers']['report']).present?
-      end
-
       def effort_done_by_role(role, to_date)
         cond = ARCondition.new
         cond << project_condition(Setting.display_subprojects_issues?)

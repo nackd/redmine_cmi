@@ -12,15 +12,15 @@
         <th rowspan="1" width="150"><%=l('cmi.label_area')%></th>
         <th rowspan="2" width="150"><%=l(:label_environment)%></th>
         <th colspan="2" width="150"><%=l('cmi.label_metric')%></th>
-        <% @names.each do |report| %>
-          <th colspan="1"><% if(report=="actual")%>Valor actual - <%end%><%= get_report_value(report, 'Fecha del informe') %></th>
+        <% @metrics.each do |report| %>
+          <th colspan="1"><%=h report %></th>
         <% end %>
       </tr>
     </thead>
     <tbody>
       <%= render :partial => 'metrics/metrics/project_effort_done' %>
       <%= render :partial => 'metrics/metrics/project_effort_remaining' %>
-      <%= render :partial => 'metrics/metrics/project_effort_planned' %>
+      <%= render :partial => 'metrics/metrics/project_effort_scheduled' %>
       <%= render :partial => 'metrics/metrics/project_time' %>
       <%= render :partial => 'metrics/metrics/project_cost' %>
       <%= render :partial => 'metrics/metrics/project_advance' %>

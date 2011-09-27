@@ -124,7 +124,6 @@ es:
     label_filter_by: Filtrar por
 
     cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
-    cmi_report_tracker_not_available: No existe el tracker informes
     cmi_expense_tracker_not_available: No existe el tracker gastos
     cmi_qa_tracker_not_available: No existe el tracker calidad
     cmi_change_tracker_not_available: No existe el tracker solicitudes de cambio
@@ -139,7 +138,7 @@ es:
 
     error_other: "Faltan datos por introducir en el proyecto '%{project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: %{message}."
     error_profile: "Hay usuarios (%{users}) sin perfil asignado en el proyecto '%{project}'. Es necesario para poder realizar los cálculos correctamente."
-    cmi_no_reports_found: "No hay ningún informe en el proyecto '%{project}'. Cree uno (Nueva petición) para poder consultar las métricas."
+    cmi_no_checkpoints_found: "No hay ningún informe en el proyecto '%{project}'. Cree uno (Nueva petición) para poder consultar las métricas."
 
     plugin_name: Cuadro de Mando Integral
     plugin_description: Vistas resumenes globales y por proyectos

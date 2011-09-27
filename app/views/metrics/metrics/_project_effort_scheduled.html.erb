@@ -3,9 +3,9 @@
 
   <% @roles.each do |role| %>
     <td><%=h role %></td>
-    <% @reports.each_with_index do |report, i| -%>
+    <% @metrics.each_with_index do |metric, i| -%>
       <% content_tag :td, :id => "effort_planned_#{role}_#{i}", :class => "issue" do -%>
-        <%= report.effort_planned_by_role(role) %> <%= l('cmi.label_hours') %>
+        <%= metric.effort_scheduled_by_role(role) %> <%= l('cmi.label_hours') %>
       <% end -%>
     <% end -%>
     </tr>
@@ -13,10 +13,10 @@
   <% end %>
 
   <td><%= l(:label_total) %></td>
-  <% @names.each_with_index do |report, i| -%><%# TODO kill this @names thing %>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "effort_planned_total_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'effort_real') %>
-      <%= effort_planned_graph(@reports[i], @roles) %>
+      <%= metric.effort_scheduled %> <%= l('cmi.label_hours') %>
+      <%= effort_scheduled_graph(@metrics[i], @roles) %>
     <% end -%>
   <% end -%>
 </tr>
