@@ -111,4 +111,17 @@ module CmiHelper
     onclick = "new Ajax.Request('#{url_for(url)}', {asynchronous:true, evalScripts:true, method:'get'}); return false;"
     link_to text, '#', options.merge(:onclick => onclick)
   end
+
+  def selected_tab_class(tab)
+    'selected' if case tab
+                  when 'metrics'
+                    params[:controller] == 'metrics' and params[:action] == 'show'
+                  when 'info'
+                    params[:controller] == 'metrics' and params[:action] == 'info'
+                  when 'checkpoints'
+                    params[:controller] == 'checkpoints'
+                  when 'expenditures'
+                    params[:controller] == 'expenditures'
+                  end
+  end
 end

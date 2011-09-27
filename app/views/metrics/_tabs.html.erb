@@ -1,0 +1,20 @@
+<div class="tabs">
+  <ul>
+<%- if User.current.allowed_to?({:controller => :metrics, :action => :show}, @project) -%>
+  <li><%= link_to t(:"cmi.label_metrics"), metrics_path(:action => :show),
+                  :class => selected_tab_class('metrics') %></li>
+<%- end -%>
+<%- if User.current.allowed_to?({:controller => :metrics, :action => :info}, @project) -%>
+  <li><%= link_to t(:"cmi.label_info"), metrics_path(:action => :info),
+                  :class => selected_tab_class('info') %></li>
+<%- end -%>
+<%- if User.current.allowed_to?({:controller => :checkpoints, :action => :index}, @project) -%>
+  <li><%= link_to t(:"cmi.label_checkpoints"), checkpoints_path,
+                  :class => selected_tab_class('checkpoints') %></li>
+<%- end -%>
+<%- if User.current.allowed_to?({:controller => :expenditures, :action => :index}, @project) -%>
+  <li><%= link_to t(:"cmi.label_expenditures"), expenditures_path,
+                  :class => selected_tab_class('expenditures') %></li>
+<%- end -%>
+  </ul>
+</div>

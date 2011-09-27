@@ -5,6 +5,9 @@ class MetricsController < ApplicationController
   before_filter :find_project_by_project_id, :authorize
   before_filter :get_roles
   before_filter :obtain_profile_costs, :only => :show
+
+  helper :cmi
+
   include CMI::ProjectCalculations
 
   def show

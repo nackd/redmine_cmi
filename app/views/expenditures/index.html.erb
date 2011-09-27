@@ -1,6 +1,4 @@
-<% content_for :sidebar do %>
-  <%= render :partial => 'metrics/sidebar' %>
-<% end %>
+<%= render :partial => 'metrics/tabs' %>
 
 <div class="contextual">
   <%= link_to_if_authorized l(:label_new), {:action => 'new'}, :class => 'icon icon-add' %>
