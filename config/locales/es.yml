@@ -15,9 +15,25 @@ es:
   field_current_budget: Presupuesto actual
   field_incurred: Gasto incurrido
 
+  permission_cmi_management: Ver cuadro de mando general
+  permission_cmi_view_metrics: Ver métricas del proyecto
+  permission_cmi_project_info: Configurar información base para métricas
+  permission_cmi_add_checkpoints: Añadir puntos de control
+  permission_cmi_edit_checkpoints: Editar puntos de control
+  permission_cmi_add_checkpoint_notes: Añadir notas a puntos de control
+  permission_cmi_edit_checkpoint_notes: Editar notas de puntos de control
+  permission_cmi_edit_own_checkpoint_notes: Editar notas propias de puntos de control
+  permission_cmi_view_checkpoints: Ver puntos de control
+  permission_cmi_delete_checkpoints: Borrar puntos de control
+  permission_cmi_add_expenditures: Añadir gastos
+  permission_cmi_edit_expenditures: Editar gastos
+  permission_cmi_add_expenditure_notes: Añadir notas a gastos
+  permission_cmi_edit_expenditure_notes: Editar notas de gastos
+  permission_cmi_edit_own_expenditure_notes: Editar notas propias de gastos
+  permission_cmi_view_expenditures: Ver gastos
+  permission_cmi_delete_expenditures: Borrar gastos
+
   cmi:
-    permission_view_metrics: Ver métricas del proyecto
-    project_module_cmi: Métricas
     label_metrics: Métricas
     label_info: Información base
     label_checkpoints: Puntos de control

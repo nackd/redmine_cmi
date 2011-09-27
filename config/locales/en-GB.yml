@@ -14,9 +14,25 @@ en:
   field_current_budget: Current budget
   field_incurred: Incurred
 
+  permission_cmi_management: View general management panel
+  permission_cmi_view_metrics: View project metrics
+  permission_cmi_project_info: Setup metrics basic info
+  permission_cmi_add_checkpoints: Add checkpoints
+  permission_cmi_edit_checkpoints: Edit checkpoints
+  permission_cmi_add_checkpoint_notes: Add notes to checkpoint
+  permission_cmi_edit_checkpoint_notes: Edit checkpoint notes
+  permission_cmi_edit_own_checkpoint_notes: Edit own checkpoint notes
+  permission_cmi_view_checkpoints: View checkpoints
+  permission_cmi_delete_checkpoints: Delete checkpoints
+  permission_cmi_add_expenditures: Add expenditures
+  permission_cmi_edit_expenditures: Edit expenditures
+  permission_cmi_add_expenditure_notes: Add notes to expenditure
+  permission_cmi_edit_expenditure_notes: Edit expenditure notes
+  permission_cmi_edit_own_expenditure_notes: Edit own expenditure notes
+  permission_cmi_view_expenditures: View expenditures
+  permission_cmi_delete_expenditures: Delete expenditures
+
   cmi:
-    permission_view_metrics: View project metrics
-    project_module_cmi: Metrics
     label_metrics: Metrics
     label_info: Basic info
     label_checkpoints: Checkpoints
