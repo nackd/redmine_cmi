@@ -1,5 +1,5 @@
-# English strings go here
-en:
+# British english strings go here
+en-GB:
   project_module_cmiplugin: Metrics
 
   field_actual_start_date: Actual start date
@@ -10,6 +10,7 @@ en:
   field_total_income: Total income
   field_checkpoint_date: Checkpoint date
   field_scheduled_role_effort: Scheduled effort
+  field_concept: Concept
   field_initial_budget: Initial budget
   field_current_budget: Current budget
   field_incurred: Incurred
@@ -37,10 +38,10 @@ en:
     label_info: Basic info
     label_checkpoints: Checkpoints
     label_expenditures: Expenditures
+    label_new_checkpoint: New checkpoint
+    label_new_expenditure: New expenditure
     label_view_all: View all the reports
     button_enlarge: Enlarge
-    label_new_checkpoint: Nuevo punto de control
-    label_new_expenditure: Nuevo gasto
 
     label_initial_schedule: Initial schedule
     label_actual_data: Actual data

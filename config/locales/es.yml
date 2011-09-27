@@ -38,6 +38,8 @@ es:
     label_info: Información base
     label_checkpoints: Puntos de control
     label_expenditures: Gastos
+    label_new_checkpoint: Nuevo punto de control
+    label_new_expenditure: Nuevo gasto
     label_view_all: Ver todos los informes
     button_enlarge: Ampliar
 
