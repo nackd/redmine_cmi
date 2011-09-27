@@ -12,7 +12,6 @@ class MetricsController < ApplicationController
 
   def show
     begin
-      @profile_alert = false
       unless @project.nil?
         tracker_informes = @project.trackers.find_by_name(DEFAULT_VALUES['trackers']['report'])
         raise CMI::Exception, I18n.t(:'cmi.cmi_report_tracker_not_available') if tracker_informes.nil?
