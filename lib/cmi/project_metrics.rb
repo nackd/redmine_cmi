@@ -45,6 +45,26 @@ module CMI
       effort_done_by_role(role) * 100 / effort_scheduled_by_role(role)
     end
 
+    def time_done
+      if !@project.cmi_project_info.actual_start_date.nil?
+          Date.today - @project.cmi_project_info.actual_start_date
+      else
+          "--"
+      end
+    end
+
+    def time_scheduled
+      @last_checkpoint.scheduled_finish_date - @project.cmi_project_info.actual_start_date
+    end
+
+    def time_remaining
+      if !@project.cmi_project_info.actual_start_date.nil?
+        @last_checkpoint.scheduled_finish_date - Date.today
+      else
+        "--"
+      end
+    end
+
     def to_s
       # TODO translate this
       "Valor actual - #{Date.today}"

@@ -37,6 +37,22 @@ module CMI
       effort_done_by_role(role) * 100 / effort_scheduled_by_role(role)
     end
 
+    def time_done
+      if !@project.cmi_project_info.actual_start_date.nil?
+          @date - @project.cmi_project_info.actual_start_date
+      else
+          "--"
+      end
+    end
+
+    def time_scheduled
+      scheduled_finish_date - @project.cmi_project_info.actual_start_date
+    end
+
+    def time_remaining
+      scheduled_finish_date - @date
+    end
+
     def to_s
       checkpoint_date.to_s
     end
