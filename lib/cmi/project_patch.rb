@@ -13,6 +13,7 @@ module CMI
 
         has_one :cmi_project_info, :dependent => :destroy
         has_many :cmi_checkpoints, :dependent => :destroy
+        has_many :cmi_expenditures, :dependent => :destroy
       end
     end
 
