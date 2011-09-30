@@ -53,6 +53,69 @@ module CMI
       scheduled_finish_date - @date
     end
 
+    def hhrr_cost_incurred
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['spent_on <= ?', @date]
+      TimeEntry.sum(:cost,
+                    :joins => :project,
+                    :conditions => cond.conditions)
+    end
+
+    def hhrr_cost_scheduled
+      User.roles.inject(0) { |sum, role|
+        sum += (@checkpoint.scheduled_role_effort[role] *
+                HistoryProfilesCost.find(:first, :conditions => ['profile = ? AND year = ?', role, @date.year]).value)
+      }
+    end
+
+    def hhrr_cost_remaining
+      hhrr_cost_scheduled - hhrr_cost_incurred
+    end
+
+    def hhrr_cost_percent_incurred
+      100 * hhrr_cost_incurred / hhrr_cost_scheduled
+    end
+
+    def hhrr_cost_percent
+      100 * hhrr_cost_scheduled / total_cost_scheduled
+    end
+
+    def material_cost_incurred
+      @project.cmi_expenditures.sum(:incurred)
+    end
+
+    def material_cost_scheduled
+      @project.cmi_expenditures.sum(:current_budget)
+    end
+
+    def material_cost_remaining
+      material_cost_scheduled - material_cost_incurred
+    end
+
+    def material_cost_percent_incurred
+      100 * material_cost_incurred / material_cost_scheduled
+    end
+
+    def material_cost_percent
+      100 * material_cost_scheduled / total_cost_scheduled
+    end
+
+    def total_cost_incurred
+      hhrr_cost_incurred + material_cost_incurred
+    end
+
+    def total_cost_scheduled
+      hhrr_cost_scheduled + material_cost_scheduled
+    end
+
+    def total_cost_remaining
+      total_cost_scheduled - total_cost_incurred
+    end
+
+    def total_cost_percent_incurred
+      100 * total_cost_incurred / total_cost_scheduled
+    end
+
     def to_s
       checkpoint_date.to_s
     end

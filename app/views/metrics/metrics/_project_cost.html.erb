@@ -2,55 +2,50 @@
   <th rowspan=10><%= l('cmi.label_cost') %></th>
   <th rowspan="3"><%= l('cmi.label_done') %></th>
   <td><%= l('cmi.label_RRHH') %></td>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_spent_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'budget_spent_rrhh') %> &euro;
+      <%= metric.hhrr_cost_incurred %> &euro;
     <% end -%>
-    <% set_cost_value('rrhh_i', report, 'budget_real_rrhh','budget_spent_rrhh') %>
   <% end -%>
 </tr>
 <tr>
   <td><%= l('cmi.label_others') %></td>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_other_spent_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'Gastado') %> &euro;
+      <%= metric.material_cost_incurred %> &euro;
     <% end -%>
-    <% set_cost_value('others_i', report, 'budget_spent', 'Gastado') %>
   <% end -%>
 </tr>
 <tr>
   <td><%= l(:label_total) %></td>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_total_spent_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'budget_spent') %> &euro;
+      <%= metric.total_cost_incurred %> &euro;
     <% end -%>
-    <% set_cost_value('i', report, 'budget_real', 'budget_spent') %>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=3><%= l('cmi.label_remaining') %></th>
   <td><%= l('cmi.label_RRHH') %></td>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_remaining_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'budget_remaining_rrhh') %> &euro;
+      <%= metric.hhrr_cost_remaining %> &euro;
     <% end -%>
-    <% set_cost_value('rrhh_r', report, 'budget_remaining', 'budget_remaining_rrhh') %>
   <% end -%>
 </tr>
 <tr>
   <td><%= l('cmi.label_others') %></td>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_other_remaining_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'budget_remaining_rrmm_and_others') %> &euro;
+      <%= metric.material_cost_remaining %> &euro;
     <% end -%>
-    <% set_cost_value('others_r', report, 'budget_remaining', 'budget_remaining_rrmm_and_others') %>
   <% end -%>
 </tr>
 <tr>
    <td><%= l(:label_total) %></td>
-   <% @names.each_with_index do |report, i| -%>
+   <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "cost_total_remaining_#{i}", :class => "issue" do -%>
-       <%= get_report_value(report, 'budget_remaining') %> &euro;
+       <%= metric.total_cost_remaining %> &euro;
      <% end -%>
    <% end -%>
 </tr>
@@ -58,36 +53,34 @@
 <tr>
   <th rowspan=3><%= l('cmi.label_planned') %></th>
   <td><%= l('cmi.label_RRHH') %></td>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_planned_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'budget_real_rrhh') %> &euro;
+      <%= metric.hhrr_cost_scheduled %> &euro;
     <% end -%>
-    <% set_cost_value('rrhh_p', report, 'budget_real', 'budget_real_rrhh') %>
   <% end -%>
 </tr>
 <tr>
    <td><%= l('cmi.label_others') %></td>
-   <% @names.each_with_index do |report, i| -%>
+   <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "cost_other_planned_#{i}", :class => "issue" do -%>
-       <%= get_report_value(report, 'Presupuesto actual') %> &euro;
+       <%= metric.material_cost_scheduled %> &euro;
      <% end -%>
-     <% set_cost_value('others_p', report, 'budget_real', 'Presupuesto actual') %>
    <% end -%>
 </tr>
 <tr>
    <td><%= l(:label_total) %></td>
-   <% @names.each_with_index do |report, i| -%>
+   <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "cost_total_planned_#{i}", :class => "issue" do -%>
-       <%= get_report_value(report, 'budget_real') %> &euro;
+       <%= metric.total_cost_scheduled %> &euro;
      <% end -%>
    <% end -%>
 </tr>
 <tr>
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%=instance_variable_get("@cost_rrhh_i_#{report}")%>,<%=instance_variable_get("@cost_others_i_#{report}")%>,<%=instance_variable_get("@cost_i_#{report}")%>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: <%=instance_variable_get("@cost_i_#{report}")%>%|Otros: <%=instance_variable_get("@cost_others_i_#{report}")%>%|RRHH: <%=instance_variable_get("@cost_rrhh_i_#{report}")%>%|"/>
-      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%=instance_variable_get("@cost_rrhh_p_#{report}")%>,<%=instance_variable_get("@cost_others_p_#{report}")%>&chs=250x50&chl=RRHH: <%=instance_variable_get("@cost_rrhh_p_#{report}")%>%|Otros: <%=instance_variable_get("@cost_others_p_#{report}")%>%|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.hhrr_cost_percent_incurred %>,<%= metric.material_cost_percent_incurred %>,<%= metric.total_cost_percent_incurred %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: <%= metric.total_cost_percent_incurred %>%|Otros: <%= metric.material_cost_percent_incurred %>%|RRHH: <%= metric.hhrr_cost_percent_incurred %>%|"/>
+      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%= metric.hhrr_cost_percent %>,<%= metric.material_cost_percent %>&chs=250x50&chl=RRHH: <%= metric.hhrr_cost_percent %>%|Otros: <%= metric.material_cost_percent %>%|"/>
     <% end -%>
   <% end -%>
 </tr>
