@@ -43,7 +43,7 @@ class MetricsController < ApplicationController
   end
 
   def info
-    @cmi_project_info = CmiProjectInfo.find_or_initialize_by_project_id @project
+    @cmi_project_info = CmiProjectInfo.find_or_initialize_by_project_id @project.id
     if request.post?
       @cmi_project_info.attributes= params[:cmi_project_info]
       flash[:notice] = l(:notice_successful_update) if @cmi_project_info.save
