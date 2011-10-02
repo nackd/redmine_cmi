@@ -28,7 +28,7 @@ class CmiProjectInfo < ActiveRecord::Base
     User.roles.each do |role|
       if scheduled_role_effort[role] =~ /\A[+-]?\d+\Z/
         scheduled_role_effort[role] = scheduled_role_effort[role].to_i
-      else
+      elsif !scheduled_role_effort[role].is_a? Integer
         error = [I18n.translate(:"cmi.label_scheduled_role_effort", :role => role),
                  I18n.translate(:"activerecord.errors.messages.not_a_number")].join " "
         errors.add_to_base(error)
