@@ -45,6 +45,10 @@ module CMI
       effort_done_by_role(role) * 100 / effort_scheduled_by_role(role)
     end
 
+    def effort_percent_done
+      100 * effort_done / effort_scheduled
+    end
+
     def time_done
       if !@project.cmi_project_info.actual_start_date.nil?
           Date.today - @project.cmi_project_info.actual_start_date
@@ -63,6 +67,10 @@ module CMI
       else
         "--"
       end
+    end
+
+    def time_percent_done
+      100 * time_done / time_scheduled
     end
 
     def hhrr_cost_incurred
