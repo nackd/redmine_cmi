@@ -19,13 +19,19 @@ class MetricsControllerTest < ActionController::TestCase
   test "routing" do
     assert_routing({:method => :get, :path => "/projects/:project_id/metrics/show"},
                    :controller => "metrics", :project_id => ":project_id", :action => "show")
+    assert_routing({:method => :get, :path => "/projects/:project_id/metrics/info"},
+                   :controller => "metrics", :project_id => ":project_id", :action => "info")
+    assert_routing({:method => :get, :path => "/projects/:project_id/metrics/checkpoints"},
+                   :controller => "checkpoints", :project_id => ":project_id", :action => "index")
+    assert_routing({:method => :get, :path => "/projects/:project_id/metrics/expenditures"},
+                   :controller => "expenditures", :project_id => ":project_id", :action => "index")
   end
 
-  # test "deny access to non-members" do
-  #   @request.session[:user_id] = User.find_by_login("nonmember").id
-  #   get :show, :project_id => "cmi"
-  #   assert_response :deny
-  # end
+  test "deny access to non-members" do
+    @request.session[:user_id] = User.find_by_login("nonmember").id
+    get :show, :project_id => "cmi"
+    assert_response :forbidden
+  end
 
   test "metrics" do
     Time.stubs(:now).returns(Time.mktime(2011, 4, 1))
