@@ -37,7 +37,7 @@ module CMI
       if  effort_scheduled_by_role(role).zero?
         0.0
       else
-        100 * effort_done_by_role(role) / effort_scheduled_by_role(role)
+        100.0 * effort_done_by_role(role) / effort_scheduled_by_role(role)
       end
     end
 
@@ -45,7 +45,7 @@ module CMI
       if  effort_scheduled.zero?
         0.0
       else
-        100 * effort_done / effort_scheduled
+        100.0 * effort_done / effort_scheduled
       end
     end
 
@@ -88,6 +88,13 @@ module CMI
       }
     end
 
+    def hhrr_cost_original
+      User.roles.inject(0) { |sum, role|
+        sum += (@project.cmi_project_info.scheduled_role_effort[role] *
+                HistoryProfilesCost.find(:first, :conditions => ['profile = ? AND year = ?', role, Date.today.year]).value)
+      }
+    end
+
     def hhrr_cost_remaining
       hhrr_cost_scheduled - hhrr_cost_incurred
     end
@@ -96,7 +103,7 @@ module CMI
       if hhrr_cost_scheduled.zero?
         0.0
       else
-        100 * hhrr_cost_incurred / hhrr_cost_scheduled
+        100.0 * hhrr_cost_incurred / hhrr_cost_scheduled
       end
     end
 
@@ -104,7 +111,7 @@ module CMI
       if total_cost_scheduled.zero?
         0.0
       else
-        100 * hhrr_cost_scheduled / total_cost_scheduled
+        100.0 * hhrr_cost_scheduled / total_cost_scheduled
       end
     end
 
@@ -124,7 +131,7 @@ module CMI
       if material_cost_scheduled.zero?
         0.0
       else
-        100 * material_cost_incurred / material_cost_scheduled
+        100.0 * material_cost_incurred / material_cost_scheduled
       end
     end
 
@@ -132,7 +139,7 @@ module CMI
       if total_cost_scheduled.zero?
         0.0
       else
-        100 * material_cost_scheduled / total_cost_scheduled
+        100.0 * material_cost_scheduled / total_cost_scheduled
       end
     end
 
@@ -156,8 +163,36 @@ module CMI
       if total_cost_scheduled.zero?
         0.0
       else
-        100 * total_cost_incurred / total_cost_scheduled
+        100.0 * total_cost_incurred / total_cost_scheduled
       end
+    end
+
+    def total_cost_original
+      hhrr_cost_original + material_cost_original
+    end
+
+    def original_margin
+      @project.cmi_project_info.total_income - total_cost_original
+    end
+
+    def original_margin_percent
+      100.0 * original_margin / @project.cmi_project_info.total_income
+    end
+
+    def scheduled_margin
+      @project.cmi_project_info.total_income - total_cost_scheduled
+    end
+
+    def scheduled_margin_percent
+      100.0 * scheduled_margin / @project.cmi_project_info.total_income
+    end
+
+    def incurred_margin
+      @project.cmi_project_info.total_income - total_cost_incurred
+    end
+
+    def incurred_margin_percent
+      100.0 * incurred_margin / @project.cmi_project_info.total_income
     end
 
     def to_s

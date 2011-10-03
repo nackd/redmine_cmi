@@ -190,18 +190,18 @@ class MetricsControllerTest < ActionController::TestCase
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:35.33,23.2,34.0|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 34.0%|Tiempo: 23.2%|Esfuerzo: 35.33%|" />', css_select("#advance_chart_1 img").first.to_s
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:25.74,9.33,25.64|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 25.64%|Tiempo: 9.33%|Esfuerzo: 25.74%|" />', css_select("#advance_chart_2 img").first.to_s
 
-    assert_select "#profitability_planned_initially_0", "95456.0 &euro; (77.0 %)"
-    assert_select "#profitability_planned_initially_1", "95456.0 &euro; (77.0 %)"
-    assert_select "#profitability_planned_initially_2", "95456.0 &euro; (77.0 %)"
-    assert_select "#profitability_planned_currently_0", "65956.0 &euro; (53.0 %)"
-    assert_select "#profitability_planned_currently_1", "65956.0 &euro; (53.0 %)"
-    assert_select "#profitability_planned_currently_2", "76956.0 &euro; (62.0 %)"
-    assert_select "#profitability_current_0", "98658.5 &euro; (80.0 %)"
-    assert_select "#profitability_current_1", "103546.0 &euro; (84.0 %)"
-    assert_select "#profitability_current_2", "111176.0 &euro; (90.0 %)"
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:88.5,76.5,90.0|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:80.0%|Prevista actual: 53.0%|Prevista inicial: 77.0%|" />', css_select("#profitability_chart_0 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:88.5,76.5,92.0|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:84.0%|Prevista actual: 53.0%|Prevista inicial: 77.0%|" />', css_select("#profitability_chart_1 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:88.5,81.0,95.0|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:90.0%|Prevista actual: 62.0%|Prevista inicial: 77.0%|" />', css_select("#profitability_chart_2 img").first.to_s
+    assert_select "#profitability_planned_initially_0", "95456.0 &euro; (77.32 %)"
+    assert_select "#profitability_planned_initially_1", "95456.0 &euro; (77.32 %)"
+    assert_select "#profitability_planned_initially_2", "95456.0 &euro; (77.32 %)"
+    assert_select "#profitability_planned_currently_0", "65956.0 &euro; (53.42 %)"
+    assert_select "#profitability_planned_currently_1", "65956.0 &euro; (53.42 %)"
+    assert_select "#profitability_planned_currently_2", "76956.0 &euro; (62.33 %)"
+    assert_select "#profitability_current_0", "98658.5 &euro; (79.91 %)"
+    assert_select "#profitability_current_1", "103903.5 &euro; (84.16 %)"
+    assert_select "#profitability_current_2", "111533.5 &euro; (90.34 %)"
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,89.955|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:79.91%|Prevista actual: 53.42%|Prevista inicial: 77.32%|\" />", css_select("#profitability_chart_0 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,92.08|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:84.16%|Prevista actual: 53.42%|Prevista inicial: 77.32%|\" />", css_select("#profitability_chart_1 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,81.165,95.17|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:90.34%|Prevista actual: 62.33%|Prevista inicial: 77.32%|\" />", css_select("#profitability_chart_2 img").first.to_s
 
     assert_select "#deviation_effort_0", "-88.1 %"
     assert_select "#deviation_effort_1", "-88.1 %"
