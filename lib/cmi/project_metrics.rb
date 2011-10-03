@@ -26,7 +26,7 @@ module CMI
     end
 
     def effort_scheduled
-      User.roles.inject(0.0) { |sum, role| sum + effort_scheduled_by_role(role) }
+      User.roles.inject(0) { |sum, role| sum + effort_scheduled_by_role(role) }
     end
 
     def effort_scheduled_by_role(role)
@@ -42,35 +42,47 @@ module CMI
     end
 
     def effort_percent_done_by_role(role)
-      effort_done_by_role(role) * 100 / effort_scheduled_by_role(role)
+      if effort_scheduled_by_role(role).zero?
+        0.0
+      else
+        100 * effort_done_by_role(role) / effort_scheduled_by_role(role)
+      end
     end
 
     def effort_percent_done
-      100 * effort_done / effort_scheduled
+      if effort_scheduled.zero?
+        0.0
+      else
+        100 * effort_done / effort_scheduled
+      end
     end
 
     def time_done
       if !@project.cmi_project_info.actual_start_date.nil?
-          Date.today - @project.cmi_project_info.actual_start_date
+          (Date.today - @project.cmi_project_info.actual_start_date + 1).to_i
       else
           "--"
       end
     end
 
     def time_scheduled
-      @last_checkpoint.scheduled_finish_date - @project.cmi_project_info.actual_start_date
+      (@last_checkpoint.scheduled_finish_date - @project.cmi_project_info.actual_start_date).to_i
     end
 
     def time_remaining
       if !@project.cmi_project_info.actual_start_date.nil?
-        @last_checkpoint.scheduled_finish_date - Date.today
+        (@last_checkpoint.scheduled_finish_date - Date.today - 1).to_i
       else
         "--"
       end
     end
 
     def time_percent_done
-      100 * time_done / time_scheduled
+      if time_scheduled.zero?
+        0.0
+      else
+        100.0 * time_done / time_scheduled
+      end
     end
 
     def hhrr_cost_incurred
@@ -93,11 +105,19 @@ module CMI
     end
 
     def hhrr_cost_percent_incurred
-      100 * hhrr_cost_incurred / hhrr_cost_scheduled
+      if hhrr_cost_scheduled.zero?
+        0.0
+      else
+        100 * hhrr_cost_incurred / hhrr_cost_scheduled
+      end
     end
 
     def hhrr_cost_percent
-      100 * hhrr_cost_scheduled / total_cost_scheduled
+      if total_cost_scheduled.zero?
+        0.0
+      else
+        100 * hhrr_cost_scheduled / total_cost_scheduled
+      end
     end
 
     def material_cost_incurred
@@ -113,11 +133,19 @@ module CMI
     end
 
     def material_cost_percent_incurred
-      100 * material_cost_incurred / material_cost_scheduled
+      if material_cost_scheduled.zero?
+        0.0
+      else
+        100 * material_cost_incurred / material_cost_scheduled
+      end
     end
 
     def material_cost_percent
-      100 * material_cost_scheduled / total_cost_scheduled
+      if total_cost_scheduled.zero?
+        0.0
+      else
+        100 * material_cost_scheduled / total_cost_scheduled
+      end
     end
 
     def total_cost_incurred
@@ -133,7 +161,11 @@ module CMI
     end
 
     def total_cost_percent_incurred
-      100 * total_cost_incurred / total_cost_scheduled
+      if total_cost_scheduled.zero?
+        0.0
+      else
+        100 * total_cost_incurred / total_cost_scheduled
+      end
     end
 
     def to_s

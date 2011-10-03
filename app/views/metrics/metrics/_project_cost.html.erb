@@ -79,8 +79,8 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.hhrr_cost_percent_incurred %>,<%= metric.material_cost_percent_incurred %>,<%= metric.total_cost_percent_incurred %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: <%= metric.total_cost_percent_incurred %>%|Otros: <%= metric.material_cost_percent_incurred %>%|RRHH: <%= metric.hhrr_cost_percent_incurred %>%|"/>
-      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%= metric.hhrr_cost_percent %>,<%= metric.material_cost_percent %>&chs=250x50&chl=RRHH: <%= metric.hhrr_cost_percent %>%|Otros: <%= metric.material_cost_percent %>%|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.hhrr_cost_percent_incurred.round(2) %>,<%= metric.material_cost_percent_incurred.round(2) %>,<%= metric.total_cost_percent_incurred.round(2) %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: <%= metric.total_cost_percent_incurred.round(2) %>%|Otros: <%= metric.material_cost_percent_incurred.round(2) %>%|RRHH: <%= metric.hhrr_cost_percent_incurred.round(2) %>%|"/>
+      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%= metric.hhrr_cost_percent.round(2) %>,<%= metric.material_cost_percent.round(2) %>&chs=250x50&chl=RRHH: <%= metric.hhrr_cost_percent.round(2) %>%|Otros: <%= metric.material_cost_percent.round(2) %>%|"/>
     <% end -%>
   <% end -%>
 </tr>
