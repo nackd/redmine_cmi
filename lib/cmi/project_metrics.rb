@@ -57,6 +57,18 @@ module CMI
       end
     end
 
+    def effort_original_by_role(role)
+      @project.cmi_project_info.scheduled_role_effort[role]
+    end
+
+    def effort_original
+      User.roles.inject(0) { |sum, role| sum + effort_original_by_role(role) }
+    end
+
+    def effort_deviation
+      100.0 * (effort_scheduled - effort_original) / effort_original
+    end
+
     def time_done
       if !@project.cmi_project_info.actual_start_date.nil?
           (Date.today - @project.cmi_project_info.actual_start_date + 1).to_i
@@ -83,6 +95,14 @@ module CMI
       else
         100.0 * time_done / time_scheduled
       end
+    end
+
+    def time_original
+      @project.cmi_project_info.scheduled_finish_date - @project.cmi_project_info.scheduled_start_date
+    end
+
+    def time_deviation
+      100.0 * (time_scheduled - time_original) / time_original
     end
 
     def hhrr_cost_incurred
@@ -181,6 +201,10 @@ module CMI
 
     def total_cost_original
       hhrr_cost_original + material_cost_original
+    end
+
+    def total_cost_deviation
+      100.0 * (total_cost_scheduled - total_cost_original) / total_cost_original
     end
 
     def original_margin
