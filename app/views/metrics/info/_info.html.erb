@@ -9,7 +9,6 @@
     <legend><%=t :"cmi.label_initial_schedule" %></legend>
     <p><%= f.text_field :scheduled_start_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_scheduled_start_date') %></p>
     <p><%= f.text_field :scheduled_finish_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_scheduled_finish_date') %></p>
-    <p><%= f.text_field :scheduled_material_budget, :size => 10, :required => true %></p>
     <p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
   <%- @roles.each do |role| -%>
     <p>

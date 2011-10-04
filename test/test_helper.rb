@@ -118,7 +118,6 @@ def create_test_data
                          :actual_start_date       => Date.new(2011, 2, 1),
                          :scheduled_qa_meetings   => 3,
                          :total_income            => 123456,
-                         :scheduled_material_budget => 50,
                          :scheduled_role_effort => {
                            "JP"                   => 100,
                            "AF"                   => 200,

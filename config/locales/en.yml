@@ -4,7 +4,6 @@ en:
 
   field_actual_start_date: Actual start date
   field_scheduled_finish_date: Scheduled finish date
-  field_scheduled_material_budget: Scheduled material budget
   field_scheduled_qa_meetings: Scheduled QA meetings
   field_scheduled_start_date: Scheduled start date
   field_total_income: Total income

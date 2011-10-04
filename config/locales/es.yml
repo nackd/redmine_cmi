@@ -4,7 +4,6 @@ es:
 
   field_actual_start_date: Fecha de comienzo real
   field_scheduled_finish_date: Fecha de fin planificada
-  field_scheduled_material_budget: Presupuesto para materiales
   field_scheduled_qa_meetings: Revisiones de calidad planificadas
   field_scheduled_start_date: Fecha de comienzo planificada
   field_total_income: Cantidad aceptada

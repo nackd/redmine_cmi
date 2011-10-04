@@ -148,6 +148,10 @@ module CMI
       end
     end
 
+    def material_cost_original
+      @project.cmi_expenditures.sum(:initial_budget)
+    end
+
     def total_cost_incurred
       hhrr_cost_incurred + material_cost_incurred
     end
