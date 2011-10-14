@@ -35,8 +35,8 @@
         <%= render :partial => 'metrics/metrics/project_incident' %>
       <% end %>
 
-      <% unless Setting.plugin_redmine_cmi['requirements_tracker'].blank? %>
-        <%= render :partial => 'metrics/metrics/requirement' %>
+      <% unless Setting.plugin_redmine_cmi['changes_tracker'].blank? %>
+        <%= render :partial => 'metrics/metrics/changes' %>
       <% end %>
 
       <%= render :partial => 'metrics/metrics/configuration' %>

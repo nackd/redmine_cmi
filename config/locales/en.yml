@@ -87,6 +87,7 @@ en:
     label_profitability_current: Profitability current
     label_current_profit: Current profit
     label_desviation: Desviation
+    label_change_request: Change requests
     label_requirements: Requirements
     label_conf_category: Category for configuration management issues
     label_risks: Risks
@@ -96,6 +97,8 @@ en:
     label_low_priorities: Priorities for low level risks and incidents
     label_medium_priorities: Priorities for medium level risks and incidents
     label_high_priorities: Priorities for high level risks and incidents
+    label_accepted_statuses: Statuses for accepted changes
+    label_rejected_statuses: Statuses for rejected changes
     label_incidents: Incidents
     label_incidents_high: High exposure
     label_incidents_medium: High exposure

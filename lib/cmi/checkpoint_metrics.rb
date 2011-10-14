@@ -302,6 +302,39 @@ module CMI
       Issue.count :joins => :project, :conditions => cond.conditions
     end
 
+    def changes_accepted
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['changes_tracker']]
+      cond << ['status_id in (?)', Setting.plugin_redmine_cmi['status_accepted']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def changes_rejected
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['changes_tracker']]
+      cond << ['status_id in (?)', Setting.plugin_redmine_cmi['status_rejected']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def changes_effort_incurred
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['changes_tracker']]
+      TimeEntry.sum(:hours,
+                    :joins => [:project, :issue ],
+                    :conditions => cond.conditions)
+    end
+
+    def changes_effort_percent
+      if effort_done.zero?
+        0.0
+      else
+        100.0 * changes_effort_incurred / effort_done
+      end
+    end
+
     def to_s
       checkpoint_date.to_s
     end

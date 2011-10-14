@@ -87,6 +87,7 @@ es:
     label_profitability_current: Prevista actualmente
     label_current_profit: Beneficio actual
     label_desviation: Desviaciones
+    label_change_request: Solicitudes de cambio
     label_requirements: Requisitos
     label_conf_category: Categoría para peticiones de gestión de configuración
     label_risks: Riesgos
@@ -96,6 +97,8 @@ es:
     label_low_priorities: Prioridades para riesgos e incidencias de nivel bajo
     label_medium_priorities: Prioridades para riesgos e incidencias de nivel medio
     label_high_priorities: Prioridades para riesgos e incidencias de nivel alto
+    label_accepted_statuses: Estados para cambios aceptados
+    label_rejected_statuses: Estados para cambios rechazados
     label_incidents: Incidencias
     label_incidents_high: Exposición alta
     label_incidents_medium: Exposición media

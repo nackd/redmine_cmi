@@ -5,16 +5,16 @@
                  options_from_collection_for_select(Tracker.all, :id, :name, @settings['incidents_tracker'].to_i) %>
 </p>
 <p>
-  <label><%=l :'cmi.label_requirements' %></label>
-  <%= select_tag 'settings[requirements_tracker]',
-                 '<option></option>' +
-                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['requirements_tracker'].to_i) %>
-</p>
-<p>
   <label><%=l :'cmi.label_risks' %></label>
   <%= select_tag 'settings[risks_tracker]',
                  '<option></option>' +
                  options_from_collection_for_select(Tracker.all, :id, :name, @settings['risks_tracker'].to_i) %>
+</p>
+<p>
+  <label><%=l :'cmi.label_change_request' %></label>
+  <%= select_tag 'settings[changes_tracker]',
+                 '<option></option>' +
+                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['changes_tracker'].to_i) %>
 </p>
 <p>
   <label><%=l :'cmi.label_conf_category' %></label>
@@ -36,5 +36,17 @@
   <label><%=l :'cmi.label_high_priorities' %></label>
   <%= select_tag 'settings[priority_high]',
                  options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_high'] || []).collect(&:to_i)),
+                 :multiple => true %>
+</p>
+<p>
+  <label><%=l :'cmi.label_accepted_statuses' %></label>
+  <%= select_tag 'settings[status_accepted]',
+                 options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_accepted'] || []).collect(&:to_i)),
+                 :multiple => true %>
+</p>
+<p>
+  <label><%=l :'cmi.label_rejected_statuses' %></label>
+  <%= select_tag 'settings[status_rejected]',
+                 options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_rejected'] || []).collect(&:to_i)),
                  :multiple => true %>
 </p>

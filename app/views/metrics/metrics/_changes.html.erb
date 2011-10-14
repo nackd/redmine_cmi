@@ -2,26 +2,26 @@
   <th rowspan=3><%= l('cmi.label_requirements_management') %></th>
   <th rowspan=2><%= l('cmi.label_changes') %></th>
   <th colspan="2"><%= l('cmi.label_accepted') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "changes_accepted_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'changes_accepted').to_i %>
+      <%= metric.changes_accepted %>
     <% end -%>
   <% end -%>
 </tr>
 <tr>
    <th colspan="2"><%= l('cmi.label_rejected') %></th>
-   <% @names.each_with_index do |report, i| -%>
+   <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "changes_rejected_#{i}", :class => "issue" do -%>
-       <%= get_report_value(report, 'changes_declined').to_i %>
+       <%= metric.changes_rejected %>
      <% end -%>
    <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="3"><%= l('cmi.label_effort_done') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "changes_effort_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'changes_effort') %> <%= l('cmi.label_hours') %> (<%=
-          get_report_value(report, 'effort_done').to_f != 0.0? (get_report_value(report, 'changes_effort').to_f / get_report_value(report, 'effort_done').to_f).round(2) : "--" %> %)
+      <%= metric.changes_effort_incurred.round(2) %> <%= l('cmi.label_hours') %> (<%=
+          metric.changes_effort_percent.round(2) %> %)
     <% end -%>
   <% end -%>
 </tr>
