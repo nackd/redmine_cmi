@@ -216,18 +216,18 @@ class MetricsControllerTest < ActionController::TestCase
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:94.05,50.0,102.68|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Coste: 105.36%|Tiempo: 0.0%|Esfuerzo: 88.1%|\" />", css_select("#deviation_chart_1 img").first.to_s
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:78.57,41.435,83.035|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Coste: 66.07%|Tiempo: -17.13%|Esfuerzo: 57.14%|\" />", css_select("#deviation_chart_2 img").first.to_s
 
-    # assert_select "#risk_high_0", "0"
-    # assert_select "#risk_high_1", "0"
-    # assert_select "#risk_high_2", "0"
-    # assert_select "#risk_medium_0", "0"
-    # assert_select "#risk_medium_1", "0"
-    # assert_select "#risk_medium_2", "0"
-    # assert_select "#risk_low_0", "0"
-    # assert_select "#risk_low_1", "0"
-    # assert_select "#risk_low_2", "0"
-    # assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_0 img").first.to_s
-    # assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_1 img").first.to_s
-    # assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_2 img").first.to_s
+    assert_select "#risk_high_0", "0"
+    assert_select "#risk_high_1", "0"
+    assert_select "#risk_high_2", "0"
+    assert_select "#risk_medium_0", "0"
+    assert_select "#risk_medium_1", "0"
+    assert_select "#risk_medium_2", "0"
+    assert_select "#risk_low_0", "0"
+    assert_select "#risk_low_1", "0"
+    assert_select "#risk_low_2", "0"
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_0 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_1 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_2 img").first.to_s
 
     # assert_select "#incident_high_0", "0"
     # assert_select "#incident_high_1", "0"

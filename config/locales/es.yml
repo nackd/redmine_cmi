@@ -93,6 +93,9 @@ es:
     label_risks_high: Riesgo alto abiertos
     label_risks_medium: Riesgo medio abiertos
     label_risks_low: Riesgo bajo abiertos
+    label_low_risk_priorities: Prioridades para riesgos de nivel bajo
+    label_medium_risk_priorities: Prioridades para riesgos de nivel medio
+    label_high_risk_priorities: Prioridades para riesgos de nivel alto
     label_incidents: Incidencias
     label_incidents_high: Exposición alta
     label_incidents_medium: Exposición media

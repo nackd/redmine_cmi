@@ -27,9 +27,7 @@
   <th rowspan=1 colspan="2"><%= l(:label_total) %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "risk_total_#{i}", :class => "issue" do -%>
-      <%= (get_report_value(metric, 'risk_medium').to_f +
-           get_report_value(metric, 'risk_low').to_f +
-           get_report_value(metric, 'risk_high').to_f).to_i %>
+      <%= metric.risk_total %>
     <% end -%>
   <% end -%>
 </tr>
@@ -37,7 +35,7 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "risk_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= get_report_value(metric, 'risk_high').to_i  %>,<%= get_report_value(metric, 'risk_medium').to_i  %>,<%= get_report_value(metric, 'risk_low').to_i  %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: <%= get_report_value(metric, 'risk_low').to_i  %>|Medio: <%= get_report_value(metric, 'risk_medium').to_i  %>|Alto: <%= get_report_value(metric, 'risk_high').to_i  %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.risk_high %>,<%= metric.risk_medium %>,<%= metric.risk_low %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: <%= metric.risk_low %>|Medio: <%= metric.risk_medium %>|Alto: <%= metric.risk_high %>|"/>
     <% end -%>
   <% end -%>
 </tr>

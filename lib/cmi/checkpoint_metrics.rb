@@ -240,6 +240,37 @@ module CMI
       100.0 * incurred_margin / @project.cmi_project_info.total_income
     end
 
+    def risk_low
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['risks_tracker']]
+      cond << ['priority_id in (?)', Setting.plugin_redmine_cmi['risk_low']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def risk_medium
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['risks_tracker']]
+      cond << ['priority_id in (?)', Setting.plugin_redmine_cmi['risk_medium']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def risk_high
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['risks_tracker']]
+      cond << ['priority_id in (?)', Setting.plugin_redmine_cmi['risk_high']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def risk_total
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', @date]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['risks_tracker']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
     def to_s
       checkpoint_date.to_s
     end
