@@ -1,0 +1,22 @@
+<p>
+  <label><%=l :'cmi.label_incidents' %></label>
+  <%= select_tag 'settings[incidents_tracker]',
+                 '<option></option>' +
+                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['incidents_tracker'].to_i) %>
+</p>
+<p>
+  <label><%=l :'cmi.label_requirements' %></label>
+  <%= select_tag 'settings[requirements_tracker]',
+                 '<option></option>' +
+                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['requirements_tracker'].to_i) %>
+</p>
+<p>
+  <label><%=l :'cmi.label_risks' %></label>
+  <%= select_tag 'settings[risks_tracker]',
+                 '<option></option>' +
+                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['risks_tracker'].to_i) %>
+</p>
+<p>
+  <label><%=l :'cmi.label_conf_category' %></label>
+  <%= text_field_tag 'settings[conf_category]', @settings['conf_category'] %>
+</p>

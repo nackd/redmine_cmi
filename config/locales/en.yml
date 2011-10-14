@@ -87,10 +87,12 @@ en:
     label_profitability_current: Profitability current
     label_current_profit: Current profit
     label_desviation: Desviation
-    label_risk: Risks
-    label_risk_high: High-risk open
-    label_risk_medium: Medium-risk open
-    label_risk_low: Low-risk open
+    label_requirements: Requirements
+    label_conf_category: Category for configuration management issues
+    label_risks: Risks
+    label_risks_high: High-risk open
+    label_risks_medium: Medium-risk open
+    label_risks_low: Low-risk open
     label_incidents: Incidents
     label_incidents_high: High exposure
     label_incidents_medium: High exposure
