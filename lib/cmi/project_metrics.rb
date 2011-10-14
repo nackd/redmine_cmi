@@ -283,6 +283,37 @@ module CMI
       Issue.count :joins => :project, :conditions => cond.conditions
     end
 
+    def incident_low
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['incidents_tracker']]
+      cond << ['priority_id in (?)', Setting.plugin_redmine_cmi['priority_low']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def incident_medium
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['incidents_tracker']]
+      cond << ['priority_id in (?)', Setting.plugin_redmine_cmi['priority_medium']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def incident_high
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['incidents_tracker']]
+      cond << ['priority_id in (?)', Setting.plugin_redmine_cmi['priority_high']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def incident_total
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['incidents_tracker']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
     def to_s
       # TODO translate this
       "Valor actual - #{Date.today}"

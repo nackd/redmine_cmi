@@ -1,43 +1,41 @@
 <tr>
   <th rowspan=5><%= l('cmi.label_incidents') %></th>
   <th rowspan="1" colspan="2"><%= l('cmi.label_incidents_high') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "incident_high_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'issues_high').to_i  %>
+      <%= metric.incident_high %>
     <% end -%>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="2"><%= l('cmi.label_incidents_medium') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "incident_medium_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'issues_medium').to_i  %>
+      <%= metric.incident_medium %>
     <% end -%>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="2"><%= l('cmi.label_incidents_low') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "incident_low_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'issues_low').to_i  %>
+      <%= metric.incident_low %>
     <% end -%>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="2"><%= l(:label_total) %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "incident_total_#{i}", :class => "issue" do -%>
-      <%= (get_report_value(report, 'issues_medium').to_f +
-           get_report_value(report, 'issues_low').to_f +
-           get_report_value(report, 'issues_high').to_f).to_i  %>
+      <%= metric.incident_total %>
     <% end -%>
   <% end %>
 </tr>
 <tr>
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "incident_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= instance_variable_get("@metrics_#{report}")['issues_high'].to_i  %>,<%= instance_variable_get("@metrics_#{report}")['issues_medium'].to_i  %>,<%= instance_variable_get("@metrics_#{report}")['issues_low'].to_i  %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: <%= instance_variable_get("@metrics_#{report}")['issues_low'].to_i  %>|Medio: <%= instance_variable_get("@metrics_#{report}")['issues_medium'].to_i  %>|Alto: <%= instance_variable_get("@metrics_#{report}")['issues_high'].to_i  %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.incident_high %>,<%= metric.incident_medium %>,<%= metric.incident_medium %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: <%= metric.incident_low %>|Medio: <%= metric.incident_medium %>|Alto: <%= metric.incident_high %>|"/>
     <% end -%>
   <% end -%>
 </tr>

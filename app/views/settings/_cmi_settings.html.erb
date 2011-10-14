@@ -21,20 +21,20 @@
   <%= text_field_tag 'settings[conf_category]', @settings['conf_category'] %>
 </p>
 <p>
-  <label><%=l :'cmi.label_low_risk_priorities' %></label>
-  <%= select_tag 'settings[risk_low]',
-                 options_from_collection_for_select(IssuePriority.all, :id, :name, @settings['risk_low'].collect(&:to_i)),
+  <label><%=l :'cmi.label_low_priorities' %></label>
+  <%= select_tag 'settings[priority_low]',
+                 options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_low'] || []).collect(&:to_i)),
                  :multiple => true %>
 </p>
 <p>
-  <label><%=l :'cmi.label_medium_risk_priorities' %></label>
-  <%= select_tag 'settings[risk_medium]',
-                 options_from_collection_for_select(IssuePriority.all, :id, :name, @settings['risk_medium'].collect(&:to_i)),
+  <label><%=l :'cmi.label_medium_priorities' %></label>
+  <%= select_tag 'settings[priority_medium]',
+                 options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_medium'] || []).collect(&:to_i)),
                  :multiple => true %>
 </p>
 <p>
-  <label><%=l :'cmi.label_high_risk_priorities' %></label>
-  <%= select_tag 'settings[risk_high]',
-                 options_from_collection_for_select(IssuePriority.all, :id, :name, @settings['risk_high'].collect(&:to_i)),
+  <label><%=l :'cmi.label_high_priorities' %></label>
+  <%= select_tag 'settings[priority_high]',
+                 options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_high'] || []).collect(&:to_i)),
                  :multiple => true %>
 </p>

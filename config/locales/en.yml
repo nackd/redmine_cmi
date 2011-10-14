@@ -93,9 +93,9 @@ en:
     label_risks_high: High-risk open
     label_risks_medium: Medium-risk open
     label_risks_low: Low-risk open
-    label_low_risk_priorities: Priorities for low level risks
-    label_medium_risk_priorities: Priorities for medium level risks
-    label_high_risk_priorities: Priorities for high level risks
+    label_low_priorities: Priorities for low level risks and incidents
+    label_medium_priorities: Priorities for medium level risks and incidents
+    label_high_priorities: Priorities for high level risks and incidents
     label_incidents: Incidents
     label_incidents_high: High exposure
     label_incidents_medium: High exposure

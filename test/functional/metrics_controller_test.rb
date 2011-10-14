@@ -229,18 +229,18 @@ class MetricsControllerTest < ActionController::TestCase
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_1 img").first.to_s
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#risk_chart_2 img").first.to_s
 
-    # assert_select "#incident_high_0", "0"
-    # assert_select "#incident_high_1", "0"
-    # assert_select "#incident_high_2", "0"
-    # assert_select "#incident_medium_0", "0"
-    # assert_select "#incident_medium_1", "0"
-    # assert_select "#incident_medium_2", "0"
-    # assert_select "#incident_low_0", "0"
-    # assert_select "#incident_low_1", "0"
-    # assert_select "#incident_low_2", "0"
-    # assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#incident_chart_0 img").first.to_s
-    # assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#incident_chart_1 img").first.to_s
-    # assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#incident_chart_2 img").first.to_s
+    assert_select "#incident_high_0", "0"
+    assert_select "#incident_high_1", "0"
+    assert_select "#incident_high_2", "0"
+    assert_select "#incident_medium_0", "0"
+    assert_select "#incident_medium_1", "0"
+    assert_select "#incident_medium_2", "0"
+    assert_select "#incident_low_0", "0"
+    assert_select "#incident_low_1", "0"
+    assert_select "#incident_low_2", "0"
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#incident_chart_0 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#incident_chart_1 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:0,0,0&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: 0|Medio: 0|Alto: 0|\" />", css_select("#incident_chart_2 img").first.to_s
 
     # assert_select "#changes_accepted_0", "0"
     # assert_select "#changes_accepted_1", "0"
