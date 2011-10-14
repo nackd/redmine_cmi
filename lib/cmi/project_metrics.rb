@@ -66,7 +66,28 @@ module CMI
     end
 
     def effort_deviation
-      100.0 * (effort_scheduled - effort_original) / effort_original
+      if effort_original.zero?
+        0.0
+      else
+        100.0 * (effort_scheduled - effort_original) / effort_original
+      end
+    end
+
+    def conf_effort_incurred
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['spent_on <= ?', Date.today]
+      cond << ['issue_categories.name = ?', Setting.plugin_redmine_cmi['conf_category']]
+      TimeEntry.sum(:hours,
+                    :joins => [:project, {:issue => :category} ],
+                    :conditions => cond.conditions)
+    end
+
+    def conf_effort_percent
+      if effort_done.zero?
+        0.0
+      else
+        100.0 * conf_effort_incurred / effort_done
+      end
     end
 
     def time_done
