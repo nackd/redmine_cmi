@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       <% @projects.each do |project| %>
-        <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_report } %>
+        <%= render :partial => 'project', :locals => { :project => project } %>
       <% end %>
     </tbody>
   </table>

@@ -47,7 +47,6 @@ class ManagementController < ApplicationController
         end
       end
     end
-    @last_report = {}
   end
 
   def get_archived_projects
@@ -58,6 +57,5 @@ class ManagementController < ApplicationController
       group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
       @archived = @archived.select{ |p| p.custom_value_for(group_field).value == params[:selected_project_group] }
     end
-    @last_archived_report = {}
   end
 end

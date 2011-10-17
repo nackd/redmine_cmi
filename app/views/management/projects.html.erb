@@ -29,11 +29,11 @@
     </thead>
     <tbody>
       <% @projects.each do |project| %>
-        <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_report } %>
+        <%= render :partial => 'project', :locals => { :project => project } %>
       <% end %>
       <thead><tr class="<%= cycle('odd', 'even') %>"><td colspan="10"><%= l('cmi.label_archived') %></td></tr></thead>
       <% @archived.each do |project| %>
-        <%= render :partial => 'project', :locals => { :project => project, :last_report => @last_archived_report } %>
+        <%= render :partial => 'project', :locals => { :project => project } %>
       <% end %>
     </tbody>
   </table>
