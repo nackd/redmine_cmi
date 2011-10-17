@@ -17,6 +17,12 @@
                  options_from_collection_for_select(Tracker.all, :id, :name, @settings['changes_tracker'].to_i) %>
 </p>
 <p>
+  <label><%=l :'cmi.label_nonconformities' %></label>
+  <%= select_tag 'settings[qa_tracker]',
+                 '<option></option>' +
+                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['qa_tracker'].to_i) %>
+</p>
+<p>
   <label><%=l :'cmi.label_conf_category' %></label>
   <%= text_field_tag 'settings[conf_category]', @settings['conf_category'] %>
 </p>
@@ -48,5 +54,11 @@
   <label><%=l :'cmi.label_rejected_statuses' %></label>
   <%= select_tag 'settings[status_rejected]',
                  options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_rejected'] || []).collect(&:to_i)),
+                 :multiple => true %>
+</p>
+<p>
+  <label><%=l :'cmi.label_pending_qa_statuses' %></label>
+  <%= select_tag 'settings[status_pending]',
+                 options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_pending'] || []).collect(&:to_i)),
                  :multiple => true %>
 </p>

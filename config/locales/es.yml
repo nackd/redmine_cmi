@@ -100,6 +100,7 @@ es:
     label_high_priorities: Prioridades para riesgos e incidencias de nivel alto
     label_accepted_statuses: Estados para cambios aceptados
     label_rejected_statuses: Estados para cambios rechazados
+    label_pending_qa_statuses: Estados para no conformidades pendientes
     label_incidents: Incidencias
     label_incidents_high: Exposición alta
     label_incidents_medium: Exposición media

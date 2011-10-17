@@ -347,6 +347,70 @@ module CMI
       end
     end
 
+    def held_qa_meetings
+      @last_checkpoint.held_qa_meetings
+    end
+
+    def held_qa_meetings_percent
+      if scheduled_qa_meetings.zero?
+        0.0
+      else
+        100.0 * held_qa_meetings / scheduled_qa_meetings
+      end
+    end
+
+    def scheduled_qa_meetings
+      @project.cmi_project_info.scheduled_qa_meetings
+    end
+
+    def nc_total
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['qa_tracker']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def nc_pending
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['qa_tracker']]
+      cond << ['status_id in (?)', Setting.plugin_redmine_cmi['status_pending']]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def nc_out_of_date
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['qa_tracker']]
+      cond << ['due_date > ?', Date.today]
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def nc_no_date
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['qa_tracker']]
+      cond << ['due_date is null']
+      Issue.count :joins => :project, :conditions => cond.conditions
+    end
+
+    def qa_effort_incurred
+      cond = ARCondition.new << @project.project_condition(Setting.display_subprojects_issues?)
+      cond << ['start_date <= ?', Date.today]
+      cond << ['tracker_id = ?', Setting.plugin_redmine_cmi['qa_tracker']]
+      TimeEntry.sum(:hours,
+                    :joins => [:project, :issue ],
+                    :conditions => cond.conditions)
+    end
+
+    def qa_effort_percent
+      if effort_done.zero?
+        0.0
+      else
+        100.0 * qa_effort_incurred / effort_done
+      end
+    end
+
     def to_s
       # TODO translate this
       "Valor actual - #{Date.today}"

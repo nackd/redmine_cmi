@@ -2,53 +2,50 @@
   <th rowspan=6><%= l('cmi.label_quality_assurance') %></th>
   <th rowspan=1><%= l('cmi.label_quality_reviews') %></th>
   <th rowspan=1 colspan="2"><%= l('cmi.label_quality_reviews_done') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "qa_meets_done_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'Revisión calidad realizada') %> (<%= 
-      get_report_value(report, 'Revision calidad planificada').to_f != 0.0 ? (get_report_value(report, 'Revisión calidad realizada').to_f / get_report_value(report, 'Revision calidad planificada').to_f).round(2) : "--" %> %)
+      <%= metric.held_qa_meetings %> (<%= metric.held_qa_meetings_percent %> %)
     <% end -%>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=2><%= l('cmi.label_nonconformities') %></th>
    <th colspan="2"><%= l('cmi.label_quality_reviews_detected') %></th>
-   <% @names.each_with_index do |report, i| -%>
+   <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "qa_nc_detected_#{i}", :class => "issue" do -%>
-       <%= get_report_value(report, 'nc_total') %>
+       <%= metric.nc_total %>
      <% end -%>
    <% end -%>
 </tr>
 <tr>
    <th colspan="2"><%= l('cmi.label_unresolved') %></th>
-   <% @names.each_with_index do |report, i| -%>
+   <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "qa_nc_pending_#{i}", :class => "issue" do -%>
-       <%= get_report_value(report, 'nc_open') %>
+       <%= metric.nc_pending %>
      <% end -%>
    <% end -%>
 </tr>
-
 <tr>
   <th rowspan=1 colspan="3"><%= l('cmi.label_no_approval_open_out_of_date') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "qa_pending_corrective_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'no_approval_open_out_of_date') %>
+      <%= metric.nc_out_of_date %>
     <% end -%>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="3"><%= l('cmi.label_no_approval_open_without_date') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "qa_no_date_corrective_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'no_approval_open_without_date') %>
+      <%= metric.nc_no_date %>
     <% end -%>
   <% end -%>
 </tr>
 <tr>
   <th rowspan=1 colspan="3"><%= l('cmi.label_ac_effort') %></th>
-  <% @names.each_with_index do |report, i| -%>
+  <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "qa_effort_corrective_#{i}", :class => "issue" do -%>
-      <%= get_report_value(report, 'ac_effort') %> (<%=
-          get_report_value(report, 'effort_done').to_f != 0.0? (get_report_value(report, 'ac_effort').to_f / get_report_value(report, 'effort_done').to_f).round(2) : "--"%> %)
+      <%= metric.qa_effort_incurred.round(2) %> (<%= metric.qa_effort_percent.round(2) %> %)
     <% end -%>
   <% end -%>
 </tr>
