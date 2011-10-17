@@ -136,7 +136,9 @@ module CMI
 
     def hhrr_cost_scheduled
       User.roles.inject(0) { |sum, role|
-        sum += (@last_checkpoint.scheduled_role_effort[role] *
+        sum += (@last_checkpoint.nil? ?
+                0 :
+                @last_checkpoint.scheduled_role_effort[role] *
                 HistoryProfilesCost.find(:first, :conditions => ['profile = ? AND year = ?', role, Date.today.year]).value)
       }
     end
