@@ -11,7 +11,7 @@
         <%= sort_header_tag('checkpoint_date', :caption => t(:label_date), :default_order => 'desc') %>
         <%= content_tag('th', t(:"cmi.label_effort")) %>
         <%= content_tag('th', t(:field_scheduled_finish_date)) %>
-        <%= content_tag('th', t(:field_scheduled_qa_meetings)) %>
+        <%= content_tag('th', t(:field_held_qa_meetings)) %>
       </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
         <td><%= link_to checkpoint.checkpoint_date, :controller => 'checkpoints', :action => 'show', :id => checkpoint %></td>
         <%= content_tag 'td', checkpoint.scheduled_role_effort.values.reduce(:+) %>
         <%= content_tag 'td', checkpoint.scheduled_finish_date %>
-        <%= content_tag 'td', checkpoint.scheduled_qa_meetings %>
+        <%= content_tag 'td', checkpoint.held_qa_meetings %>
       </tr>
     <% end -%>
     </tbody>

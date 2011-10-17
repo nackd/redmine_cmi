@@ -23,7 +23,7 @@
   <table class="attributes">
     <tr>
       <th><%=l(:field_scheduled_finish_date)%>:</th><td><%= format_date(@checkpoint.scheduled_finish_date) %></td>
-      <th><%=l(:field_scheduled_qa_meetings)%>:</th><td><%= @checkpoint.scheduled_qa_meetings %></td>
+      <th><%=l(:field_scheduled_qa_meetings)%>:</th><td><%= @checkpoint.held_qa_meetings %></td>
     </tr>
     <%- @roles.each do |role| -%>
       <tr>

@@ -137,8 +137,8 @@ def create_test_data
                         :author                => jp,
                         :description           => "Report upto 2/15",
                         :checkpoint_date       => Date.new(2011, 2, 15),
+                        :held_qa_meetings      => 0,
                         :scheduled_finish_date => Date.new(2011, 7, 1),
-                        :scheduled_qa_meetings => 0,
                         :scheduled_role_effort => {
                           "JP"                 => 100,
                           "AF"                 => 300,
@@ -151,8 +151,8 @@ def create_test_data
                         :author                => jp,
                         :description           => "Report upto 3/15",
                         :checkpoint_date       => Date.new(2011, 3, 15),
+                        :held_qa_meetings      => 1,
                         :scheduled_finish_date => Date.new(2011, 8, 1),
-                        :scheduled_qa_meetings => 1,
                         :scheduled_role_effort => {
                           "JP"                 => 150,
                           "AF"                 => 400,

@@ -8,7 +8,7 @@ class CmiCheckpoint < ActiveRecord::Base
   validates_presence_of :project, :author
   validates_format_of :checkpoint_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
   validates_format_of :scheduled_finish_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
-  validates_numericality_of :scheduled_qa_meetings, :only_integer => true
+  validates_numericality_of :held_qa_meetings, :only_integer => true
   validate :role_effort
 
   serialize :scheduled_role_effort, Hash
