@@ -1,11 +1,9 @@
 module ManagementHelper
   def link_to_metrics(project)
     if project.last_report.present?
-      link_to "#{DEFAULT_VALUES['trackers']['report']} ##{project.last_report.id} #{project.last_report.start_date}", metrics_path(project.last_report.project.identifier)
+      link_to "#{t(:'cmi.label_checkpoints')} ##{project.last_report.id} #{project.last_report.start_date}", metrics_path(:project_id => project.identifier, :action => :show)
     elsif !project.module_enabled?(:cmiplugin)
       l('cmi.cmi_module_not_enabled')
-    elsif !project.report_tracker?
-      l('cmi.cmi_report_tracker_not_available')
     else
       l('cmi.cmi_no_reports')
     end

@@ -133,7 +133,6 @@ en-GB:
     label_filter_by: Filter by
 
     cmi_module_not_enabled: The module 'Metrics' is not enabled
-    cmi_report_tracker_not_available: There is not 'report' tracker available
     cmi_expense_tracker_not_available: There is not 'expense' tracker available
     cmi_qa_tracker_not_available: There is not 'qa' tracker available
     cmi_change_tracker_not_available: There is not 'change' tracker available
