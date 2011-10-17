@@ -25,12 +25,9 @@ module CMI
     end
 
     module InstanceMethods
-      def last_report
-        issues.find(:first,
-                    :conditions => ['tracker_id = ? AND project_id = ?',
-                                    Tracker.find_by_name(DEFAULT_VALUES['trackers']['report']),
-                                    id],
-                    :order => 'start_date DESC')
+      def last_checkpoint
+        cmi_checkpoints.find(:first,
+                             :order => 'checkpoint_date DESC')
       end
 
       def effort_done_by_role(role, to_date)
