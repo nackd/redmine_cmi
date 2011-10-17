@@ -29,7 +29,7 @@ module CMI
 
         (projects[group] || []).each do |project|
           metrics = CMI::ProjectMetrics.new project
-          @metrics[group][:accepted] += metrics.accepted
+          @metrics[group][:accepted] += metrics.total_income
           @metrics[group][:planned_profit] += metrics.planned_profit
           @metrics[group][:done] += metrics.done
           @metrics[group][:deviation] += metrics.deviation

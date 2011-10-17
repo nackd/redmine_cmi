@@ -411,6 +411,10 @@ module CMI
       end
     end
 
+    def total_income
+      @project.cmi_project_info.total_income
+    end
+
     def to_s
       # TODO translate this
       "Valor actual - #{Date.today}"
