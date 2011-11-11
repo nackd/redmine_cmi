@@ -421,6 +421,14 @@ module CMI
       @project.cmi_project_info.total_income
     end
 
+    def executed
+      if total_cost_scheduled.zero?
+        0.0
+      else
+        100.0 * (hhrr_cost_incurred + material_cost_scheduled) / total_cost_scheduled
+      end
+    end
+
     def to_s
       # TODO translate this
       "Valor actual - #{Date.today}"

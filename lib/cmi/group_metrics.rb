@@ -31,7 +31,7 @@ module CMI
           metrics = CMI::ProjectMetrics.new project
           @metrics[group][:accepted] += metrics.total_income
           @metrics[group][:planned_profit] += metrics.scheduled_margin
-          @metrics[group][:done] += metrics.done
+          @metrics[group][:done] += metrics.executed
           @metrics[group][:deviation] += metrics.total_cost_deviation
 
           User.roles.each do |role|
