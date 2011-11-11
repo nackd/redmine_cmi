@@ -32,7 +32,7 @@ module CMI
           @metrics[group][:accepted] += metrics.total_income
           @metrics[group][:planned_profit] += metrics.scheduled_margin
           @metrics[group][:done] += metrics.done
-          @metrics[group][:deviation] += metrics.deviation
+          @metrics[group][:deviation] += metrics.total_cost_deviation
 
           User.roles.each do |role|
             @metrics[group][:hr_current_effort_remaining][role] += metrics.effort_remaining_by_role(role)

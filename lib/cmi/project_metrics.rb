@@ -226,8 +226,12 @@ module CMI
       hhrr_cost_original + material_cost_original
     end
 
+    def total_cost_deviation
+      total_cost_scheduled - total_cost_original
+    end
+
     def total_cost_deviation_percent
-      100.0 * (total_cost_scheduled - total_cost_original) / total_cost_original
+      100.0 * total_cost_deviation / total_cost_original
     end
 
     def original_margin
