@@ -35,7 +35,7 @@ module CMI
           @metrics[group][:deviation] += metrics.deviation
 
           User.roles.each do |role|
-            @metrics[group][:hr_current_effort_remaining][role] += metrics.hr_current_effort_remaining[role]
+            @metrics[group][:hr_current_effort_remaining][role] += metrics.effort_remaining_by_role(role)
           end
         end
 
