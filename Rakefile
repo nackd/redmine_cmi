@@ -1,3 +1,19 @@
+redmine = File.join(File.dirname(__FILE__), 'redmine')
+
+desc 'Drop and recreate the test database'
+task :'tests:prepare' do
+  Dir.chdir(redmine) do
+    system %q{rake db:test:load db:test:prepare db:migrate:plugins redmine:load_default_data REDMINE_LANG=en}
+  end
+end
+
+desc 'Run tests'
+task :tests do
+  Dir.chdir(redmine) do
+    system %q{rake test:plugins PLUGIN=redmine_cmi}
+  end
+end
+
 desc 'Add a tag in git'
 task :tag, :version do |t, args|
   tagname = args.version
