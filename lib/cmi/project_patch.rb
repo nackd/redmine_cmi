@@ -39,22 +39,6 @@ module CMI
                       :include => [:project],
                       :conditions => cond.conditions)
       end
-
-      def hr_spent(to_date)
-      cond = ARCondition.new
-      cond << project.project_condition(Setting.display_subprojects_issues?)
-      cond << ['spent_on <= ?', to_date]
-      TimeEntry.sum(:cost,
-                    :include => [:project],
-                    :conditions => cond.conditions)
-      end
-
-      def expenses
-        issues.find(:all,
-                    :conditions => ['tracker_id = ? AND project_id = ?',
-                                    Tracker.find_by_name(DEFAULT_VALUES['trackers']['expense']),
-                                    id])
-      end
     end
   end
 end
