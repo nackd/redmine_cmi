@@ -4,7 +4,7 @@
   <th rowspan=1 colspan="2"><%= l('cmi.label_quality_reviews_done') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "qa_meets_done_#{i}", :class => "issue" do -%>
-      <%= metric.held_qa_meetings %> (<%= metric.held_qa_meetings_percent %> %)
+      <%= metric.held_qa_meetings %> (<%= percent metric.held_qa_meetings_percent %>)
     <% end -%>
   <% end -%>
 </tr>
@@ -45,7 +45,7 @@
   <th rowspan=1 colspan="3"><%= l('cmi.label_ac_effort') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "qa_effort_corrective_#{i}", :class => "issue" do -%>
-      <%= metric.qa_effort_incurred.round(2) %> (<%= metric.qa_effort_percent.round(2) %> %)
+      <%= metric.qa_effort_incurred.round(2) %> (<%= percent metric.qa_effort_percent %>)
     <% end -%>
   <% end -%>
 </tr>

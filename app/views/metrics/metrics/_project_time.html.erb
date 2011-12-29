@@ -27,7 +27,7 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "time_chart_#{i}" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.time_percent_done.round(2) %>|100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x50&chxt=x,y&chxl=0:|0|50|100|1:|<%= metric.time_percent_done.round(2) %>% |"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.time_percent_done.round(2) %>|100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x50&chxt=x,y&chxl=0:|0|50|100|1:|<%= percent metric.time_percent_done %>|"/>
     <% end -%>
   <% end -%>
 </tr>

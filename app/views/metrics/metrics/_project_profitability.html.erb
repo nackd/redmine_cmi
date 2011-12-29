@@ -3,7 +3,7 @@
   <th rowspan="1" colspan="2"><%= l('cmi.label_profitability_planned') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_planned_initially_#{i}", :class => "issue" do -%>
-      <%= currency metric.original_margin %> (<%= metric.original_margin_percent.round(2) %> %)
+      <%= currency metric.original_margin %> (<%= percent metric.original_margin_percent %>)
     <% end -%>
   <% end -%>
 </tr>
@@ -11,7 +11,7 @@
   <th rowspan=1 colspan="2"><%= l('cmi.label_profitability_current') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_planned_currently_#{i}", :class => "issue" do -%>
-      <%= currency metric.scheduled_margin %> (<%= metric.scheduled_margin_percent.round(2) %> %)
+      <%= currency metric.scheduled_margin %> (<%= percent metric.scheduled_margin_percent %>)
     <% end -%>
   <% end -%>
 </tr>
@@ -19,7 +19,7 @@
   <th rowspan=1 colspan="2"><%= l('cmi.label_current_profit') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_current_#{i}", :class => "issue" do -%>
-      <%= currency metric.incurred_margin %> (<%= metric.incurred_margin_percent.round(2) %> %)
+      <%= currency metric.incurred_margin %> (<%= percent metric.incurred_margin_percent %>)
     <% end -%>
   <% end -%>
 </tr>
@@ -27,7 +27,7 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= 50 + metric.original_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.scheduled_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.incurred_margin_percent.round(2) * 25/50 %>|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:<%= metric.incurred_margin_percent.round(2) %>%|Prevista actual: <%= metric.scheduled_margin_percent.round(2) %>%|Prevista inicial: <%= metric.original_margin_percent.round(2) %>%|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= 50 + metric.original_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.scheduled_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.incurred_margin_percent.round(2) * 25/50 %>|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:<%= percent metric.incurred_margin_percent %>|Prevista actual: <%= percent metric.scheduled_margin_percent %>|Prevista inicial: <%= percent metric.original_margin_percent %>|"/>
     <% end -%>
   <% end -%>
 </tr>
