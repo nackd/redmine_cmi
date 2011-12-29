@@ -3,7 +3,7 @@
   <th rowspan=1 colspan="3"><%= l('cmi.label_effort_done') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "config_effort_#{i}", :class => "issue" do -%>
-      <%= metric.conf_effort_incurred.round(2) %> <%= l('cmi.label_hours') %> (<%=
+      <%= hours metric.conf_effort_incurred %> (<%=
            metric.conf_effort_percent.round(2) %> %)
     <% end -%>
   <% end -%>

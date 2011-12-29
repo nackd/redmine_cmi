@@ -15,7 +15,7 @@ module CMI
     end
 
     def effort_scheduled_by_role(role)
-      checkpoint.scheduled_role_effort[role]
+      checkpoint.scheduled_role_effort[role].to_f
     end
 
     def effort_remaining

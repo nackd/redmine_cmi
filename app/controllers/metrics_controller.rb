@@ -6,7 +6,7 @@ class MetricsController < ApplicationController
   before_filter :get_roles
   before_filter :obtain_profile_costs, :only => :show
 
-  helper :cmi
+  helper :cmi, :view
 
   def show
     begin
