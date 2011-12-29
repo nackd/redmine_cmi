@@ -1,3 +1,4 @@
+# -*- coding: undecided -*-
 require File.dirname(__FILE__) + "/../test_helper"
 
 class MetricsControllerTest < ActionController::TestCase
@@ -119,33 +120,33 @@ class MetricsControllerTest < ActionController::TestCase
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:23.2|100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x50&chxt=x,y&chxl=0:|0|50|100|1:|23.2% |" />', css_select("#time_chart_1 img").first.to_s
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:9.33|100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x50&chxt=x,y&chxl=0:|0|50|100|1:|9.33% |" />', css_select("#time_chart_2 img").first.to_s
 
-    assert_select "#cost_hhrr_spent_0", "24797.5 &euro;"
-    assert_select "#cost_hhrr_spent_1", "19552.5 &euro;"
-    assert_select "#cost_hhrr_spent_2", "11922.5 &euro;"
-    assert_select "#cost_other_spent_0", "0 &euro;"
-    assert_select "#cost_other_spent_1", "0 &euro;"
-    assert_select "#cost_other_spent_2", "0 &euro;"
-    assert_select "#cost_total_spent_0", "24797.5 &euro;"
-    assert_select "#cost_total_spent_1", "19552.5 &euro;"
-    assert_select "#cost_total_spent_2", "11922.5 &euro;"
-    assert_select "#cost_hhrr_remaining_0", "32702.5 &euro;"
-    assert_select "#cost_hhrr_remaining_1", "37947.5 &euro;"
-    assert_select "#cost_hhrr_remaining_2", "34577.5 &euro;"
-    assert_select "#cost_other_remaining_0", "0 &euro;"
-    assert_select "#cost_other_remaining_1", "0 &euro;"
-    assert_select "#cost_other_remaining_2", "0 &euro;"
-    assert_select "#cost_total_remaining_0", "32702.5 &euro;"
-    assert_select "#cost_total_remaining_1", "37947.5 &euro;"
-    assert_select "#cost_total_remaining_2", "34577.5 &euro;"
-    assert_select "#cost_hhrr_planned_0", "57500.0 &euro;"
-    assert_select "#cost_hhrr_planned_1", "57500.0 &euro;"
-    assert_select "#cost_hhrr_planned_2", "46500.0 &euro;"
-    assert_select "#cost_other_planned_0", "0 &euro;"
-    assert_select "#cost_other_planned_1", "0 &euro;"
-    assert_select "#cost_other_planned_2", "0 &euro;"
-    assert_select "#cost_total_planned_0", "57500.0 &euro;"
-    assert_select "#cost_total_planned_1", "57500.0 &euro;"
-    assert_select "#cost_total_planned_2", "46500.0 &euro;"
+    assert_select "#cost_hhrr_spent_0", "24797.5 €"
+    assert_select "#cost_hhrr_spent_1", "19552.5 €"
+    assert_select "#cost_hhrr_spent_2", "11922.5 €"
+    assert_select "#cost_other_spent_0", "0 €"
+    assert_select "#cost_other_spent_1", "0 €"
+    assert_select "#cost_other_spent_2", "0 €"
+    assert_select "#cost_total_spent_0", "24797.5 €"
+    assert_select "#cost_total_spent_1", "19552.5 €"
+    assert_select "#cost_total_spent_2", "11922.5 €"
+    assert_select "#cost_hhrr_remaining_0", "32702.5 €"
+    assert_select "#cost_hhrr_remaining_1", "37947.5 €"
+    assert_select "#cost_hhrr_remaining_2", "34577.5 €"
+    assert_select "#cost_other_remaining_0", "0 €"
+    assert_select "#cost_other_remaining_1", "0 €"
+    assert_select "#cost_other_remaining_2", "0 €"
+    assert_select "#cost_total_remaining_0", "32702.5 €"
+    assert_select "#cost_total_remaining_1", "37947.5 €"
+    assert_select "#cost_total_remaining_2", "34577.5 €"
+    assert_select "#cost_hhrr_planned_0", "57500.0 €"
+    assert_select "#cost_hhrr_planned_1", "57500.0 €"
+    assert_select "#cost_hhrr_planned_2", "46500.0 €"
+    assert_select "#cost_other_planned_0", "0 €"
+    assert_select "#cost_other_planned_1", "0 €"
+    assert_select "#cost_other_planned_2", "0 €"
+    assert_select "#cost_total_planned_0", "57500.0 €"
+    assert_select "#cost_total_planned_1", "57500.0 €"
+    assert_select "#cost_total_planned_2", "46500.0 €"
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:43.13,0.0,43.13|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 43.13%|Otros: 0.0%|RRHH: 43.13%|" />', css_select("#cost_chart_0 img").first.to_s
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=RRHH: 100.0%|Otros: 0.0%|" />', css_select("#cost_chart_0 img").last.to_s
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:34.0,0.0,34.0|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 34.0%|Otros: 0.0%|RRHH: 34.0%|" />', css_select("#cost_chart_1 img").first.to_s
@@ -190,15 +191,15 @@ class MetricsControllerTest < ActionController::TestCase
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:35.33,23.2,34.0|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 34.0%|Tiempo: 23.2%|Esfuerzo: 35.33%|" />', css_select("#advance_chart_1 img").first.to_s
     assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:25.74,9.33,25.64|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 25.64%|Tiempo: 9.33%|Esfuerzo: 25.74%|" />', css_select("#advance_chart_2 img").first.to_s
 
-    assert_select "#profitability_planned_initially_0", "95456.0 &euro; (77.32 %)"
-    assert_select "#profitability_planned_initially_1", "95456.0 &euro; (77.32 %)"
-    assert_select "#profitability_planned_initially_2", "95456.0 &euro; (77.32 %)"
-    assert_select "#profitability_planned_currently_0", "65956.0 &euro; (53.42 %)"
-    assert_select "#profitability_planned_currently_1", "65956.0 &euro; (53.42 %)"
-    assert_select "#profitability_planned_currently_2", "76956.0 &euro; (62.33 %)"
-    assert_select "#profitability_current_0", "98658.5 &euro; (79.91 %)"
-    assert_select "#profitability_current_1", "103903.5 &euro; (84.16 %)"
-    assert_select "#profitability_current_2", "111533.5 &euro; (90.34 %)"
+    assert_select "#profitability_planned_initially_0", "95456.0 € (77.32 %)"
+    assert_select "#profitability_planned_initially_1", "95456.0 € (77.32 %)"
+    assert_select "#profitability_planned_initially_2", "95456.0 € (77.32 %)"
+    assert_select "#profitability_planned_currently_0", "65956.0 € (53.42 %)"
+    assert_select "#profitability_planned_currently_1", "65956.0 € (53.42 %)"
+    assert_select "#profitability_planned_currently_2", "76956.0 € (62.33 %)"
+    assert_select "#profitability_current_0", "98658.5 € (79.91 %)"
+    assert_select "#profitability_current_1", "103903.5 € (84.16 %)"
+    assert_select "#profitability_current_2", "111533.5 € (90.34 %)"
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,89.955|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:79.91%|Prevista actual: 53.42%|Prevista inicial: 77.32%|\" />", css_select("#profitability_chart_0 img").first.to_s
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,92.08|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:84.16%|Prevista actual: 53.42%|Prevista inicial: 77.32%|\" />", css_select("#profitability_chart_1 img").first.to_s
     assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,81.165,95.17|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:90.34%|Prevista actual: 62.33%|Prevista inicial: 77.32%|\" />", css_select("#profitability_chart_2 img").first.to_s

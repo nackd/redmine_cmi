@@ -21,7 +21,7 @@
 <tr class="<%= cycle 'odd', 'even' %>">
   <th class="center"><%= year %></th>
   <% @roles.each do |role| %>
-    <td class="center"><%= @year_costs[year].find{|c|c.profile ==role}.value rescue '--' %> €</td>
+    <td class="center"><%= currency (@year_costs[year].find{|c|c.profile ==role}.value rescue '--') %></td>
   <% end %>
 </tr>
 <% end %>

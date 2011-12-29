@@ -4,7 +4,7 @@
   <td><%= l('cmi.label_RRHH') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_spent_#{i}", :class => "issue" do -%>
-      <%= metric.hhrr_cost_incurred %> &euro;
+      <%= currency metric.hhrr_cost_incurred %>
     <% end -%>
   <% end -%>
 </tr>
@@ -12,7 +12,7 @@
   <td><%= l('cmi.label_others') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_other_spent_#{i}", :class => "issue" do -%>
-      <%= metric.material_cost_incurred %> &euro;
+      <%= currency metric.material_cost_incurred %>
     <% end -%>
   <% end -%>
 </tr>
@@ -20,7 +20,7 @@
   <td><%= l(:label_total) %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_total_spent_#{i}", :class => "issue" do -%>
-      <%= metric.total_cost_incurred %> &euro;
+      <%= currency metric.total_cost_incurred %>
     <% end -%>
   <% end -%>
 </tr>
@@ -29,7 +29,7 @@
   <td><%= l('cmi.label_RRHH') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_remaining_#{i}", :class => "issue" do -%>
-      <%= metric.hhrr_cost_remaining %> &euro;
+      <%= currency metric.hhrr_cost_remaining %>
     <% end -%>
   <% end -%>
 </tr>
@@ -37,7 +37,7 @@
   <td><%= l('cmi.label_others') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_other_remaining_#{i}", :class => "issue" do -%>
-      <%= metric.material_cost_remaining %> &euro;
+      <%= currency metric.material_cost_remaining %>
     <% end -%>
   <% end -%>
 </tr>
@@ -45,7 +45,7 @@
    <td><%= l(:label_total) %></td>
    <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "cost_total_remaining_#{i}", :class => "issue" do -%>
-       <%= metric.total_cost_remaining %> &euro;
+       <%= currency metric.total_cost_remaining %>
      <% end -%>
    <% end -%>
 </tr>
@@ -55,7 +55,7 @@
   <td><%= l('cmi.label_RRHH') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_planned_#{i}", :class => "issue" do -%>
-      <%= metric.hhrr_cost_scheduled %> &euro;
+      <%= currency metric.hhrr_cost_scheduled %>
     <% end -%>
   <% end -%>
 </tr>
@@ -63,7 +63,7 @@
    <td><%= l('cmi.label_others') %></td>
    <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "cost_other_planned_#{i}", :class => "issue" do -%>
-       <%= metric.material_cost_scheduled %> &euro;
+       <%= currency metric.material_cost_scheduled %>
      <% end -%>
    <% end -%>
 </tr>
@@ -71,7 +71,7 @@
    <td><%= l(:label_total) %></td>
    <% @metrics.each_with_index do |metric, i| -%>
      <% content_tag :td, :id => "cost_total_planned_#{i}", :class => "issue" do -%>
-       <%= metric.total_cost_scheduled %> &euro;
+       <%= currency metric.total_cost_scheduled %>
      <% end -%>
    <% end -%>
 </tr>

@@ -3,7 +3,7 @@
   <th rowspan="1" colspan="2"><%= l('cmi.label_profitability_planned') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_planned_initially_#{i}", :class => "issue" do -%>
-      <%= metric.original_margin.round(2) %> &euro; (<%= metric.original_margin_percent.round(2) %> %)
+      <%= currency metric.original_margin %> (<%= metric.original_margin_percent.round(2) %> %)
     <% end -%>
   <% end -%>
 </tr>
@@ -11,7 +11,7 @@
   <th rowspan=1 colspan="2"><%= l('cmi.label_profitability_current') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_planned_currently_#{i}", :class => "issue" do -%>
-      <%= metric.scheduled_margin.round(2) %> &euro; (<%= metric.scheduled_margin_percent.round(2) %> %)
+      <%= currency metric.scheduled_margin %> (<%= metric.scheduled_margin_percent.round(2) %> %)
     <% end -%>
   <% end -%>
 </tr>
@@ -19,7 +19,7 @@
   <th rowspan=1 colspan="2"><%= l('cmi.label_current_profit') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_current_#{i}", :class => "issue" do -%>
-      <%= metric.incurred_margin.round(2) %> &euro; (<%= metric.incurred_margin_percent.round(2) %> %)
+      <%= currency metric.incurred_margin %> (<%= metric.incurred_margin_percent.round(2) %> %)
     <% end -%>
   <% end -%>
 </tr>
