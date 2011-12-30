@@ -50,7 +50,7 @@ module CMI
       User.roles.inject(0.0) { |sum, role| sum + effort_original_by_role(role) }
     end
 
-    def effort_deviation
+    def effort_deviation_percent
       if effort_original.zero?
         0.0
       else
@@ -95,7 +95,7 @@ module CMI
       project.cmi_project_info.scheduled_finish_date - project.cmi_project_info.scheduled_start_date
     end
 
-    def time_deviation
+    def time_deviation_percent
       100.0 * (time_scheduled - time_original) / time_original
     end
 
