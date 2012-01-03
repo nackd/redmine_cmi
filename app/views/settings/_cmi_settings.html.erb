@@ -23,6 +23,11 @@
                  options_from_collection_for_select(Tracker.all, :id, :name, @settings['qa_tracker'].to_i) %>
 </p>
 <p>
+  <label><%=l :'cmi.caption_groups' %></label>
+  <%= text_area_tag 'settings[groups]', @settings['groups'], :rows => 15 %><br />
+  <em><%= l(:text_custom_field_possible_values_info) %></em>
+</p>
+<p>
   <label><%=l :'cmi.label_conf_category' %></label>
   <%= text_field_tag 'settings[conf_category]', @settings['conf_category'] %>
 </p>

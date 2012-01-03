@@ -3,7 +3,7 @@ class CmiProjectInfo < ActiveRecord::Base
 
   belongs_to :project
 
-  validates_presence_of :project
+  validates_presence_of :project, :group
 
   validates_format_of :actual_start_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
   validates_format_of :scheduled_start_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false

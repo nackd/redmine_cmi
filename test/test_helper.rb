@@ -113,6 +113,7 @@ def create_test_data
                   :enabled_module_names => ["issue_tracking", "time_tracking", "cmiplugin"])
   p.save!
   CmiProjectInfo.create!(:project => p,
+                         :group => "group",
                          :scheduled_start_date    => Date.new(2011, 1, 1),
                          :scheduled_finish_date   => Date.new(2011, 7, 1),
                          :actual_start_date       => Date.new(2011, 2, 1),

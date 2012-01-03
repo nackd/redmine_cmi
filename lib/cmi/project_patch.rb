@@ -19,8 +19,7 @@ module CMI
 
     module ClassMethods
       def groups
-        group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
-        group_field && group_field.possible_values || []
+        Setting.plugin_redmine_cmi['groups'].to_s.split(/[\n\r]+/) || []
       end
     end
 

@@ -14,6 +14,7 @@ es:
   field_initial_budget: Presupuesto inicial
   field_current_budget: Presupuesto actual
   field_incurred: Gasto incurrido
+  field_group: Grupo
 
   permission_cmi_management: Ver cuadro de mando general
   permission_cmi_view_metrics: Ver métricas del proyecto

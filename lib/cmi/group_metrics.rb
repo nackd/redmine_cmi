@@ -4,11 +4,10 @@ module CMI
 
     def projects
       return @projects if @projects
-      group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
       @projects = Project.all(:select => 'projects.*',
                               :joins => [:enabled_modules, :cmi_project_info],
                               :conditions => ['enabled_modules.name = ?', 'cmiplugin']).group_by do |p|
-        p.custom_value_for(group_field).value if p.custom_value_for(group_field)
+        p.cmi_project_info.group
       end
     end
 

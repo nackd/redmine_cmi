@@ -14,6 +14,7 @@ en:
   field_initial_budget: Initial budget
   field_current_budget: Current budget
   field_incurred: Incurred
+  field_group: Group
 
   permission_cmi_management: View general management panel
   permission_cmi_view_metrics: View project metrics

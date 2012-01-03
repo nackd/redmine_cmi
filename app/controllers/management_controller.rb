@@ -38,24 +38,26 @@ class ManagementController < ApplicationController
   end
 
   def get_active_projects
-    @projects = Project.active.all(:order => :lft)
     if params[:selected_project_group].present?
-      group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
-      @projects = @projects.select do |p|
-        if p.custom_value_for(group_field)
-          p.custom_value_for(group_field).value == params[:selected_project_group]
-        end
-      end
+      @projects = Project.active.all(:select => 'projects.*',
+                                     :joins => :cmi_project_info,
+                                     :conditions => ['cmi_project_infos.group = ?', params[:selected_project_group]],
+                                     :order => :lft)
+    else
+      @projects = Project.active.all(:order => :lft)
     end
   end
 
   def get_archived_projects
-    @archived = Project.find(:all,
-                             :conditions => ["#{Project.table_name}.status = #{Project::STATUS_ARCHIVED}"],
-                             :order => :lft)
     if params[:selected_project_group].present?
-      group_field = ProjectCustomField.find_by_name(DEFAULT_VALUES['project_group_field'])
-      @archived = @archived.select{ |p| p.custom_value_for(group_field).value == params[:selected_project_group] }
+      @archived = Project.all(:select => 'projects.*',
+                              :joins => :cmi_project_info,
+                              :conditions => ["#{Project.table_name}.status = #{Project::STATUS_ARCHIVED} " +
+                                              "AND cmi_project_infos.group = ?", params[:selected_project_group]],
+                              :order => :lft)
+    else
+      @archived = Project.all(:conditions => ["#{Project.table_name}.status = #{Project::STATUS_ARCHIVED}"],
+                              :order => :lft)
     end
   end
 end
