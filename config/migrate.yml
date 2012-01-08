@@ -1,0 +1,8 @@
+project_custom_fields:
+  group: Grupo
+  scheduled_start_date: Fecha de comienzo planificada
+  scheduled_finish_date: Fecha de fin planificada
+  scheduled_qa_meetings: Revision calidad planificada
+  scheduled_role_effort: Esfuerzo previsto para {{role}}
+  total_income: Cantidad aceptada
+  actual_start_date: Fecha real de comienzo
