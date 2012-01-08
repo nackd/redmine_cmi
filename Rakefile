@@ -3,7 +3,7 @@ redmine = File.join(File.dirname(__FILE__), 'redmine')
 desc 'Run tests'
 task :test do
   Dir.chdir(redmine) do
-    system %q{rake test:plugins PLUGIN=redmine_cmi}
+    system %q{rake test:plugins PLUGIN=redmine_cmi RAILS_ENV=test}
   end
 end
 
@@ -11,21 +11,22 @@ namespace :test do
   desc 'Run functional tests'
   task :functionals do
     Dir.chdir(redmine) do
-      system %q{rake test:plugins:functionals PLUGIN=redmine_cmi}
+      system %q{rake test:plugins:functionals PLUGIN=redmine_cmi RAILS_ENV=test}
     end
   end
 
   desc 'Run unit tests'
   task :units do
     Dir.chdir(redmine) do
-      system %q{rake test:plugins:units PLUGIN=redmine_cmi}
+      system %q{rake test:plugins:units PLUGIN=redmine_cmi RAILS_ENV=test}
     end
   end
 
   desc 'Drop and recreate the test database'
   task :prepare do
     Dir.chdir(redmine) do
-      system %q{rake db:test:load db:test:prepare db:migrate:plugins redmine:load_default_data REDMINE_LANG=en}
+      system %q{rake db:drop db:create db:migrate db:migrate_plugins RAILS_ENV=test}
+      system %q{rake redmine:load_default_data REDMINE_LANG=en RAILS_ENV=test}
     end
   end
 end
