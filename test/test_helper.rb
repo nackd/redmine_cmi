@@ -234,37 +234,37 @@ def create_old_data
   conf_file = open(File.expand_path("../config/migrate.yml", File.dirname(__FILE__)))
   conf = YAML.load(conf_file)
 
-  group_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["group"],
-                                           :field_format => "list",
-                                           :possible_values => ['One', 'Two'],
-                                           :is_required => true,
-                                           :is_for_all => true).id
-  scheduled_start_date_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_start_date"],
-                                                          :field_format => "date",
-                                                          :is_required => false,
+  project_group_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["group"],
+                                                   :field_format => "list",
+                                                   :possible_values => ['One', 'Two'],
+                                                   :is_required => true,
+                                                   :is_for_all => true).id
+  project_scheduled_start_date_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_start_date"],
+                                                                  :field_format => "date",
+                                                                  :is_required => false,
+                                                                  :is_for_all => true).id
+  project_scheduled_finish_date_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_finish_date"],
+                                                                   :field_format => "date",
+                                                                   :is_required => false,
+                                                                   :is_for_all => true).id
+  project_scheduled_qa_meetings_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_qa_meetings"],
+                                                                   :field_format => "int",
+                                                                   :is_required => true,
+                                                                   :is_for_all => true).id
+  project_total_income_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["total_income"],
+                                                          :field_format => "float",
+                                                          :is_required => true,
                                                           :is_for_all => true).id
-  scheduled_finish_date_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_finish_date"],
-                                                           :field_format => "date",
-                                                           :is_required => false,
-                                                           :is_for_all => true).id
-  scheduled_qa_meetings_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_qa_meetings"],
-                                                           :field_format => "int",
-                                                           :is_required => true,
-                                                           :is_for_all => true).id
-  total_income_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["total_income"],
-                                                  :field_format => "float",
-                                                  :is_required => true,
-                                                  :is_for_all => true).id
-  actual_start_date_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["actual_start_date"],
-                                                       :field_format => "date",
-                                                       :is_required => true,
-                                                       :is_for_all => true).id
-  role_field = UserCustomField.create!(:name => "Perfil",
-                                       :field_format => "list",
-                                       :possible_values => ['One', 'Two'],
-                                       :is_required => true,
-                                       :is_for_all => true).id
-  scheduled_role_effort_fields = {
+  project_actual_start_date_field = ProjectCustomField.create!(:name => conf["project_custom_fields"]["actual_start_date"],
+                                                               :field_format => "date",
+                                                               :is_required => true,
+                                                               :is_for_all => true).id
+  project_role_field = UserCustomField.create!(:name => "Perfil",
+                                               :field_format => "list",
+                                               :possible_values => ['One', 'Two'],
+                                               :is_required => true,
+                                               :is_for_all => true).id
+  project_scheduled_role_effort_fields = {
     'One' => ProjectCustomField.create!(:name => conf["project_custom_fields"]["scheduled_role_effort"].gsub('{{role}}', 'One'),
                                         :field_format => "float",
                                         :is_required => true,
@@ -274,17 +274,64 @@ def create_old_data
                                         :is_required => true,
                                         :is_for_all => true).id
   }
-  p = Project.create!(:id         => 1,
-                  :identifier => "cmi",
-                  :name       => "CMI test",
-                  :is_public  => false,
-                  :enabled_module_names => ["issue_tracking", "time_tracking", "cmiplugin"],
-                  :custom_field_values => { group_field => "One",
-                                            scheduled_start_date_field => "2011-01-01",
-                                            scheduled_finish_date_field => "2011-07-01",
-                                            scheduled_qa_meetings_field => "1",
-                                            total_income_field => "50000",
-                                            actual_start_date_field => "2011-02-01",
-                                            scheduled_role_effort_fields["One"] => "1000",
-                                            scheduled_role_effort_fields["Two"] => "2000"})
+  report_tracker = Tracker.create!(:name => conf["reports"]["tracker"],
+                                   :is_in_chlog => true,
+                                   :is_in_roadmap => true).id
+  report_held_qa_meetings_field = IssueCustomField.create!(:name => conf["reports"]["custom_fields"]["held_qa_meetings"],
+                                                           :field_format => "int",
+                                                           :is_required => true,
+                                                           :is_for_all => true,
+                                                           :tracker_ids => [report_tracker]).id
+  report_scheduled_finish_date_field = IssueCustomField.create!(:name => conf["reports"]["custom_fields"]["scheduled_finish_date"],
+                                                                :field_format => "date",
+                                                                :is_required => true,
+                                                                :is_for_all => true,
+                                                                :tracker_ids => [report_tracker]).id
+  report_scheduled_role_effort_fields = {
+    'One' => IssueCustomField.create!(:name => conf["reports"]["custom_fields"]["scheduled_role_effort"].gsub('{{role}}', 'One'),
+                                      :field_format => "float",
+                                      :is_required => true,
+                                      :is_for_all => true,
+                                      :tracker_ids => [report_tracker]).id,
+    'Two' => IssueCustomField.create!(:name => conf["reports"]["custom_fields"]["scheduled_role_effort"].gsub('{{role}}', 'Two'),
+                                      :field_format => "float",
+                                      :is_required => true,
+                                      :is_for_all => true,
+                                      :tracker_ids => [report_tracker]).id
+  }
+
+  p = Project.create!(:id => 1,
+                      :identifier => "cmi",
+                      :name => "CMI test",
+                      :is_public => false,
+                      :enabled_module_names => ["issue_tracking", "time_tracking", "cmiplugin"],
+                      :custom_field_values => { project_group_field => "One",
+                                                project_scheduled_start_date_field => "2011-01-01",
+                                                project_scheduled_finish_date_field => "2011-07-01",
+                                                project_scheduled_qa_meetings_field => "1",
+                                                project_total_income_field => "50000",
+                                                project_actual_start_date_field => "2011-02-01",
+                                                project_scheduled_role_effort_fields["One"] => "1000",
+                                                project_scheduled_role_effort_fields["Two"] => "2000" })
+  i = Issue.new(:tracker_id => report_tracker,
+                :project => p,
+                :author => User.anonymous,
+                :subject => "Report upto 2/15",
+                :start_date => Date.new(2011, 2, 15))
+  i.custom_field_values = { report_held_qa_meetings_field => "0",
+                            report_scheduled_finish_date_field => "2011-07-01",
+                            report_scheduled_role_effort_fields["One"] => "1100",
+                            report_scheduled_role_effort_fields["Two"] => "2200" }
+  i.save!
+  i = Issue.new(:tracker_id => report_tracker,
+                :project => p,
+                :author => User.anonymous,
+                :subject => "Subject",
+                :description => "Report upto 3/15",
+                :start_date => Date.new(2011, 3, 15))
+  i.custom_field_values = { report_held_qa_meetings_field => "1",
+                            report_scheduled_finish_date_field => "2011-08-01",
+                            report_scheduled_role_effort_fields["One"] => "1200",
+                            report_scheduled_role_effort_fields["Two"] => "2400" }
+  i.save!
 end

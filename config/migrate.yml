@@ -6,3 +6,10 @@ project_custom_fields:
   scheduled_role_effort: Esfuerzo previsto para {{role}}
   total_income: Cantidad aceptada
   actual_start_date: Fecha real de comienzo
+
+reports:
+  tracker: Informes
+  custom_fields:
+    held_qa_meetings: Revisión calidad realizada
+    scheduled_finish_date: Fecha fin prevista
+    scheduled_role_effort: Esfuerzo actual {{role}}
