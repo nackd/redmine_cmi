@@ -299,6 +299,24 @@ def create_old_data
                                       :is_for_all => true,
                                       :tracker_ids => [report_tracker]).id
   }
+  expenditure_tracker = Tracker.create!(:name => conf["expenditures"]["tracker"],
+                                        :is_in_chlog => true,
+                                        :is_in_roadmap => true).id
+  expenditure_initial_budget_field = IssueCustomField.create!(:name => conf["expenditures"]["custom_fields"]["initial_budget"],
+                                                              :field_format => "float",
+                                                              :is_required => true,
+                                                              :is_for_all => true,
+                                                              :tracker_ids => [expenditure_tracker]).id
+  expenditure_current_budget_field = IssueCustomField.create!(:name => conf["expenditures"]["custom_fields"]["current_budget"],
+                                                              :field_format => "float",
+                                                              :is_required => false,
+                                                              :is_for_all => true,
+                                                              :tracker_ids => [expenditure_tracker]).id
+  expenditure_incurred_field = IssueCustomField.create!(:name => conf["expenditures"]["custom_fields"]["incurred"],
+                                                              :field_format => "float",
+                                                              :is_required => false,
+                                                              :is_for_all => true,
+                                                              :tracker_ids => [expenditure_tracker]).id
 
   p = Project.create!(:id => 1,
                       :identifier => "cmi",
@@ -334,5 +352,24 @@ def create_old_data
                             report_scheduled_role_effort_fields["One"] => "1200",
                             report_scheduled_role_effort_fields["Two"] => "2400" }
   i.init_journal(User.anonymous, "Some notes").save!
+  i.save!
+  i = Issue.new(:tracker_id => expenditure_tracker,
+                :project => p,
+                :author => User.anonymous,
+                :subject => "Expenditure concept 1",
+                :description => "Expenditure description 1")
+  i.custom_field_values = { expenditure_initial_budget_field => "100.01",
+                            expenditure_current_budget_field => "111.11",
+                            expenditure_incurred_field => "22.22" }
+  i.save!
+  i = Issue.new(:tracker_id => expenditure_tracker,
+                :project => p,
+                :author => User.anonymous,
+                :subject => "Expenditure concept 2",
+                :description => "Expenditure description 2")
+  i.custom_field_values = { expenditure_initial_budget_field => "200.02",
+                            expenditure_current_budget_field => "",
+                            expenditure_incurred_field => "" }
+  i.init_journal(User.anonymous, "Expenditure notes").save!
   i.save!
 end

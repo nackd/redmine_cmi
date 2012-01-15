@@ -16,13 +16,19 @@ namespace :cmi do
       ac.merge!({ role => ProjectCustomField.find_by_name(conf["project_custom_fields"]["scheduled_role_effort"].gsub('{{role}}', role)) })
     }
 
-    # Reports
+    # Reports -> Checkpoints
     report_tracker = Tracker.find_by_name(conf["reports"]["tracker"])
     report_held_qa_meetings_field = IssueCustomField.find_by_name(conf["reports"]["custom_fields"]["held_qa_meetings"])
     report_scheduled_finish_date_field = IssueCustomField.find_by_name(conf["reports"]["custom_fields"]["scheduled_finish_date"])
     report_scheduled_role_effort_fields = User.roles.reduce({}) { |ac, role|
       ac.merge!({ role => IssueCustomField.find_by_name(conf["reports"]["custom_fields"]["scheduled_role_effort"].gsub('{{role}}', role)) })
     }
+
+    # Expenditures
+    expenditure_tracker = Tracker.find_by_name(conf["expenditures"]["tracker"])
+    expenditure_initial_budget_field = IssueCustomField.find_by_name(conf["expenditures"]["custom_fields"]["initial_budget"])
+    expenditure_current_budget_field = IssueCustomField.find_by_name(conf["expenditures"]["custom_fields"]["current_budget"])
+    expenditure_incurred_field = IssueCustomField.find_by_name(conf["expenditures"]["custom_fields"]["incurred"])
 
     ActiveRecord::Base.transaction do
       # Projects
@@ -53,27 +59,53 @@ namespace :cmi do
       # Reports
       unless report_tracker.nil?
         Issue.find_each(:batch_size => 50,
-                        :conditions => ["tracker_id = ?", report_tracker.id]) do |report|
+                        :conditions => ["tracker_id = ?", report_tracker.id]) do |issue|
           report_scheduled_role_effort = report_scheduled_role_effort_fields.reduce({}) { |ac, field|
-            ac.merge!({ field.first => (begin report.custom_value_for(field.last).value rescue 0 end) })
+            ac.merge!({ field.first => (begin issue.custom_value_for(field.last).value rescue 0 end) })
           }
-          checkpoint = CmiCheckpoint.create!(:project => report.project,
+          checkpoint = CmiCheckpoint.create!(:project => issue.project,
                                              :author => User.anonymous,
-                                             :description => report.description.blank? ? report.subject : report.description,
-                                             :checkpoint_date => report.start_date,
-                                             :scheduled_finish_date => report.custom_value_for(report_scheduled_finish_date_field).value,
-                                             :held_qa_meetings => report.custom_value_for(report_held_qa_meetings_field).value,
+                                             :description => issue.description.blank? ? issue.subject : issue.description,
+                                             :checkpoint_date => issue.start_date,
+                                             :scheduled_finish_date => issue.custom_value_for(report_scheduled_finish_date_field).value,
+                                             :held_qa_meetings => issue.custom_value_for(report_held_qa_meetings_field).value,
                                              :scheduled_role_effort => report_scheduled_role_effort)
-          report.journals.each do |journal|
+          issue.journals.each do |journal|
             journal.journalized = checkpoint
             journal.save!
           end
-          Issue.destroy(report.id) # report.destroy would remove the journal
+          Issue.destroy(issue.id) # issue.destroy would remove the journals
         end
         report_held_qa_meetings_field.destroy
         report_scheduled_finish_date_field.destroy
         report_scheduled_role_effort_fields.each_value { |field| field.destroy }
         report_tracker.destroy
+      end
+
+      # Expenditures
+      unless expenditure_tracker.nil?
+        Issue.find_each(:batch_size => 50,
+                        :conditions => ["tracker_id = ?", expenditure_tracker.id]) do |issue|
+          expenditure = CmiExpenditure.create!(:project => issue.project,
+                                               :author => User.anonymous,
+                                               :concept => issue.subject,
+                                               :description => issue.description,
+                                               :initial_budget =>
+                                                 initial = issue.custom_value_for(expenditure_initial_budget_field).value.to_i,
+                                               :current_budget =>
+                                                 ((cv = issue.custom_value_for(expenditure_current_budget_field)).nil? || cv.value.blank?) ? initial : cv.value.to_i,
+                                               :incurred =>
+                                                 (cv = issue.custom_value_for(expenditure_incurred_field)).nil? ? 0.0 : cv.value.to_i)
+          issue.journals.each do |journal|
+            journal.journalized = expenditure
+            journal.save!
+          end
+          Issue.destroy(issue.id) # issue.destroy would remove the journals
+        end
+        expenditure_initial_budget_field.destroy
+        expenditure_current_budget_field.destroy
+        expenditure_incurred_field.destroy
+        expenditure_tracker.destroy
       end
     end
   end

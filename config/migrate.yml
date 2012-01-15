@@ -13,3 +13,10 @@ reports:
     held_qa_meetings: Revisión calidad realizada
     scheduled_finish_date: Fecha fin prevista
     scheduled_role_effort: Esfuerzo actual {{role}}
+
+expenditures:
+  tracker: Gastos
+  custom_fields:
+    initial_budget: Presupuesto inicial
+    current_budget: Presupuesto actual
+    incurred: Gasto del elemento
