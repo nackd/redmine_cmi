@@ -333,5 +333,6 @@ def create_old_data
                             report_scheduled_finish_date_field => "2011-08-01",
                             report_scheduled_role_effort_fields["One"] => "1200",
                             report_scheduled_role_effort_fields["Two"] => "2400" }
+  i.init_journal(User.anonymous, "Some notes").save!
   i.save!
 end

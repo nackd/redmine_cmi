@@ -25,6 +25,7 @@ class TaskMigrateTest < ActiveSupport::TestCase
     assert_equal 4, IssueCustomField.count
     assert_equal 1, UserCustomField.count
     assert_equal 16, CustomValue.count
+    assert_equal 1, Journal.count
 
     Rake.application.rake_require "migrate", File.expand_path("../../lib/tasks", File.dirname(__FILE__))
     Rake::Task.define_task :environment
@@ -33,6 +34,7 @@ class TaskMigrateTest < ActiveSupport::TestCase
     info = CmiProjectInfo.first
     project = Project.first
     checkpoints = CmiCheckpoint.all(:order => :checkpoint_date)
+    journal = Journal.first
 
     assert_equal 1, CmiProjectInfo.count
     assert_equal 2, CmiCheckpoint.count
@@ -41,6 +43,7 @@ class TaskMigrateTest < ActiveSupport::TestCase
     assert_equal 0, IssueCustomField.count
     assert_equal 1, UserCustomField.count
     assert_equal 0, CustomValue.count
+    assert_equal 1, Journal.count
 
     assert_equal project, info.project
     assert_equal "One", info.group
@@ -69,5 +72,8 @@ class TaskMigrateTest < ActiveSupport::TestCase
     assert_equal Date.new(2011, 8, 1), checkpoints.last.scheduled_finish_date
     assert_equal ({ "One" => 1200,
                     "Two" => 2400 }), checkpoints.last.scheduled_role_effort
+
+    assert_equal checkpoints.last, journal.journalized
+    assert_equal "Some notes", journal.notes
 end
 end

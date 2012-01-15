@@ -57,14 +57,18 @@ namespace :cmi do
           report_scheduled_role_effort = report_scheduled_role_effort_fields.reduce({}) { |ac, field|
             ac.merge!({ field.first => (begin report.custom_value_for(field.last).value rescue 0 end) })
           }
-          CmiCheckpoint.create!(:project => report.project,
-                                :author => User.anonymous,
-                                :description => report.description.blank? ? report.subject : report.description,
-                                :checkpoint_date => report.start_date,
-                                :scheduled_finish_date => report.custom_value_for(report_scheduled_finish_date_field).value,
-                                :held_qa_meetings => report.custom_value_for(report_held_qa_meetings_field).value,
-                                :scheduled_role_effort => report_scheduled_role_effort)
-          report.destroy
+          checkpoint = CmiCheckpoint.create!(:project => report.project,
+                                             :author => User.anonymous,
+                                             :description => report.description.blank? ? report.subject : report.description,
+                                             :checkpoint_date => report.start_date,
+                                             :scheduled_finish_date => report.custom_value_for(report_scheduled_finish_date_field).value,
+                                             :held_qa_meetings => report.custom_value_for(report_held_qa_meetings_field).value,
+                                             :scheduled_role_effort => report_scheduled_role_effort)
+          report.journals.each do |journal|
+            journal.journalized = checkpoint
+            journal.save!
+          end
+          Issue.destroy(report.id) # report.destroy would remove the journal
         end
         report_held_qa_meetings_field.destroy
         report_scheduled_finish_date_field.destroy
