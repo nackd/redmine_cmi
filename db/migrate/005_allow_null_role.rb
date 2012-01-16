@@ -4,6 +4,6 @@ class AllowNullRole < ActiveRecord::Migration
   end
 
   def self.down
-    change_column :time_entries, :role, :string, :null => false
+    change_column :time_entries, :role, :string, :null => true
   end
 end
