@@ -30,13 +30,13 @@ module CMI
       end
 
       def effort_done_by_role(role, to_date)
-        cond = ARCondition.new
-        cond << project_condition(Setting.display_subprojects_issues?)
-        cond << ['role = ?', role]
-        cond << ['spent_on <= ?', to_date]
+        cond = [ project_condition(Setting.display_subprojects_issues?) <<
+                 ' AND (role = ?)' <<
+                 ' AND (spent_on <= ?)',
+                 role, to_date ]
         TimeEntry.sum(:hours,
                       :include => [:project],
-                      :conditions => cond.conditions)
+                      :conditions => cond)
       end
     end
   end
