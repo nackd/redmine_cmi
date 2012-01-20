@@ -46,7 +46,7 @@ en-GB:
 
     label_initial_schedule: Initial schedule
     label_actual_data: Actual data
-    label_scheduled_role_effort: "{{role}} scheduled effort"
+    label_scheduled_role_effort: "%{role} scheduled effort"
 
     label_CMI: Central Panel of Management
     label_name: Name
@@ -63,7 +63,7 @@ en-GB:
     label_project_management: Project Management
     label_effort: Effort
     label_done: Done
-    label_remaining_role: "Remaining {{role}}"
+    label_remaining_role: "Remaining %{role}"
     label_remaining_total: Remaining total
     label_group_desviation: Group desviation (losses €)
     label_global_desviation: Global desviation

@@ -46,7 +46,7 @@ es:
 
     label_initial_schedule: Planificación inicial
     label_actual_data: Datos reales
-    label_scheduled_role_effort: "Esfuerzo previsto {{role}}"
+    label_scheduled_role_effort: "Esfuerzo previsto %{role}"
 
     label_CMI: Cuadro de Mando Integral
     label_name: Nombre
@@ -63,7 +63,7 @@ es:
     label_project_management: Gestión de proyectos
     label_effort: Esfuerzo
     label_done: Incurrido
-    label_remaining_role: "Restante {{role}}"
+    label_remaining_role: "Restante %{role}"
     label_remaining_total: Restante total
     label_group_desviation: Desviación del grupo(perdidas €)
     label_global_desviation: Desviación respecto al Total
