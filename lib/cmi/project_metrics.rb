@@ -34,8 +34,7 @@ module CMI
     end
 
     def to_s
-      # TODO translate this
-      "Valor actual - #{date}"
+      I18n.t :'cmi.label_current_value', :date => date
     end
 
     private
