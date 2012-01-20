@@ -4,7 +4,6 @@ class MetricsController < ApplicationController
   menu_item :metrics
   before_filter :find_project_by_project_id, :authorize
   before_filter :get_roles
-  before_filter :obtain_profile_costs, :only => :show
 
   helper :cmi, :view
 
@@ -34,11 +33,6 @@ class MetricsController < ApplicationController
   end
 
   private
-
-  def obtain_profile_costs
-    current_year_costs = (HistoryProfilesCost.find :all).group_by(&:year)[Date.today.year]
-    @hash_cost_actual_year = current_year_costs && current_year_costs.group_by(&:profile)
-  end
 
   def get_roles
     @roles = User.roles
