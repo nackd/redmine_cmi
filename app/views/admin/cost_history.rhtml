@@ -1,4 +1,8 @@
 <%
+  class_eval do
+    include ViewHelper
+  end
+
   @roles = []
   costs = (HistoryProfilesCost.find :all)
   costs.each do |cost|
@@ -21,7 +25,7 @@
 <tr class="<%= cycle 'odd', 'even' %>">
   <th class="center"><%= year %></th>
   <% @roles.each do |role| %>
-    <td class="center"><%= currency (@year_costs[year].find{|c|c.profile ==role}.value rescue '--') %></td>
+    <td class="center"><%= currency (begin @year_costs[year].find{|c|c.profile ==role}.value rescue '--' end) %></td>
   <% end %>
 </tr>
 <% end %>
