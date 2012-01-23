@@ -373,7 +373,7 @@ module CMI
       cond = [ project.project_condition(Setting.display_subprojects_issues?) <<
                ' AND (start_date <= ?)' <<
                ' AND (tracker_id = ?)' <<
-               ' AND (due_date > ?)',
+               ' AND (due_date < ?)',
                date, Setting.plugin_redmine_cmi['qa_tracker'], date ]
       Issue.count :joins => :project, :conditions => cond
     end
