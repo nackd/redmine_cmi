@@ -5,16 +5,15 @@ module CMI
     def initialize(checkpoint)
       @checkpoint = checkpoint
       @project = checkpoint.project
-      # TODO get rid of the yesterday thing
-      @date = checkpoint.checkpoint_date.yesterday
+      @date = checkpoint.checkpoint_date
     end
 
     def time_scheduled
-      (scheduled_finish_date - project.cmi_project_info.actual_start_date).to_i
+      (scheduled_finish_date - project.cmi_project_info.actual_start_date + 1).to_i
     end
 
     def time_remaining
-      (scheduled_finish_date - date - 1).to_i
+      (scheduled_finish_date - date).to_i
     end
 
     def to_s

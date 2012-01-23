@@ -10,12 +10,12 @@ module CMI
     end
 
     def time_scheduled
-      (checkpoint.scheduled_finish_date - project.cmi_project_info.actual_start_date).to_i
+      (checkpoint.scheduled_finish_date - project.cmi_project_info.actual_start_date + 1).to_i
     end
 
     def time_remaining
       if !project.cmi_project_info.actual_start_date.nil?
-        (checkpoint.scheduled_finish_date - date - 1).to_i
+        (checkpoint.scheduled_finish_date - date).to_i
       else
         "--"
       end
