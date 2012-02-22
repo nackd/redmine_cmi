@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module CMI
   module ProjectCalculations
     unloadable
@@ -15,17 +16,7 @@ module CMI
 
       effort_done = (project_metrics['effort_done_ap'].to_f + project_metrics['effort_done_af'].to_f + project_metrics['effort_done_jp'].to_f + project_metrics['effort_done_ps'].to_f + project_metrics['effort_done_pj'].to_f + project_metrics['effort_done_b'].to_f).round(2)
       if effort_done_total != effort_done
-        @no_profile_users = []
-        project.users.each do |user|
-          if user.role.nil?
-            @no_profile_users << user
-          end
-        end
         effort_done = effort_done_total
-        if @no_profile_users.length > 0
-          @profile_alert = true
-          raise CMI::ProfileException.new(@no_profile_users, project)
-        end
       end
       return effort_done.to_s
     end
@@ -41,7 +32,7 @@ module CMI
       profitability_percent_planned = project_metrics['Cantidad aceptada'].to_f != 0.0 ? ((project_metrics['Cantidad aceptada'].to_f  - project_metrics[budget_type].to_f)/project_metrics['Cantidad aceptada'].to_f) : 0.0
       return profitability_percent_planned.round(2).to_s
     end
-    
+
     def calculate_conf_effort project
       return 0.0
       conf_effort = 0.0
