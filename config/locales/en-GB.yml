@@ -65,8 +65,8 @@ en-GB:
     label_done: Done
     label_remaining_role: "Remaining %{role}"
     label_remaining_total: Remaining total
-    label_group_desviation: Group desviation (losses €)
-    label_global_desviation: Global desviation
+    label_group_deviation: Group deviation (losses €)
+    label_global_deviation: Global deviation
     label_total_accepted: Total accepted
     label_profitability_current: Profitability current
     label_initial_mc: Initial MC
@@ -88,7 +88,7 @@ en-GB:
     label_profitability_planned: Profitability planned
     label_profitability_current: Profitability current
     label_current_profit: Current profit
-    label_desviation: Desviation
+    label_deviation: Deviation
     label_change_request: Change requests
     label_requirements: Requirements
     label_conf_category: Category for configuration management issues

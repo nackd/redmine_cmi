@@ -14,10 +14,10 @@
           <th rowspan="1"><%= l('label_group') %></th>
           <th colspan="1"><%= l('cmi.label_total_accepted') %></th>
           <th colspan="1"><%= l('cmi.label_profitability_current') %></th>
-          <th colspan="1"><%= l('cmi.label_group_desviation') %> </th>
+          <th colspan="1"><%= l('cmi.label_group_deviation') %> </th>
           <th colspan="1"><%= l('cmi.label_total_done') %></th>
           <th colspan="1"><%= l('cmi.label_initial_mc') %></th>
-          <th colspan="1"><%= l('cmi.label_global_desviation') %></th>
+          <th colspan="1"><%= l('cmi.label_global_deviation') %></th>
         <% @roles.each do |role| %>
           <th colspan="1"><%= l('cmi.label_remaining_role', :role => role) %></th>
         <% end %>
@@ -78,7 +78,7 @@ end.to_f.round(2) %></strong></td>
      <tr>
        <td align="center"><%= l('cmi.label_total_accepted') %></td>
        <td align="center"><%= l('cmi.label_profitability_current') %></td>
-       <td align="center"><%= l('cmi.label_group_desviation') %> </td>
+       <td align="center"><%= l('cmi.label_group_deviation') %> </td>
        <td align="center"><%= l('cmi.label_initial_mc') %></td>
      </tr>
    </table>
