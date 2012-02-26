@@ -1,6 +1,5 @@
-<% form_for :cmi_project_info, @cmi_project_info,
+<% labelled_form_for :cmi_project_info, @cmi_project_info,
                    :url => { :controller => 'metrics', :action => 'info', :project_id => @project },
-                   :builder => TabularFormBuilder,
                    :lang => current_language do |f| %>
 
   <%= error_messages_for 'cmi_project_info' %>
