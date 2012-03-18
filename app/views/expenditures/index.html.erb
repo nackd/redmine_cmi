@@ -16,7 +16,7 @@
     </thead>
     <tbody>
     <% @expenditures.each do |expenditure| -%>
-      <tr id="expenditure-<%= expenditure.id %>" class="<%= cycle('odd', 'even') %>">
+      <tr id="expenditure-<%= expenditure.id %>" class="<%= cycle('odd', 'even') %> issue">
         <td><%= link_to expenditure.concept, :controller => 'expenditures', :action => 'show', :id => expenditure %></td>
         <%= content_tag 'td', expenditure.initial_budget %>
         <%= content_tag 'td', expenditure.current_budget %>

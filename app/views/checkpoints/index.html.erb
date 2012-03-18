@@ -16,7 +16,7 @@
     </thead>
     <tbody>
     <% @checkpoints.each do |checkpoint| -%>
-      <tr id="checkpoint-<%= checkpoint.id %>" class="<%= cycle('odd', 'even') %>">
+      <tr id="checkpoint-<%= checkpoint.id %>" class="<%= cycle('odd', 'even') %> issue">
         <td><%= link_to checkpoint.checkpoint_date, :controller => 'checkpoints', :action => 'show', :id => checkpoint %></td>
         <%= content_tag 'td', checkpoint.scheduled_role_effort.values.reduce(:+) %>
         <%= content_tag 'td', checkpoint.scheduled_finish_date %>
