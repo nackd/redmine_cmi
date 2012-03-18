@@ -1,29 +1,46 @@
+<%= error_messages_for 'cmi_project_info' %>
+
 <% labelled_form_for :cmi_project_info, @cmi_project_info,
                    :url => { :controller => 'metrics', :action => 'info', :project_id => @project },
                    :lang => current_language do |f| %>
 
-  <%= error_messages_for 'cmi_project_info' %>
+  <fieldset class="box tabular">
+    <legend><%=t :"cmi.label_actual_data" %></legend>
+    <div class="splitcontentleft">
+      <p><%= f.text_field :total_income, :size => 10, :required => true %></p>
+      <p><%= f.text_field :actual_start_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_actual_start_date') %></p>
+    </div>
 
-  <p><%= f.select :group, options_for_select(Project.groups, @cmi_project_info.group), :required => true, :include_blank => true %></p>
+    <div class="splitcontentright">
+      <p><%= f.select :group, options_for_select(Project.groups, @cmi_project_info.group), :required => true, :include_blank => true %></p>
+    </div>
+  </fieldset>
 
   <fieldset class="box tabular">
     <legend><%=t :"cmi.label_initial_schedule" %></legend>
     <p><%= f.text_field :scheduled_start_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_scheduled_start_date') %></p>
-    <p><%= f.text_field :scheduled_finish_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_scheduled_finish_date') %></p>
-    <p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
-  <%- @roles.each do |role| -%>
-    <p>
-      <%= label_tag "cmi_project_info_scheduled_role_effort_#{role}",
-                    l(:"cmi.label_scheduled_role_effort", :role => role) + '<span class="required"> *</span>' %>
-      <%= text_field_tag "cmi_project_info[scheduled_role_effort[#{role}]]", @cmi_project_info.scheduled_role_effort[role], :size => 10 %>
-    </p>
-  <%- end -%>
-  </fieldset>
-
-  <fieldset class="box tabular">
-    <legend><%=t :"cmi.label_actual_data" %></legend>
-    <p><%= f.text_field :total_income, :size => 10, :required => true %></p>
-    <p><%= f.text_field :actual_start_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_actual_start_date') %></p>
+    <div class="splitcontentleft">
+      <p><%= f.text_field :scheduled_finish_date, :size => 10, :required => true %><%= calendar_for('cmi_project_info_scheduled_finish_date') %></p>
+    </div>
+    <div class="splitcontentright">
+      <p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
+    </div>
+    <div style="clear:both;"></div>
+    <% roles = @roles.dup
+       roles.push nil if roles.length.odd?
+       columns = roles.each_slice(2).collect.transpose
+       columns[-1].pop if columns[-1][-1].nil? %>
+    <% ["splitcontentleft", "splitcontentright"].each_with_index do |css_class, i| %>
+      <div class="<%= css_class %>">
+        <%- columns[i].each do |role| -%>
+          <p>
+            <%= label_tag "cmi_project_info_scheduled_role_effort_#{role}",
+                l(:"cmi.label_scheduled_role_effort", :role => role) + '<span class="required"> *</span>' %>
+            <%= text_field_tag "cmi_project_info[scheduled_role_effort[#{role}]]", @cmi_project_info.scheduled_role_effort[role], :size => 10 %>
+          </p>
+        <%- end -%>
+      </div>
+    <%- end -%>
   </fieldset>
 
   <%= submit_tag(l(:button_save)) %>
