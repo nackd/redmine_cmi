@@ -4,6 +4,7 @@ class ManagementController < ApplicationController
   before_filter :set_menu_item
   before_filter :authorize_global, :get_groups
   before_filter :get_roles, :only => :groups
+  before_filter :find_coordinators, :only => [:status, :projects]
 
   def status
     get_active_projects
@@ -58,6 +59,16 @@ class ManagementController < ApplicationController
     else
       @archived = Project.all(:conditions => ["#{Project.table_name}.status = #{Project::STATUS_ARCHIVED}"],
                               :order => :lft)
+    end
+  end
+
+  def find_coordinators
+    if role = Setting.plugin_redmine_cmi['coordinator_role']
+      @coordinator_users = User.find(:all,
+                                     :joins => {:custom_values => :custom_field},
+                                     :conditions => ['value = ?', role])
+    else
+      @coordinator_users = []
     end
   end
 end

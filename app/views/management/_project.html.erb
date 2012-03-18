@@ -6,16 +6,7 @@
     <%= link_to_project project %>
   </td>
   <td><%= project.identifier %></td>
-
-  <%
-  users_jp =  []
-  project.users.each do |user|
-      if user.role == 'JP' # TODO JP? oh, please, remove this s***
-        users_jp << user
-      end
-  end %>
-
-  <td><%=  users_jp.join(', ') %></td>
+  <td><%= @coordinator_users.join(', ') %></td>
 
   <%@custom_values = project.custom_values.find(:all, :include => :custom_field, :order => "#{CustomField.table_name}.position")
     exp = tip = ciclo = obs = ""

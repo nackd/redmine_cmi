@@ -133,6 +133,7 @@ es:
     label_hours: horas
     label_filter_by: Filtrar por
     label_current_value: Valor actual - %{date}
+    label_coordinator_role: Perfil del coordinador
 
     cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
     cmi_expense_tracker_not_available: No existe el tracker gastos
