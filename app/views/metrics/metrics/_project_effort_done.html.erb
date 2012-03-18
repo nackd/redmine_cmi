@@ -1,5 +1,9 @@
 <tr>
-  <th rowspan="<%= 41 + (4 * @roles.length) %>"><%= l('cmi.label_project_management') %></th>
+  <th rowspan="<%= 41 + (4 * @roles.length) -
+               (Setting.plugin_redmine_cmi['risks_tracker'].blank? ? 5 : 0) -
+               (Setting.plugin_redmine_cmi['incidents_tracker'].blank? ? 5 : 0) %>">
+    <%= l('cmi.label_project_management') %>
+  </th>
   <th rowspan="<%= 3 + (3 * @roles.length) %>"><%= l('cmi.label_effort') %></th>
   <th rowspan="<%= 1 + @roles.length %>"><%= l('cmi.label_done') %></th>
 
