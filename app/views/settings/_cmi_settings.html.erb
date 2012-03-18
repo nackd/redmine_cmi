@@ -1,75 +1,83 @@
-<p>
-  <label><%=l :'cmi.label_incidents' %></label>
-  <%= select_tag 'settings[incidents_tracker]',
-                 '<option></option>' +
-                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['incidents_tracker'].to_i) %>
-</p>
-<p>
-  <label><%=l :'cmi.label_risks' %></label>
-  <%= select_tag 'settings[risks_tracker]',
-                 '<option></option>' +
-                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['risks_tracker'].to_i) %>
-</p>
-<p>
-  <label><%=l :'cmi.label_change_request' %></label>
-  <%= select_tag 'settings[changes_tracker]',
-                 '<option></option>' +
-                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['changes_tracker'].to_i) %>
-</p>
-<p>
-  <label><%=l :'cmi.label_nonconformities' %></label>
-  <%= select_tag 'settings[qa_tracker]',
-                 '<option></option>' +
-                 options_from_collection_for_select(Tracker.all, :id, :name, @settings['qa_tracker'].to_i) %>
-</p>
-<p>
-  <label><%=l :'cmi.caption_groups' %></label>
-  <%= text_area_tag 'settings[groups]', @settings['groups'], :rows => 15 %><br />
-  <em><%= l(:text_custom_field_possible_values_info) %></em>
-</p>
-<p>
-  <label><%=l :'cmi.label_conf_category' %></label>
-  <%= text_field_tag 'settings[conf_category]', @settings['conf_category'] %>
-</p>
-<p>
-  <label><%=l :'cmi.label_low_priorities' %></label>
-  <%= select_tag 'settings[priority_low]',
-                 options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_low'] || []).collect(&:to_i)),
-                 :multiple => true %>
-</p>
-<p>
-  <label><%=l :'cmi.label_medium_priorities' %></label>
-  <%= select_tag 'settings[priority_medium]',
-                 options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_medium'] || []).collect(&:to_i)),
-                 :multiple => true %>
-</p>
-<p>
-  <label><%=l :'cmi.label_high_priorities' %></label>
-  <%= select_tag 'settings[priority_high]',
-                 options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_high'] || []).collect(&:to_i)),
-                 :multiple => true %>
-</p>
-<p>
-  <label><%=l :'cmi.label_accepted_statuses' %></label>
-  <%= select_tag 'settings[status_accepted]',
-                 options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_accepted'] || []).collect(&:to_i)),
-                 :multiple => true %>
-</p>
-<p>
-  <label><%=l :'cmi.label_rejected_statuses' %></label>
-  <%= select_tag 'settings[status_rejected]',
-                 options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_rejected'] || []).collect(&:to_i)),
-                 :multiple => true %>
-</p>
-<p>
-  <label><%=l :'cmi.label_pending_qa_statuses' %></label>
-  <%= select_tag 'settings[status_pending]',
-                 options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_pending'] || []).collect(&:to_i)),
-                 :multiple => true %>
-</p>
-<p>
-  <label><%=l :'cmi.label_coordinator_role' %></label>
-  <%= select_tag 'settings[coordinator_role]',
-                 '<option></option>' +
-                 options_from_collection_for_select(User.roles, :to_s, :to_s, @settings['coordinator_role']) %>
-</p>
+<div class="splitcontentleft">
+  <fieldset>
+    <legend><%=l :label_tracker_plural %></legend>
+    <p>
+      <label><%=l :'cmi.label_incidents' %></label>
+      <%= select_tag 'settings[incidents_tracker]',
+          '<option></option>' +
+            options_from_collection_for_select(Tracker.all, :id, :name, @settings['incidents_tracker'].to_i) %>
+    </p>
+    <p>
+      <label><%=l :'cmi.label_risks' %></label>
+      <%= select_tag 'settings[risks_tracker]',
+          '<option></option>' +
+            options_from_collection_for_select(Tracker.all, :id, :name, @settings['risks_tracker'].to_i) %>
+    </p>
+    <p>
+      <label><%=l :'cmi.label_change_request' %></label>
+      <%= select_tag 'settings[changes_tracker]',
+          '<option></option>' +
+            options_from_collection_for_select(Tracker.all, :id, :name, @settings['changes_tracker'].to_i) %>
+    </p>
+    <p>
+      <label><%=l :'cmi.label_nonconformities' %></label>
+      <%= select_tag 'settings[qa_tracker]',
+          '<option></option>' +
+            options_from_collection_for_select(Tracker.all, :id, :name, @settings['qa_tracker'].to_i) %>
+    </p>
+  </fieldset>
+  <p>
+    <label><%=l :'cmi.caption_groups' %></label>
+    <%= text_area_tag 'settings[groups]', @settings['groups'], :rows => 15 %><br />
+    <em><%= l(:text_custom_field_possible_values_info) %></em>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_conf_category' %></label>
+    <%= text_field_tag 'settings[conf_category]', @settings['conf_category'] %>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_coordinator_role' %></label>
+    <%= select_tag 'settings[coordinator_role]',
+        '<option></option>' +
+          options_from_collection_for_select(User.roles, :to_s, :to_s, @settings['coordinator_role']) %>
+  </p>
+</div>
+<div class="splitcontentright">
+  <p>
+    <label><%=l :'cmi.label_low_priorities' %></label>
+    <%= select_tag 'settings[priority_low]',
+        options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_low'] || []).collect(&:to_i)),
+        :multiple => true %>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_medium_priorities' %></label>
+    <%= select_tag 'settings[priority_medium]',
+        options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_medium'] || []).collect(&:to_i)),
+        :multiple => true %>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_high_priorities' %></label>
+    <%= select_tag 'settings[priority_high]',
+        options_from_collection_for_select(IssuePriority.all, :id, :name, (@settings['priority_high'] || []).collect(&:to_i)),
+        :multiple => true %>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_accepted_statuses' %></label>
+    <%= select_tag 'settings[status_accepted]',
+        options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_accepted'] || []).collect(&:to_i)),
+        :multiple => true %>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_rejected_statuses' %></label>
+    <%= select_tag 'settings[status_rejected]',
+        options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_rejected'] || []).collect(&:to_i)),
+        :multiple => true %>
+  </p>
+  <p>
+    <label><%=l :'cmi.label_pending_qa_statuses' %></label>
+    <%= select_tag 'settings[status_pending]',
+        options_from_collection_for_select(IssueStatus.all, :id, :name, (@settings['status_pending'] || []).collect(&:to_i)),
+        :multiple => true %>
+  </p>
+</div>
+<div style="clear: both;"></div>
