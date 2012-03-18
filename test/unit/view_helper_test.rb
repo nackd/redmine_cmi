@@ -7,9 +7,9 @@ class ViewHelperTest < ActionView::TestCase
       currency '--'
     end
 
-    assert_equal '-- €', currency('--')
-    assert_equal '0.01 €', currency(0.012)
-    assert_equal '0.0 €', currency(0.001)
+    assert_equal '$--', currency('--')
+    assert_equal '$0.01', currency(0.012)
+    assert_equal '$0.00', currency(0.001)
   end
 
   test "hours" do

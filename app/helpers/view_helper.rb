@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 module ViewHelper
   def currency(n)
-    # TODO other currencies
-    "#{n.round(2) rescue n} €"
+    number_to_currency n, :locale => Setting.default_language
   end
 
   def hours(n)

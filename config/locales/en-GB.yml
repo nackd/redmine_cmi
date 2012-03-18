@@ -65,7 +65,7 @@ en-GB:
     label_done: Done
     label_remaining_role: "Remaining %{role}"
     label_remaining_total: Remaining total
-    label_group_deviation: Group deviation (losses €)
+    label_group_deviation: Group deviation (losses)
     label_global_deviation: Global deviation
     label_total_accepted: Total accepted
     label_profitability_current: Profitability current

@@ -65,7 +65,7 @@ es:
     label_done: Incurrido
     label_remaining_role: "Restante %{role}"
     label_remaining_total: Restante total
-    label_group_deviation: Desviación del grupo(perdidas €)
+    label_group_deviation: Desviación del grupo(pérdidas)
     label_global_deviation: Desviación respecto al Total
     label_total_accepted: Aceptado total
     label_profitability_current: Beneficio esperado
