@@ -14,6 +14,7 @@
     <div class="splitcontentright">
       <p><%= f.select :group, options_for_select(Project.groups, @cmi_project_info.group), :required => true, :include_blank => true %></p>
     </div>
+    <div style="clear:both;"></div>
   </fieldset>
 
   <fieldset class="box tabular">
@@ -42,6 +43,7 @@
           <%- end -%>
         </div>
       <%- end -%>
+      <div style="clear:both;"></div>
     <%- end -%>
   </fieldset>
 
