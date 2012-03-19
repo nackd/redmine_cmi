@@ -26,20 +26,22 @@
       <p><%= f.text_field :scheduled_qa_meetings, :size => 10, :required => true %></p>
     </div>
     <div style="clear:both;"></div>
-    <% roles = @roles.dup
-       roles.push nil if roles.length.odd?
-       columns = roles.each_slice(2).collect.transpose
-       columns[-1].pop if columns[-1][-1].nil? %>
-    <% ["splitcontentleft", "splitcontentright"].each_with_index do |css_class, i| %>
-      <div class="<%= css_class %>">
-        <%- columns[i].each do |role| -%>
-          <p>
-            <%= label_tag "cmi_project_info_scheduled_role_effort_#{role}",
-                l(:"cmi.label_scheduled_role_effort", :role => role) + '<span class="required"> *</span>' %>
-            <%= text_field_tag "cmi_project_info[scheduled_role_effort[#{role}]]", @cmi_project_info.scheduled_role_effort[role], :size => 10 %>
-          </p>
-        <%- end -%>
-      </div>
+    <% if @roles.length > 0
+         roles = @roles.dup
+         roles.push nil if roles.length.odd?
+         columns = roles.each_slice(2).collect.transpose
+         columns[-1].pop if columns[-1][-1].nil? %>
+      <% ["splitcontentleft", "splitcontentright"].each_with_index do |css_class, i| %>
+        <div class="<%= css_class %>">
+          <%- columns[i].each do |role| -%>
+            <p>
+              <%= label_tag "cmi_project_info_scheduled_role_effort_#{role}",
+                  l(:"cmi.label_scheduled_role_effort", :role => role) + '<span class="required"> *</span>' %>
+              <%= text_field_tag "cmi_project_info[scheduled_role_effort[#{role}]]", @cmi_project_info.scheduled_role_effort[role], :size => 10 %>
+            </p>
+          <%- end -%>
+        </div>
+      <%- end -%>
     <%- end -%>
   </fieldset>
 
