@@ -25,10 +25,14 @@
       <th><%=l(:field_scheduled_finish_date)%>:</th><td><%= format_date(@checkpoint.scheduled_finish_date) %></td>
       <th><%=l(:field_scheduled_qa_meetings)%>:</th><td><%= @checkpoint.held_qa_meetings %></td>
     </tr>
-    <%- @roles.each do |role| -%>
+    <%- @roles.each_slice(2) do |roles| -%>
       <tr>
-        <th><%=l(:"cmi.label_scheduled_role_effort", :role => role) %></th>
-        <td><%= @checkpoint.scheduled_role_effort[role] %></td>
+        <th><%=l(:"cmi.label_scheduled_role_effort", :role => roles[0]) %></th>
+        <td><%= @checkpoint.scheduled_role_effort[roles[0]] %></td>
+        <% unless roles[1].nil? %>
+          <th><%=l(:"cmi.label_scheduled_role_effort", :role => roles[1]) %></th>
+          <td><%= @checkpoint.scheduled_role_effort[roles[1]] %></td>
+        <%- end -%>
       </tr>
     <%- end -%>
   </table>
