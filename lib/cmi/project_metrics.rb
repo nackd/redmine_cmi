@@ -33,14 +33,12 @@ module CMI
       end
     end
 
-    def to_s
-      I18n.t :'cmi.label_current_value', :date => date
-    end
-
-    private
-
     def held_qa_meetings
       checkpoint.held_qa_meetings
+    end
+
+    def to_s
+      I18n.t :'cmi.label_current_value', :date => date
     end
   end
 end
