@@ -41,7 +41,7 @@ en:
     label_expenditures: Expenditures
     label_new_checkpoint: New checkpoint
     label_new_expenditure: New expenditure
-    label_view_all: View all the reports
+    label_view_all: View all checkpoints
     button_enlarge: Enlarge
 
     label_initial_schedule: Initial schedule
@@ -124,7 +124,7 @@ en:
     label_ac_effort: Corrective actions effort
     label_measurement_and_metrics: Measurement and metrics
     label_effort_annual_review: Metrics annual review effort
-    label_effort_reporting: Reporting effort
+    label_effort_reporting: Checkpoints effort
     label_profile_history: Profile history
     label_profile_plural: Profile
     label_from: From
@@ -141,7 +141,7 @@ en:
     cmi_change_tracker_not_available: There is not 'change' tracker available
     cmi_risk_tracker_not_available: There is not 'risk' tracker available
     cmi_incidence_tracker_not_available: There is not 'incidence' tracker available
-    cmi_no_reports: There are no reports created
+    cmi_no_reports: There are no checkpoints
 
     caption_status: Status
     caption_groups: Groups
@@ -150,7 +150,7 @@ en:
 
     error_other: "There is needed data missing in the project '%{project}' to make calculations. An error has happened: %{message}."
     error_profile: "There are users (%{users}) without profile in the project '%{project}'. It's necessary to be able to make calculations."
-    cmi_no_reports_found: "There are no reports in the project '%{project}'. Create one (New issue) so you can check the metrics."
+    cmi_no_reports_found: "There are no checkpoints in the project '%{project}'. Create one so you can view the metrics."
 
     plugin_name: Central Panel of Management
     plugin_description: Global and per project summarized views

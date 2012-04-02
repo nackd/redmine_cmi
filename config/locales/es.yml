@@ -41,7 +41,7 @@ es:
     label_expenditures: Gastos
     label_new_checkpoint: Nuevo punto de control
     label_new_expenditure: Nuevo gasto
-    label_view_all: Ver todos los informes
+    label_view_all: Ver todos los puntos de control
     button_enlarge: Ampliar
 
     label_initial_schedule: Planificación inicial
@@ -124,7 +124,7 @@ es:
     label_ac_effort: Esfuerzo a acciones correctoras
     label_measurement_and_metrics: Medición y métricas
     label_effort_annual_review: Esfuerzo en revisión anual de métricas
-    label_effort_reporting: Esfuerzo en elaboración de informes
+    label_effort_reporting: Esfuerzo en elaboración de puntos de control
     label_profile_history: Evolución del perfil
     label_profile_plural: Perfiles
     label_from: Desde
@@ -141,7 +141,7 @@ es:
     cmi_change_tracker_not_available: No existe el tracker solicitudes de cambio
     cmi_risk_tracker_not_available: No existe el tracker riesgos
     cmi_incidence_tracker_not_available: No existe el tracker incidencias
-    cmi_no_reports: No hay informes creados
+    cmi_no_reports: No hay puntos de control creados
 
     caption_status: Estado
     caption_groups: Grupos
@@ -150,7 +150,7 @@ es:
 
     error_other: "Faltan datos por introducir en el proyecto '%{project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: %{message}."
     error_profile: "Hay usuarios (%{users}) sin perfil asignado en el proyecto '%{project}'. Es necesario para poder realizar los cálculos correctamente."
-    cmi_no_checkpoints_found: "No hay ningún informe en el proyecto '%{project}'. Cree uno (Nueva petición) para poder consultar las métricas."
+    cmi_no_checkpoints_found: "No hay ningún punto de control en el proyecto '%{project}'. Cree uno para poder consultar las métricas."
 
     plugin_name: Cuadro de Mando Integral
     plugin_description: Vistas resumenes globales y por proyectos
