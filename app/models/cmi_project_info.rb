@@ -6,9 +6,9 @@ class CmiProjectInfo < ActiveRecord::Base
 
   accepts_nested_attributes_for :cmi_project_efforts, :allow_destroy => true
 
-  validates_presence_of :project, :group
+  validates_presence_of :project
 
-  validates_format_of :actual_start_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
+  validates_format_of :actual_start_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => true
   validates_format_of :scheduled_start_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
   validates_format_of :scheduled_finish_date, :with => /^\d{4}-\d{2}-\d{2}$/, :message => :not_a_date, :allow_nil => false
 
