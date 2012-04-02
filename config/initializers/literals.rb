@@ -1,6 +1,5 @@
 # Literals from database values
 
-
 PROJECT_GROUPS = ["Aplicaciones-GIS", "Distribuciones", "Migraciones", "GPI", "GIS", "Otros"]
 
 METRICS = [ 'time_start_planned',
@@ -15,26 +14,19 @@ METRICS = [ 'time_start_planned',
              'money_now',
              'money_real']
 
-INITIAL_METRICS = [ "#{DEFAULT_VALUES['date_start_planned']}",
-                    "#{DEFAULT_VALUES['date_end_planned']}",
-                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'JP')}",
-                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AF')}",
-                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'AP')}",
-                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PS')}",
-                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'PJ')}",
-                    "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', 'B')}",
-                    "#{DEFAULT_VALUES['budget_spected_rrmm']}",
-                    "#{DEFAULT_VALUES['budget_accepted']}",
-                    "#{DEFAULT_VALUES['quality_meets_planned']}",
-                    "#{DEFAULT_VALUES['date_start_real']}"
-                    ]
+role_field = UserCustomField.find_by_name(DEFAULT_VALUES['user_role_field'])
+roles = role_field ? role_field.possible_values : []
 
-VARIANT_METRICS = ["#{DEFAULT_VALUES['expected_date_end']}",
-                   "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'JP')}",
-                   "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'AF')}",
-                   "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'AP')}",
-                   "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'PS')}",
-                   "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'PJ')}",
-                   "#{DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', 'B')}",
-                   "#{DEFAULT_VALUES['quality_meets_done']}"
-                   ]
+INITIAL_METRICS = [ DEFAULT_VALUES['date_start_planned'],
+                    DEFAULT_VALUES['date_end_planned'],
+                    roles.collect { |role| DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['expected']).gsub('{{profile}}', role) },
+                    DEFAULT_VALUES['budget_spected_rrmm'],
+                    DEFAULT_VALUES['budget_accepted'],
+                    DEFAULT_VALUES['quality_meets_planned'],
+                    DEFAULT_VALUES['date_start_real']
+                    ].flatten
+
+VARIANT_METRICS = [DEFAULT_VALUES['expected_date_end'],
+                   roles.collect { |role| DEFAULT_VALUES['effort'].gsub('{{type}}', DEFAULT_VALUES['current']).gsub('{{profile}}', role) },
+                   DEFAULT_VALUES['quality_meets_done']
+                   ].flatten
