@@ -6,7 +6,7 @@
     <%= link_to_project project %>
   </td>
   <td><%= project.identifier %></td>
-  <td><%= @coordinator_users.join(', ') %></td>
+  <td><%= project.users.all(:joins => { :custom_values => :custom_field }, :conditions => ['custom_fields.name = ? AND custom_values.value = ?', DEFAULT_VALUES['user_role_field'], Setting.plugin_redmine_cmi['coordinator_role']]).join(', ') %></td>
 
   <%@custom_values = project.custom_values.find(:all, :include => :custom_field, :order => "#{CustomField.table_name}.position")
     exp = tip = ciclo = obs = ""
