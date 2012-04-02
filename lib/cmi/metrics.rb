@@ -239,7 +239,7 @@ module CMI
                ' AND (start_date <= ?)' <<
                ' AND (tracker_id = ?)' <<
                ' AND (priority_id in (?))',
-               date, Setting.plugin_redmine_cmi['risks_tracker'], Setting.plugin_redmine_cmi['risk_low'] ]
+               date, Setting.plugin_redmine_cmi['risks_tracker'], Setting.plugin_redmine_cmi['priority_low'] ]
       Issue.count :joins => :project, :conditions => cond
     end
 
@@ -248,7 +248,7 @@ module CMI
                ' AND (start_date <= ?)' <<
                ' AND (tracker_id = ?)' <<
                ' AND (priority_id in (?))',
-               date, Setting.plugin_redmine_cmi['risks_tracker'], Setting.plugin_redmine_cmi['risk_medium'] ]
+               date, Setting.plugin_redmine_cmi['risks_tracker'], Setting.plugin_redmine_cmi['priority_medium'] ]
       Issue.count :joins => :project, :conditions => cond
     end
 
@@ -257,7 +257,7 @@ module CMI
                ' AND (start_date <= ?)' <<
                ' AND (tracker_id = ?)' <<
                ' AND (priority_id in (?))',
-               date, Setting.plugin_redmine_cmi['risks_tracker'], Setting.plugin_redmine_cmi['risk_high'] ]
+               date, Setting.plugin_redmine_cmi['risks_tracker'], Setting.plugin_redmine_cmi['priority_high'] ]
       Issue.count :joins => :project, :conditions => cond
     end
 
