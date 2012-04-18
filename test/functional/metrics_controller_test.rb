@@ -259,12 +259,14 @@ class MetricsControllerTest < ActionController::TestCase
       assert_select "#changes_effort_2", "0.0 hours (0.0 %)"
     end
 
-    assert_select "#config_effort_0", "0.0 hours (0.0 %)"
-    assert_select "#config_effort_1", "0.0 hours (0.0 %)"
-    assert_select "#config_effort_2", "0.0 hours (0.0 %)"
-    # TODO assert_select "#config_changes_0", "0.0 hours"
-    # TODO assert_select "#config_changes_1", "0.0 hours"
-    # TODO assert_select "#config_changes_2", "0.0 hours"
+    unless Setting.plugin_redmine_cmi['conf_category'].blank?
+      assert_select "#config_effort_0", "0.0 hours (0.0 %)"
+      assert_select "#config_effort_1", "0.0 hours (0.0 %)"
+      assert_select "#config_effort_2", "0.0 hours (0.0 %)"
+      # TODO assert_select "#config_changes_0", "0.0 hours"
+      # TODO assert_select "#config_changes_1", "0.0 hours"
+      # TODO assert_select "#config_changes_2", "0.0 hours"
+    end
 
     unless Setting.plugin_redmine_cmi['qa_tracker'].blank?
       assert_select "#qa_meets_done_0", "1 (0.33 %)"
