@@ -119,14 +119,14 @@ def create_test_data
                          :actual_start_date       => Date.new(2011, 2, 1),
                          :scheduled_qa_meetings   => 3,
                          :total_income            => 123456,
-                         :scheduled_role_effort => {
-                           "JP"                   => 100,
-                           "AF"                   => 200,
-                           "AP"                   => 300,
-                           "PS"                   => 400,
-                           "PJ"                   => 500,
-                           "B"                    => 600
-                         })
+                         :cmi_project_efforts_attributes => [
+                           { :role => "JP", :scheduled_effort => 100},
+                           { :role => "AF", :scheduled_effort => 200},
+                           { :role => "AP", :scheduled_effort => 300},
+                           { :role => "PS", :scheduled_effort => 400},
+                           { :role => "PJ", :scheduled_effort => 500},
+                           { :role => "B",  :scheduled_effort => 600}
+                         ])
   # Members
   [jp, af, ap, ps, pj, b].each do |user|
     m = Member.new(:user =>    user,

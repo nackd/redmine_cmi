@@ -1,5 +1,7 @@
 module CMI
   class Metrics
+    unloadable
+
     attr_reader :checkpoint, :date, :project
 
     def effort_done
@@ -43,7 +45,7 @@ module CMI
     end
 
     def effort_original_by_role(role)
-      project.cmi_project_info.scheduled_role_effort[role]
+      project.cmi_project_info.scheduled_role_effort(role)
     end
 
     def effort_original
@@ -120,7 +122,7 @@ module CMI
 
     def hhrr_cost_original
       User.roles.inject(0) { |sum, role|
-        sum += (project.cmi_project_info.scheduled_role_effort[role] *
+        sum += (project.cmi_project_info.scheduled_role_effort(role) *
                 HistoryProfilesCost.find(:first,
                                          :conditions => ['profile = ? AND year = ?', role, project.cmi_project_info.scheduled_start_date.year]).value)
       }

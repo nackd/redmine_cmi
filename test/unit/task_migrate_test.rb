@@ -53,8 +53,9 @@ class TaskMigrateTest < ActiveSupport::TestCase
     assert_equal 1, info.scheduled_qa_meetings
     assert_equal 50000, info.total_income
     assert_equal Date.new(2011, 2, 1), info.actual_start_date
-    assert_equal ({ "One" => 1000,
-                    "Two" => 2000 }), info.scheduled_role_effort
+    assert_equal 1000.0, info.scheduled_role_effort("One")
+    assert_equal 2000.0, info.scheduled_role_effort("Two")
+    assert_equal 2, info.cmi_project_efforts.count
 
     assert_equal 2, checkpoints.count
 

@@ -35,8 +35,8 @@ namespace :cmi do
       Project.find_each(:batch_size => 50,
                         :joins => :enabled_modules,
                         :conditions => "enabled_modules.name = 'cmiplugin'") do |project|
-        project_scheduled_role_effort = project_scheduled_role_effort_fields.reduce({}) { |ac, field|
-          ac.merge!({ field.first => (begin project.custom_value_for(field.last).value rescue 0 end) })
+        project_scheduled_role_effort = project_scheduled_role_effort_fields.reduce([]) { |ac, field|
+          ac << { :role => field.first, :scheduled_effort => (begin project.custom_value_for(field.last).value rescue 0 end) }
         }
         CmiProjectInfo.create!(:project => project,
                                :total_income => project.custom_value_for(project_total_income_field).value,
@@ -44,7 +44,7 @@ namespace :cmi do
                                :scheduled_start_date => project.custom_value_for(project_scheduled_start_date_field).value,
                                :scheduled_finish_date => project.custom_value_for(project_scheduled_finish_date_field).value,
                                :scheduled_qa_meetings => project.custom_value_for(project_scheduled_qa_meetings_field).value,
-                               :scheduled_role_effort => project_scheduled_role_effort,
+                               :cmi_project_efforts_attributes => project_scheduled_role_effort,
                                :group => project.custom_value_for(project_group_field).value)
       end
 
