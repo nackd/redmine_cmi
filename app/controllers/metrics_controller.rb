@@ -11,7 +11,8 @@ class MetricsController < ApplicationController
     begin
       @checkpoints = @project.cmi_checkpoints.find(:all,
                                                    :order => 'checkpoint_date DESC',
-                                                   :limit => (2 if params[:metrics].nil?))
+                                                   :limit => (2 if params[:metrics].nil?),
+                                                   :include => :cmi_checkpoint_efforts)
       @metrics = @checkpoints.collect { |checkpoint| CMI::CheckpointMetrics.new checkpoint }
       @metrics.insert 0, CMI::ProjectMetrics.new(@project)
       raise CMI::Exception, I18n.t(:'cmi.cmi_no_checkpoints_found', :project => @project) if @checkpoints.empty?

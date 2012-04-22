@@ -60,8 +60,8 @@ namespace :cmi do
       unless report_tracker.nil?
         Issue.find_each(:batch_size => 50,
                         :conditions => ["tracker_id = ?", report_tracker.id]) do |issue|
-          report_scheduled_role_effort = report_scheduled_role_effort_fields.reduce({}) { |ac, field|
-            ac.merge!({ field.first => (begin issue.custom_value_for(field.last).value rescue 0 end) })
+          report_scheduled_role_effort = report_scheduled_role_effort_fields.reduce([]) { |ac, field|
+            ac << { :role => field.first, :scheduled_effort => (begin issue.custom_value_for(field.last).value rescue 0 end) }
           }
           checkpoint = CmiCheckpoint.create!(:project => issue.project,
                                              :author => User.anonymous,
@@ -69,7 +69,7 @@ namespace :cmi do
                                              :checkpoint_date => issue.start_date,
                                              :scheduled_finish_date => issue.custom_value_for(report_scheduled_finish_date_field).value,
                                              :held_qa_meetings => issue.custom_value_for(report_held_qa_meetings_field).value,
-                                             :scheduled_role_effort => report_scheduled_role_effort)
+                                             :cmi_checkpoint_efforts_attributes => report_scheduled_role_effort)
           issue.journals.each do |journal|
             journal.journalized = checkpoint
             journal.save!

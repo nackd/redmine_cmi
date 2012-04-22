@@ -64,16 +64,18 @@ class TaskMigrateTest < ActiveSupport::TestCase
     assert_equal Date.new(2011, 2, 15), checkpoints.first.checkpoint_date
     assert_equal 0, checkpoints.first.held_qa_meetings
     assert_equal Date.new(2011, 7, 1), checkpoints.first.scheduled_finish_date
-    assert_equal ({ "One" => 1100,
-                    "Two" => 2200 }), checkpoints.first.scheduled_role_effort
+    assert_equal 1100.0, checkpoints.first.scheduled_role_effort("One")
+    assert_equal 2200.0, checkpoints.first.scheduled_role_effort("Two")
+    assert_equal 2, checkpoints.first.cmi_checkpoint_efforts.count
 
     assert_equal project, checkpoints.last.project
     assert_equal "Report upto 3/15", checkpoints.last.description
     assert_equal Date.new(2011, 3, 15), checkpoints.last.checkpoint_date
     assert_equal 1, checkpoints.last.held_qa_meetings
     assert_equal Date.new(2011, 8, 1), checkpoints.last.scheduled_finish_date
-    assert_equal ({ "One" => 1200,
-                    "Two" => 2400 }), checkpoints.last.scheduled_role_effort
+    assert_equal 1200.0, checkpoints.last.scheduled_role_effort("One")
+    assert_equal 2400.0, checkpoints.last.scheduled_role_effort("Two")
+    assert_equal 2, checkpoints.last.cmi_checkpoint_efforts.count
 
     assert_equal checkpoints.last, journals.first.journalized
     assert_equal "Some notes", journals.first.notes

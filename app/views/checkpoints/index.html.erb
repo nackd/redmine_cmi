@@ -18,7 +18,7 @@
     <% @checkpoints.each do |checkpoint| -%>
       <tr id="checkpoint-<%= checkpoint.id %>" class="<%= cycle('odd', 'even') %> issue">
         <td><%= link_to checkpoint.checkpoint_date, :controller => 'checkpoints', :action => 'show', :id => checkpoint %></td>
-        <%= content_tag 'td', checkpoint.scheduled_role_effort.values.reduce(:+) %>
+        <%= content_tag 'td', checkpoint.cmi_checkpoint_efforts.reduce(0.0){ |sum, effort| sum += effort.scheduled_effort } %>
         <%= content_tag 'td', checkpoint.scheduled_finish_date %>
         <%= content_tag 'td', checkpoint.held_qa_meetings %>
       </tr>

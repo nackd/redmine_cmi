@@ -140,28 +140,28 @@ def create_test_data
                         :checkpoint_date       => Date.new(2011, 2, 15),
                         :held_qa_meetings      => 0,
                         :scheduled_finish_date => Date.new(2011, 7, 1),
-                        :scheduled_role_effort => {
-                          "JP"                 => 100,
-                          "AF"                 => 300,
-                          "AP"                 => 500,
-                          "PS"                 => 1000,
-                          "PJ"                 => 800,
-                          "B"                  => 600
-                        })
+                        :cmi_checkpoint_efforts_attributes => [
+                          { :role => "JP", :scheduled_effort => 100},
+                          { :role => "AF", :scheduled_effort => 300},
+                          { :role => "AP", :scheduled_effort => 500},
+                          { :role => "PS", :scheduled_effort => 1000},
+                          { :role => "PJ", :scheduled_effort => 800},
+                          { :role => "B",  :scheduled_effort => 600}
+                        ])
   CmiCheckpoint.create!(:project               => p,
                         :author                => jp,
                         :description           => "Report upto 3/15",
                         :checkpoint_date       => Date.new(2011, 3, 15),
                         :held_qa_meetings      => 1,
                         :scheduled_finish_date => Date.new(2011, 8, 1),
-                        :scheduled_role_effort => {
-                          "JP"                 => 150,
-                          "AF"                 => 400,
-                          "AP"                 => 600,
-                          "PS"                 => 1200,
-                          "PJ"                 => 1000,
-                          "B"                  => 600
-                        })
+                        :cmi_checkpoint_efforts_attributes => [
+                          { :role => "JP", :scheduled_effort => 150},
+                          { :role => "AF", :scheduled_effort => 400},
+                          { :role => "AP", :scheduled_effort => 600},
+                          { :role => "PS", :scheduled_effort => 1200},
+                          { :role => "PJ", :scheduled_effort => 1000},
+                          { :role => "B", :scheduled_effort => 600}
+                        ])
   # Issues
   tracker_bugs = Tracker.find_by_name("Bug").id
   tracker_features = Tracker.find_by_name("Feature").id

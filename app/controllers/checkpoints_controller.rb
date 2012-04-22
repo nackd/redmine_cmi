@@ -18,11 +18,15 @@ class CheckpointsController < ApplicationController
     @checkpoints = CmiCheckpoint.all(:conditions => ['project_id = ?', @project],
                                      :order => [@sort, @order].join(' '),
                                      :offset => @offset,
-                                     :limit => @limit)
+                                     :limit => @limit,
+                                     :include => :cmi_checkpoint_efforts)
   end
 
   def new
     @checkpoint = CmiCheckpoint.new @project
+    @roles.each do |role|
+      @checkpoint.cmi_checkpoint_efforts.build :role => role
+    end
   end
 
   def create
@@ -128,7 +132,7 @@ class CheckpointsController < ApplicationController
   private
 
   def find_checkpoint
-    @checkpoint = CmiCheckpoint.find params[:id]
+    @checkpoint = CmiCheckpoint.find params[:id], :include => :cmi_checkpoint_efforts
     unless @checkpoint.project_id == @project.id
       deny_access
       return
