@@ -17,7 +17,11 @@ module CMI
     end
 
     def effort_scheduled_by_role(role)
-      checkpoint.scheduled_role_effort(role).to_f
+      if checkpoint
+        checkpoint.scheduled_role_effort(role).to_f
+      elsif (info = project.try :cmi_project_info)
+        info.scheduled_role_effort(role).to_f
+      end
     end
 
     def effort_remaining
@@ -113,9 +117,7 @@ module CMI
 
     def hhrr_cost_scheduled
       User.roles.inject(0) { |sum, role|
-        sum += (checkpoint.nil? ?
-                0 :
-                checkpoint.scheduled_role_effort(role) *
+        sum += (effort_scheduled_by_role(role) *
                 HistoryProfilesCost.find(:first, :conditions => ['profile = ? AND year = ?', role, date.year]).value)
       }
     end
