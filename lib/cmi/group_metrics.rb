@@ -4,9 +4,9 @@ module CMI
 
     def projects
       return @projects if @projects
-      @projects = Project.all(:select => 'projects.*',
-                              :joins => [:enabled_modules, :cmi_project_info],
-                              :conditions => ['enabled_modules.name = ?', 'cmiplugin']).group_by do |p|
+      @projects = Project.active.all(:select => 'projects.*',
+                                     :joins => [:enabled_modules, :cmi_project_info],
+                                     :conditions => ['enabled_modules.name = ?', 'cmiplugin']).group_by do |p|
         p.cmi_project_info.group
       end
     end
