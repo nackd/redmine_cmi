@@ -15,6 +15,8 @@ class MetricsController < ApplicationController
                                                    :include => :cmi_checkpoint_efforts)
       @metrics = @checkpoints.collect { |checkpoint| CMI::CheckpointMetrics.new checkpoint }
       @metrics.insert 0, CMI::ProjectMetrics.new(@project)
+      raise CMI::Exception, I18n.t(:'cmi.no_project_info', :project => @project) if @project.cmi_project_info.nil?
+      raise CMI::Exception, I18n.t(:'cmi.no_actual_start_date', :project => @project) if @project.cmi_project_info.actual_start_date.nil?
       raise CMI::Exception, I18n.t(:'cmi.cmi_no_checkpoints_found', :project => @project) if @checkpoints.empty?
       respond_to do |format|
           format.html { render :layout => !request.xhr? }

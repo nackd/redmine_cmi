@@ -148,6 +148,8 @@ es:
     caption_projects: Proyectos
     caption_metrics: Métricas
 
+    no_project_info: "No se ha cumplimentado la información base. Es necesario para poder mostrar las métricas."
+    no_actual_start_date: "No se ha rellenado la fecha de comienzo real en la información base. No se pueden realizar los cálculos."
     error_other: "Faltan datos por introducir en el proyecto '%{project}' para poder realizar los cálculos correctamente. Se ha producido un error en los cálculos: %{message}."
     error_profile: "Hay usuarios (%{users}) sin perfil asignado en el proyecto '%{project}'. Es necesario para poder realizar los cálculos correctamente."
     cmi_no_checkpoints_found: "No hay ningún punto de control en el proyecto '%{project}'. Cree uno para poder consultar las métricas."

@@ -148,6 +148,8 @@ en-GB:
     caption_projects: Projects
     caption_metrics: Metrics
 
+    no_project_info: "Basic info not found. It's necessary to be able to show metrics."
+    no_actual_start_date: "No actual start date in basic info. Cannot make calculations."
     error_other: "There is needed data missing in the project '%{project}' to make calculations. An error has happened: %{message}."
     error_profile: "There are users (%{users}) without profile in the project '%{project}'. It's necessary to be able to make calculations."
     cmi_no_reports_found: "There are no reports in the project '%{project}'. Create one so you can view the metrics."
