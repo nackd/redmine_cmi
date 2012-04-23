@@ -91,11 +91,11 @@ namespace :cmi do
                                                :concept => issue.subject,
                                                :description => issue.description,
                                                :initial_budget =>
-                                                 initial = issue.custom_value_for(expenditure_initial_budget_field).value.to_i,
+                                                 initial = issue.custom_value_for(expenditure_initial_budget_field).value.to_f,
                                                :current_budget =>
-                                                 ((cv = issue.custom_value_for(expenditure_current_budget_field)).nil? || cv.value.blank?) ? initial : cv.value.to_i,
+                                                 ((cv = issue.custom_value_for(expenditure_current_budget_field)).nil? || cv.value.blank?) ? initial : cv.value.to_f,
                                                :incurred =>
-                                                 (cv = issue.custom_value_for(expenditure_incurred_field)).nil? ? 0.0 : cv.value.to_i)
+                                                 (cv = issue.custom_value_for(expenditure_incurred_field)).nil? ? 0.0 : cv.value.to_f)
           issue.journals.each do |journal|
             journal.journalized = expenditure
             journal.save!
