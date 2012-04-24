@@ -30,18 +30,26 @@ Important note: read install notes before installing.
 1. Make sure you have installed the Redmine version 1.0.0 or higher.
 2. Follow the Redmine plugin installation steps at:
    http://www.redmine.org/wiki/redmine/Plugins
-3. Install the plugin running the commands below from your Redmine directory
+3. Edit the following files:
+   * config/defaults.yml
+     Translate perfil (profile) to your language. The cmi:create_data task
+     creates a user custom field with this name.
+   * db/fixtures/history_profiles_costs.csv
+     Hourly cost of each profile (by year).
+   * db/fixtures/history_user_profiles.csv
+     Historic user profile evolution: which user had which profile when sometime?
+4. Install the plugin running the commands below from your Redmine directory
    (if you are going to run Redmine in, e.g. the production environment, you
    need to append RAILS_ENV=production to each line):
- rake db:migrate:plugin NAME=redmine_cmi
- rake cmi:create_data
- rake cmi:load_role_costs_history
- rake cmi:load_user_role_history
- rake cmi:recalculate_costs
-4. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
-5. Login to your Redmine install as an Administrator
-6. Enable the permissions for your Roles
-7. The link to the plugin should appear on that project's navigation as 'CMI'
+     rake db:migrate:plugin NAME=redmine_cmi
+     rake cmi:create_data
+     rake cmi:load_role_costs_history
+     rake cmi:load_user_role_history
+     rake cmi:recalculate_costs
+5. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
+6. Login to your Redmine install as an Administrator
+7. Enable the permissions for your Roles
+8. Configure the plugin under administration, plugins
 
 == Install notes
 
