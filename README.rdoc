@@ -35,9 +35,12 @@ Important note: read install notes before installing.
      Translate perfil (profile) to your language. The cmi:create_data task
      creates a user custom field with this name.
    * db/fixtures/history_profiles_costs.csv
-     Hourly cost of each profile (by year).
+     Hourly cost of each profile (by year). The cmi:load_role_costs_history
+     loads the information from this file to the database.
    * db/fixtures/history_user_profiles.csv
-     Historic user profile evolution: which user had which profile when sometime?
+     Historic user profile evolution: which user had which profile at a point
+     in time? The cmi:load_user_role_history loads the information from this
+     file to the database.
 4. Install the plugin running the commands below from your Redmine directory
    (if you are going to run Redmine in, e.g. the production environment, you
    need to append RAILS_ENV=production to each line):
