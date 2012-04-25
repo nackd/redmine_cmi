@@ -104,8 +104,8 @@ en-GB:
     label_pending_qa_statuses: Statuses for pending QA non conformities
     label_incidents: Incidents
     label_incidents_high: High exposure
-    label_incidents_medium: High exposure
-    label_incidents_low: High exposure
+    label_incidents_medium: Medium exposure
+    label_incidents_low: Low exposure
     label_requirements_management: Requirements management
     label_configuration_management: Configuration management
     label_changes: Changes
