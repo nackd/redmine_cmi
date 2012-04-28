@@ -1,7 +1,7 @@
 <tr>
   <th rowspan=10><%= l('cmi.label_cost') %></th>
   <th rowspan="3"><%= l('cmi.label_done') %></th>
-  <td><%= l('cmi.label_RRHH') %></td>
+  <td><%= l('cmi.label_HHRR') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_spent_#{i}", :class => "issue" do -%>
       <%= currency metric.hhrr_cost_incurred %>
@@ -26,7 +26,7 @@
 </tr>
 <tr>
   <th rowspan=3><%= l('cmi.label_remaining') %></th>
-  <td><%= l('cmi.label_RRHH') %></td>
+  <td><%= l('cmi.label_HHRR') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_remaining_#{i}", :class => "issue" do -%>
       <%= currency metric.hhrr_cost_remaining %>
@@ -52,7 +52,7 @@
 
 <tr>
   <th rowspan=3><%= l('cmi.label_planned') %></th>
-  <td><%= l('cmi.label_RRHH') %></td>
+  <td><%= l('cmi.label_HHRR') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_hhrr_planned_#{i}", :class => "issue" do -%>
       <%= currency metric.hhrr_cost_scheduled %>
@@ -79,8 +79,8 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "cost_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.hhrr_cost_percent_incurred.round(2) %>,<%= metric.material_cost_percent_incurred.round(2) %>,<%= metric.total_cost_percent_incurred.round(2) %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: <%= percent metric.total_cost_percent_incurred %>|Otros: <%= percent metric.material_cost_percent_incurred %>|RRHH: <%= percent metric.hhrr_cost_percent_incurred %>|"/>
-      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%= metric.hhrr_cost_percent.round(2) %>,<%= metric.material_cost_percent.round(2) %>&chs=250x50&chl=RRHH: <%= percent metric.hhrr_cost_percent %>|Otros: <%= percent metric.material_cost_percent %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.hhrr_cost_percent_incurred.round(2) %>,<%= metric.material_cost_percent_incurred.round(2) %>,<%= metric.total_cost_percent_incurred.round(2) %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|<%=l :label_total %>: <%= percent metric.total_cost_percent_incurred %>|<%=l :'cmi.label_others' %>: <%= percent metric.material_cost_percent_incurred %>|<%=l :'cmi.label_HHRR' %>: <%= percent metric.hhrr_cost_percent_incurred %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<%= metric.hhrr_cost_percent.round(2) %>,<%= metric.material_cost_percent.round(2) %>&chs=250x50&chl=<%=l :'cmi.label_HHRR' %>: <%= percent metric.hhrr_cost_percent %>|<%=l :'cmi.label_others' %>: <%= percent metric.material_cost_percent %>|"/>
     <% end -%>
   <% end -%>
 </tr>

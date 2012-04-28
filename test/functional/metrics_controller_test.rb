@@ -147,12 +147,12 @@ class MetricsControllerTest < ActionController::TestCase
     assert_select "#cost_total_planned_0", "$57,500.00"
     assert_select "#cost_total_planned_1", "$57,500.00"
     assert_select "#cost_total_planned_2", "$46,500.00"
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:43.13,0.0,43.13|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 43.13 %|Otros: 0.0 %|RRHH: 43.13 %|" />', css_select("#cost_chart_0 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=RRHH: 100.0 %|Otros: 0.0 %|" />', css_select("#cost_chart_0 img").last.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:34.63,0.0,34.63|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 34.63 %|Otros: 0.0 %|RRHH: 34.63 %|" />', css_select("#cost_chart_1 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=RRHH: 100.0 %|Otros: 0.0 %|" />', css_select("#cost_chart_1 img").last.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:26.41,0.0,26.41|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 26.41 %|Otros: 0.0 %|RRHH: 26.41 %|" />', css_select("#cost_chart_2 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=RRHH: 100.0 %|Otros: 0.0 %|" />', css_select("#cost_chart_2 img").last.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:43.13,0.0,43.13|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 43.13 %|Others: 0.0 %|HHRR: 43.13 %|" />', css_select("#cost_chart_0 img").first.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=HHRR: 100.0 %|Others: 0.0 %|" />', css_select("#cost_chart_0 img").last.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:34.63,0.0,34.63|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 34.63 %|Others: 0.0 %|HHRR: 34.63 %|" />', css_select("#cost_chart_1 img").first.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=HHRR: 100.0 %|Others: 0.0 %|" />', css_select("#cost_chart_1 img").last.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:26.41,0.0,26.41|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Total: 26.41 %|Others: 0.0 %|HHRR: 26.41 %|" />', css_select("#cost_chart_2 img").first.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:100.0,0.0&chs=250x50&chl=HHRR: 100.0 %|Others: 0.0 %|" />', css_select("#cost_chart_2 img").last.to_s
 
     assert_select "#advance_effort_JP_0", "34.67 %"
     assert_select "#advance_effort_JP_1", "29.33 %"
@@ -187,9 +187,9 @@ class MetricsControllerTest < ActionController::TestCase
     assert_select "#advance_total_budget_0", "43.13 %"
     assert_select "#advance_total_budget_1", "34.63 %"
     assert_select "#advance_total_budget_2", "26.41 %"
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:44.92,32.97,43.13|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 43.13 %|Tiempo: 32.97 %|Esfuerzo: 44.92 %|" />', css_select("#advance_chart_0 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:36.0,23.63,34.63|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 34.63 %|Tiempo: 23.63 %|Esfuerzo: 36.0 %|" />', css_select("#advance_chart_1 img").first.to_s
-    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:26.55,9.93,26.41|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: 26.41 %|Tiempo: 9.93 %|Esfuerzo: 26.55 %|" />', css_select("#advance_chart_2 img").first.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:44.92,32.97,43.13|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Cost: 43.13 %|Time: 32.97 %|Effort: 44.92 %|" />', css_select("#advance_chart_0 img").first.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:36.0,23.63,34.63|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Cost: 34.63 %|Time: 23.63 %|Effort: 36.0 %|" />', css_select("#advance_chart_1 img").first.to_s
+    assert_equal '<img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:26.55,9.93,26.41|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Cost: 26.41 %|Time: 9.93 %|Effort: 26.55 %|" />', css_select("#advance_chart_2 img").first.to_s
 
     assert_select "#profitability_planned_initially_0", "$95,456.00 (77.32 %)"
     assert_select "#profitability_planned_initially_1", "$95,456.00 (77.32 %)"
@@ -200,9 +200,9 @@ class MetricsControllerTest < ActionController::TestCase
     assert_select "#profitability_current_0", "$98,658.50 (79.91 %)"
     assert_select "#profitability_current_1", "$103,546.00 (83.87 %)"
     assert_select "#profitability_current_2", "$111,176.00 (90.05 %)"
-    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,89.955|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:79.91 %|Prevista actual: 53.42 %|Prevista inicial: 77.32 %|\" />", css_select("#profitability_chart_0 img").first.to_s
-    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,91.935|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:83.87 %|Prevista actual: 53.42 %|Prevista inicial: 77.32 %|\" />", css_select("#profitability_chart_1 img").first.to_s
-    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,81.165,95.025|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:90.05 %|Prevista actual: 62.33 %|Prevista inicial: 77.32 %|\" />", css_select("#profitability_chart_2 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,89.955|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Current profit:79.91 %|Profitability current: 53.42 %|Profitability planned: 77.32 %|\" />", css_select("#profitability_chart_0 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,76.71,91.935|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Current profit:83.87 %|Profitability current: 53.42 %|Profitability planned: 77.32 %|\" />", css_select("#profitability_chart_1 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:88.66,81.165,95.025|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Current profit:90.05 %|Profitability current: 62.33 %|Profitability planned: 77.32 %|\" />", css_select("#profitability_chart_2 img").first.to_s
 
     assert_select "#deviation_effort_0", "88.1 %"
     assert_select "#deviation_effort_1", "88.1 %"
@@ -213,9 +213,9 @@ class MetricsControllerTest < ActionController::TestCase
     assert_select "#deviation_cost_0", "105.36 %"
     assert_select "#deviation_cost_1", "105.36 %"
     assert_select "#deviation_cost_2", "66.07 %"
-    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:94.05,50.275,102.68|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Coste: 105.36 %|Tiempo: 0.55 %|Esfuerzo: 88.1 %|\" />", css_select("#deviation_chart_0 img").first.to_s
-    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:94.05,50.275,102.68|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Coste: 105.36 %|Tiempo: 0.55 %|Esfuerzo: 88.1 %|\" />", css_select("#deviation_chart_1 img").first.to_s
-    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:78.57,41.715,83.035|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Coste: 66.07 %|Tiempo: -16.57 %|Esfuerzo: 57.14 %|\" />", css_select("#deviation_chart_2 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:94.05,50.275,102.68|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Cost: 105.36 %|Time: 0.55 %|Effort: 88.1 %|\" />", css_select("#deviation_chart_0 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:94.05,50.275,102.68|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Cost: 105.36 %|Time: 0.55 %|Effort: 88.1 %|\" />", css_select("#deviation_chart_1 img").first.to_s
+    assert_equal "<img src=\"http://chart.apis.google.com/chart?cht=bhs&chd=t:78.57,41.715,83.035|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Cost: 66.07 %|Time: -16.57 %|Effort: 57.14 %|\" />", css_select("#deviation_chart_2 img").first.to_s
 
     unless Setting.plugin_redmine_cmi['risks_tracker'].blank?
       assert_select "#risk_high_0", "0"

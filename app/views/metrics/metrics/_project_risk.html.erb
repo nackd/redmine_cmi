@@ -35,7 +35,7 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "risk_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.risk_high %>,<%= metric.risk_medium %>,<%= metric.risk_low %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Bajo: <%= metric.risk_low %>|Medio: <%= metric.risk_medium %>|Alto: <%= metric.risk_high %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.risk_high %>,<%= metric.risk_medium %>,<%= metric.risk_low %>&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|<%=l :'cmi.label_low' %>: <%= metric.risk_low %>|<%=l :'cmi.label_medium' %>: <%= metric.risk_medium %>|<%=l :'cmi.label_high' %>: <%= metric.risk_high %>|"/>
     <% end -%>
   <% end -%>
 </tr>

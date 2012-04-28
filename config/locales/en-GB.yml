@@ -79,7 +79,7 @@ en-GB:
     label_planned: Planned
     label_graphs: Graphs
     label_cost: Cost
-    label_RRHH: HR
+    label_HHRR: HHRR
     label_others: Others
     label_advance: Advance
     label_effort_plural: Efforts
@@ -134,6 +134,9 @@ en-GB:
     label_filter_by: Filter by
     label_current_value: Current value - %{date}
     label_coordinator_role: Coordinator role
+    label_high: High
+    label_medium: Medium
+    label_low: Low
 
     cmi_module_not_enabled: The module 'Metrics' is not enabled
     cmi_expense_tracker_not_available: There is not 'expense' tracker available

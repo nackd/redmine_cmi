@@ -79,14 +79,14 @@ es:
     label_planned: Previsto
     label_graphs: Gráficas
     label_cost: Coste
-    label_RRHH: RRHH
+    label_HHRR: RRHH
     label_others: Otros
     label_advance: Avance
     label_effort_plural: Esfuerzos
     label_budgets: Presupuestos
     label_profitability: Margen de contribución
-    label_profitability_planned: Prevista inicialmente
-    label_profitability_current: Prevista actualmente
+    label_profitability_planned: Prevista inicial
+    label_profitability_current: Prevista actual
     label_current_profit: Beneficio actual
     label_deviation: Desviaciones
     label_change_request: Solicitudes de cambio
@@ -134,6 +134,9 @@ es:
     label_filter_by: Filtrar por
     label_current_value: Valor actual - %{date}
     label_coordinator_role: Perfil del coordinador
+    label_high: Alto
+    label_medium: Medio
+    label_low: Bajo
 
     cmi_module_not_enabled: No está habilitado el módulo 'Métricas'
     cmi_expense_tracker_not_available: No existe el tracker gastos

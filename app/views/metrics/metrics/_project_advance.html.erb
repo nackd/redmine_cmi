@@ -31,7 +31,7 @@
 
 <tr>
   <th rowspan=3><%= l('cmi.label_budgets') %></th>
-  <td><%= l('cmi.label_RRHH') %></td>
+  <td><%= l('cmi.label_HHRR') %></td>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "advance_hhrr_budget_#{i}", :class => "issue" do -%>
       <%= percent metric.hhrr_cost_percent_incurred %>
@@ -58,7 +58,7 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "advance_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.effort_percent_done.round(2) %>,<%= metric.time_percent_done.round(2) %>,<%= metric.total_cost_percent_incurred.round(2) %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|Coste: <%= percent metric.total_cost_percent_incurred %>|Tiempo: <%= percent metric.time_percent_done %>|Esfuerzo: <%= percent metric.effort_percent_done %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= metric.effort_percent_done.round(2) %>,<%= metric.time_percent_done.round(2) %>,<%= metric.total_cost_percent_incurred.round(2) %>|100,100,100&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|0|50|100|1:|<%=l :'cmi.label_cost' %>: <%= percent metric.total_cost_percent_incurred %>|<%=l :'cmi.label_time' %>: <%= percent metric.time_percent_done %>|<%=l :'cmi.label_effort' %>: <%= percent metric.effort_percent_done %>|"/>
     <% end -%>
   <% end -%>
 </tr>

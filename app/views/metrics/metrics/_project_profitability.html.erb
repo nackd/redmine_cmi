@@ -27,7 +27,7 @@
   <th colspan="2"><%= l('cmi.label_graphs') %></th>
   <% @metrics.each_with_index do |metric, i| -%>
     <% content_tag :td, :id => "profitability_chart_#{i}", :class => "issue" do -%>
-      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= 50 + metric.original_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.scheduled_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.incurred_margin_percent.round(2) * 25/50 %>|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|Beneficio actual:<%= percent metric.incurred_margin_percent %>|Prevista actual: <%= percent metric.scheduled_margin_percent %>|Prevista inicial: <%= percent metric.original_margin_percent %>|"/>
+      <img src="http://chart.apis.google.com/chart?cht=bhs&chd=t:<%= 50 + metric.original_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.scheduled_margin_percent.round(2) * 25/50 %>,<%= 50 + metric.incurred_margin_percent.round(2) * 25/50 %>|100,100,100&chp=.5&&chxr=0,-100,100&chm=h,000000,0,0.5,0.5&chco=4D89F9,C6D9FD&chbh=10,5,10&chs=250x70&chxt=x,y&chxl=0:|-100|-50|0|50|100|1:|<%=l :'cmi.label_current_profit' %>:<%= percent metric.incurred_margin_percent %>|<%=l :'cmi.label_profitability_current' %>: <%= percent metric.scheduled_margin_percent %>|<%=l :'cmi.label_profitability_planned' %>: <%= percent metric.original_margin_percent %>|"/>
     <% end -%>
   <% end -%>
 </tr>
