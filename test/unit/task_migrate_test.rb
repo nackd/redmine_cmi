@@ -83,15 +83,15 @@ class TaskMigrateTest < ActiveSupport::TestCase
     assert_equal project, expenditures.first.project
     assert_equal "Expenditure concept 1", expenditures.first.concept
     assert_equal "Expenditure description 1", expenditures.first.description
-    assert_equal 100, expenditures.first.initial_budget
-    assert_equal 111, expenditures.first.current_budget
-    assert_equal 22, expenditures.first.incurred
+    assert_equal 100.01, expenditures.first.initial_budget
+    assert_equal 111.11, expenditures.first.current_budget
+    assert_equal 22.22, expenditures.first.incurred
 
     assert_equal project, expenditures.last.project
     assert_equal "Expenditure concept 2", expenditures.last.concept
     assert_equal "Expenditure description 2", expenditures.last.description
-    assert_equal 200, expenditures.last.initial_budget
-    assert_equal 200, expenditures.last.current_budget
+    assert_equal 200.02, expenditures.last.initial_budget
+    assert_equal 200.02, expenditures.last.current_budget
     assert_equal 0, expenditures.last.incurred
 
     assert_equal expenditures.last, journals.last.journalized
