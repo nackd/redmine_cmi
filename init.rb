@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Dir["#{File.dirname(__FILE__)}/config/initializers/**/*.rb"].sort.each do |initializer|
   Kernel.load(initializer)
 end
@@ -12,10 +13,19 @@ require 'cmi/project_patch'
 require 'cmi/journal_observer_patch'
 
 Redmine::Plugin.register :redmine_cmi do
-  name :'cmi.plugin_name'
-  author 'Emergya Consultoría'
-  description :'cmi.plugin_description'
-  version '0.9.4.1'
+  Rails.configuration.after_initialize do
+    locale = if Setting.table_exists?
+               Setting.default_language
+             else
+               'en'
+             end
+    I18n.with_locale(locale) do
+      name I18n.t :'cmi.plugin_name'
+      description I18n.t :'cmi.plugin_description'
+      author 'Emergya Consultoría'
+      version '0.9.4.1'
+    end
+  end
 
   settings :default => { }, :partial => 'settings/cmi_settings'
 
