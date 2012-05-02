@@ -1,4 +1,4 @@
-== CMI Plugin
+== CMI Plugin {<img src="https://secure.travis-ci.org/Emergya/redmine_cmi.png?branch=master" alt="Build Status" />}[http://travis-ci.org/Emergya/redmine_cmi]
 
 CMI is a Redmine plugin to have a summary of projects' management metrics.
 It calculates and shows with graphs different metrics, such as actual effort,
