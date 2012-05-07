@@ -29,7 +29,7 @@ Important note: read install notes before installing.
 
 1. Make sure you have installed the Redmine version 1.0.0 or higher.
 2. Follow the Redmine plugin installation steps at:
-   http://www.redmine.org/wiki/redmine/Plugins
+   http://www.redmine.org/wiki/redmine/Plugins.
 3. Edit the following files:
    * config/defaults.yml
      Translate perfil (profile) to your language. The cmi:create_data task
@@ -49,29 +49,25 @@ Important note: read install notes before installing.
      rake cmi:load_role_costs_history
      rake cmi:load_user_role_history
      rake cmi:recalculate_costs
-5. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails)
-6. Login to your Redmine install as an Administrator
-7. Enable the permissions for your Roles
-8. Configure the plugin under administration, plugins
+5. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails).
+6. Login to your Redmine install as an Administrator.
+7. Under admininstration, custom fields, users, edit the perfil (profile)
+   custom field and change the possible values according to the values you used
+   to edit the files in step 3.
+8. Configure the plugin under administration, plugins.
+9. Enable the permissions for your Roles.
 
 == Install notes
 
-The plugin needs a bunch of custom fields and values to work. These fields and
-values are created by the rake task cmi:create_data, based on the configuration
-in config/defaults.yml. The configuration shiped with the plugin comes with
-fields and values named in spanish. You can edit the file and translate the
-field names and values to your language before invoking the task, but the file
-is undocummented. There are plans to completely change the plugin configuration
-system.
-
-Also, once all this fields and values are created there is no automated way to
-remove them.
+The plugin needs one custom field to work. This field is created by the rake
+task cmi:create_data, based on the configuration in config/defaults.yml, but
+there is no automated way to remove it.
 
 It is, thus, advisable to do a database backup before trying the plugin.
 
 == Uninstall
 
-As stated above, you'll have to manually remove the created custom fields and
+As stated above, you'll have to manually remove the created custom field and
 values.
 
 The plugin also makes some database schema changes wich you should revert. Stop
@@ -85,7 +81,7 @@ and restart the server.
 
 == Usage
 
-TODO.
+See the {wiki}[https://github.com/Emergya/redmine_cmi/wiki].
 
 == License
 
