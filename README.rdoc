@@ -43,12 +43,14 @@ Important note: read install notes before installing.
      file to the database.
 4. Install the plugin running the commands below from your Redmine directory
    (if you are going to run Redmine in, e.g. the production environment, you
-   need to append RAILS_ENV=production to each line):
+   need to append RAILS_ENV=production to each line). The last one is only
+   needed if you are upgrading from CMI 0.9.4.1 or lower:
      rake db:migrate:plugin NAME=redmine_cmi
      rake cmi:create_data
      rake cmi:load_role_costs_history
      rake cmi:load_user_role_history
      rake cmi:recalculate_costs
+     rake cmi:migrate
 5. Restart your Redmine web servers (e.g. mongrel, thin, mod_rails).
 6. Login to your Redmine install as an Administrator.
 7. Under admininstration, custom fields, users, edit the perfil (profile)
